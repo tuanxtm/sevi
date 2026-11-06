@@ -1,0 +1,44 @@
+<!-- title: Download Sevi for macOS, Windows, Linux, iOS and Android – Sevi - Gõ tiếng Việt -->
+<!-- description: Download Sevi for free. Available for macOS, Windows, Linux and Android, coming soon to iPhone. -->
+<main class="wrap prose center dlpage">
+<h1>Download Vi<b>key</b></h1>
+<p class="muted">Free · open source · version VERSION</p>
+<!-- PLATFORMS -->
+<details class="howto">
+<summary>How to install</summary>
+<h3>macOS</h3>
+<ol>
+<li>Open the downloaded file and drag Sevi into Applications.</li>
+<li>Quit OpenKey, EVKey or any other Vietnamese input method.</li>
+<li>Open Sevi and allow Accessibility when asked.</li>
+</ol>
+<p class="muted small">SHA-256: <code>SHA256</code></p>
+<!-- windows -->
+<h3>Windows</h3>
+<ol>
+<li>Open the downloaded file. No admin rights needed.</li>
+<li>Quit OpenKey, EVKey, UniKey or any other Vietnamese input method.</li>
+<li>Sevi sits in the system tray. Press Alt+Z to switch languages.</li>
+</ol>
+<p class="muted small">If SmartScreen asks, click "More info", then "Run anyway".</p>
+<p class="muted small">Portable, no installer: <a href="WIN_X64_ZIP">x64 (zip)</a> · <a href="WIN_ARM64_ZIP">ARM64 (zip)</a><br>SHA-256: <code>WIN_X64_SHA</code> (x64) · <code>WIN_ARM64_SHA</code> (ARM64)</p>
+<!-- /windows -->
+<!-- linux -->
+<h3>Linux</h3>
+<ol>
+<li>Install the package: <code>sudo apt install ./sevi_*.deb</code> (or <code>sudo dnf install ./sevi-*.rpm</code>, or <code>sudo pacman -U ./sevi-*.pkg.tar.zst</code>), then log out and back in.</li>
+<li>Open Settings › Keyboard › Input Sources and add "Vietnamese (Sevi)".</li>
+<li>Switch to Sevi with Super+Space. Press Alt+Z to switch English/Vietnamese.</li>
+</ol>
+<p class="muted small">Per-website memory is not available on Linux yet; per-app memory works for X11 apps on Wayland.</p>
+<!-- /linux -->
+</details>
+<p class="muted small"><span class="nw">Every version and the source code are on <a href="https://github.com/tonyminibot/Vikey/releases">GitHub</a></span> · <span class="nw"><a href="/en/changelog">Changelog</a></span></p>
+</main>
+<div class="lightbox" id="lb" hidden><img alt=""></div>
+<script>
+const lb=document.getElementById("lb"),lbi=lb.querySelector("img");
+document.querySelectorAll("img.zoom").forEach(i=>i.addEventListener("click",()=>{lbi.src=i.src;lbi.alt=i.alt;lb.hidden=false;document.body.classList.add("lb-open")}));
+const closeLb=()=>{lb.hidden=true;document.body.classList.remove("lb-open")};
+lb.addEventListener("click",closeLb);addEventListener("keydown",e=>{if(e.key==="Escape")closeLb()});
+</script>

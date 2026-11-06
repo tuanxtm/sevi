@@ -1,0 +1,22 @@
+<!-- title: Send feedback – Sevi - Gõ tiếng Việt -->
+<!-- description: Report a bug or send feedback about Sevi. -->
+<main class="wrap prose fbpage">
+<h1>Send feedback</h1>
+<p class="muted">Bugs, feature ideas or anything else about Sevi. Tony reads every message.</p>
+<form id="fb" class="fbform" novalidate>
+<div class="fbkinds" role="radiogroup" aria-label="Kind of feedback">
+<label><input type="radio" name="kind" value="bug" checked><span>Bug</span></label>
+<label><input type="radio" name="kind" value="idea"><span>Idea</span></label>
+<label><input type="radio" name="kind" value="other"><span>Other</span></label>
+</div>
+<div class="field"><label for="fb-msg">Message</label><textarea id="fb-msg" name="message" rows="7" required placeholder="What did you type, what did Sevi give, and what did you expect?"></textarea></div>
+<div class="field"><label for="fb-email">Email <span class="muted">(optional, so we can reply)</span></label><input id="fb-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"></div>
+<input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="ts"></div>
+<p class="err" role="alert"></p>
+<button class="btn big" type="submit">Send feedback</button>
+<p class="muted small meta"></p>
+</form>
+<div class="fbdone" hidden><div class="tick">✓</div><h2>Thank you!</h2><p class="muted">Your feedback reached Sevi.</p></div>
+</main>
+<script src="/assets/feedback.js" defer></script>

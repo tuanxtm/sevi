@@ -1,0 +1,6 @@
+[alias]
+xtask = "run --package xtask --"
+
+# Keep Windows executables standalone, including normal Cargo/CMake builds.
+[target.'cfg(all(target_os = "windows", target_env = "msvc"))']
+rustflags = ["-C", "target-feature=+crt-static"]

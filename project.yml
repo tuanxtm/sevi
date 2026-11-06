@@ -1,0 +1,58 @@
+name: Sevi
+options:
+  bundleIdPrefix: com.devuap
+  deploymentTarget:
+    macOS: "13.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    DEVELOPMENT_TEAM: 3H6967F79Y
+    SWIFT_VERSION: "5.10"
+    CLANG_CXX_LANGUAGE_STANDARD: c++17
+    MARKETING_VERSION: "1.0.30"
+    CURRENT_PROJECT_VERSION: "32"
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+packages:
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    exactVersion: 2.10.1
+targets:
+  Sevi:
+    type: application
+    platform: macOS
+    dependencies:
+      - sdk: AppKit.framework
+      - sdk: Foundation.framework
+      - sdk: CoreFoundation.framework
+      - sdk: Carbon.framework
+      - sdk: ApplicationServices.framework
+      - sdk: Security.framework
+      - sdk: ServiceManagement.framework
+      - sdk: Metal.framework
+      - sdk: QuartzCore.framework
+      - sdk: CoreVideo.framework
+      - sdk: CoreGraphics.framework
+      - sdk: CoreText.framework
+      - sdk: CoreData.framework
+      - sdk: CoreImage.framework
+      - sdk: CloudKit.framework
+      - package: Sparkle
+    sources:
+      - path: App/Resources
+      - path: crates/sevi-macos/entry.S
+    preBuildScripts:
+      - name: Build Rust desktop application
+        script: 'PATH="$HOME/.cargo/bin:$PATH" cargo run --locked --manifest-path "$SRCROOT/Cargo.toml" --package xtask -- build-macos'
+        basedOnDependencyAnalysis: false
+    settings:
+      base:
+        PRODUCT_NAME: Sevi
+        PRODUCT_BUNDLE_IDENTIFIER: com.devuap.sevi
+        INFOPLIST_FILE: App/Info.plist
+        CODE_SIGN_ENTITLEMENTS: App/Sevi.entitlements
+        CODE_SIGN_STYLE: Manual
+        ENABLE_HARDENED_RUNTIME: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        COMBINE_HIDPI_IMAGES: YES
+        LIBRARY_SEARCH_PATHS: ["$(inherited)", "$(BUILT_PRODUCTS_DIR)"]
+        OTHER_LDFLAGS: ["$(inherited)", "-lsevi_macos", "-lobjc", "-liconv"]

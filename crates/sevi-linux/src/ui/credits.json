@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Mã nguồn",
+    "note": "Sevi dùng mã nguồn của:",
+    "items": [
+      [
+        "OpenKey",
+        "Tuyen Mai",
+        "GPL-3.0",
+        "https://github.com/tuyenvm/OpenKey"
+      ]
+    ]
+  },
+  {
+    "title": "Dữ liệu từ ngữ",
+    "note": "Sevi tự chuyển Anh/Việt nhờ thống kê từ ngữ đếm từ các nguồn này. Trong ứng dụng chỉ có số liệu thống kê, không có văn bản nào.",
+    "items": [
+      [
+        "FrequencyWords (OpenSubtitles 2018)",
+        "Hermit Dave",
+        "CC BY-SA 4.0",
+        "https://github.com/hermitdave/FrequencyWords"
+      ],
+      [
+        "FineWeb-2 and FineWeb",
+        "Hugging Face",
+        "ODC-By 1.0",
+        "https://huggingface.co/datasets/HuggingFaceFW/fineweb-2"
+      ],
+      [
+        "HPLT v2",
+        "High Performance Language Technologies",
+        "CC0",
+        "https://hplt-project.org"
+      ],
+      [
+        "MADLAD-400",
+        "Google",
+        "ODC-By 1.0",
+        "https://huggingface.co/datasets/allenai/MADLAD-400"
+      ],
+      [
+        "Reddit comments",
+        "tensorshield/reddit_dataset_157",
+        "MIT",
+        "https://huggingface.co/datasets/tensorshield/reddit_dataset_157"
+      ],
+      [
+        "Vietnamese forums and reader comments",
+        "VnExpress, Tuổi Trẻ, Tinhte, Otofun, Dạy Nhau Học",
+        "word statistics",
+        ""
+      ],
+      [
+        "Emoji names and keywords (CLDR)",
+        "Unicode, Inc.",
+        "Unicode License v3",
+        "https://cldr.unicode.org"
+      ],
+      [
+        "Emojibase",
+        "Miles Johnson",
+        "MIT",
+        "https://emojibase.dev"
+      ]
+    ]
+  },
+  {
+    "title": "Dữ liệu kiểm thử",
+    "note": "Chỉ dùng để đo và cải thiện độ chính xác, không có trong ứng dụng.",
+    "items": [
+      [
+        "ViLexNorm",
+        "Nguyen et al., EACL 2024",
+        "CC BY-NC-SA 4.0",
+        "https://github.com/ngxtnhi/ViLexNorm"
+      ],
+      [
+        "UIT-ViCTSD",
+        "UIT NLP Group",
+        "research use",
+        "https://huggingface.co/datasets/tarudesu/ViCTSD"
+      ],
+      [
+        "VietMix",
+        "EACL 2026",
+        "research use",
+        "https://huggingface.co/datasets/razent/vietmix"
+      ],
+      [
+        "Tap typing with touch sensing images",
+        "Google Research",
+        "CC BY 4.0",
+        "https://github.com/google-research-datasets/tap-typing-with-touch-sensing-images"
+      ],
+      [
+        "How We Type: Mobile",
+        "Aalto University",
+        "research use",
+        "https://userinterfaces.aalto.fi/how-we-type-mobile"
+      ],
+      [
+        "GitHub Typo Corpus",
+        "Hagiwara & Mita, LREC 2020",
+        "research use",
+        "https://github.com/mhagiwara/github-typo-corpus"
+      ],
+      [
+        "Birkbeck spelling error corpus",
+        "Roger Mitton",
+        "free to use",
+        "https://www.dcs.bbk.ac.uk/~roger/corpora.html"
+      ],
+      [
+        "Lists of common misspellings",
+        "Wikipedia",
+        "CC BY-SA 4.0",
+        "https://en.wikipedia.org/wiki/Wikipedia:Lists_of_common_misspellings"
+      ]
+    ]
+  }
+]

@@ -1,0 +1,4 @@
+# Programming identifiers that would otherwise be read as Telex for a Vietnamese word in English mode.
+# Found by splitting camelCase/snake_case identifiers in a large set of real projects, replaying each
+# through the engine, and keeping the genuine programming terms (reviewed by hand).
+arcs asc buf chars cors cur defs esc hist hono nums osc refs secs uri var vars

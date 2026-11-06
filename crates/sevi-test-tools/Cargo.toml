@@ -1,0 +1,12 @@
+[package]
+name = "sevi-test-tools"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+sevi-engine = { workspace = true, features = ["simulation"] }
+serde_json.workspace = true
+unicode-normalization.workspace = true
+regex.workspace = true

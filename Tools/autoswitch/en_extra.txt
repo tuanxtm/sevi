@@ -1,0 +1,11 @@
+# Extra English words treated as very common (chat shorthand without apostrophes, programming vocabulary).
+im ive id ill hes shes its isnt dont doesnt didnt cant couldnt wont wouldnt shouldnt wasnt werent arent
+havent hasnt hadnt thats whats wheres theres heres lets youre youve youll youd theyre theyve theyll weve
+were ok okay lol lmao omg btw idk tbh imo imho thx pls plz ya yea yeah yep nope nah gonna wanna gotta
+api apis json http https url urls sql css html js ts npm git github repo repos regex async await kubectl sudo
+ssh dns ios macos xcode swift rust golang deno bun cli gui ui ux todo todos env dev devs prod config
+var let const func def fn impl struct enum int bool str char float void null nil args argv kwargs init len cmd src dst tmp util utils cfg ctx req res err msg obj arr dict idx num val vals ptr ref elif else try catch throw yield async await import export from return class self super new delete public private static final override interface type types ls cd mv cp rm mkdir chmod chown grep sed awk curl wget sudo brew npm npx pnpm yarn pip git ssh scp tar zip unzip cat echo env alias sort uniq head tail less more vim nano tsx jsx py rs go md yml yaml toml json xml css html sql db app api sdk cli dev prod repo pr ci todo fixme hotfix refactor deps lib libs pkg bin dir dirs path paths url uri http https tcp udp dns jwt oauth auth uuid hash map set get put post patch fetch axios redux hook hooks props state refs div span nav btn img svg png jpg pdf csv log logs debug info warn error trace stack heap queue node deno bun vite next nuxt react vue svelte swift kotlin java ruby rails php perl lua rust zig gcc clang llvm xcode gradle maven docker kube kubectl helm aws gcp azure vercel neon redis postgres mysql mongo sqlite kafka nginx regex lint eslint prettier jest vitest mocha pytest sync mutex goroutine chan defer panic recover println printf sprintf fmt os io sys re np pd plt df
+# English used inside Vietnamese chat that the subtitles barely have (D27)
+meme memes
+# contraction stems before the apostrophe (didn't, wasn't): D28
+didn doesn isn wasn weren aren couldn wouldn shouldn hasn haven hadn mustn needn

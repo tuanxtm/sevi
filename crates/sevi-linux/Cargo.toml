@@ -1,0 +1,40 @@
+[package]
+name = "sevi-linux"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+sevi-runtime.workspace = true
+sevi-engine.workspace = true
+serde_json.workspace = true
+sevi-ui-protocol.workspace = true
+sevi-ui = { workspace = true, optional = true }
+gtk = { package = "gtk4", version = "0.11", features = ["v4_12"], optional = true }
+adw = { package = "libadwaita", version = "0.9", features = ["v1_5"], optional = true }
+glib = "0.22"
+gio = "0.22"
+libc = "0.2"
+unicode-normalization = "0.1"
+chrono = "0.4"
+pangocairo = { version = "0.22", optional = true }
+
+[features]
+default = []
+settings-ui = ["dep:sevi-ui"]
+native-tests = ["dep:gtk", "dep:adw", "dep:pangocairo"]
+
+[[bin]]
+name = "ibus-engine-sevi"
+path = "src/bin/ibus-engine-sevi.rs"
+
+[[bin]]
+name = "sevi-settings"
+path = "src/bin/sevi-settings.rs"
+required-features = ["settings-ui"]
+
+[[bin]]
+name = "sevi-linux-livetest"
+path = "src/bin/livetest.rs"
+required-features = ["native-tests"]

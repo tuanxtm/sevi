@@ -1,0 +1,10 @@
+menubutton.tip > button { min-width:22px; min-height:22px; padding:0; opacity:0.45; background:none; box-shadow:none; }
+.tip-mark { min-width:13px; min-height:13px; border:1.5px solid currentColor; border-radius:50%; font-size:10px; font-weight:800; }
+menubutton.tip > button:hover { opacity:0.8; }
+.brand { color:#4F46E5; }
+.dots .on { background:#4F46E5; }
+.dots .off { background:alpha(currentColor,0.25); }
+.dots > * { min-width:7px; min-height:7px; border-radius:4px; }
+.telex-key { font-family:monospace; font-weight:bold; padding:1px 6px; border-radius:5px; background:@view_bg_color; }
+.telex-card { background:alpha(currentColor,0.06); border-radius:10px; padding:14px; }
+.ok-mark { color:@success_color; }

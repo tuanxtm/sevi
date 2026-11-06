@@ -1,0 +1,43 @@
+name: Check
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-24.04, windows-latest, macos-latest]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Linux build libraries
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libibus-1.0-dev libpango1.0-dev libcairo2-dev libgstreamer1.0-dev libegl1-mesa-dev libxkbcommon-dev libwayland-dev libx11-dev libssl-dev
+      - name: Rust toolchain
+        run: rustup toolchain install 1.95.0 --profile minimal --component rustfmt --component clippy
+      - uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: check-${{ runner.os }}-${{ hashFiles('Cargo.lock') }}
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r Tools/github/requirements.txt
+      - run: python -m unittest discover -s Tools/github -p 'test_*.py'
+      - run: cargo fmt --all -- --check
+      - run: cargo test --locked -p sevi-engine -p sevi-runtime -p sevi-windows -p sevi-macos -p sevi-ui -p sevi-ui-protocol -p sevi-tools --all-targets
+      - run: cargo clippy --locked -p sevi-windows -p sevi-macos -p sevi-ui --all-targets -- -D warnings
+      - name: Linux desktop
+        if: runner.os == 'Linux'
+        run: cargo clippy --locked -p sevi-linux --features settings-ui --all-targets -- -D warnings
+      - name: Typing rules and golden outputs
+        if: runner.os == 'Linux'
+        run: cargo xtask check

@@ -1,0 +1,72 @@
+[workspace]
+members = ["crates/sevi-engine", "crates/sevi-runtime", "crates/sevi-linux", "crates/sevi-windows", "crates/sevi-macos", "crates/sevi-test-tools", "crates/sevi-tools", "crates/sevi-ui-protocol", "crates/sevi-ui", "xtask"]
+default-members = ["crates/sevi-engine", "crates/sevi-runtime", "crates/sevi-windows", "crates/sevi-macos", "crates/sevi-test-tools", "crates/sevi-tools", "xtask"]
+resolver = "3"
+
+[workspace.package]
+version = "1.0.30"
+edition = "2024"
+rust-version = "1.95"
+license = "GPL-3.0-only"
+
+[workspace.metadata.sevi]
+build = 32
+macos-deployment-target = "13.0"
+baseline = "490820bc70c48c38b864cb1b63f6de61f9a44ab3"
+
+[workspace.dependencies]
+sevi-engine = { path = "crates/sevi-engine" }
+sevi-runtime = { path = "crates/sevi-runtime" }
+sevi-ui-protocol = { path = "crates/sevi-ui-protocol" }
+sevi-ui = { path = "crates/sevi-ui" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+unicode-normalization = "0.1"
+regex = "1"
+base64 = "0.22"
+chrono = "0.4"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+
+# Size-optimize only the UI/graphics stack; the IME engine and native hooks keep
+# the release default (opt-level 3), including unwind support for callback guards.
+[profile.release.package.sevi-ui]
+opt-level = "z"
+[profile.release.package.eframe]
+opt-level = "z"
+[profile.release.package.egui]
+opt-level = "z"
+[profile.release.package.epaint]
+opt-level = "z"
+[profile.release.package.egui-winit]
+opt-level = "z"
+[profile.release.package.egui_glow]
+opt-level = "z"
+[profile.release.package.winit]
+opt-level = "z"
+[profile.release.package.glutin]
+opt-level = "z"
+[profile.release.package.glutin-winit]
+opt-level = "z"
+[profile.release.package.harfrust]
+opt-level = "z"
+[profile.release.package.skrifa]
+opt-level = "z"
+[profile.release.package.read-fonts]
+opt-level = "z"
+[profile.release.package.font-types]
+opt-level = "z"
+[profile.release.package.vello_cpu]
+opt-level = "z"
+[profile.release.package.vello_common]
+opt-level = "z"
+[profile.release.package.wgpu]
+opt-level = "z"
+[profile.release.package.wgpu-core]
+opt-level = "z"
+[profile.release.package.wgpu-hal]
+opt-level = "z"
+[profile.release.package.naga]
+opt-level = "z"

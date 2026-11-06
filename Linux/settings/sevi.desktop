@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Sevi
+Comment=Smart English/Vietnamese input
+Exec=sevi-settings
+Icon=sevi
+Categories=Utility;Settings;
+Keywords=vietnamese;telex;input;

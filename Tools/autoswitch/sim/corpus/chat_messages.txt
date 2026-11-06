@@ -1,0 +1,1869 @@
+Hôm nay standup lúc 10h nhé, ai còn chưa xong task thì report sẵn
+Mình xong feature login rồi, ready for PR review
+Có bug gì mới không mà phải deploy chiều nay?
+Anh A báo task deploy api endpoint, còn đợi review từ team lead
+I've fixed the authentication issue, can someone check my branch?
+Cái bug search không work trên mobile, ai pick up cái này không?
+Mình đã test thorough, performance improve khoảng 30% so với before
+Chờ xíu, mình đang fix merge conflict ở database migration
+Backend ready rồi, frontend team chưa merge branch của mình
+Ai có time review pull request #456? Đã push 2 tiếng rồi
+Chị em dev dốc quá, standup xong mà task còn đặng đó
+Cái pagination bug đã fix, nhưng cần test kỹ lại trước deploy
+Database migration script chạy test ok, deploy được không?
+Mình test api trên postman, response time hơi lâu
+Team deploy lúc 3h chiều, ai còn PR chưa review thì nhắn sớm
+Có lỗi gì trên staging không? Mình đã push version 2.1
+Testing notification feature, nó work nhưng animation hơi lag
+Guys, cách làm cache invalidation ở project này như thế nào?
+Deploy production được không, hay chờ thêm vài PR nữa?
+Mình refactor code auth, complexity giảm đáng kể, xem giúp
+Standup xong rồi, ai làm cái task reset password không?
+Pull request #478 of mine has all the unit tests passing
+Chưa deploy được vì còn conflict ở schema.sql, chờ xíu
+Cái websocket integration, mình chưa hiểu fully, có thể giúp không?
+Workflow CI/CD đang chạy, dự là xong trong vòng 5 phút nữa
+Bug report từ QA: user không submit form được, ai fix?
+Mình check lại logic, ơi sai bug đó ở validation, đã fix
+Anh ơi, cái error 500 tại sao vậy? Log không show gì
+Deploy staging version đã ok, ready move to production
+Ai có checklist cho code review không? Để đảm bảo quality
+Tối nay phải fix thêm vài edge case, task này còn chưa xong hoàn toàn
+Mình conflict ở 3 chỗ, có thể help merge không, bận quá
+Performance test result: load time từ 3s xuống 800ms, pretty good
+Chờ deploy đi, mình còn test e2e ở local, xong sẽ push
+Có issue gì urgent không? Hay proceed với sprint plan như thường?
+PR review cần bao lâu? Deploy window là 2h nữa thôi
+Lỗi deploy: Docker image không build được, dependency issue
+Anh check test coverage đi, nó thấp hơn threshold của project
+Cái feature flag đã setup xong, ready roll out gradually
+Mình code xong API endpoint, nhưng chưa write unit test
+Chị, review PR của mình đi, khá critical feature này
+Standup lần này có gì hot mà phải deploy urgently vậy?
+I think we should do a code freeze before the major release next week
+Bug ở cache layer, mình đã identify root cause, fixing now
+Deploy checklist: database migration, config update, notification test, all done
+Mình pull latest develop, có conflict không nhỉ, help check
+Ai làm cái documentation cho new API endpoint này không?
+anh ơi em gửi file roadmap q3 rồi nhé, check giúp em cái
+roadmap này khó quá, phải cut mấy feature để hit deadline
+KPI tháng này 15k DAU, giờ có 12k rồi, tạm ổn
+em làm xong mockup cho onboarding flow rồi
+We need to increase conversion rate by 20% by end of month
+mấy cái analytics data chưa có, phải đợi data team làm
+có ai gọi cái customer success team được không, cần clarify requirement
+feature payment gateway phức tạp hơn mình tưởng, mà deadline cận rồi
+So the product roadmap shows we're behind on mobile optimization
+retention rate giảm mấy tuần này, là vì cái bug ở version 1.2 đó
+chúng ta nên focus vào core feature trước, feature khác đẩy sang q4
+check lại estimate cho sprint này đi, có vẻ hơi lạc quan
+mình suggest priority theo business impact, không phải theo độ khó
+bạn ghi lại KPI target cho mỗi feature được không, cho dễ theo dõi
+em vừa update roadmap trên jira, các bạn sync lại nhé
+The Q3 KPI breakdown needs revision based on market analysis
+tháng sau phải launch MVP cho feature mới, bây giờ tech design mới hoàn thành
+anh có thể lead discussion về technical architecture không, em không chắc
+mấy metrics cái này không clear lắm, metrics nào là vanity metrics
+chúng ta có 3 sprint để deliver, mỗi sprint 2 tuần, tính toán lại đi
+product-market fit chưa rõ, KPI của chúng ta đang chỉ vào vanity metrics
+eng team nói backend scaling là blocker, phải fix trước khi scale
+I think we should prioritize based on customer feedback, not just revenue
+user acquisition cost tăng 30% đó, tại sao vậy
+chúng ta phải redefine success metrics cho product này
+em nghĩ feature X không cần phải launch cùng version 1.0, delay sang q4 được
+có ai review cái proposal này chưa, deadline vote sáng mai
+dependency giữa team frontend và backend cần clarify lại
+Let me share the updated product roadmap with timeline and owners
+acquisition strategy cần shift từ paid sang organic, bđ cost quá cao
+retention metric là indicator chính, phải focus vào cái này trước
+mình check lại data, DAU tăng nhưng engagement rate không tăng
+monthly recurring revenue target là 100k, hiện tại 65k
+anh ơi roadmap tháng 9 chưa lock được, vẫn đang discussion
+feature này complexity cao, scope creep là risk lớn
+Can we do a quick sync about the KPI definition? I'm confused about churn rate
+các feature trong roadmap phải map với business goal rõ ràng
+em gửi user research finding rồi, check lại recommendation nhé
+The technical debt is slowing us down, need to allocate time for refactoring
+DAU, MAU, churn rate, lifetime value, mấy cái metric này là core KPI
+chúng ta target launch market 2 vào tháng 10, timeline như vậy có khả thi không
+product roadmap sync hôm nay 3pm, room A, tất cả mọi người join
+Mấy bạn định đi đâu vào cuối tháng này không?
+Hey guys, có ai muốn đi Đà Nẵng không? Mình đang tìm deals
+Mình có xem vài khách sạn rồi, giá khá ok
+Booking.com hay Agoda cái nào rẻ hơn nhỉ?
+Agoda thường có discount hơn cho người VN
+Mình thích ở gần biển thôi, không cần quá sang
+Có khách sạn nào 3 sao giá dưới 500k/đêm không?
+Đợi mình search xem, vừa rồi thấy cái nào đó khá ok
+Tại sao lại expensive quá vậy trời, chỉ có cơn
+OK so mình tìm được cái khách sạn gần bãi biển My Khe, 450k/đêm
+Ở đó bao lâu vậy mấy bạn? 3 ngày 2 đêm à?
+Không, mình định ở từ thứ sáu đến chủ nhật, 3 đêm
+Được rồi, số người bao nhiêu cơ? Mình, mấy bạn nữa?
+Có 4 người: mình, Minh, Huy, Linh
+Sao Linh không nhắn tin gì, có đồng ý đi không ta?
+Linh bảo là có khi bận, để mình gọi điện hỏi lại
+Khách sạn đó có bao nhiêu phòng trống vậy?
+Mình vừa book xong 1 phòng 2 giường, còn 1 phòng nữa
+2 phòng cho 4 người thì ai ở phòng nào?
+Mình và Minh cùng phòng, Huy và Linh cùng phòng khác
+Oke, mình thanh toán bao nhiêu cho phòng mình?
+Tổng 450k nhân 3 đêm là 1.35 triệu, chia đôi là 675k/người
+675k là ổn rồi, mình chuyển khoản cho mấy bạn được không?
+Được, mình cho số tài khoản sau
+Cái khách sạn đó có wifi tốt không? Mình cần làm việc
+Có, họ có free wifi 24/7, download speed khá ngon
+Phòng có air-con không? Mình không sống nổi không lạnh
+Có đầy đủ, còn có TV, tủ lạnh, nước nóng
+Vậy thì booking xong rồi hay sao? Hay còn cần xác nhận gì
+I already confirmed the booking, they sent me the confirmation email
+Phải thanh toán trước hay thanh toán khi check-in?
+Already paid full, mình dùng credit card online
+Sao mình không nhắn trước? Chắc mình còn muốn xem tính toán lại
+Sorry, mình bảo nhưng mấy bạn không on, nên mình cứ book luôn
+Thôi được rồi, có confirmation code gì để show lúc check-in không?
+Có, mình copy link booking vào note rồi, sẽ forward cho mấy bạn
+Lúc nào check-in? Sáng hay chiều?
+Check-in từ 2h chiều, nhưng có thể sớm hơn tùy phòng trống
+Mình tính đi sáng sớm, khoảng 6h, có kịp không?
+6h là sớm quá rồi, đến đó khoảng 9-10h đã, chắc phòng chưa sẵn sàng
+Vậy thì mình đi 8h, check-in vào 2h, đó là checkout mấy giờ?
+Checkout lúc 12h trưa hôm sau
+Mình sợ lúc checkout phải vội, có thể late checkout không?
+Usually mất thêm tiền, nhưng mình hỏi khách sạn xem thế nào
+Được rồi, cái còn lại là book xe đi
+Mình cần xin phép đi học thêm thứ 3 tuần sau, có được không?
+Can I use the meeting room B2 tomorrow at 2pm?
+Thôi em xin lỗi, em gửi leave request rồi đó
+Phòng họp 301 bị book rồi à? Tìm phòng khác hả
+Leave request của tháng 11 duyệt xong chưa vậy?
+I need to take 3 days off for my daughter's school activities
+Anh có thể approve hóa đơn của em không, để rồi mình làm leave request
+Phòng họp lớn nhất là phòng nào? Có bao nhiêu người?
+Em xin phép 1 tuần để về quê, em sẽ làm hết công việc trước
+Just checking - when will the new leave policy be implemented?
+Mình book phòng 202 cho meeting chiều nay, bảo ai cũng được
+Còn 12 ngày phép năm nay, nên xin đi để dùng trước hết năm
+Can someone help me navigate the leave request portal?
+Phòng họp mấy có máy chiếu, mình cần để demo sản phẩm
+Em request off vào cuối tháng này, mong được duyệt sớm
+HR chưa gửi thông báo chế độ phép năm nay sao?
+Meeting room booking system nó bị lỗi hôm qua
+Tôi cần xin phép 2 ngày liên tiếp để đi dự thi chứng chỉ
+Duyệt leave em cái, công việc em xong rồi
+Can I get approval for my annual leave request by tomorrow?
+Phòng 105 bao giờ trống? Mình cần họp 1 tiếng
+Em gửi leave request hôm qua nhưng sao không thấy được confirm
+The meeting room reservation system needs better scheduling
+Mình cần phòng có sẵn audio/video setup, có phòng nào không?
+HR said leave balance sẽ update vào cuối tuần
+Tình hình là mình phải đi công chuyện, xin phép hôm nay được không?
+Phòng họp bao giờ open booking? Mình muốn book cả tháng sau
+Em xin phép sick leave hôm nay, không được vào văn phòng
+Who approved the meeting room for the all-hands on Friday?
+Anh check email em nhé, leave request detail trong đó
+Phòng nào lớn nhất? Mình cần họp 20 người
+Em vừa submit leave request cho tháng 12, xin vào duyệt
+Meeting schedule conflict, can we move to another room?
+Tháng này phép năm em còn bao nhiêu ngày?
+HR haven't processed my request yet, it's been 5 days already
+Phòng họp 3 có wifi không? Internet ở đó yếu lắm
+Xin luôn vài ngày để thăm nhà, em sẽ remote work
+Booking meeting room lúc nào cũng conflict, khó quá
+Chào bạn, cần giúp gì không? Tôi có thể assist cho bạn được
+Em check hàng trong kho, chút nữa báo cho bạn
+Cái sản phẩm này hiện tại out of stock rồi, khoảng 3-5 ngày nữa về
+Được, em sẽ reserve cho bạn, giữ giùm nha
+Bạn muốn màu gì? Em có đủ size nhưng màu đó chỉ còn S và M thôi
+Actually we just restocked the blue version yesterday, very popular item
+Em có thể apply discount code WELCOME20 cho lần mua đầu tiên của bạn
+Vâng, ship nhanh lắm, 1-2 ngày là có, tùy vào khu vực
+Bạn check email nhé, invoice đã gửi rồi
+Cái jacket này quality rất tốt, nhiều người comment 5 sao lắm
+Không có khách hàng nào complain về size, thường on point
+Bạn có thể return trong 7 ngày nếu không hài lòng, free shipping for returns
+Em recommend size L cho bạn vì model này tend to run small
+Vừa update inventory, còn 3 cái left lang thang thôi
+Thank you so much for your purchase! Really appreciate your support
+Tracking number gửi qua SMS cho bạn rồi, check lại số điện thoại nếu chưa nhận
+Chất liệu này là cotton 100%, rất mát, perfect cho mùa hè
+Bạn pay bằng bank transfer được không? Em chỉ accept Momo hoặc bank transfer thôi
+Anh có voucher code không? Mình có sale 30% cho ngày hôm nay
+Em sorry, item này discontinue rồi, có similar product khác không?
+Cái này được import từ Hàn Quốc, chất lượng guaranteed
+Bạn có discount code nào không? Em có VIPFIRST50 cho khách VIP
+The new collection just dropped, wanna check it out?
+Em update price rồi, hiện tại sale off 25% cho tất cả item
+Bạn có feedback gì về order không? Em cần biết để improve
+Hàng authentic 100%, em có certificate of authenticity kèm theo
+Chi phí shipping bao nhiêu? Ở tỉnh á? Bình thường 35k-60k tùy vào khu vực
+Bạn đã nhận hàng chưa? Sao chưa review, hehe
+Em sẽ process order của bạn ngay bây giờ, waiting for payment confirmation
+Cái này sold out mỗi tuần, bạn may mắn còn kịp buy
+We offer free shipping for orders above 500k, just so you know
+Bạn muốn adjust lại order được không? Chưa ship đâu
+Em phải confirm size với bạn lại, vì sizing chart có khác nhau
+Sorry for the delay, packaging ngon lành, ship sớm nhất là ngày mai
+Đơn hàng của bạn đang trong kho, ready to ship
+Cái sản phẩm trending rất hot trên TikTok lúc này
+Bạn có subscribe newsletter không? Để nhận deal exclusive
+Em recommend bạn try cái combo package, tiết kiệm hơn
+Hôm nay em close shop sớm, nên reply sẽ hơi lâu một chút
+Bạn có question gì khác không? Happy to help anytime
+Your order has been delivered according to the logistics system
+Em sorry em busy, có nhiều customer lắm
+Cám ơn bạn, hope bạn sẽ recommend shop cho friend nhé
+Bạn ơi cái campaign này có convert không? Em check metrics mà thấy CPC cao quá đó
+Tối nay mình họp lại cái strategy cho Q4 nhé, mấy anh chị có free không
+Em vừa submit 3 cái creative mới cho review, đợi feedback từ lead
+Dù sao thì budget allocation cho Facebook ads tuần này phải tăng lên 30% là được
+Anyone else having issues with the ad dashboard? It's been lagging all morning
+Em nghĩ content calendar tháng sau nên focus vào video format nhiều hơn
+Cái engagement rate của Instagram stories tuần trước tăng 45%, khá tốt luôn
+Bro chúng mình cần optimize landing page trước khi scale campaign lên được
+Vừa track được UTM parameters, data clean rồi, anh em có thể pull report đi
+Chị có thể check lại copy của cái post này không, em thấy nó hơi dài
+Push notification nên timing vào 10 AM hay 2 PM có ai biết không
+Mình đang A/B test 2 cái headline cho Google Ads, kết quả out trong vài ngày nữa
+Khách hàng muốn tăng impressions, nhưng conversion thấp, bảo mình phải làm gì nào
+Có phải chúng ta cần tuyển thêm graphic designer không, workload quá tải rồi
+Tôi vừa submit creative brief, cần mấy ngày để design team hoàn thành không
+ROAS của campaign cuối cùng là 3.2, vượt target là 3.0 rồi, tốt lắm
+Cái content pillar nào nên prioritize trước, organic hay paid
+Bạn check roi của email marketing campaign được không, tối nào họp mình discuss
+Mình sẽ up lên social media vào 9 chiều, kịp không, các bạn verify hộ
+Dữ liệu competitor thì chị đã compile xong chưa, mình cần chóng lắm
+Hôm nay trafic từ TikTok lên gấp đôi so với tuần trước, chúng mình làm được gì khác không
+Chắc phải tạo landing page mới cho retargeting campaign này, cái cũ CTR quá thấp
+Em muốn làm một series content về product benefits, nên làm video hay carousel ads
+Hiện tại budget còn bao nhiêu, chị check lại allocation xem đã optimal chưa
+Mình vừa build audience segment cho lookalike, convert rate nên improve sẽ
+The performance metrics for this quarter are looking really promising so far
+Cần phải update brand guidelines trước khi tung campaign mới ra được không
+Bạn nói copy trending ngành này không, em thấy competitor họ dùng emotional appeal
+Tôi suggest tăng bid strategy cho high-intent keywords, mình test cái này xem sao
+Cái banner này design lại đi, size không chuẩn với Facebook specs lắm đó
+Push notification open rate mình thấp quá, có lẽ message timing hoặc copy sai
+Nhóm data analytics sẽ output dashboard chỉ tiêu marketing tuần này khi nào
+Chúng mình có nên paused cái campaign low-performing này không để tiết kiệm budget
+Bốn content pieces nào sẽ publish tuần tới, em cần finalize video editing
+Bạn có sẵn template cho monthly performance report không, em cần ASAP
+Conversion funnel analysis đã done chưa, chúng ta cần optimize top-of-funnel
+Em thấy CPM TikTok ads rẻ hơn Instagram, nên reallocate budget sang TikTok không
+Ê bạn rank mấy rồi cái game này
+Mình vừa lên diamond 2, cơ mà rank này khó lắm
+Chơi rank match nào hôm qua? Toàn thua phải không
+Nah bro I carried that last game so hard, my team was actually dogshit
+Mấy anh chơi server nào, mình đang queue tại Việt Nam
+Tối nay có chơi không, tụi mình đi rank match nào
+Vừa lên rank lại, nhưng có cảm giác bị hard stuck ở đây
+Actually grinding rank này hơi mệt, lúc nào cũng gặp toxic player
+Khỏe không bạn, sao không online game hôm qua
+Thua 5 trận liên tiếp rồi, team diff quá đi
+Thằng Mid lúc nào cũng feed, đã mute nó rồi
+Mình đi rank với mấy bạn tối nay được không?
+Đồ ngố, sao nó lại tank thế vào match cuối cùng
+Game này rank system nó hơi broken, skill thấp mà rank cao
+Bạn main hero nào vậy, cái rank này chỉ có những pro thôi
+Tối qua carry team mình 35 kill luôn, main damage dealer mà
+Rank match kia thua do support kém, không có vision gì hết
+Anh chơi Ranked hay Normal nhiều hơn
+Nay nằm ở rank thấp vì đồng đội nó noob liên tục
+Bao giờ thì mình lên được Gold, cầu khó quá
+Chung quanh 2k rating mà game còn không ổn định
+Đi rank nào hôm nay, tụi mình kéo đôi rank match
+I'm literally one win away from Master rank, super close bro
+Cơ mà match kia lag kinh khủng, đó là lý do thua
+Các bạn đã lên rank trong mùa này chưa
+Tôi rank 5 rồi, mà từ 6 tới 5 cực khổ luôn
+Sao bạn không vào voice chat, rank match phải có teamwork
+Thua match vừa rồi do team nó roam kém, không gank được
+Những người chơi ở rank cao toàn từ server Hàn Quốc đó
+Queue time hơi lâu, bạn chờ mình một chút
+Ông này main support à, sao không rank lên được
+Rank này mình thấy enemy lúc nào cũng bằng hoặc mạnh hơn
+Cần mấy win nữa là lên cấp độ mới, grind hard
+Hôm qua match chung với streamer, performance tệ lắm
+Bạn có thích chơi competitive không, mình ưa rank hơn casual
+Lúc nào cũng bị rank thấp đồng đội kéo, unlucky thôi
+Vừa dodge một match vì ally nó bad pick, lose LP rồi
+Mình à, cứ rank match là thường thua, tilted quá
+Solo queue khó vãi đít, cần duo mới lên được rank
+Thằng ADC lúc nào cũng chạy vào, position kém kinh khủng
+One more ranked match bro, mình muốn hit Gold before season end
+Mẹ vừa nấu canh chua xong, có ai đói không? Ăn cơm thôi
+Tối nay em có plan gì không? Đi chơi với bạn bè được không?
+Anh ơi, lần sau đừng quên gửi tiền điện nha
+I forgot my password again, can someone help me?
+Má ơi, em đi học thêm về, tối muộn mới về
+Chị ơi, mẹ bảo đi chợ mua cá và rau cho cơm tối
+Dad just called, he's stuck in traffic and will be home late
+Em tìm được cái áo mà mẹ định mua chưa?
+Anh có thể check lại hóa đơn internet này không? Sao tăng giá rồi
+Does anyone know a good mechanic near our house?
+Mẹ nói với em rằng ba sắp về, ai đi đón ạ?
+Tôi vừa mua được vé máy bay rồi, ngày 15 tháng 8
+Em thích món gì? Tối nay mẹ nấu cơm, ai có ý kiến không?
+Chị ơi, có thể giúp em upload bài tập lên Google Classroom được không?
+The grocery store near us is closing down next month I think
+Mẹ bắt nói với anh là cần sửa cái nóc nhà, bảo anh liên hệ thợ
+Em vừa xong bài tập rồi, giờ có thể chơi game được không mẹ?
+Anh yêu, lần sau đừng để quên bát bẩn ở phòng như vậy
+Có ai biết password của cái wifi không? Em cần download cái file to
+Mẹ ơi, cơm tối ngon quá, em xin thêm một tô nữa
+Ba điện thoại, bảo tuần sau sẽ bonus, có thể đi chơi được rồi
+Chị, có thể giúp em check lại bài tiếng Anh không? Em sợ sai nhiều lắm
+Let's do a family video call this Sunday, okay everyone?
+Mẹ nói là anh cần đi học lái xe, bao giờ anh có time?
+Em muốn mua cái laptop mới, giá khoảng 12 triệu, mẹ có thể hỗ trợ không?
+Ai có thể giúp ba setup cái máy tính mới không? Ba không hiểu
+Tối nay có ai xem bóng đá không? Việt Nam vs Thái Lan mà
+Mẹ bảo tuần tới có nhà hàng ăn tối, ai muốn đi cùng?
+Anh ơi, mẹ nói bảo anh thanh toán cái hóa đơn nước
+Em vừa từ trường về, không hiểu sao hôm nay mệt quá
+Can someone pick me up from the mall? I'm done shopping
+Chị vừa bảo là sắp có buổi họp phụ huynh, ai sẽ đi?
+Mẹ ơi, em lại bị ốm, cảm lạnh đó, có cần đi khám không?
+Anh có nghe nói chi Hà sắp sinh chưa? Mẹ bảo là tuần tới
+Đêm nay mẹ nấu bún chả, ai có muốn ăn cơm với không?
+Em muốn đi xem phim, có ai rảnh không? Hôm nay có bộ phim hay lắm
+Ba ơi, xe bị vỡ gương rồi, cần sửa bao nhiêu tiền vậy?
+Just ordered some stuff online, should arrive by next week
+Mẹ nói là anh phải giúp sửa lại cái máy giặt, nó bị hỏng rồi
+Em có bao nhiêu tiền xin được không? Muốn mua đồng phục mới
+Tuần sau là sinh nhật ba, có ai sắp bằng kế hoạch gì không?
+Mẹ kiếp cái deadline mai mà em còn chưa làm gì cả
+dude bạn làm bài assignment này chưa? khó quá bro
+em submit hôm qua rồi, may mà kịp trước 11:59pm
+Chị ơi có thể giúp em hiểu cái phần này không? Em đang ngồi fix code từ sáng mà vẫn error
+I'm just gonna copy-paste from the internet and hope no one notices lol
+Cô mình nói bài này trọng số 40% luôn, ko được phép nộp trễ đâu nha các bạn
+Thôi chết rồi, em quên hoàn toàn cái assignment này
+Bạn, cái database schema này có cần normalize không? Confuse quá
+I spent 3 hours on this and still only have 2 pages done
+Ai có cách nào để extend deadline không, khủng hoảng quá
+Mình báo cô, cô có thể cho extend vài ngày được không ạ?
+Không nên nộp trễ, cô mình tính ngay 1 điểm mỗi ngày
+deadline là 23:59 hay deadline của hôm sau bạn? Hay là hôm kia?
+Let me just finish this part real quick and then I'll send it
+Sao em code mãi mà không chạy được, debug cả đêm rồi mà vẫn bug
+Các anh chị có tài liệu tham khảo nào không? Em copy không có gì cả
+Can someone explain the requirements again? I completely lost track of what I need to do
+Nộp file PDF hay Word? Cô không nói rõ, có ai biết không
+Bạn ơi chỗ này em chưa hiểu, requirement của cô nó không rõ ràng lắm
+May quá, em nộp được 5 phút trước deadline
+Giờ em mới bắt đầu làm lmao, submit trước 3am là được
+Ai giúp em xem có bug không, code em này đầu nhân loại quá
+Cô cho extension sau khi deadline được không? Hỏi xem sao
+The assignment is literally impossible to finish in a week, we need more time
+Mình dùng ChatGPT giúp trí tuệ thêm chút, chắc là được phải không
+Em làm xong rồi, load lên drive để bạn check hộ
+Cả lớp nộp trễ hết, cô có gì mà giận đâu
+Mẹ kiếp, format file sai, phải redo tất cả
+I really should have started this earlier instead of procrastinating
+Ai có thể push code lên repo cho em không, em máy tính bị die
+Mình submit rồi nhưng chưa chắc đúng hết, chắc fail
+Thời gian thôi, phải priority cái assignment này trước đã
+Đọc requirements mà em vẫn confused, có khi nào requirements sai không
+Bạn có template nào không, em dùng để start code nhanh hơn
+Last minute gang, em mới dậy lúc 11:30 và deadline 11:59pm
+Check lại bài em xem có được không, em nhất định sợ fail
+Nộp file + video demo, mình quên làm cái video này mất
+mày mới update Figma chưa? giao diện mới hơi lạ lắm
+just pushed the latest design system to the file
+ui này phải chỉnh lại, color không match brand guideline
+bạn có thể review quick cái mockup phía dưới không
+feedback từ client hôm qua khá chi tiết, mình đang sửa
+Let me know if you see any issues with the typography
+chờ một chút, mình đang resize icons cái đã
+file Figma này bị lag quá, có ai gặp vấn đề không
+xem lại prototype được không, flow hơi kì kì
+I think we need to adjust the spacing, looks too tight right now
+component này tái sử dụng được không, check xem đã setup chưa
+đợi anh update link lại, cái cũ không access được nữa
+the padding on this button needs to be 16px not 12px
+mình comment vào artboard rồi, coi giúp đi
+hey, should we change the primary color? thấy hơi dark quá
+design này ready để handoff cho dev team chưa
+ai review cái này rồi? mình gửi mail rồi mà
+Can you export the assets in 2x and 3x please
+component library cần update thêm variation nữa
+feedback của product manager là muốn bỏ animation ở đây
+you should check the contrast ratio, might fail accessibility test
+đây là v2, mình có làm thay đổi khá nhiều từ version trước
+team designer ngồi discuss design thinking tí, bạn có vào không
+need to create a new frame for the tablet breakpoint
+cái wireframe này có phải đúng requirement không, chắc chưa lắm
+I'm stuck between two options, which one looks better to you
+component này đã add vào library chưa? có link không
+mình check lại interaction, còn missing cái animation cuối cùng
+please review and leave feedback by end of today
+design system chúng ta bây giờ organized thế nào rồi
+the shadow effect looks off, có thể render lại không
+bạn có maintain documentation cho component này không
+I just realized we have a naming conflict in the layers
+artboard này có follow grid system không mình nhìn không rõ
+feedback round này cuối cùng rồi, sau đó ready to dev
+can you check if all the icons are consistent in size
+naming convention cho frame này sao mà kì vậy mình không hiểu
+Let me sync this with the design spec one more time
+này, client muốn thêm một use case khác, update figma được không
+component này deprecated rồi, mình remove khỏi library đi
+who's responsible for maintaining the Figma workspace permission
+mình prefer option A hơn, clean hơn và user-friendly hơn
+mày có follow cái token này chưa, nó vừa list trên binance hôm qua, pump nhanh lắm
+mới xem được 40% trong 2 ngày, crazy money
+lúc này có nên entry không bạn, sợ nó dump lại
+I'm holding 500 USD in this one, let's see where it goes
+anh mua ở đâu vậy, giá bao nhiêu
+gốc giá nó 0.0045, giờ 0.0063 rồi, đợi dip mà buy
+dip gì mà dip, nó bullish lắm, bác cứ FoMo đi
+lol đừng đi FoMo, cách tốt nhất là DCA, chia nhỏ tiền ra mà mua
+nói đúng, đã có kế hoạch rồi, tuần này buy thêm 1000 cái
+btw, thị trường chứng khoán Việt sao hôm nay đỏ lè lẹt thế
+VNIndex giảm 40 điểm, nó chỉ là correction bình thường, ko lo
+thế là mất hơn 2 triệu, rồi mình sẽ cover lại à
+cover lại bằng gì, tiền cash còn không, lại còn đang margin
+ơi bạn, cẩn thận với margin, nó là đôi lưỡi kiếm đó
+They can liquidate you really quick if the market turns
+mình setup stop loss ở -15%, should be fine
+15% là nhiều thế, lại còn crypto, có thể down 15% trong 1 tiếng
+tao biết, nhưng portfolio mình 80% cash, nên ổn
+What's your allocation right now, stocks or crypto?
+70% stocks, 30% crypto, crypto nó volatile hơn nhưng return cao hơn
+chứng khoán công nghệ nó cũng volatile lắm, NVIDIA, Broadcom cứ giơ giáng
+Broadcom bao nhiêu tiền lúc này
+$150 một cái, tao mua ở $130, hold từ hôm qua
+ơi sao bạn lạc quan vậy, nó còn có trend giảm kìa
+bạn nhìn chart cái, break out rồi, resistance mới ở 160
+Okay, I'll look into it. You think it'll hit $200 by end of year?
+khó nói, phụ thuộc vào earnings report, nó sẽ công bố cuối tháng này
+earnings season là lúc nó up, nhưng cũng có thể down nếu miss estimate
+chính xác, volatility sẽ tăng tuần tới, chuẩn bị tinh thần
+mình vừa nạp thêm 5 triệu vào sàn chứng khoán, tính setup position
+5 triệu là ít hay nhiều trong portfolio mình vậy
+phụ thuộc vào tổng asset, nhưng nên keep 6 tháng emergency fund trước
+ối bạn, mình còn nợ credit card chứ, quên cái emergency fund đi
+Dude, that's not good. Pay off the debt first, interest rate's killing you
+debt của mình 8% APR, chứng khoán mình 12%, so mathematically profitable
+nhưng nó rủi ro hơn nhiều, tinh thần sẽ bị stress
+tao đã chấp nhận rồi, risk management là key
+luôn, setup stop loss và don't chase losses, đó là rule cơ bản
+mình còn sợ hơn là mình bị FOMO và all-in vào cái gì đó
+All-in vào Dogecoin à, rồi nó down 80%
+Hahahaha đừng nhắc, tao vẫn có 50k coin từ 2017, worthless
+giữ cho vui thôi, maybe 10 years later nó lên lại, who knows
+bạn bây giờ có portfolio nào ngoài DOGE không, chia sẻ một chút
+Main holdings mình: Apple, Nvidia, ngân hàng Vietcombank, và BTC, ETH
+balanced portfolio, tao thích cách này
+ngân hàng quá boring, nhưng dividend nó ổn định, 5-6% mỗi năm
+boring là an toàn, tao mix boring và exciting, sleep well at night
+thế đúng rồi, mental health cũng là part of investing, nghe lắm
+Anh ơi, cái dashboard của em bị lag từ sáng nay, có vấn đề gì không?
+không biết, check network của em xem sao
+em đã restart browser rồi mà vẫn bị
+try clearing cache đi, hoặc dùng incognito mode xem
+vừa rồi em thử rồi nhưng vẫn chậm lắm
+ok để em check backend logs xem có issue gì không
+em chờ chút nhé, đang xem database query performance
+có bao lâu nữa không? em đang urgent cần làm report
+tìm được rồi, có một query chạy slow, đang optimize
+thanks anh, chờ em xíu
+query đã fix xong rồi, refresh lại xem
+yes, giờ nhanh rồi! thanks nhiều
+welcome, có gì khác không?
+mục "export data" của em không thấy nút download?
+ah, feature đó đang ở trong beta, cần active subscription mới dùng được
+em là free account à? nâng cấp lên Pro thì dùng được
+nâng lên thế bao nhiêu tiền một tháng?
+Pro plan là 99k/tháng hoặc 999k/năm
+được rồi, em sẽ nâng cấp. Nó sẽ active ngay không?
+sẽ active ngay lập tức sau khi thanh toán xong
+I have 50 employees accessing the system, will there be any performance issues?
+không vấn đề gì, server của chúng tôi support up to 500 concurrent users
+vậy thì tốt, em sẽ recommend cho các đồng nghiệp
+cảm ơn bạn! nếu cần support lần sau cứ msg ở đây
+em bị lỗi "Invalid API key" khi integrate với third-party tool
+check lại API key xem có expired không, hoặc reset nó đi
+em vừa regenerate xong, giờ ok rồi
+tốt, nếu lần sau gặp vấn đề tương tự thì biết cách fix rồi
+Tôi muốn biết làm sao để setup automated workflow?
+em vào Settings → Automation rồi tạo rule mới, khá đơn giản
+em đã vào rồi, nhưng không hiểu trigger và action là gì
+trigger là sự kiện xảy ra, action là cái bạn muốn nó làm, ví dụ: when user signup (trigger) then send email (action)
+à hiểu rồi, thanks anh giải thích
+có hướng dẫn chi tiết ở docs website, link em gửi ở group
+Tôi đang cần export dữ liệu từ 500 records ra Excel, nên làm thế nào?
+dùng bulk export feature, select records rồi click export, nó sẽ tự generate file Excel
+được không ạ, cảm ơn! Em sẽ thử ngay
+giờ tất cả bạn đã có access chưa?
+mấy bạn khác chưa, em có thể invite họ được không
+vào Settings → Team Members rồi nhấn "Invite" là được
+em thấy rồi, vừa invite 3 người bạn
+Perfect, họ sẽ nhận email invitation, click vào là active account
+Có cách nào để backup dữ liệu không?
+chúng tôi tự động backup mỗi ngày, bạn cũng có thể manual backup từ Settings
+tốt lắm, và nếu mình xóa dữ liệu thì recover được không?
+được, có thể restore từ backup trong vòng 30 ngày
+Bạn ơi, dashboard của mình bị lỗi rồi, check SQL query xem cái gì sai không?
+Mình vừa viết query để pull data từ cũng table, nhưng nó chạy mãi không xong
+có cần optimize không bạn?
+Tớ đang join 5 table lại, performance siêu kém luôn
+Thôi thôi, để tớ xem cái query của bạn đã
+query này đã test trên dev chưa?
+I ran it on dev and it took 2 minutes to return results
+Chắc là có index missing hoặc join condition sai rồi
+Bạn có thể check lại cái WHERE clause không?
+Bạn ơi WHERE clause của mình có 10 điều kiện kìa
+Với lại cái subquery trong đó cũng nested mấy cấp nữa
+Thử rewrite lại, tách subquery ra thành CTE nha
+CTE nó sẽ giúp query dễ đọc hơn và có thể nhanh hơn
+Ừ, mình vừa thử xong, query chạy chỉ còn 20 giây thôi
+OK được rồi, mình refactor lại dashboard vì data mới đã ready
+Dashboard nào bạn? Cái dashboard sales hay cái dashboard ops?
+Cái dashboard tổng quan cho management á, 3 cái chart chính
+Mình vừa update data source, giờ nó pull từ data warehouse
+Tốt rồi, bạn refresh dashboard đi, dùng cái new query mình gửi
+Bạn gửi cho mình cái query đó được không? mình đưa vào dashboard
+SELECT * FROM sales WHERE date >= '2024-01-01' GROUP BY region
+Ngoài ra còn có cái segment analysis nữa, mình đang làm
+Segment analysis thì cần pull thêm customer profile data không?
+Có, tớ đang join với customer table, nhưng data bị duplicate
+Duplicate vì sao? có phải do LEFT JOIN sai không?
+Chắc là bảng customer có multiple records per ID rồi
+Bạn check distinct count xem sao?
+SELECT COUNT(DISTINCT customer_id) FROM customer_segments;
+Kết quả là 50k, nhưng bảng gốc có 70k rows
+Chắc có trùng lắm, có thể filter active customers thôi
+Ừ, mình filter WHERE status = 'active' xong rồi
+Thế dashboard hiển thị đúng chưa?
+Còn một cái issue nữa là cái timestamp, nó store as string
+Bạn cần convert sang datetime format trước khi join
+CAST(timestamp_column AS DATETIME) hoặc thử TO_DATE() function
+Mình dùng database gì để biết dùng function nào hợp lý
+Bạn dùng PostgreSQL hay MySQL?
+Chúng tớ xài PostgreSQL ở production, MySQL ở dev
+Thì dùng TO_TIMESTAMP() function nha, nó chuẩn PostgreSQL
+Vừa làm xong, dashboard giờ hiển thị đầy đủ dữ liệu rồi
+Good job! Bạn commit code chưa?
+Commit rồi, tớ tạo pull request, bạn review giúp tớ
+Mình xem ngay, cảm ơn bạn đã optimize query
+Không có gì, đây là team work mà, mình lại phải cảm ơn bạn
+chào anh, em gửi file design đã xong rồi, check xem có ổn không
+ok vậy, em chỉnh theo feedback của anh luôn
+cảm ơn anh đã feedback, em sẽ update trong 2 tiếng nữa
+Actually, I realized we need to change the color scheme a bit. Can you do that?
+được, em sẽ đổi sang tone màu nào ạ
+có cái này là anh muốn trend 2024 hay vẫn giữ aesthetic cũ
+vâng, em đã push code lên repository rồi
+mấy cái bug ở dashboard, em đang fix đó
+Let me know if there's anything else you need from my end
+cái UI/UX phần checkout, anh có muốn tối ưu hóa không
+em check file assets mà anh gửi, chất lượng tốt lắm
+anh có approve được timeline không, em sợ deadline sát quá
+được rồi, vậy em bắt đầu phase 2 từ thứ 2 tuần sau
+Tôi sẽ send you the revised mockups by end of day
+em có cần access vào admin panel không để test feature mới
+uhh đợi anh tí, em đang optimize image kia
+The responsive design looks great on mobile now
+chốt được backend integration rồi, có thể merge được rồi
+em xin lỗi anh, hôm nay internet bị lag nên slow
+không sao anh, em hiểu
+vậy API endpoint nào bị issue thế anh
+cái authentication flow, em implement xong rồi nhưng chưa test kỹ
+ok, anh có thể review code em trước khi merge không
+em sẽ refactor lại component này để performance tốt hơn
+Can you send me the figma link again? I lost it
+ơ cái link mà anh share lúc nãy bị hỏng hình như
+em đã fix xong bug login rồi
+test lại xem được không, nếu có issue gì thì ping em
+anh yêu cầu gì ở phần này không, em setup default value trước
+em dự tính deploy version này vào thứ 5 okay không
+I'll make sure everything is bug-free before deployment
+em xin lỡ, em nhầm file sass rồi, fix lại ngay
+cảm ơn anh vì patience, em làm fast hơn từ giờ
+phần payment gateway, anh muốn integrate stripe hay paypal
+em suggest stripe vì nó stable hơn và support nhiều currency
+được, em setup payment integration từ bây giờ
+Design assets đã sẵn sàng chưa anh, em cần để start development
+Anh làm xong việc chưa? Tối nay có đi ăn không?
+Vừa xong, sắp về nhà. Mình đói lắm luôn
+Oke tui gọi đồ ăn về rồi, may mắn hôm nay có deal
+Cảm ơn babe, yêu cậu 😍
+Không có gì, đó là bổn phận của tôi hehe
+Nói thế nào mà lạnh lùng vậy, sao ko gọi tui là em?
+Mình đang đùa thôi, em yêu anh lắm
+Tối nay xem phim được không? Có một bộ phim rất hay trên Netflix
+Yeah sounds good, what are we watching?
+Em có thích horror không? Hay là drama kiểu gì?
+Chỉ cần được bên anh là em xem cái gì cũng được
+Oyyy nghe cái này mà em mê lun. Okay mình xem Midnight Club thôi
+Hay lắm, anh đã xem rồi và nó thực sự rất tuyệt vời
+Thế sao anh không bảo cho em biết sớm hơn?
+Muốn giữ bất ngờ cho em nên anh chưa nói
+Anh còn gì bí mật nữa không?
+Không có, mình sẽ luôn trung thực với em
+Anh, mình có thể nói chuyện được không? Em có chuyện muốn chia sẻ
+Dĩ nhiên, sao vậy? Em có sao không?
+Không sao, chỉ là em hôm nay cảm thấy hơi buồn thôi
+Aw baby, tell me what's wrong?
+Em cảm thấy như mình không đủ giỏi ở công việc
+Không có chuyện đó, em là người tuyệt vời mà. Anh tin em lắm
+Cảm ơn anh, anh luôn biết cách làm em cảm thấy tốt hơn
+Đó là vì anh yêu em, và anh muốn em hạnh phúc
+Anh vừa nói gì vậy? Em yêu anh quá
+Can't wait to hold you tonight
+Mình cũng đợi em lắm. Bao giờ anh về nhà?
+Khoảng 30 phút nữa là về, tui đang trên đường
+Oke nhanh lên nhé, em chờ anh
+Mình sẽ cố gắng hết sức. Traffic khá nặng lúc này
+Cẩn thận trên đường nha anh
+Được, em an tâm. Tui sẽ gọi cho em khi về đến nhà
+Okay, love you so much
+Tui cũng yêu em, bye bye
+Bye anh, drive safe 💕
+Server down rồi, cái nginx process bị kill sao vậy?
+Sao không ai notice được?
+Check log xem thằng nào crash hôm nay
+Bác nào on-call hôm nay? Call ngay đi
+Something is wrong with the load balancer, we need to restart it immediately
+Database connection pool đã hết rồi, có 500 connection pending
+Restart service thử xem sao
+Đợi đã, check monitoring dashboard trước
+Alert đâu mà không thấy báo gì cả?
+Kubernetes pod nó không health check được, oom killer đã xoá mất rồi
+CPU usage 95% trên prod, không thể chịu được nữa
+Check memory leak không bác?
+Tôi đang deploy version mới, có phải vì vậy không?
+No, deployment đã xong 2 tiếng trước rồi
+Traffic surge có thể từ marketing campaign hôm nay
+Sao không scale up trước khi chạy campaign?
+Kubernetes autoscaling cứ delay mãi, response time 5s rồi
+Rollback version cũ thử xem
+Đang rollback, chờ chút
+Yeah we're seeing errors spike across all regions now
+Có proxy issue không bác?
+Check haproxy config, có thể config sai
+Firewall rule có thay đổi hôm nay không?
+AWS security group được modify bởi ai vậy?
+Không phải tôi, tôi không touch gì hôm nay
+Database replica lag 10s rồi, write throughput vượt quá limit
+RDS instance type có đủ không?
+Instance bé quá, upgrade lên thử xem
+Đang waiting AWS support reply, khó chịu quá
+Upgrade sẽ down thêm 5 phút nữa, ready chưa?
+Oke, notify team rồi
+Application logs toàn error 500, không rõ nguyên nhân
+Stack trace đâu?
+Logger bị turn off mất, upgrade thì quên config lại
+Thế là có thể rollback ngay mà
+Deploy again with proper logging enabled
+Bác nào commit cái thay đổi logger đó?
+Tôi, nhưng không test kỹ, sorry
+Alright, it happens, let's focus on recovery
+Memory usage giảm xuống rồi sau khi restart pod
+Good, traffic bình thường rồi không?
+Yep, response time back to normal
+Incident này tìm root cause rồi, có họp retrospective 3h chiều
+Mọi người check calendar đi
+Tôi add ticket cho infra team, cần upgrade monitoring alert threshold
+Vừa submit lên TestFlight, mọi người review hộ cái version này xem sao
+Cái onboarding flow có vấn đề không? Em thấy lag ở màn login
+Bạn nào test iOS 16 chưa? Cần confirm compatibility
+Em fix xong cái bug payment gateway rồi, rebuild APK
+Just pushed the latest build, please test thoroughly
+Màn notification có display lỗi không? Chứ lúc em test thì OK
+Ai có tài khoản sandbox để test IAP không?
+The App Store review team rejected our build yesterday, resubmitting now
+Lâu quá, sao App Store còn not approved? Đã 5 ngày rồi
+Em kiểm tra lại cái Privacy Policy chưa? Cần update
+TestFlight build này có stable không? Sợ crash
+Vừa receive feedback từ QA, có 3 critical issues cần fix ngay
+Can someone check if the API integration is working properly?
+Cập nhật guideline mới từ Apple, có mấy cái phải follow
+Em submit AppStore lần 2 rồi, hope this time pass
+Cái screenshot trên App Store listing có cần change không?
+Ai quên enable bitcode rồi? Phải rebuild lại
+iOS app delay quá, còn chưa fix hết technical debt
+We need to optimize the bundle size, currently over 150MB
+Lỡ upload version sai lên TestFlight, rollback được không?
+Em vừa fix xong cái memory leak ở background process
+Thêm deep linking feature vào build này nhé
+Push notification test có work không các bạn?
+Cái analytics tracking cần set up lại cho chính xác
+Ai review security audit chưa? Bắt buộc trước khi submit
+Have you tested the app on iPhone SE yet?
+Phiên bản này optimization tốt hơn version trước nhiều
+Phải wait app store review khoảng mấy ngày thường
+Em download TestFlight build từ link này test luôn
+Cái deep link tracking có implement chưa?
+The rejection reason is related to user data handling, I'll fix it ASAP
+Mình có 10 testers sẵn sàng, pass link TestFlight đi
+TestFlight hơi slow hôm nay, network issue hay gì?
+Cần check app permissions trước khi submit tiếp
+Permissions request popup có display đúng không?
+Ai setup Firebase crashlytics rồi? Cần nó để monitor
+Version 2.1 sẽ ready submit tuần sau
+Em test rồi, onboarding flow smooth, no issues detected
+Cái background sync feature vẫn còn bug, delay lại đi
+App Store approval time thường bao lâu? First time submit
+Debug logs full rồi, cần clear trước build final
+Phiên bản này có hỗ trợ iOS 14 không?
+Bạn có dùng ChatGPT chưa? Mình vừa thử nó, cực kì hay lắm
+chatgpt sao mà nhanh thế, tính toán cái gì cũng có
+Mình dùng để viết email công việc, tiết kiệm thời gian quá
+I've been using AI tools for content writing lately, they're pretty good but need human touch
+Prompt mà viết kỹ lưỡng thì kết quả sẽ tốt hơn rất nhiều
+Bạn thử cái gì, OpenAI hay cái khác? Mình chưa biết chọn cái nào
+các tool AI khác ngoài ChatGPT có cái nào đáng dùng không?
+Xài GPT-4 thì output chất lượng cao hơn GPT-3.5 nhưng đắt hơn
+You have to learn how to write good prompts to get better results from AI
+Mình dùng AI để tóm tắt văn bản dài, nó làm việc khá ổn
+Không nên tin tưởng 100% cái AI viết, luôn phải check lại
+Prompt engineering là skill mới, bạn có học qua không
+Mình đang thí nghiệm với Midjourney để vẽ ảnh, kỳ quá
+copilot của Microsoft có tích hợp vào Office, tuyệt vời lắm
+Cách tốt nhất để dùng ChatGPT là cho nó context chi tiết rồi hỏi từng bước
+Mình thường dùng AI cho brainstorming idea, nó giúp mình rất nhiều
+AI tools dạo này phát triển nhanh quá, hôm qua còn mới hôm này đã outdated rồi
+viết prompt cần phải rõ ràng, cụ thể và có đủ thông tin
+Đã thử cái Notion AI chưa? Nó giúp viết note nhanh hơn rất nhiều
+Mình không tin AI sẽ thay thế con người, nhưng nó sẽ thay đổi cách làm việc của chúng ta
+The future of AI is not about replacing humans but augmenting their capabilities
+Dùng ChatGPT để học lập trình cũng được, nó giải thích code khá kỹ
+Bạn có biết về vector database không? Nó liên quan tới cách AI hoạt động
+Mình setup một cái prompt template cho team, giúp mọi người dùng AI hiệu quả hơn
+Generative AI thay đổi game rồi, startup nào không dùng nó sẽ lạc hậu
+Xài AI chắc phải cảnh báo với khách hàng, vấn đề bản quyền còn gây tranh cãi
+Prompt mình thường có structure: role, task, context, format output
+tìm được công ty dùng AI để tối ưu workflow, họ chỉ cần một nửa nhân sự
+Mình học từ các prompt tốt trên GitHub, có kho khá lớn
+Embedding models dùng để convert text thành vector, quan trọng lắm
+Không phải cái gì cũng dùng AI được, có nhiều task vẫn cần con người
+Fine-tuning model riêng của mình thì expensive nhưng kết quả sẽ chính xác hơn
+Bạn thử dùng system prompt chưa? Nó giúp định hướng AI response rất tốt
+Mình xây dựng workflow với ChatGPT API, automated được nhiều thứ rồi
+API của OpenAI dạo này đắt đỏi, cần optimize token usage
+Có một khoá Coursera về prompt engineering, đáng học lắm
+Regulation về AI còn mơ hồ, nhất là cái về copyright
+Mình kết hợp ChatGPT với các tool khác, output chất lượng tăng đáng kể
+RAG technique giúp AI trích xuất thông tin từ document chính xác hơn
+Dùng AI để code review thì nó phát hiện được lỗi logic khá tốt
+Mình dạo này dùng cái mô hình open source thay vì phải trả tiền cho OpenAI
+Mình đói quá, gọi đồ ăn từ Now thôi, mấy cái gà rán này ngon lắm
+order cái bánh mì thịt nướng nhé, nhớ kèm extra pâté
+sao mà delivery lâu thế, đã đặt từ 20 phút rồi còn chưa tới
+có ai biết quán nào ở quanh Nguyễn Huệ ngon ko, cơm hay bánh gì cũng ok
+Grab food mà ngon hơn Now, giao nhanh hơn nhiều
+just ordered pho from that place near your office, they said 35 mins
+mình vừa ăn xong quán Bún chả Hà Nội kia, recommend 10/10
+sao bánh pizza giao tới lúc còn nóng mà sao lại ngả sang hết
+xin số tài khoản cái, mua đồ ăn cho bạn tính tiền sau
+từ lần trước order bánh mì tô, nó bao giờ giao ổn định ko ba
+anh yêu cơm chiên tôm nhiều lắm, lần này order thêm một phần nữa
+I'm thinking about trying that new Korean restaurant downtown, anyone been there?
+gọi gà chiên chili salt từ quán ngoài kia, mấy đứa khác ăn mà khen lắm
+sao delivery fee mắt gạo thế, giao cái order 50k mà tính phí 15k
+cơm tấm sườn chuối chiên là đặc sản quê mình, mua ở chỗ nào ở đây
+vừa check app Shopee Food, giá rẻ hơn Grab, giảm 40% từ nay
+mình định order bubble tea, các bạn muốn uống cái gì
+gọi bánh tráng nướng mặn từ xe quán kia, chỉ 5k thôi
+quán bánh canh cua gần nhà bây giờ có ship ko, hôm trước ko có
+anh em thích ăn quá muộn, còn quán nào mở 24h ko
+last time I ordered from them, the food was already cold when it arrived
+mấy cái gỏi cuốn này ở đâu mà ngon thế, chảy nước miếng
+order cơm ga Hainanese từ quán Trung Quốc bây giờ
+sao bây giờ giao hàng mà lại hay bị mất đồ ăn trên đường
+đợi delivery đã lâu, mặt em nó buồn như mưa lạnh
+Zalo me the restaurant's contact info, I forgot to save it
+mình order thêm nước, nhưng giao tới thì còn lại nửa thôi
+từ lần này, mình chỉ order từ quán nào có rating từ 4.8 trở lên
+gà kho tiêu đó, gọi một phần cho em ăn cơm trưa
+cả nhóm mình vừa ăn xong buffet lẩu kia, bao cơm, bao nước
+mấy cái dimsum bây giờ ship xa lắm, chắc sẽ không còn warm
+looking for a good Vietnamese banh mi place that delivers, suggestions?
+có ai order Phở từ Foodpanda chưa, giao tới mất bao lâu
+bánh flan from that French bakery is literally the best thing ever
+mình thêm lục lại order, nhớ bỏ hành tây đi, mình ko ăn hành
+vừa mở app Grab, thấy surge pricing, giao mắt gạo quá
+cơm cháy tôm thịt này, mình ăn đã ba lần tuần này rồi
+quán này có free delivery ko nếu order từ 200k trở lên
+just grabbed pho from the place next to your workplace
+em order đồ mà quên địa chỉ rồi, phải gọi driver bảo lại
+quán bánh chưng cuối năm này, ai muốn order giúp mình tính tiền
+Má ơi bóng đá Việt Nam thế thôi, năm nay Real Madrid vs Manchester City mới là cuộc chiến thực sự
+Chẳng biết support Man United hay Liverpool nữa, mệt quá
+Liverpool fans đều ngáo cá cược hết rồi nhìn ở Facebook
+Tối nay xem chung kết Champions League nhé, setup TV rồi
+nah i'm just gonna watch the highlights tomorrow morning, too tired for live
+Ronaldo vẫn là GOAT, ai nói gì cũng được nhưng thực tế là vậy
+Messi mà... thôi thôi, đừng tranh cãi nữa anh em
+Có người bảo Barcelona sắp comeback, tao cười xỉu luôn
+Stream trận Việt Nam vs Thái Lan ở đâu vậy mấy bạn?
+YouTube có full match nhưng bị copyright, phải vào reddit xem
+Đội nhà bao giờ mới vô World Cup chứ, chán quá
+Sao mấy bạn không xem V-League, support đội nước nhà đi
+V-League bây giờ hay lắm rồi, Hà Nội vs HAGL luôn là classic
+haha cái V-League tao thích nhưng xem ngoại hạng Anh vẫn hay hơn
+Tottenham bao giờ mới vô chung kết, năm nay chắc cũng không
+Kane à, ổn lắm nhưng phòng ngự của Tottenham tệ vãi
+ticket xem trực tiếp bao nhiêu tiền bây giờ, muốn đi Hàng Đẫy xem một lần
+Vé xem chung kết có tới 500 triệu, chỉ là cái ghế ngồi phía sau
+Sao bây giờ mà vé lại tốn kém thế, xem nhà tiện hơn và có beer
+Ông Hiddink đó, coi như là bố của bóng đá Việt Nam luôn
+Park Hang-seo cũng làm việc hay lắm, chỉ tiếc là đã rời đi
+Bóng đá Việt Nam hiện tại thiếu cái gì... à thiếu những cầu thủ giỏi
+I think Vietnamese football just needs better training infrastructure and youth development
+Tôi nghe nói CLB Việt Nam bỏ tiền khủng cho cầu thủ nước ngoài, mà kết quả vẫn tệ
+Ủa Arsenal thua cái đội nào hôm qua, chắc tao đã miss match
+Sao Aston Villa lại giỏi thế, bất ngờ quá
+tôi support Chelsea từ thời Mourinho, bây giờ vẫn còn trung thành
+Wenger era của Arsenal là best time, football lúc đó còn đẹp
+Manchester City với Pep Guardiola thật sự là siêu cấp, kỹ thuật chuyên đẹp
+Thế bây giờ Barcelona chỉ con yếu kiệt thôi, mấy năm trước tự đánh mất tài năng
+Real Madrid lúc nào cũng có cách để vô chung kết, may mắn hay gì tao không biết
+PSG bỏ tiền tỉ mà vẫn không có Champions League, cười ra nước mắt
+Neymar ở PSG sau đó chuyển Barca lại chuyển đi, chuyên phiêu lưu vậy
+tính ra cầu thủ Việt kiếm được bao nhiêu tiền, có kém cạnh tranh không
+Quang Hải bây giờ đã sang Pháp rồi, tao mong anh ấy thành công
+Công Phượng, Văn Quyết, những người đó tài năng nhưng bối cảnh hơi khó
+vòng bảng World Cup sắp tới sẽ crazy lắm, ai cũng có cơ hội
+Argentina bao giờ mới vô World Cup dù là cường quốc bóng đá
+Someone said Messi with Argentina finally won World Cup, is it real?
+Vâng vâng, World Cup 2022 Argentina đã thắng, mừng lắm cho Messi và người hâm mộ
+Nước Pháp cũng thua uổng trong chung kết, Mbappé đá hay lắm nhưng không đủ
+Hôm nay call với team bên US mà lag kinh khủng, zoom lag không thể làm việc được
+đợi, bạn đang ở đâu? sao mạng yếu thế?
+tao ở nhà thôi, wifi bình thường mà. Có thể server zoom bị vấn đề gì đó
+I think the server is overloaded today, many teams working from home
+ơi mấy cái file share trên slack đâu rồi? tao cần chỉnh sửa cái proposal
+nó đã up vào channel #project-alpha rồi, check lại đi
+ok tìm được rồi, cảm ơn. Nhưng sao mấy file này lại có 2 version khác nhau?
+ai cũng update vào slack mà không thông báo gì, nên lộn xộn
+We need to establish a naming convention for shared files on Slack
+đúng, ai cũng tùy tiện. Tao sẽ tổng hợp lại và post lên #guidelines
+zoom meeting lúc 2h chiều, đừng quên nhé
+ok, tao sẽ set reminder. Cái meeting có cần prep gì không?
+vâng, chuẩn bị slide về Q4 roadmap. Gửi qua slack trước 1h30
+đã hiểu. Tao sẽ xong trước đó. BTW có mấy slide từ tháng trước mình dùng lại được không?
+được, check channel #archives thôi, có tất cả các version cũ
+tao vừa remote từ quán cà phê, may mà wifi nó khỏe. Bây giờ mới online được
+ơi bạn, tao chuyên mục công việc sang team khác thì sao? Cả slack workspace của cả công ty có thể xem được hết
+Đúng là mình share team workspace chung để dễ quản lý. Cần access tới team nào thì nhắn HR
+Actually, you need to request access from your team lead through the Slack app
+tao vừa thoát khỏi call zoom vì máy tính tao bị lag. Phải khởi động lại.
+restart xong chưa? Còn lag không?
+đang chạy lại. Cũng khỏi làm gì, cứ vào lại meeting khi nào máy khỏe
+lúc này mạng nhà tao yếu từng hồi, phải đi làm việc ở công ty luôn
+nghe bảo công ty cho phép remote nhưng có hạn chế gì không?
+có, công ty bảo mỗi tuần phải vào office ít nhất 2 lần. Còn lại ok remote
+nó hợp lý nên chấp nhận được. Nhưng mà call online nó mệt hơn call trực tiếp
+I agree, online meetings are more exhausting than in-person ones
+tao đã mở notification cho #urgent channel, sợ miss message gì quan trọng
+tốt lắm. Cái channel đó dùng cho thông báo khẩn cấp thôi, đừng spam
+cơ mà lúc nào team mình cũng post những cái không quan trọng vào đó
+đó là vấn đề, phải set rule cho mọi người hiểu. Tao sẽ nhắn lead
+slack app trên điện thoại tao bị crash, phải reinstall. Chết tiệt
+thử clear cache trước, reinstall quá mất thời gian
+không được, lỗi vẫn còn. Tao phải reinstall thôi, hopefully lần này ok
+The app has been quite buggy lately, I've had similar issues before
+zoom call hôm nay mà không ai bật camera cả, nó kỳ quá
+mọi người ở nhà mà, có lẽ chưa trang điểm gì. Tao cũng tắt cam
+nhưng sao mấy cái call quan trọng lại yêu cầu phải bật camera?
+vì công ty muốn team feeling, tuy remote vẫn cần kết nối gì đó
+tao vừa share screen để trình bày idea, ai cũng im lặng. Có sao không?
+không, có lẽ mọi người đang nghe. Chờ xong bạn trình bày rồi hỏi
+slack bị notification quá nhiều, tao bị điên mất. Phải mute hết
+bạn có thể custom notification cho từng channel, không phải mute hết
+Anh có căn hộ nào ở quận 1 giá dưới 3 tỷ không ạ?
+Có bạn, mình có 2 căn đang listing, view sông Sài Gòn luôn
+Diện tích bao nhiêu? Có nội thất chưa?
+First one is 85m2, fully furnished, the second one 92m2 chưa có nội thất
+Giá bao nhiêu vậy anh? Có thể xem hôm nay được không?
+Cái 85m2 là 2.8 tỷ, cái 92m2 là 3.1 tỷ. Hôm nay được, anh qua lúc mấy h?
+Mình khoảng 3h chiều có được không? Hay khoảng 3:30?
+3:30 tốt hơn, mình chuẩn bị tài liệu trước
+Được rồi, em sẽ gửi địa chỉ và số điện thoại contact của anh để anh đến
+Cảm ơn bạn, vậy em ơi cái căn 85m2 kia có thể hạ giá được không?
+Mình thực tế giá đã rất hợp lý r, có thể negotiate nhưng không nhiều lắm
+Vậy được, chúng mình nói kỹ hơn khi xem trực tiếp ở đó nhé
+Đúng rồi, có câu hỏi gì trước khi đi thì cứ hỏi em
+Cái căn đó có parking không? Mình cần parking vì công ty tặng xe
+Of course, 1 parking slot included, ground floor pa
+Hay quá, vậy còn lô phí và các khoản phí hàng tháng thì sao?
+Lô phí 0, phí quản lý 35k/m2/tháng, phí bảo vệ 15k/m2/tháng
+Ừ, khác gì so với những chỗ khác. Mình sẽ xem rồi quyết định nhé
+Sure, btw chứng chỉ pháp lý của căn đó đã sẵn sàng, không có vấn đề gì
+Hay lắm, để mình xem kỹ hôm nay rồi gọi anh sau
+Được bạn, mình đang chờ, hãy liên hệ khi cần thông tin thêm
+Anh ơi, mình xem xong rồi, cảm thấy vị trí tốt lắm, nhưng có thể hạ giá xuống 2.7 tỷ không?
+Anh ơi, mình hôm nay mới biết được căn bên cạnh nó bán 2.65 tỷ, 80m2 chỉ
+Được lắm, 2.65 tỷ là giá khá cạnh tranh trong khu này. Mình có thể consider
+Mình có thể offer 2.68 tỷ, đó là mức cao nhất rồi
+Let me check with the owner, may take a few hours
+Vâng anh, mình đợi tin từ anh
+Nghe lại rồi, owner sẵn sàng bán 2.7 tỷ, không thể hạ thêm được
+2.7 tỷ chấp được, khi nào có thể arrange paperwork?
+Good, mình sắp xếp hẹn owner ký hợp đồng, khoảng 2 ngày nữa
+Cần bao nhiêu tiền booking? Em gửi account number
+2 triệu booking, mình để anh account đây nha
+Được, mình chuyển tiền ngay, vậy là mình sắp có nhà mới rồi haha
+Chúc mừng anh! Mình sẽ gửi tất cả tài liệu cần thiết trong vòng 24h
+Cảm ơn bạn nhiều, nếu bạn có căn nào khác phù hợp thì nhớ tư vấn cho mình
+Được rồi, mình sẽ check và báo cho anh, may be interested in ở Quận 7?
+Quận 7 hay ghê, nhưng giá hơi cao so với khả năng mình
+Có một số căn mức giá 2-2.5 tỷ ở Sunrise Riverside hay Lumière, rất hot hiện nay
+Ưu điểm gì so với căn ở quận 1 thế?
+Spacious hơn, infrastructure mới, có gym, pool, coworking spaces
+That's interesting, send me a few listings when you have time
+Okay, mình gửi ngay, add me on zalo để follow up dễ hơn
+Oke, zalo id là 0909xxx5555, zalo em cái rồi
+Done rồi, add lại em. Lần sau mình sẽ gợi ý cho anh những căn hộ mới
+Cảm ơn bạn, hẹn gặp lại
+mấy bạn, standup 10h sáng nha, ai cũng phải có update về sprint này
+tôi đang fix bug login redirect, có vẻ là issue với cookie domain
+anh Minh review PR #234 chưa? mình cần merge vào develop hôm nay
+We found a critical bug in the payment flow yesterday, it's blocking production
+mình deploy staging version tối qua, test case nào fail không mấy bạn?
+đợi tí, lúc nãy pull latest code và conflict ghê quá, resolve xong rồi
+That PR has too many changes, can we split it into smaller chunks?
+bọn em xong feature login social rồi, tạo PR lên develop
+À có ai thấy bug với image upload không? mình test ở local nó không lỗi
+Guys the database migration script failed in staging, we need to rollback
+sao deploy hôm qua mà vẫn thấy old version ở production? cache hay sao?
+mình vừa push fix cho issue #512, ai review một chút được không
+The frontend team reported that the API response is sometimes null, need to check
+Tối nay deploy nha, ai free không để monitor? Rất quan trọng lần này
+vừa commit unit test cho auth module, coverage từ 45% lên 72%
+Did anyone else encounter the CORS error when calling the new endpoint?
+bug critical ở payment gateway, tất cả stop làm cái khác, focus vào này
+mình sửa xong database query, performance improvement gần 60%
+Merge PR #256 vào main branch đi, staging test xong hết rồi
+chị Linh ơi, PR của em cần review từ hôm qua rồi, giúp tí được không
+Refactor done, the code quality score went up but we need to fix the linter errors
+mình test feature mới, có 3 cái bug nhỏ, sẽ push fix trong commit tiếp theo
+The webhook integration isn't working properly, getting 500 errors from the third-party service
+vừa rebase feature branch lên latest develop, conflict ở 4 files
+ai setup local environment xong chưa? docker-compose up có issue gì không
+Guys we need to hotfix production ASAP, user data is getting corrupted
+mình deploy build 2.5.1 vào staging lúc 2 giờ chiều
+Has anyone tested the new cache layer? Performance looks good from my end
+bọn tôi discover bug ở notification service, message không gửi được khi offline
+The database indexes need optimization, queries are running slow in production
+chờ chút, dependency conflict ở package.json, npm install không được
+Can we defer this feature to next sprint? There are too many critical bugs right now
+mình fix permission issue rồi, user moderator giờ access được admin panel
+Deploy successful, monitoring the logs now for any errors
+ci pipeline fail, có cái test case mới không pass, ai fix được không
+The authentication token expires too quickly, need to increase the TTL
+vừa merge 8 PR vào develop, staging environment chạy ngon lành
+Ai deploy production hôm nay? Cần confirm version trước khi announce
+That's a duplicate of issue #389, let me close this one
+mình add feature flag cho AB testing, sẽ deploy từng phần
+Review xong, có 2 cái minor issue, request changes rồi nhé
+The mobile app cache needs to be cleared, users are seeing stale data
+team, release note cho v2.6 cần hoàn thành hôm nay, ai viết?
+Anh review product roadmap của mình chưa? Deadline tới tuần này rồi
+Chưa, còn đang fix bug ở feature authentication
+Mấy KPI của Q4 setup như thế nào rồi? Target revenue bao nhiêu?
+Target 500k USD, conversion rate 15%, DAU tăng 200%
+Conversion 15% thì cao quá em. Market research của mình show 8-10% là realistic
+Cái này follow industry benchmark em. Shopify, Grab đều là 12-15% mà
+Ok nhưng context khác nhau. Competitor của mình là Lazada, Tiki
+Vậy em pull data từ 2 platform đó ra, compare xem sao
+Đang pull. Sẽ present lúc meeting hôm nay
+Mình có need liên hệ với Analytics team không? Họ có raw data
+Yes, I just reached out to them. They'll send dashboard by EOD
+Cảm ơn. Vậy roadmap thì sao, có conflict nào không?
+Feature discovery đẩy lên priority sau. User feedback chỉ 30% positive
+Vậy push nó sang sprint 2 được không? Sprint 1 đã packed rồi
+Được, nhưng PM nó sẽ không hài lòng. Đã commit rồi
+Chúng mình cần prioritize based on business impact, không phải commitment
+You're right. Let me re-align with product team
+Team design của mình có bandwidth làm high-fidelity mockup không?
+Còn 2 design trong backlog. Có thể bắt đầu tuần sau
+Tuần sau là chậm. Chúng mình cần before sprint planning
+Thế để mình pull thêm resource từ team khác. Giải quyết cho
+Thank you. Also need to finalize tech stack for backend
+Backend infrastructure gì? Serverless hay traditional server?
+Serverless with Lambda. Cost-effective hơn và scale tốt
+Lambda sounds good. Have you tested load scenarios?
+Chưa, plan test tuần tới. Estimate 50k requests/sec
+50k/sec là khá aggressive. Better stress test thoroughly
+Mình biết. Đã allocate budget testing cho Q4
+Cost estimation có finalize chưa? Presentation cần exact numbers
+Not finalized yet. Waiting for cloud pricing confirmation
+Bao giờ confirm được? Investor meeting tuần sau rồi
+By Friday. Asking cloud team expedite quote
+Tốt. Vậy adoption target của feature mới bao nhiêu percent?
+We're targeting 40% DAU adoption within 3 months
+3 tháng là dài. Có acceleration plan không?
+Plan in-app notification, email campaign, và community referral
+Those are good channels. Need to coordinate with marketing
+Marketing already in loop. They have separate budget for this
+Great. Vậy chúng mình có need adjust pricing model không?
+Pricing model okay. But need tier customization for enterprise
+Enterprise tier bao nhiêu? Price point nào?
+Chưa define. Depend on feature set và usage limits
+Nên define soon. Sales team cần talk to prospects
+Mình coordinate với sales manager hôm nay
+Appreciate it. Also, retention metrics setup xong chưa?
+Churn rate tracking 90 days. Cohort analysis will be ready next sprint
+Retention chỉ 60%? Đó là vấn đề
+60% retention ở month 1 là normal. Mục tiêu là 45% month 3
+Vậy onboarding flow có optimize được không?
+Optimize rồi. Reduced steps from 8 to 4. A/B testing đang run
+Kết quả như thế nào?
+Variant with 4 steps có 35% higher completion rate. Significant
+Excellent results. Let's ship this immediately
+Ê mấy bạn, mình định đi Đà Lạt tháng 11, các bạn có muốn không?
+Ôi hay lắm, mình rất muốn đi lúc này vì thời tiết đẹp
+Vậy đi bao nhiêu ngày? 3 ngày hay 4 ngày?
+I'm thinking 4 days, 3 nights would be perfect. We can explore more that way.
+Ok 4 ngày thì phải book hotel sớm, giá sẽ rẻ hơn
+Tao đã check Booking.com rồi, có nhiều hotel ngon ở quanh Hàng Năng
+Giá bao nhiêu? Mình có budget khoảng 500-600k/đêm thôi
+Hotel Dalat Plaza dạo này khoảng 550k, review khá tốt luôn
+Ủa mình thấy cái khác rẻ hơn, để mình gửi link
+Actually, let me check Agoda too, sometimes they have better deals than Booking
+Vừa check xong, Agoda có cái package 480k/đêm, 4 đêm là 1.9 triệu
+Cả nhóm mấy người? Tính một phòng hay multiple rooms?
+Mình nghĩ 2 phòng là tốt nhất, mỗi phòng 2-3 người
+2 phòng thì sẽ hơi đắt, tất cả cộng lại bao nhiêu?
+Nếu mỗi phòng 480k thì 4 đêm là gần 4 triệu, chia 5 người là khoảng 800k/người
+That sounds reasonable. When should we book? Prices might go up closer to the date.
+Book luôn hôm nay đi, mình sợ hết phòng
+Được, mình vừa add card vào Booking, ready to book anytime
+Wait, we should check cancellation policy trước, phòng này có thể cancel không?
+Free cancellation until 48 hours before check-in, an toàn lắm
+Ok thế thì book thôi, mấy bạn có ý kiến gì không?
+Có, check xem có breakfast không? Mình không muốn phải ra ngoài buổi sáng
+Có included breakfast, nhưng theo review thì breakfast chỉ được từ 6:30 sáng
+We need to confirm our exact dates first though. What dates are we going exactly?
+Mình gợi ý 22-25 tháng 11, thế được không?
+Ừ được, mình available từ 21 tháng 11, nên có thể flexible
+Tôi chỉ có thể đi từ 23 tháng 11 thôi, công việc không cho phép
+Vậy thì check-in 23, check-out 27, tức là 4 đêm, được không?
+Hmm, I think 23-26 is better, bớt một đêm để save cost
+Mình agree, 3 đêm cũng đủ để chơi, không cần 4 đêm
+OK, thế là 23-26 tháng 11, ai là người chủ yếu book?
+Để mình book, mình có account Booking.com credit card ready rồi
+Cảm ơn bạn! Sau khi book xong thì báo nhóm luôn nhé
+Chắc chắn, mình sẽ confirm booking và gửi email xác nhận cho mấy bạn
+Có cần đặt trước pickup airport hay sao? Mình sợ mệt khi xuống máy bay
+Để tao xem cái hotel này có shuttle service không
+Sau khi book xong, mình gọi hotel để hỏi. Or we can book Grab there, rẻ hơn
+Được, đừng quên gửi confirmation code cho mấy bạn
+Yep, I'll forward everything once the booking is confirmed
+Mình vừa book xong, confirmation number là BKG123456789
+Excellent! Ai đã có list những chỗ muốn đi ở Đà Lạt?
+Mình cần xin phép nghỉ từ ngày 15 đến 20 tháng này có được không ạ?
+ok em sẽ submit form vào hệ thống ngay
+Can I request leave for next Monday? I need to take my kids to the doctor.
+phòng họp A bận hết tuần này rồi, bạn thử phòng B xem sao
+em vừa gửi leave request của em lên rồi, mong team lead duyệt sớm
+Cần book meeting room cho ngày thứ 5, khoảng 2h chiều, có phòng nào trống không?
+phòng họp D sạch sẽ nhất, recommend bạn dùng cái đó
+I already submitted my leave form, waiting for HR to process it
+mình muốn xin 3 ngày phép để xử lý việc nhà, không biết có được không
+bạn book phòng nào hôm qua? sao mình không thấy lịch
+Let me check the meeting room availability for you
+việc HR mấy hôm nay là chật chỉ, để em chờ thêm chút nữa nhé
+phòng họp để mình xem xem còn trống slot nào cuối tuần
+cần meeting room cho 10 người, phòng nào cũng được, chỉ cần có projector
+em submit leave request từ hôm qua rồi mà sao HR chưa duyệt?
+phòng A có wifi không? vì máy mình không connect được
+Actually I need to change my leave dates from 15-20 to 16-21, is that okay?
+ok để mình hỏi HR xem cái đó
+mình đã book phòng họp B cho buổi meeting lúc 3h
+cần giúp me fill out the leave form, em chưa biết điền gì
+nhân viên HR mấy hôm nay bận với payroll, để em chờ sau
+phòng họp C không có điều hòa, khỏi dùng cái đó
+I'll submit the meeting room booking form right now
+em xin phép từ 22/10 đến 25/10, có thể duyệt được không ạ?
+phòng họp nào cũng được miễn là có bảng trắng với marker
+Tôi cần book phòng cho tổ chức team building, bao nhiêu phòng thì đủ?
+mình vừa nhìn calendar, phòng D trống hết buổi chiều
+sorry mình book nhầm phòng rồi, bạn cancel giúp mình với
+phòng họp A sẽ available sau 5h chiều hôm nay
+em muốn xin thêm một ngày phép nữa, được không?
+The leave request system is down, you might want to try again later
+phòng B có 2 màn hình không? meeting của mình cần present 2 files
+em đã liên hệ HR về cái leave request của em rồi
+mình book phòng họp cho meeting với client hôm thứ 6
+tối nay có team meeting ở phòng A từ 6h, nhớ đến nhé
+Do you know how many vacation days I have left this year?
+phòng nào cũng được, chỉ cần không phải phòng có cửa sổ vào chiều
+mình submit leave request rồi, giờ chỉ chờ boss approve thôi
+chào bạn, cần giúp gì không ạ?
+mình có size M còn hàng đó, bạn muốn order bây giờ không?
+okay, tôi sẽ ghi nhận order của bạn, thanh toán qua Momo được không
+giao hàng thường mất 2-3 ngày, express 1 ngày nhưng tính phí thêm 20k
+bạn ơi sản phẩm này đã hết stock rồi, có muốn chờ hàng về hay đặt sản phẩm khác?
+Can you check if you still have the black version in size L?
+còn, mình còn 5 cái thôi đó bạn
+bạn nhập code SALE10 khi checkout để được giảm 10% nha
+đã nhận payment rồi, mình giao hôm nay hoặc ngày mai
+sorry bạn, chiếc áo kia đã sold out từ hôm qua rồi
+có sao không, sao order của bạn chưa giao được?
+tìm lại số order của bạn đi, mình sẽ track cho
+chuyển phát không giao được vì bạn không có nhà, mình sẽ liên hệ với bạn
+actually, we can arrange another delivery time for you
+bạn muốn return hàng à, okay nhưng phải còn tag và không được wash
+tiền return sẽ về account trong 3-5 ngày làm việc
+thank you for your purchase! please leave us a review
+bạn nói hàng lỗi à, send photo lên được không?
+mình xin lỗi bạn, lần này mình sẽ replace free của
+hôm nay có sale, áo giá chỉ còn 89k thôi, bạn có thích không?
+We just launched new collection, check it out on our page
+sản phẩm new arrival này rất trending hiện tại đó bạn
+bạn có code discount nào không, mình có thể apply cho bạn
+We offer free shipping for orders above 200k
+bundle 3 cái áo được discount 15%, bạn có muốn không?
+sorry, chúng tôi chỉ ship trong nước thôi, không giao quốc tế
+liên hệ support team mình để xử lý vấn đề này nhé
+bạn xác nhận size chính xác không trước khi order
+actually, we have this item in different colors
+mình recommend cho bạn size M vì bạn cao khoảng 165 phải không
+chiếc này hợp với da bạn lắm, style nó rất hot hiện tại
+bạn có muốn thêm accessories không, mình có deal gom hàng
+thank you so much for being a loyal customer
+mình remember bạn, lần này bạn order gì vậy?
+nếu bạn refer bạn bè thì được voucher 50k nha
+program member của mình có nhiều benefit lắm, bạn đã join chưa?
+Okay, let me check our inventory real quick
+hàng vừa về kho, mình sẽ update status order cho bạn ngay
+bạn còn muốn hỏi gì không, mình ready to help anytime
+cảm ơn bạn đã tin tưởng shop, hẹn lần sau
+bạn follow page facebook chưa, có nhiều deal hay lắm
+Mọi người có xem con số click từ hôm qua chưa? Tăng 35% đấy
+các bạn setup pixels xong chưa cho campaign mới
+Tao vừa upload content lên drive, các bạn check hộ tý
+We need to finalize the ad copy by EOD, who's responsible?
+content team đang làm gì vậy? Sao chưa có deliverables
+Đợi, cái CPM của chúng ta so với competitor thế nào
+tôi publish post rồi nhưng chưa boost budget
+Tới giờ chưa có report conversion từ campaign tuần trước
+bạn nào có template cho landing page không
+Can someone pull the analytics dashboard? Need to check bounce rate
+các bạn think cái messaging này có match với brand voice không
+Tao setting retargeting campaign xong rồi, ready to launch
+hay là chúng ta nên A/B test cái headline này
+có thể adjust budget allocation không, performance còn yếu
+mấy cái video ads không convert tốt, có thể do creative
+Mình suggest chúng ta focus vào organic reach trước
+Performance marketing campaign nó ra sao
+chỉnh sửa xong rồi, xin feedback từ creative director
+We're getting good engagement but CTR is still low
+ad spend vs revenue ratio hiện tại bao nhiêu nhân
+tao vừa mua thêm audience segment cho lookalike campaign
+Content calendar for Q4 cần update lại không
+Mấy ông quảng cáo ngoài kia nó chạy campaign gì?
+Should we increase bid for high-intent keywords?
+tôi đã stop campaign đó vì ROI không tốt rồi
+Bạn có data từ previous quarter để compare không
+Cái conversion tracking chúng ta setup đúng chưa
+Lỡ như campaign này flop thì chúng ta plan sao
+mọi người follow competitor's strategy không
+We should diversify our ad channels, Google Ads alone isn't enough
+content quality hiện tại có issue gì không
+tao xong phần targeting rồi, bây giờ pending creative approval
+Facebook pixel đang track đúng 100% chưa
+Chúng ta cần hire freelancer designer thêm không
+Can we schedule a sync tomorrow to review metrics?
+các bạn optimize landing page UX chưa
+Impressions tăng nhưng conversion rate giảm, strange
+tôi recommend chúng ta test TikTok ads next month
+Chi phí acquisition hiện tại cao hơn budget dự tính
+Mình think messaging nên pivot sang value proposition
+bạn có comments gì cho draft content này
+Mày rank bao nhiêu rồi? Tao vừa lên Gold 2 xong
+chơi rank hôm nay toàn gặp noob thôi, chán vl
+ê đã xem clip mình vừa quay không? Clutch 1v5 lun
+dude that last match was so cringe, our mid kept dying
+tối nay mày on không? Tao muốn chơi team rank
+anh ơi mình out vì còn bài tập, tối mình nhắn lại
+Bạn chơi gì thế? Dota hay Valorant?
+không, tao chơi LoL thôi, rank solo queue bây giờ
+Mày có muốn duo không? Tao tin mình carry được
+okay tớ vào, chờ tớ setup pc xíu
+Match vừa rồi mình sao support kém thế? Anh carry được
+cái ult của mày lúc đó kinh khủng vl, làm sợ cả team địch
+bạn nào có smurf không? Tao muốn test champ mới
+có chứ, tao có acc plat 3, mày muốn chơi cùng không
+được, lát nữa thêm mình vào
+sao hôm nay mày chơi mid mà feed vậy bạn ơi
+tao lag kinh hoàng, đúng là internet nhà tao vô phúc
+ping bao nhiêu vậy?
+500 ping luôn, chỉ muốn có tiền mua router cái
+tao có thể cho mày chiếc router cũ, miễn là mày ủng hộ mình
+thật luôn ơi? Tao xin tiền ba má mua nốt
+tối nay chúng mình queue rank 5 được không? Tao muốn lên emerald
+I'm down for that, but can you bring your A-game please?
+tất nhiên rồi, tao siêu xạo hôm nay cơ
+xạo cái gì mà nói mặt như vậy, lần trước mày lock supp rồi đi jungle
+ấy chết, tao quên mất
+nên chúng ta chơi team rank hôm nay không? Tao đã call ngày rồi
+được, mấy bạn khác thì sao? Họ có on không?
+Long on rồi, Minh may mà off vì công việc, còn Kha thì chưa online
+okay so we got 4, need one more
+Tao gọi Huy được không? Huy rank cũng được đấy
+rank còn thấp hơn mình, nhưng micro nó okela
+vậy thôi, chỉ cần có người top chắc cái
+Mày top main phải không? Pick Garen đi, ez win
+tao main support mà bạn, top tao chơi không giỏi lắm
+thế thì lạy chúa, mình còn thiếu gì nữa
+mình đã có mid, jungle, adc rồi, lính top là okela, chỉ cần win lane thôi
+vậy tối nay 8h rank được không? Tao chuẩn bị
+ủa 8h sớm quá, tao còn đang học
+okay then 9h, hopefully everyone's free by then
+được, tao confirm lại với các bạn khác rồi nhắn lại
+thanks for organizing this man, really appreciate it
+không sao, mình chơi game mà, cuối cùng là vui thôi
+que verdad, let's get this W tonight
+tao không hiểu tiếng Tây Ban Nha nhưng same energy anh ơi
+Các con yêu, mẹ vừa nấu xong cơm chiều, ai về sớm ăn cơm không?
+Mẹ ơi, con còn ở công ty, khoảng 7h tối mới về được
+Ừ, mẹ để nóng trong nồi cho, đừng để nguội đâu
+Bố có muốn con mua thêm cá không? Bác Tư có cá tươi hôm nay
+Dad, you want me to grab some fish from Uncle Tu's? He has fresh fish today
+Không cần, mẹ đã mua rồi, toàn cá tươi đây
+Vậy con không cần lo, mẹ đã sắp xếp hết
+Con gái ơi, đạo này tiền điện tăng lên quá, nhà mình tiêu bao nhiêu vậy?
+Bố, nhà mình dùng air con 24/24, nên tiêu nhiều thôi
+Sao phải bật cả ngày vậy? Cắt giảm đi, chỉ bật lúc nóng thôi
+Dạ bố, con sẽ để ý
+Thằng em nhỏ còn ở nhà hôm nay không? Nó đi học thêm gì đó
+Em nó đi học online tiếng Anh, 6h tối mới xong
+The wifi keeps lagging whenever he's on a call
+Mẹ bảo là router cũ rồi, mua cái mới đi
+Tao thấy router cũ vẫn được, không cần tốn tiền
+Lần tới chúng mình kéo dài cáp ra phòng em cái, có khi nó sẽ tốt hơn
+Tối nay ai đi chợ lấy rau cho ngày mai? Tủ lạnh sắp hết rồi
+Con sẽ đi, mẹ liệt kê danh sách cho con được không?
+Được, con yêu, cà chua, cà rốt, rau cải thìa, cả tỏi nữa
+OK understood, con sẽ mua đầy đủ hết
+Còn gì nữa không mẹ? Con đi bây giờ
+À, mua thêm một ít hành tây nữa, để nấu canh
+Con mẹ, nó bảo tối nay không về ăn, nó có việc with coworkers
+Sao mà cứ đi chơi hoài vậy? Nhà mình ở đâu rồi?
+Mẹ ơi, công việc của con cũng đó, occasionally phải team building
+Ừ đi, nhưng lần sau báo trước cho mẹ biết chứ
+Có chứ bố, con xin lỗi lần này
+Mẹ cũng không sao hết, chỉ là bắt con phải thông báo thôi
+À, ai nhận hộ gói hàng hôm nay không? Bưu điện gọi điện cho bố
+Con nhận được rồi, để ở phòng trước
+Cái gì vậy bố? Có gì cần con giúp không?
+Không, chỉ là quần áo bố mua online thôi
+Con gái, ngày chủ nhật này có về không? Mẹ muốn cho cả nhà ăn cơm chung
+Con sẽ cố gắng về, nhưng còn tuỳ công việc
+Công việc gì hoài vậy? Công ty có quá nhiều việc không?
+Không phải vậy mẹ, chỉ là có dự án deadline sắp tới thôi
+Thôi được, con ưu tiên công việc trước, mẹ hiểu
+Mày có làm xong assignment của môn Data Structure chưa
+Chưa bro, còn 2 ngày nữa mà
+2 ngày là khá đủ rồi, sao còn lơ là
+Tại vừa thi xong môn khác, giờ mệt quá
+Thôi thôi, giờ bắt tay vào làm đi, deadline Friday mà
+Ôi chết, Friday à? Tao tưởng là tuần sau
+Không, email gửi tuần trước rồi
+I didn't check my email lol, what's the requirements?
+Mấy cái basic: implement queue, linked list, và có cái output format phức tạp một chút
+Linked list? Dễ thôi, mình code trong 1 tiếng là xong
+Haha không phải đâu, requirement nó khá tricky, documentation có vẻ mơ hồ lắm
+Thế thì đi hỏi TA đi
+TA đâu chứ, ngày mai mới có office hour
+Thôi, lôi code cũ của mình ra xem sao
+Hay, sao không share cho tớ cái structure?
+Được, tớ push lên GitHub sau, add tớ vào repo
+Tớ thêm cái testing file nhé, vì requirement yêu cầu test case phải cover 80% code
+That's a lot, normally we just need 50%
+Yeah but this prof is very strict about quality
+Mình thêm một số edge case vào, như empty list, single element, stuff like that
+Tốt rồi, thế là bao nhiêu files vào cuối cùng?
+Khoảng 5-6 files: main.cpp, queue.h, linkedlist.h, test.cpp, và mấy file support khác
+OK sounds good, I'll start coding this afternoon
+Tớ cũng vậy, giờ tớ review lại specification trước
+Specification nó dài hơn mấy tờ A4, ngốn thời gian đọc lắm
+Vậy thì đọc nhanh đi, skip qua mấy phần không quan trọng
+Có phần nào không quan trọng đâu, mình phải đọc kỹ để không bị trừ điểm
+Đúng thực ra, lần trước tớ miss mấy requirement nhỏ, rồi bị trừ tận 10 điểm
+10 điểm à? Sao không contest kết quả?
+Thử contest rồi, nhưng TA nói requirement viết rõ trong đề, tớ tự đọc không kỹ
+Thế cơ, tiếp theo phải cẩn thận hơn
+Ừ, lần này tớ đọc từ từ, đảm bảo không miss gì hết
+Tớ đợi tới lúc tớ code xong rồi, tớ sẽ review kỹ lại requirements để check
+Good idea, cross-check with requirements before submission
+Mình nên submit trước deadline 2-3 tiếng, vì server submission nó có khi lag
+Đúng, lần trước tớ submit cách deadline 5 phút, xui xẻo server down
+Chết tiệt, vậy thì deadline bị miss à?
+May mà không, sau 10 phút server lên lại, tớ submit được kịp
+Thế may mắn quá, lần sau không nên chờ kỹ thế
+Ừ, tớ học được bài học rồi, sẽ submit sớm hơn
+Thế tuần sau khi nào tụi mình debrief về assignment này không?
+Sau khi grades ra sẽ nói, giờ tập trung làm đã
+OK let's get this done
+Chị ơi, cái design này bị sao vậy, sao nó lệch lệch thế
+Figma lag quá, mở file cứ bị crash liên tục
+Đã feedback cho team designer rồi, chờ update thôi
+I think the color palette needs to be more vibrant, it looks too muted right now
+Em xem cái prototype mới chưa, được hơn lần trước rồi
+Ai vừa modify cái layout ở mobile view này, sao khác hẳn
+Can you check the alignment on the buttons? Something seems off
+Figma workspace hơi messy, mình nên reorganize components đi
+Feedback từ client quá nhiều, designer nó chắc tức rồi
+Ơi mình cần update cái color token kia trong design system
+Ai giải thích được sao spacing này lại khác như vậy
+The padding looks inconsistent across different sections
+Vừa push file mới lên Figma, các bạn download version này nhé
+Mình nghĩ font size ở heading có vấn đề, quá to
+Các component này chưa được organize properly trong Figma
+Feedback round 3 rồi, mong là lần này được luôn
+Can we sync up the design tokens across all pages?
+Designer bảo cái đó follow design system, không được tuỳ ý đâu
+Figma comment quá dài, có khi mở file xong chết đứng
+Mình thấy contrast của text color không enough cho accessibility
+Đã save version mới rồi, các bạn có thể review được
+Why is the hover state different from what we defined?
+Cái text này cần formatting lại theo guideline designer đưa
+Team design đang chỉnh UI kit, chờ có update thông báo
+Figma plugin này hay lắm, tiết kiệm time export asset
+Chị ơi, feedback này implement được không, có technical issue không
+The responsive behavior cần adjust lại cho tablet view
+Em check lại stroke width của icon, bị inconsistent
+Mình vừa add comment trong Figma, chị xem giúp
+Design review meeting lúc 3h chiều, ai đó remind dev team
+Ai có access cái shared library không, cần modify một cái component
+Figma multiplayer này tuyệt, cùng chỉnh design lúc same time
+Feedback quá tối, mình không biết implement cách nào
+Đó là final design rồi, không được đổi thêm nữa nhé mọi người
+This component needs to be reusable across multiple pages, let's abstract it
+Cái shadow này bị sao, không giống design spec
+Mình suggest adjust cái border radius cho consistency
+Figma file size quá lớn, có thể archive cái cũ đi không
+Các designer mình need better documentation cho component behavior
+Bro mình vừa mua thêm 50k BTC lúc dip, chắc đã lòng rồi 🤑
+anh ơi BTC giờ bao nhiêu rồi
+mình chốt lãi được 200 triệu từ cổ phiếu ngân hàng tuần trước
+Bạn vào crypto từ lúc nào, sao giờ mới nói đến
+tôi hold doge coin từ năm 2021, giờ đợi mooning
+Dude, you should really check the fundamentals before you buy anything
+ảnh nào hay trading altcoin, chia tips với mình luôn
+FPT như vậy có nên mua không? nghe bảo sắp up
+mình đang research cái coin này gọi là solana, có potential không anh
+portfolio tụi mình khác nhau quá, nhưng cùng mục tiêu thôi là làm giàu lol
+ông nào tracking market 24/7 vậy, công việc chính đâu rồi
+mua xong rồi ngủ, sáng dậy lại kiếm được tiền, crypto này ảo thật
+Tôi có portfolio gồm 60% stock, 40% crypto. You?
+cái FED này, lúc up lãi suất cái stock lại down, bực mình
+bạn nào trading options không, risk cao nhưng lợi nhuận khủng
+I just got into index funds, should I also do crypto
+nó chỉ là FOMO mà bạn, đừng mua hết tài sản vào đó
+mình quyết định sell tất cả ngân hàng khi Fed nhóm lãi suất 5%
+anh holding BNB bao lâu rồi
+bán đừng bán, cứ hold long term đi
+BTC gonna hit 100k by end of year, mark my words
+mấy cái meme coin kiếm được lãi to nhưng mất nhanh hơn
+thị trường đỏ lum xum, có ai dám average down không
+nếu bạn sợ thị trường, hãy đừng đầu tư vào crypto
+Chia sẻ cái app bạn dùng để track portfolio được không
+cái công ty IPO mới này, nhìn chart có vẻ bị pump ậy
+I went all in on ETH last month, already up 40%
+nhiều người nói crypto là tương lai, nhưng mình vẫn chưa yên tâm
+bạn ơi, stop loss rồi chứ, sao không quản lý risk
+tất cả mọi người gọi tôi điên vì mua crypto, nhưng giờ họ hỏi tip
+đầu tư thế này còn bao lâu thì bạn mới chọn được strategy riêng
+Honestly the market is too unpredictable right now, I'm just holding
+tôi có một người bạn kiếm 10 tỷ từ coin shitcoin lúc 2017
+phải chăng nên diversify thêm vào real estate
+mình trading intraday, có chút stress nhưng lợi nhuận khá tốt
+tại sao mình không tham gia vào IPO pool được, bực quá
+anh nào biết fundamental analysis, chia tips được không
+nếu là newbie thì đừng chạy theo trend, cứ học trước
+Market cap của coin này bao nhiêu, check coinmarketcap hộ
+I'm thinking of taking profits soon, anyone else
+tôi keep calm and keep hodling, đó là strategy của mình
+tháng này lợi nhuận được 25%, tổng năm nay đã 150% rồi
+Bạn ơi, tôi không thể login được ứng dụng, nó báo lỗi gì đó lạ lạm
+Chờ tôi check cái API logs một chút nhé
+có thể bạn chưa verify email đâu, hãy check inbox xem
+tôi đã verify rồi mà, email xác nhận đã nhận từ hôm qua
+I see, let me reset your account access for you. Can you wait a few minutes?
+được, cảm ơn bạn nhiều lắm
+Just restarted the service, try login again now
+Login được rồi! Cảm ơn nha
+Vừa rồi sao nó lag vậy? Mình là member gói Pro mà
+We had a minor server issue this morning, it's resolved now
+tốt rồi, nhưng làm sao tôi biết mấy lần down như vậy? Có cách theo dõi status không?
+Có cái status page tại status.ourapp.com, bạn bookmark lại nhé
+thanks, sẽ check liên tục từ đây
+Bạn muốn tôi tạo webhook không? Cái này sẽ send notification khi có issue
+Webhook là gì vậy? Nghe phức tạp lắm, có hướng dẫn không?
+Mình có docs đầy đủ tại đây, cũng không khó đâu bạn
+Okay, let me read this first, will contact you lại if có problem
+đợi một chút, tôi muốn bổ sung thêm 5 users vào account
+Sure, what's your current plan?
+Tôi đang dùng Business plan, muốn upgrade lên Premium được không?
+Yes, you can upgrade anytime. The difference is 50k VND per user per month
+50k hơi mắc đó, có discount bundle không?
+We have annual billing discount, nó sẽ rẻ khoảng 20% so with monthly
+Được, tôi sẽ upgrade annual luôn, bao giờ có hiệu lực?
+It will be effective immediately after payment, link thanh toán tôi gửi qua email ngay
+Mình vừa thanh toán xong rồi, nhưng vẫn không thấy 5 users mới
+Let me check your account real quick
+Okay found it, your account is being processed, usually takes 5 to 10 minutes
+Tôi chờ thêm, cảm ơn bạn đã respond nhanh
+No problem, contact me lại if it doesn't update
+Bạn ơi, sao mấy cái report của tôi bị trống, có sự cố gì không?
+Hmm, what metrics are you trying to export?
+Dashboard tôi chọn date range từ tháng này, nhưng nó chỉ show data từ tuần trước
+That's strange, did you refresh the page?
+Refresh rồi nhưng vẫn vậy, có phải do timezone setting không?
+Ah, that could be it! Check your timezone settings in profile
+Đúng rồi! Mình chưa cập nhật timezone, bây giờ okay rồi
+Great! Glad we figured it out
+Một cái nữa, API documentation của bạn có endpoint cho bulk operations không?
+Yes we do, it's documented under the Advanced section
+đọc rồi nhưng không hiểu, có example code không?
+We have Node.js and Python examples available in docs, check it out
+Cảm ơn, tiện thể tôi có một feature request, có thể thêm dark mode không?
+Dark mode is on our roadmap for Q3, thanks for the request!
+Tuyệt vời, mình chờ feature đó
+Bạn query cái bảng users được chưa?
+Đang chạy, chờ tí nha
+data đó nhiều quá, phải optimize sql đi
+SELECT * FROM users WHERE created_at > '2024-01-01' còn chậm lắm
+Có thể là missing index, mình check lại
+Dashboard hiển thị sai số liệu rồi
+Cái metric nào sai hả bạn?
+Revenue số mà hiện lên không match với database
+Query nào calc revenue bạn? Tao kiểm tra lại
+SELECT SUM(amount) FROM orders WHERE status = 'completed', query này đúng mà
+Chắc là ETL process của mình bị issue
+ETL schedule hôm qua có chạy không?
+Chưa, pipeline fail từ sáng rồi
+Fix xong chưa? Cần report cho boss hôm nay
+Just fixed it, running again now
+Dashboard có update data chưa?
+Waiting for the ETL to finish
+Thường mất bao lâu nhỉ?
+Depends on how much data we're processing, usually 2-3 hours
+Vậy là có thể khoảng 4 giờ chiều mới xong
+Yep, that should be about right
+Cần gì, tao đang rảnh
+Giúp tao review cái query này đi: JOIN 3 cái table lại, khá phức tạp
+Cứ paste lên đi
+SELECT u.user_id, u.name, o.order_id, o.amount, p.product_name FROM users u LEFT JOIN orders o ON u.user_id = o.user_id LEFT JOIN products p ON o.product_id = p.product_id WHERE o.created_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+Ơi query này không group by mà sum amount à?
+Nếu muốn sum theo user thì phải group by user_id
+À nhỉ, tao quên, mình add GROUP BY
+Performance sao? Có bao nhiêu rows?
+Khoảng 2 triệu rows
+Need to add index on created_at và user_id
+Dashboard team yêu cầu gì mới?
+Họ muốn metric churn rate tính real-time
+Real-time thì khó, data delay bao lâu được?
+5 phút là ổn
+I can write the query, but need to optimize the aggregation
+Tao xem cái stored procedure của department kia được không?
+Được, access đầy đủ mà
+Đã fix hết các issue trên dashboard chưa?
+Còn 2-3 cái nữa, đang check
+Alert notification có setup chưa?
+Chưa, chờ dashboard stable trước
+Data validation test có pass không?
+Fail mấy case, đang fix
+Mình merge code vào main được không?
+Chưa, code review đã xong chưa?
+Tao đang review, có vài comment rồi
+Batch job nó chạy mấy lần một ngày?
+2 lần, sáng 8h và chiều 5h
+Performance monitoring đã setup trên dashboard chưa?
+Setup rồi, có slowdown lúc peak hours
+Database connection pool có cần tăng không?
+Maybe, let me check the metrics
+Tối nay tao có meeting với stakeholder về data, cần gì không?
+Đưa report latest analytics đi
+chào, em vừa nhận được brief từ anh, sẽ bắt đầu làm ngay
+chuẩn rồi, em sẽ deliver bản đầu tiên trong 3 ngày
+anh check xem file design mà em gửi hôm qua được không?
+em có vài câu hỏi về requirement, styling của hero section như thế nào là okie?
+I'll send you the first mockup by tomorrow evening, how does that sound?
+em ghi note hết mọi thứ rồi, rest assured là em sẽ làm tốt
+anh muốn em focus vào mobile-first design phải không?
+được, em hiểu rồi, sẽ optimize cho mobile trước
+về timeline, em có thể deliver all assets trong 2 tuần không?
+vâng, deadline là 15/12 phải không anh?
+em vừa upload file lên drive, check xem còn thiếu gì không
+bây giờ em đang refine lại color palette, chưa final lắm
+anh có feedback gì về wireframe không, hay là em proceed với design?
+I'm thinking we should have a quick call to align on the direction
+được, em free chiều nay hoặc sáng mai, anh chọn cái nào?
+em thấy mockup version 2 phù hợp hơn, có thể show anh được không?
+vâng, anh review xong rồi có thể give feedback ngay được không?
+em sẽ update theo yêu cầu của anh, hôm nay sẽ xong
+actually, let me reconsider this approach, maybe we need to pivot
+em đang test responsiveness trên các device khác nhau
+anh có template nào mà em tham khảo không, hay em design from scratch?
+từng part của design em sẽ optimize performance-wise
+em đã integrate feedback của anh vào version 3 rồi
+The latest version is ready for review, I'll send the link shortly
+em còn cần clarify thêm về brand guidelines không anh?
+anh muốn em làm interactive prototype không, hay static design là được?
+em test kỹ rồi, quality assurance pass hết
+bây giờ em đang handle revision, sẽ hoàn thành cuối tuần này
+em có thể add extra features không, hay stick with scope hiện tại?
+anh check timeline có bị tight không, em có thể adjust nếu cần
+em đã refactor code một số chỗ để improve performance
+ready to ship whenever you give the green light
+em sẽ prepare documentation cho deliverables
+anh cần em brief team của anh không, or em just hand over files?
+em upload final assets to the repository already
+all files are organized in folders according to project structure
+em sẽ provide comprehensive handover notes
+bây giờ em chỉ chờ anh final sign-off để close project
+vâng, nếu có issue gì sau này em sẽ hỗ trợ cho anh
+em appreciate sự collaborate với anh trong project này
+thanks for the clear brief and feedback throughout, was great working with you
+Bé yêu, về nhà chưa? Trời mưa to lắm, cẩn thận nha
+đang ở công ty, còn 30p nữa là xong
+ok, lái xe cẩn thận nhé. Em chuẩn bị cơm chưa?
+không, chờ anh về nấu cùng. Hôm nay nấu gì?
+Let's do something simple, maybe pasta or stir-fry?
+Được, em thích ăn gì cũng được. Anh quyết định đi
+mình có tomato, garlic, và onion
+Perfect, we can make a nice marinara sauce then
+Em check xem còn mì spaghetti không?
+tìm được rồi, để ở cabinet phía trên
+Great! I'm on my way home now, should be there in 20 minutes
+ok anh, anh lái xe cẩn thận. Em đợi anh
+Có tin tức gì hôm nay không? Em buồn chán quá
+Có thôi, nhưng chủ yếu là tin xấu lắm
+Ơi thôi, đó là lý do để ta nấu nướng thoải mái và chill thôi
+Exactly, let's just enjoy the evening together
+Mà anh, em muốn hỏi cái chuyện với cái project này
+Chuyện gì vậy?
+Anh có gặp vấn đề nào với manager không? Em nghe công ty bạn anh khó tính lắm
+Không có vấn đề gì đâu, sao em hỏi? Có sao không?
+Thôi, em chỉ lo cho anh. Sợ anh stress quá
+Anh cảm ơn, nhưng anh ổn mà. Chỉ là bthường công việc thôi
+haha okee, anh don't overwork yourself
+I won't babe, I promise
+Em sẽ nấu cơm ngon để anh thư giãn
+Thank you baby, that's so sweet of you
+mà mình có rượu không? Muốn uống chút
+Có beer ở tủ lạnh, mình mua hôm qua
+Thích lắm, cảm ơn em đã nhớ mua
+Hehe, em biết anh thích sau một ngày làm việc
+Yep, very true
+Anh tới đâu rồi? Mưa có lớn không?
+Mưa tạnh rồi, em đừng lo. Anh sắp tới nhà thôi
+ok good, chuẩn bị chào anh rồi
+Em mong chờ lắm, I missed you today
+Anh cũng miss em, see you in 5 minutes
+yay, hurry up then!
+haha đang lái xe rồi, can't go faster
+Em biết, em chỉ đùa thôi
+Love you, see you very soon
+Em yêu anh nhiều lắm, tạm biệt
+server down rồi à? check log xem sao?
+Vâng, production down từ 10h sáng rồi
+API timeout liên tục, có ai check database không?
+mình vừa SSH vào server, load average 95%
+phải restart service ngay thôi
+wait, đừng restart bừa, phải tìm root cause trước đã
+Uh, nếu không restart thì customer sẽ phàn nàn thêm nữa
+Có memory leak trong app mới deploy hôm qua
+Sao deploy mà không test kỹ hơn chứ?
+Lỗi này xảy ra ở staging không à?
+Staging ok bình thường, nhưng traffic production lớn hơn nhiều
+Let me check the metrics real quick
+mình thấy CPU spike lúc 10:05, đúng lúc traffic tăng
+Vậy phải scale up instances trước, restart sau
+Đang configure auto-scaling, chút nữa ok
+có bao nhiêu user bị affected?
+khoảng 40% traffic bị failed request, tầm 2000 user
+This is serious, need to roll back immediately
+Code mới có issue gì không? Không thể roll back ngay được
+Restart service xong rồi, monitoring xem sao
+Traffic bắt đầu trở lại bình thường
+Still seeing some errors in the logs
+Có vẻ là connection pool exhausted
+Tăng connection pool từ 50 lên 200 được không?
+Được, mình sửa config rồi, restart lại
+Status: healthy, 99.9% request success rate
+Thật không? Vậy incident resolved rồi hả?
+Chưa hoàn toàn, cần xem lại architecture
+Application chạy trên bao nhiêu instances hiện tại?
+AWS có 4 instances, mỗi cái 2 vCPU
+Load balancing có cấu hình round-robin không?
+Đúng rồi, nhưng pool connections chưa optimal
+Need to do a proper post-mortem after this
+Vâng, sáng mai mình họp với team
+Can someone update the status page?
+Status page đã update, khách hàng được notify rồi
+Cảm ơn, damage control xong rồi
+Mình sẽ viết incident report trong hôm nay
+Chi phí downtime này bao nhiêu thế?
+Khoảng 50k USD theo estimate
+Phải tránh incident này lặp lại nữa
+Đề xuất tăng cường monitoring và alerting hệ thống
+Sẽ implement ngay tuần sau
+Vừa submit build mới cho TestFlight, các bạn check lại logic thanh toán xem có gì sai không
+Build 1.2.3 đã lên được, download từ TestFlight và test thử nhé
+Có ai thấy lỗi crash khi mở notification không? Em test mà nó crash liên tục
+Just pushed the latest version with bug fixes for payment flow
+Ai review hết chưa? Mình cần feedback trước khi submit lên App Store
+Cái UI của onboarding screen bị lệch, có ai khác thấy thế không
+Em đã fix xong cái issue với deep linking, lên build rồi
+Check the staging environment, payment integration might have some issues
+TestFlight version bây giờ support dark mode rồi nhé, mọi người test xem
+Vừa nhận feedback từ QA, có 3 bugs cần fix trước khi submit
+Em chưa update TestFlight app, cái build cũ đó không có fixes của hôm qua
+There's an issue with the login flow on iOS 15, need to investigate
+Ai có thời gian kiểm tra lại API response không? Có lỗi dữ liệu gì đó
+Mình vừa build lại version mới, lần này fix hết bugs từ trước
+Test payment gateway xong rồi, hoạt động bình thường, có thể submit App Store được
+Can anyone test the video upload feature? Found a bug that needs verification
+Bản test trên TestFlight nó không hiện notification, sao vậy
+Em restart máy rồi test lại, notification hoạt động bình thường
+Ai prepare document cho App Store review chưa? Mình cần hôm nay
+App Store review team có thể reject nếu chúng mình không fix cái permission issue này
+I'll submit to App Store tomorrow morning, make sure everything is ready by EOD
+Vừa fix xong cái bug ở analytics tracking, version mới sẽ lên TestFlight lúc 3h
+Mọi người tải build 1.2.4 từ TestFlight đi, em đã fix hết các vấn đề trước đó
+QA team feedback là mọi thứ ổn rồi, có thể quyết định submit App Store ngày mai
+Ai update TestFlight app mới chưa? Version này chạy nhanh hơn hẳn
+There's a critical issue with image compression, we need to delay the submission
+Bản trước bị feedback từ Apple về privacy policy, em update xong rồi
+Just tested on different devices, looks good to me, ready for App Store submission
+Cái in-app purchase flow có vẻ bị lỗi, test thêm chút nữa xem sao
+Em sửa xong cái UI inconsistency giữa iOS và Android version
+Mình check lại App Store review guidelines, chúng mình phải comply với vài điều nữa
+Ai có device iPhone cũ để test compatibility không? Em cần kiểm tra iOS 13
+Version hiện tại đã pass hết internal testing, sẵn sàng external beta testing
+App Store review có thể mất 1-2 ngày, nên submit sớm càng tốt
+Vừa update TestFlight, version này có performance improvement kha khá
+Em đang chờ QA team cuối cùng check, thì submit luôn được rồi
+TestFlight build mới lên rồi, các bạn help test tính năng thanh toán nhé
+Bị reject từ App Store vì lỗi metadata, em fix lại và resubmit rồi
+One more round of testing needed before we can confidently submit to App Store
+Mình vừa check lại cái certificate, nó expire tháng sau, phải renew
+Đã submit version 1.3.0 lên App Store, chờ review team feedback
+Mày có dùng ChatGPT chưa? Cái này thực sự hữu ích cho công việc
+I've been using it for like 3 weeks now, game changer for content creation
+Mình thường dùng để viết emails, tiết kiệm thời gian lắm
+Prompt engineering là key, cách mà bạn hỏi quyết định đầu ra
+Tớ bảo nó viết code cho mình, nó làm được nhưng còn bug
+Có cách nào để ChatGPT hiểu rõ hơn cái ý của mình không?
+Just try to be specific about what you want, like very detailed instructions
+Mình vừa prompt nó "hãy viết như một chuyên gia marketing" thì output ngon hơn
+Cái model nào tốt nhất? GPT-4 hay GPT-3.5?
+GPT-4 thì chất lượng tốt hơn nhưng chậm hơn, tùy nhu cầu mà chọn
+Tớ mê cái feature ở phần system prompt, customize được cái personality
+Có thể dùng ChatGPT cho việc brainstorm ideas không?
+Dùng được chứ, mình thường dùng để kick off creative projects
+Prompt của mình: "hãy tưởng tượo 10 ý tưởng business startup tại Việt Nam"
+Nó respond khá ok, nhưng mình phải refine thêm mấy lần
+AI tools ngày càng khiến marketing dễ dàng hơn, đúng không?
+Yeah, automation là tương lai của marketing, ChatGPT leading the way
+Mình sợ mấy thằng job marketer sẽ mất việc vì AI
+Không sợ được, skill gì mà AI replace? Nó chỉ helper thôi
+Nhưng strategic thinking và creativity nó làm được mà, tớ sợ thật
+Tớ đang test các AI tools khác nữa, Claude, Gemini, mấy cái gì đó
+Chất lượng của Claude hơi tốt hơn ChatGPT cho viết dài
+Mình dùng ChatGPT API trong ứng dụng của công ty, pretty powerful stuff
+Cái prompt template của mình có khoảng 500 characters, nó consistent lắm
+Vấn đề là khi prompt quá dài thì nó hay bỏ qua context ở cuối
+Mình học được trick là chia prompt thành multiple messages, tốt hơn
+Có ai dùng prompt injection để test security không?
+It's a real concern for production systems, gotta be careful with user inputs
+Mình sợ user sẽ "jailbreak" prompt của mình để lấy sensitive info
+Ơi khoá các edge case bằng guardrails, đừng tin tưởng user input
+Bao nhiêu token là limit cho một request? Mình hay timeout
+Cái context window của GPT-4 lên tới 8k hoặc 32k tokens tuỳ model
+Tớ thường dùng AI để summarize report dài, nó siêu nhanh
+Chất lượng summary của nó sao, có miss info quan trọng không?
+Tùy vào prompt, nếu mình specify "highlight key points", nó ok
+Mình vừa pay cho ChatGPT Plus, có đáng không?
+Depends, nếu dùng hàng ngày thì worth it, priority access và GPT-4
+Có tool nào integrate ChatGPT vào Slack không, muốn tự động hóa
+Có chứ, có mấy bot sẵn rồi, Google một cái là tìm được
+Mình define prompt ngắn gọn: "viết social media caption về sản phẩm mới"
+Nó cho ra mấy option khác nhau, chất lượng cũng tạm ổn
+Nhưng creativity của nó hơi generic, không unique lắm
+Cách để improve là add more context about brand voice và target audience
+Mình thử dùng ChatGPT cho customer service, chưa tốt lắm
+Có thể setup custom instructions để nó follow company guidelines tốt hơn
+I think AI is gonna replace a lot of job roles within 5 years honestly
+Mình nghĩ nó sẽ augment jobs hơn là replace, need human oversight luôn
+Tớ training team mình về cách dùng ChatGPT hiệu quả
+Prompt best practices gì vậy, share cho mình cái list?
+Tao đói quá, gọi cơm tấm được không, mà lấy riêng xương và mỡ gà
+mấy hôm nay cơm nhà mình ngon lắm, chắc ăn lại hôm nay
+order cơm lam từ quán ở cạnh công viên chưa
+nó có free delivery không nhỉ, tao không muốn phí ship lắm
+yeah, gọi món Thái đi, đói tiền mặt bây giờ
+tao vừa mở app, có voucher 20% cho pizza, deal khủng
+bánh mì nóng thế nào, gọi từ hôm sáng bây giờ sẽ còn ổn không
+tớ recommend cái quán bánh canh trên đường Lê Lợi, bao ngon
+mình order tại nhà hôm nay được không, công ty bận quá
+delivery time bây giờ nó lâu quá, 30 phút mà ship 45 phút liền
+ồ dê, quán mình yêu thích đã close rồi, buồn quá
+can you check if the restaurant is still open, i'm not sure
+thực đơn của quán Hoa thay đổi khá nhiều trong tháng này
+mình ăn gà rán KFC đi, dễ gọi online lắm
+tớ order bubble tea, có thêm topping trân châu được không
+rating cái quán này 4.2, chưa biết ăn thế nào nhưng mình thử
+khách sạn bên kia street cái quán ăn sáng tốt lắm, có bánh dân tổ
+order thế nào, app của tao nó bị lag hoài
+giao hàng đúng giờ không ta, tao phải đi làm lúc 12h
+ăn bún chả thôi, nhớ bỏ hành thêm cho tao
+sao không gọi đồ ăn hôm qua, tao thấy nó bình thường thôi
+mấy ông đã ăn bánh hoai hay chưa, tao muốn thử lần đầu
+i want to order but the restaurant doesn't have the item i want anymore
+cơm gà Hainanese bên kia mình ở còn ngon không ta
+mình point order được không, app tracking system nó lag lắm
+tớ sợ giao nhầm địa chỉ, bao giờ mình verify lại không
+quán mặn quá, đặt lại yêu cầu không mặn lần sau nhé
+app notification của mình nó bị delay, không biết order ready chưa
+bạn gọi chưa, mà gọi luôn cho tao nữa đi
+bánh tráng nướng bên quán Phương thì chuẩn lắm, recommend 100%
+shipping fee đắt quá, tao quyết định mua hàng trong siêu thị rồi
+mấy ông thích ăn buffet hay à la carte hơn
+tớ order rồi, nó đang prep, khoảng 15 phút nữa là giao
+the payment method is not working, can you try another card
+tao ăn phở đã 3 ngày liên tiếp rồi, muốn đổi một cái gì đó mới
+quán nì có promo vào chiều thứ 3, mình nhớ gọi ngày hôm đó
+mặc dù giao muộn nhưng thức ăn còn nóng, khá ổn
+i'm checking the menu right now, let me see what looks good
+tớ yêu các quán nước chanh cốc to, bao mát bao ngon
+gọi bánh mỳ sandwich, có thêm pâté được không
+thợ giao mất liên lạc à, tao call mấy lần rồi mà không pick up
+mình cancel order được không, vì tớ thấy quán không đặt đúng yêu cầu tớ
+Tối nay có trận Man City vs Liverpool mà, mấy bạn xem không?
+Watch it on K+ bro, quality nó tốt lắm
+Tao đặt cược cho City thắng 2-1, ai đó chơi cùng không?
+Hahahaha Haaland sẽ lại ghi bàn thôi, chắc chắn 100%
+Mày xem livestream ở đâu bây giờ? Lazi TV bị block rồi
+City's defense is shit this season honestly
+À mà Pep Guardiola kỳ lạ vl, cứ thay đổi formation mãi
+Chúng mình cầu cho Salah bùng nổ nha, anh ấy đã sẵn sàng rồi
+Real Madrid sẽ vô địch Champions League năm nay, tớ cảm nhận được
+Đúng rồi, nhưng Bayern cũng mạnh lắm đó
+Bayern ngon ơi? Hahahaha đừng cười tao
+Thôi thôi, mấy bạn bỏ cuộc tranh cãi đi, xem bóng thôi
+Tao thích Neymar hơn, anh ấy chơi đẹp lắm
+Neymar overrated thì phải, sút lệch mục mãi
+PSG bây giờ giàu nhất EU nhưng vẫn chưa vô địch Champions League lần nào
+Các cậu lắng nghe tin tức chưa? Barcelona sắp ký Lewandowski
+Lewandowski = bom tấn! Barca back to reality ở Camp Nou
+Tớ support Liverpool gia đình từ bé, Klopp là huấn luyện viên bác nhất
+I'm a Man United fan since 10 Hag joined, things are looking better
+Lol United fans, y'all still think Ten Hag can save the club?
+Chết tiệt, Ronaldo đã rời United rồi, tớ buồn vl
+Ronaldo ở Al Nassr bây giờ, tiền cỏm vl anh ấy kiếm được
+Tao theo dõi Asian Cup, Việt Nam sẽ vô bán kết mà
+Cậu nói gì đó? Công Phượng chơi hay lắm trong trận vừa rồi
+Hàng thủ Việt Nam vẫn còn yếu, cần cải thiện nhiều lắm
+Brighton chơi rất modern football, Harry Kane sắp tới rồi
+Tottenham cuối cùng cũng có hậu vệ tốt, Son cũng chơi lẫy lội
+Các bro nào thích Arsenal? Saka và Odegaard giỏi quá
+Hình như Arsenal sẽ vô top 4 Premier League năm này
+Aston Villa đang chơi tốt, Grealish rời khỏi rồi nhưng họ vẫn mạnh
+Everton thì tệ lắm, không hiểu sao Lampard còn chưa bị sa thải
+Luton Town! Đây mới là team underdog thực sự
+Tao xem trận Chelsea vs Fulham lúc 3 giờ sáng, cực kỳ mệt
+The intensity of Premier League is just unmatched in world football
+Bundesliga nó nhàm chán, Bayern chiếm mọi thứ luôn
+Ligue 1 bây giờ có PSG, Monaco, Lille cạnh tranh khá hay
+Serie A vẫn luôn là mạnh nhất, Inter và AC Milan đều tốt
+Juventus cần cầu thủ mới, Allegri phải chỉnh chiến thuật lại
+Mày có muốn join vào meeting lúc 3 giờ không? Mình vừa gửi Zoom link trên Slack
+tao ko thấy thông báo gì hết, check lại đi
+Zoom lag kinh khủng hôm nay, connection tao chắc có vấn đề
+meeting bị delay 15 phút, mọi người còn đang connect
+anh ơi có ai biết password của room này không? Bị hỏi lại
+Just turn off your camera and rejoin the meeting
+tắt video đi, bandwidth tao bị ăn hết rồi
+Slack notification không kêu, mình miss mất deadline
+có thể mute mic được không, bé tao đang khóc ở sau
+I can't hear you, can you repeat that?
+chờ tí, mình đang load lại Slack, app crash rồi
+workspace này chậm vãi, có ai khác bị không?
+tao đã set status thành away rồi nhé, trong lúc call client
+Zoom recording lưu ở đâu vậy? Mình cần download cái file
+You should check the channel pinned messages first
+có gì mới không? Tao offline cả sáng để focus work
+mấy cái notification quá nhiều quá, inbox tao 999+ rồi
+disconnect rồi, reconnect lại xem sao
+Slack ko sync được messages, refresh page xem thế nào
+ai gửi file qua drive không? Tao ko thích dùng email
+meeting link hết hạn, phải request cái mới từ admin
+This is the third Zoom call today, I'm so tired
+đang record meeting này, ai nói gì cũng được lưu lại
+có ai free để pair programming không, tao cần input
+Mình sẽ send lại channel announcement cho mọi người sau
+workspace member quá đông, khó tìm group chat cần thiết
+Do you prefer async communication or real-time meeting?
+Slack threads giúp organize conversation tốt hơn nhiều
+tao vừa upgrade plan, unlimited storage cho file rồi
+disconnect internet xong connect lại thử, may be that helps
+Zoom bombing là bao nhiêu người? Tao lo quá
+mute được cái alert sound của Slack không? Nó phát gây náo
+send lại zoom link, tao vừa tìm được khoảng trống
+I think we should record this for those who can't attend live
+remote work thì deadline lúc nào cũng sớm quá, ko relax
+tao auto-reply rồi, sẽ reply lại tin nhắn sau
+Slack API hơi phức tạp, setting bot automation cũng không dễ
+ai quên mute camera trước khi vào bathroom? Tao thấy cắt mất rồi
+tui setup home office environment xong rồi, quality tốt hơn trước
+Chào bạn, hôm nay bạn có rảnh để xem căn hộ không?
+Ừ, mình có thể được. Mấy giờ?
+Khoảng 2h chiều thế nào, tại Landmark 81 ở Bình Thạnh
+Ok được, mình đến đó. Bao nhiêu phòng ngủ vậy?
+Studio với 1 phòng ngủ, view sông rất đẹp, giá cạnh tranh lắm
+View sông mà giá bao nhiêu? Tell me the price
+65 tỷ cho 1 phòng, 78 tỷ cho studio, có thể negotiate được
+Ơi mắc quá, mình budget chỉ khoảng 55-60 tỷ thôi
+Để mình check lại xem có unit nào rẻ hơn không, may be phía Tây lợi hơn
+Ok đợi mình, mình sẽ contact lại với bạn trong tối nay
+Được, mình chờ. Btw cái Landmark 81 kia có gym không?
+Có có, fully equipped gym, swimming pool, co-working space, tất cả đều có hết
+Phí quản lý bao nhiêu một tháng?
+Khoảng 25-30k/m2/tháng, tuỳ theo floor và loại unit
+Vậy căn 65 tỷ kia thì phí bao nhiêu tiền?
+Tính ra khoảng 4-5 triệu một tháng, khá reasonable
+Hmm, giá phí thì ok, chủ yếu là chưa biết lên loan hay không
+Mình có thể giúp bạn kết nối với mortgage advisor, họ có tỷ lệ rất tốt
+Được, cho mình contact info của họ đi
+Để mình send link cho bạn, họ respond nhanh lắm. Usually within 24 hours
+Cảm ơn nhé. Còn vấn đề nữa là mình đang bận việc công ty, full schedule
+Không sao, mình có thể arrange virtual tour cho bạn trước, xem video 360 trước
+Video tour? Sao không face time luôn cho nhanh
+Được, mình có video tour link, send cho bạn link nè: bit.ly/landmark81-tour
+Cảm ơn, để mình xem cái video xong báo lại với bạn
+Ok không vội, mình chờ feedback của bạn. Có câu hỏi gì khác không?
+Còn một cái là phía quanh kia có hàng xóm hay không, vì mình muốn yên tĩnh
+Khu này khá quiet, mostly working professionals, ít gia đình nhỏ với trẻ em
+That sounds good for me. Mình sẽ xem video xong contact lại
+Chuẩn, đợi bạn. Nếu like thì chúng ta set up meeting với chủ nhân căn hộ
+Vậy giấc tờ hay sao, document gì mình cần chuẩn bị để kiểm tra?
+Bạn cần verify red book, giấy chứng thực ủy quyền, và mortgage pre-approval letter
+Red book là cái gì vậy? Mình chưa biết
+Là sổ hồng, giấy chứng nhận quyền sử dụng đất của chủ nhân
+A ok, đó là legal ownership papers đúng không?
+Đúng rồi. Còn nhà nước có yêu cầu gì khác không?
+Phải có tờ khai thuế, form 01/ĐK-KD, nhưng mình xử lý được hết
+Bạn chuyên về thủ tục pháp lý hả?
+Ừ, mình work với legal team khá lâu rồi, nên quen toàn bộ process
+That's impressive. So bạn confirm giá 65 tỷ can negotiate how much?
+Có thể down tới 62-63 tỷ nếu bạn thank them nicely, depend on market also
+Hôm nay bạn đã xem video chưa?
+Xem rồi, view thực sự rất tuyệt vời. But the layout hơi kỳ với mình
+Layout như thế nào? Problem gì?
+Phòng khách nhỏ, bếp chung với dining, mình muốn open space hơn
+Có thể thảo luận với chủ nhân về renovation, some owners allow minor changes
+Vậy là mình có thể yêu cầu sửa lại trước khi mua?
+Technically có thể, but usually it's after signing. Tùy vào negotiation
+Ok, mình muốn set up meeting với chủ nhân tuần sau được không?

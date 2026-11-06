@@ -1,0 +1,9 @@
+# Cloudflare Pages project "sevi" (vikey.app). Deployed by Tools/release/deploy_site.sh from this folder.
+name = "sevi"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-10-01"
+
+[[d1_databases]]   # emails for "notify me when <platform> is available" (functions/api/notify.js)
+binding = "DB"
+database_name = "sevi-notify"
+database_id = "2427eb7f-cd88-45f7-9082-ea0d3376270f"

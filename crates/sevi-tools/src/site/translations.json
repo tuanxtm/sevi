@@ -1,0 +1,81 @@
+{
+  "T": {
+    "vi": {
+      "features": "Chức năng",
+      "faq": "Câu hỏi",
+      "changelog": "Phiên bản",
+      "download": "Tải về",
+      "home": "Trang chủ",
+      "support": "Hỗ trợ",
+      "faq_long": "Câu hỏi thường gặp",
+      "bugs": "Báo lỗi",
+      "feedback": "Gửi góp ý",
+      "privacy": "Quyền riêng tư",
+      "ack": "Ghi nhận",
+      "source": "Mã nguồn",
+      "license": "Giấy phép GPL-3.0",
+      "switch": "EN",
+      "switch_title": "English",
+      "sitename": "Sevi - Gõ tiếng Việt"
+    },
+    "en": {
+      "features": "Features",
+      "faq": "FAQ",
+      "changelog": "Changelog",
+      "download": "Download",
+      "home": "Home",
+      "support": "Support",
+      "faq_long": "FAQ",
+      "bugs": "Report a bug",
+      "feedback": "Send feedback",
+      "privacy": "Privacy",
+      "ack": "Acknowledgements",
+      "source": "Source code",
+      "license": "GPL-3.0 license",
+      "switch": "VI",
+      "switch_title": "Tiếng Việt",
+      "sitename": "Sevi - Gõ tiếng Việt"
+    }
+  },
+  "PNAME": {
+    "macos": "macOS",
+    "windows": "Windows",
+    "linux": "Linux",
+    "ios": "iOS",
+    "android": "Android"
+  },
+  "PREQ": {
+    "vi": {
+      "macos": "macOS 13 trở lên",
+      "windows": "Windows 10 và 11",
+      "linux": "Ubuntu, Debian, Fedora, Arch",
+      "ios": "iPhone, iOS 17+",
+      "android": "Điện thoại Android"
+    },
+    "en": {
+      "macos": "macOS 13 or later",
+      "windows": "Windows 10 and 11",
+      "linux": "Ubuntu, Debian, Fedora, Arch",
+      "ios": "iPhone, iOS 17+",
+      "android": "Android phones"
+    }
+  },
+  "PTXT": {
+    "vi": {
+      "dl": "Tải về",
+      "store": "App Store",
+      "soon": "Sắp có",
+      "notify": "Báo tôi khi có",
+      "arm": "Bản cho chip ARM",
+      "play": "Google Play"
+    },
+    "en": {
+      "dl": "Download",
+      "store": "App Store",
+      "soon": "Soon",
+      "notify": "Notify me",
+      "arm": "ARM64 build",
+      "play": "Google Play"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+# Linux-only live cases (DECISIONS.md D32, D33, D35, D39, D41, D42 and the emoji command); same format as Windows/Tests/cases.tsv.
+# keys: \b Backspace, {alt+z} a key for xdotool, {cmd:...} a line written to the engine command file
+undo_then_continue_D32	vi	booj source vaay \bj 	bộ source vậy 
+undo_same_word_stays_D32	vi	booj source vaay \b 	bộ source vaay 
+digits_new_word_D33	vi	mua 1casi 	mua 1cái 
+digit_code_D33	vi	abc1def 	abc1def 
+digit_unit_w_D33	vi	sacj 2w 	sạc 2w 
+look_forward_D35	vi	vaof office its nhaats 	vào office ít nhất 
+DD_one_capital_D39	vi	ddi DDaf Nawngx 	đi Đà Nẵng 
+allcaps_telex_D41	en	THOONG 	THÔNG 
+allcaps_two_words_D41	en	THUOWNGF VIEETJ 	THƯỜNG VIỆT 
+acronym_no_flip_D42	vi	e lieen heej been ASL 	e liên hệ bên ASL 
+emoji_commit	vi	ok {cmd:emoji 🐴}	ok 🐴
+# numpad keys: xdotool types KP_1 as "1" only with Num Lock on (numlockx on)
+numpad_digit_D33	vi	a{KP_1}a	a1a
+numpad_operator_ends_word	vi	a{KP_Add}a	a+a
+restore_then_home_moves	vi	testflight{Home}a	atestflight

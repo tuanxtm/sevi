@@ -1,0 +1,42 @@
+{
+"version": "1.0.30",
+"download_url": "/downloads/Sevi-1.0.30.dmg",
+"sha256": "aac4be3b973c1f89eb4677796f81e01b8cd8e876f60545f881802b25c762f6d7",
+"linux": {
+"version": "1.0.28",
+"rpm_arm64": {
+"download_url": "/downloads/sevi-1.0.28-1.aarch64.rpm",
+"sha256": "5e37fb4401a9e9c09cb8a1212da4d57d99fa02945339fcfd51ed6f08edfefd8e"
+},
+"rpm_x64": {
+"download_url": "/downloads/sevi-1.0.28-1.x86_64.rpm",
+"sha256": "42343914ea2eb00cf973efde823a784fda685d1d19e55277f125f71b17f91091"
+},
+"deb_x64": {
+"download_url": "/downloads/sevi_1.0.28_amd64.deb",
+"sha256": "d7567bb5a8c5837d3d51bbe8801853a89a9d8c3b2b83633ce82e09a8a39f1a87"
+},
+"deb_arm64": {
+"download_url": "/downloads/sevi_1.0.28_arm64.deb",
+"sha256": "b9549b6f7eea2c1fd40dd726ae760747f8386e9d954004953647b1e0fb846263"
+}
+},
+"windows": {
+"x64": {
+"download_url": "/downloads/Sevi-1.0.28-x64-Setup.exe",
+"portable_url": "/downloads/Sevi-1.0.28-x64-portable.zip",
+"sha256": "687f14d6d22c9e4a3c270a9d87f4a87d25074bcd17c89bea2880ec5bb3e76e99"
+},
+"arm64": {
+"download_url": "/downloads/Sevi-1.0.28-arm64-Setup.exe",
+"portable_url": "/downloads/Sevi-1.0.28-arm64-portable.zip",
+"sha256": "d20d3e95874981faf50418e7d53f06f4ca4be830940514bb30a87dd630d30f90"
+},
+"version": "1.0.28"
+},
+"android": {
+"version": "1.0.26",
+"download_url": "/downloads/Sevi-1.0.26.apk",
+"sha256": "dacd1fc1647c178025a20f10b5a1836b8798f8eeea7e397bde289e1fa74b3b4f"
+}
+}

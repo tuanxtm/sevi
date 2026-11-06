@@ -1,0 +1,46 @@
+# start_lang(1=VN,0=EN)	keys ('<' = backspace, '|' = Enter)	expected text	expected final lang
+1	moer 	moẻ 	1
+1	more 	more 	0
+1	err	err	0
+1	boss 	boss 	0
+1	tooi ddi hocj owr truwowngf ddaij hocj 	tôi đi học ở trường đại học 	1
+1	anh owi, mai minh ddi uoongs cafe nhes. 	anh ơi, mai minh đi uống cafe nhé. 	1
+1	deploy leen server nhes 	deploy lên server nhé 	1
+1	last week i lost my test, it is the best 	last week i lost my test, it is the best 	0
+1	the best test must pass 	the best test must pass 	0
+1	Server 	Server 	0
+1	khoer khoong 	khoẻ không 	1
+1	thees thif 	thế thì 	1
+0	treen 	trên 	1
+0	truowfng 	trường 	1
+0	truongwf 	trường 	1
+0	truwownfg 	trường 	1
+0	Truowfng Sa 	Trường Sa 	1
+0	carm own 	cảm ơn 	1
+0	deploy leen server nhes 	deploy lên server nhé 	1
+0	i must trust the rest of the list 	i must trust the rest of the list 	0
+0	the theme of rust and axis 	the theme of rust and axis 	0
+0	USA EST IRS 	USA EST IRS 	0
+0	hes dont wanna go 	hes dont wanna go 	0
+0	git push origin main 	git push origin main 	0
+0	tre<<<treen 	trên 	1
+0	tre<<treen 	ttreen 	0
+0	ok vaayj thi mai gaawpj nhes|	ok vậy thi mai gặp nhé
+	1
+0	abc123 treen 	abc123 trên 	1
+0	var x = 1 	var x = 1 	0
+1	var x 	vả x 	1
+0	const deps = refs.uri 	const deps = refs.uri 	0
+0	cors gif 	có gì 	1
+0	image.gif nginx.conf 	image.gif nginx.conf 	0
+0	obj.dir os.path.dirs 	obj.dir os.path.dirs 	0
+0	my_dir ok 	my_dir ok 	0
+1	tooi nghix gif ddos 	tôi nghĩ gì đó 	1
+1	char 	chả 	1
+1	this makes sense 	this makes sense 	0
+1	cais testflight build 	cái testflight build 	0
+0	nos theer 	nó thể 	1
+0	check mail cos theer 	check mail có thể 	1
+1	the issue is sorry error 	the issue is sorry error 	0
+1	check password ok 	check password ok 	0
+1	tooi thicsh lanwm 	tôi thích lănm 	1

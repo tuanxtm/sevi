@@ -1,0 +1,17 @@
+{
+  "Phím chuyển Anh/Việt": "Bấm tổ hợp phím này để chuyển giữa tiếng Việt và tiếng Anh. Bấm vào ô để đặt phím khác.",
+  "Âm báo khi chuyển": "Phát một âm ngắn mỗi lần bạn bấm phím chuyển Anh/Việt: lên giọng khi sang tiếng Việt, xuống giọng khi sang tiếng Anh.",
+  "Tự chuyển Anh/Việt": "Gõ một từ tiếng Anh khi đang ở tiếng Việt (hoặc ngược lại), Sevi tự sửa từ đó và chuyển chế độ. Bấm Xoá ngay sau đó để hoàn tác.",
+  "Tạm dừng 5 giây": "Khi bạn tự bấm chuyển Anh/Việt, Sevi không tự chuyển trong 5 giây, để giữ đúng lựa chọn của bạn.",
+  "Nhớ theo ứng dụng": "Sevi nhớ bạn dùng tiếng Anh hay tiếng Việt ở mỗi ứng dụng và tự chuyển lại khi bạn quay về ứng dụng đó.",
+  "Nhớ theo trang web": "Trong Safari, Chrome, Edge, Brave, Arc, Vivaldi, Opera: nhớ tiếng Anh hay tiếng Việt cho từng trang web. Cần quyền đọc địa chỉ tab đang mở, chỉ dùng trên máy bạn.",
+  "Kiểu gõ": "Telex: [ ra ơ, ] ra ư, w ra ư. Telex đơn giản 1: [ ] là dấu ngoặc, w đứng riêng vẫn là w. Telex đơn giản 2: [ ] là dấu ngoặc, w vẫn ra ư. Cả ba kiểu đều gõ uw, ow, aw ra ư, ơ, ă.",
+  "Đặt dấu": "Vị trí dấu thanh với oa, oe, uy: kiểu mới (hoà, thuý) hoặc kiểu cũ (hòa, thúy).",
+  "Kiểm tra chính tả": "Chỉ bỏ dấu khi từ đang gõ đúng quy tắc chính tả tiếng Việt.",
+  "Trả lại phím khi sai": "Khi gõ xong một từ sai chính tả tiếng Việt, Sevi trả lại đúng các phím bạn đã gõ.",
+  "Chính tả teencode": "Giữ các từ kiểu chat như zui zẻ, zậy, dzô, gòy, thík, bíe thay vì trả lại phím. Chỉ những từ teencode quen thuộc, nên từ tiếng Anh như zero, look vẫn giữ nguyên.",
+  "Bảng emoji": "Bấm phím tắt để mở bảng emoji ở giữa màn hình. Tìm bằng tiếng Việt hoặc tiếng Anh, gõ Telex vẫn tìm được: \"ngựa\", \"horse\" đều ra 🐴. Enter để chèn, Esc để đóng.",
+  "Phím mở bảng emoji": "Một phím kèm ⌃, ⌥ hoặc ⌘, ví dụ ⌃⌘E. Bấm vào ô để đặt phím khác.",
+  "Mở Sevi khi đăng nhập": "Tự mở Sevi mỗi khi bạn đăng nhập vào máy Mac.",
+  "Tự động cập nhật": "Tự động cập nhật chỉ hoạt động khi đã cấu hình nguồn cập nhật riêng cho Sevi."
+}

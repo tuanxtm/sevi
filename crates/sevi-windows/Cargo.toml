@@ -1,0 +1,43 @@
+[package]
+name = "sevi-windows"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+sevi-engine.workspace = true
+sevi-runtime.workspace = true
+serde_json.workspace = true
+ed25519-dalek = "2"
+unicode-normalization.workspace = true
+chrono.workspace = true
+
+[build-dependencies]
+embed-resource = "3"
+
+[[bin]]
+name = "sevi"
+path = "src/bin/sevi.rs"
+
+[[bin]]
+name = "sevi-windows-livetest"
+path = "src/bin/livetest.rs"
+
+[target.'cfg(windows)'.dependencies]
+sevi-ui.workspace = true
+sevi-ui-protocol.workspace = true
+windows-numerics = "0.3"
+windows = { version = "0.62", features = [
+    "Win32_Foundation", "Win32_Security", "Win32_System_Com", "Win32_System_Ole",
+    "Win32_System_Variant", "Win32_System_Registry", "Win32_System_Threading",
+    "Win32_System_LibraryLoader", "Win32_UI_Accessibility", "Win32_UI_WindowsAndMessaging",
+    "Win32_System_Diagnostics_Debug",
+    "Win32_System_SystemServices",
+    "Win32_Networking_WinHttp",
+    "Win32_UI_Input_KeyboardAndMouse", "Win32_UI_Shell", "Win32_UI_HiDpi",
+    "Win32_UI_Controls", "Win32_Graphics_Gdi", "Win32_Media_Audio",
+    "Win32_Graphics_GdiPlus", "Win32_Graphics_Direct2D", "Win32_Graphics_Direct2D_Common",
+    "Win32_Graphics_DirectWrite", "Win32_Graphics_Dxgi_Common", "Win32_Graphics_Dwm",
+    "Win32_System_DataExchange", "Win32_System_Memory", "Win32_System_Ole",
+] }

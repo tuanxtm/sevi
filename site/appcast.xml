@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:sevi="https://vikey.app/xmlns">
+<channel>
+<title>Sevi</title>
+<link>https://vikey.app</link>
+<item>
+<title>Sevi 1.0.30</title>
+<pubDate>Sun, 01 Nov 2026 05:42:12 +0000</pubDate>
+<sparkle:version>32</sparkle:version>
+<sparkle:shortVersionString>1.0.30</sparkle:shortVersionString>
+<sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+<description><![CDATA[<ul>
+<li>Cửa sổ chính chia thành các thẻ: Chung, Tự chuyển, Gõ tiếng Việt, Emoji, Loại trừ (bản Mac).</li>
+<li>Ứng dụng loại trừ chỉ hiện các ứng dụng có trên máy. Thêm ứng dụng bằng một nút duy nhất.</li>
+</ul>]]></description>
+<enclosure url="https://vikey.app/downloads/Vikey-1.0.30.dmg" type="application/octet-stream" sparkle:edSignature="ktjXkwS7EBZMmJgEAqldYpqx1/RtmnjyhJx/fH1C/cON/5y4AmGI5GenwYWjfXK6K4xaX8yXKcfWFia6GXesBQ==" length="4614899"/>
+</item>
+<item>
+<title>Sevi 1.0.28 for Windows (x64)</title>
+<pubDate>Sat, 31 Oct 2026 01:42:06 +0000</pubDate>
+<sparkle:version>30</sparkle:version>
+<sparkle:shortVersionString>1.0.28</sparkle:shortVersionString>
+<description><![CDATA[<ul>
+<li>Cửa sổ chính gọn hơn: các mục Tự chuyển, Gõ tiếng Việt, Bảng emoji, Chung gập lại được. Khi gập vẫn thấy những gì đang bật (bản Mac).</li>
+<li>Gõ teencode: giữ các từ chat quen thuộc như "zui zẻ", "zậy", "gòy", "thík" thay vì trả lại phím. Từ tiếng Anh như "zero", "look" vẫn giữ nguyên. Tắt được trong mục Gõ tiếng Việt (bản Mac).</li>
+<li>Gõ "(" hoặc "." ngay sau khoảng trắng không còn sửa từ phía trước.</li>
+<li>Windows: sửa lỗi có thể làm Sevi thoát khi đóng cửa sổ cài đặt.</li>
+</ul>]]></description>
+<enclosure url="https://vikey.app/downloads/Vikey-1.0.28-x64-Setup.exe" sparkle:os="windows" sevi:arch="x64" type="application/octet-stream" sparkle:edSignature="BmIBdnIkpP+YnRw2EvU9PJ4RHw0xPWqMzo0dWoHplnfDsW2a/GBguogmIigsd5i4FoNzxpSjLgZz7HHX32a3Cw==" length="3182107"/>
+</item>
+<item>
+<title>Sevi 1.0.28 for Windows (arm64)</title>
+<pubDate>Sat, 31 Oct 2026 01:42:06 +0000</pubDate>
+<sparkle:version>30</sparkle:version>
+<sparkle:shortVersionString>1.0.28</sparkle:shortVersionString>
+<description><![CDATA[<ul>
+<li>Cửa sổ chính gọn hơn: các mục Tự chuyển, Gõ tiếng Việt, Bảng emoji, Chung gập lại được. Khi gập vẫn thấy những gì đang bật (bản Mac).</li>
+<li>Gõ teencode: giữ các từ chat quen thuộc như "zui zẻ", "zậy", "gòy", "thík" thay vì trả lại phím. Từ tiếng Anh như "zero", "look" vẫn giữ nguyên. Tắt được trong mục Gõ tiếng Việt (bản Mac).</li>
+<li>Gõ "(" hoặc "." ngay sau khoảng trắng không còn sửa từ phía trước.</li>
+<li>Windows: sửa lỗi có thể làm Sevi thoát khi đóng cửa sổ cài đặt.</li>
+</ul>]]></description>
+<enclosure url="https://vikey.app/downloads/Vikey-1.0.28-arm64-Setup.exe" sparkle:os="windows" sevi:arch="arm64" type="application/octet-stream" sparkle:edSignature="KGzRVG7nolf3GviRsBjZdScFpjt/pMw+44A9ttVbRtydJ5c4FpzK3q4J0NeSs5A9+yjsNiaU3oQzOh3jCeQ7BQ==" length="3164423"/>
+</item>
+</channel>
+</rss>

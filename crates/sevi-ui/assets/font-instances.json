@@ -1,0 +1,57 @@
+{
+  "source_revision": "0027613a909edfaa80eefd0b4027168dd3d5c876",
+  "faces": [
+    {
+      "file": "Inter.ttf",
+      "coordinates": {
+        "opsz": 14,
+        "wght": 400
+      },
+      "bytes": 341396,
+      "codepoints": 2849,
+      "glyphs": 2933,
+      "source_sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031"
+    },
+    {
+      "file": "Inter-Medium.ttf",
+      "coordinates": {
+        "opsz": 14,
+        "wght": 500
+      },
+      "bytes": 341984,
+      "codepoints": 2849,
+      "glyphs": 2933,
+      "source_sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031"
+    },
+    {
+      "file": "GeistMono.ttf",
+      "coordinates": {
+        "wght": 400
+      },
+      "bytes": 101868,
+      "codepoints": 889,
+      "glyphs": 1159,
+      "source_sha256": "d00e590b8eb3a59acc329b2d044fd143ae935090b7da33199ebee27cc7de8196"
+    },
+    {
+      "file": "GeistMono-Medium.ttf",
+      "coordinates": {
+        "wght": 500
+      },
+      "bytes": 101964,
+      "codepoints": 889,
+      "glyphs": 1159,
+      "source_sha256": "d00e590b8eb3a59acc329b2d044fd143ae935090b7da33199ebee27cc7de8196"
+    },
+    {
+      "file": "GeistMono-Bold.ttf",
+      "coordinates": {
+        "wght": 700
+      },
+      "bytes": 101816,
+      "codepoints": 889,
+      "glyphs": 1159,
+      "source_sha256": "d00e590b8eb3a59acc329b2d044fd143ae935090b7da33199ebee27cc7de8196"
+    }
+  ]
+}

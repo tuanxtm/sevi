@@ -1,0 +1,44 @@
+<!-- title: Tải Sevi cho macOS, Windows, Linux, iOS và Android – Sevi - Gõ tiếng Việt -->
+<!-- description: Tải Sevi miễn phí. Có cho macOS, Windows, Linux và Android, sắp có cho iPhone. -->
+<main class="wrap prose center dlpage">
+<h1>Tải Vi<b>key</b></h1>
+<p class="muted">Miễn phí · mã nguồn mở · phiên bản VERSION</p>
+<!-- PLATFORMS -->
+<details class="howto">
+<summary>Hướng dẫn cài đặt</summary>
+<h3>macOS</h3>
+<ol>
+<li>Mở file vừa tải, kéo Sevi vào thư mục Applications.</li>
+<li>Thoát OpenKey, EVKey hoặc bộ gõ khác nếu đang chạy.</li>
+<li>Mở Sevi, cấp quyền Trợ năng (Accessibility) khi được hỏi.</li>
+</ol>
+<p class="muted small">SHA-256: <code>SHA256</code></p>
+<!-- windows -->
+<h3>Windows</h3>
+<ol>
+<li>Mở file vừa tải. Không cần quyền quản trị.</li>
+<li>Thoát OpenKey, EVKey, UniKey hoặc bộ gõ khác nếu đang chạy.</li>
+<li>Sevi nằm ở khay hệ thống. Bấm Alt+Z để chuyển Anh/Việt.</li>
+</ol>
+<p class="muted small">Nếu SmartScreen hỏi, bấm "More info" rồi "Run anyway".</p>
+<p class="muted small">Bản không cần cài: <a href="WIN_X64_ZIP">x64 (zip)</a> · <a href="WIN_ARM64_ZIP">ARM64 (zip)</a><br>SHA-256: <code>WIN_X64_SHA</code> (x64) · <code>WIN_ARM64_SHA</code> (ARM64)</p>
+<!-- /windows -->
+<!-- linux -->
+<h3>Linux</h3>
+<ol>
+<li>Cài gói: <code>sudo apt install ./sevi_*.deb</code> (hoặc <code>sudo dnf install ./sevi-*.rpm</code>, hoặc <code>sudo pacman -U ./sevi-*.pkg.tar.zst</code>), rồi đăng xuất và đăng nhập lại.</li>
+<li>Vào Cài đặt › Bàn phím › Nguồn nhập, thêm "Vietnamese (Sevi)".</li>
+<li>Chuyển sang Sevi bằng Super+Space. Bấm Alt+Z để chuyển Anh/Việt.</li>
+</ol>
+<p class="muted small">Nhớ theo trang web chưa có trên Linux; nhớ theo ứng dụng chỉ với ứng dụng X11 trên Wayland.</p>
+<!-- /linux -->
+</details>
+<p class="muted small"><span class="nw">Mọi phiên bản và mã nguồn trên <a href="https://github.com/tonyminibot/Vikey/releases">GitHub</a></span> · <span class="nw"><a href="/changelog">Lịch sử phiên bản</a></span></p>
+</main>
+<div class="lightbox" id="lb" hidden><img alt=""></div>
+<script>
+const lb=document.getElementById("lb"),lbi=lb.querySelector("img");
+document.querySelectorAll("img.zoom").forEach(i=>i.addEventListener("click",()=>{lbi.src=i.src;lbi.alt=i.alt;lb.hidden=false;document.body.classList.add("lb-open")}));
+const closeLb=()=>{lb.hidden=true;document.body.classList.remove("lb-open")};
+lb.addEventListener("click",closeLb);addEventListener("keydown",e=>{if(e.key==="Escape")closeLb()});
+</script>

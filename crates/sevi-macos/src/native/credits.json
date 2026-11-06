@@ -1,0 +1,110 @@
+[
+  {
+    "name": "OpenKey",
+    "by": "Tuyen Mai",
+    "license": "GPL-3.0",
+    "url": "https://github.com/tuyenvm/OpenKey"
+  },
+  {
+    "name": "Sparkle",
+    "by": "Sparkle Project",
+    "license": "MIT",
+    "url": "https://sparkle-project.org"
+  },
+  {
+    "name": "FrequencyWords (OpenSubtitles 2018)",
+    "by": "Hermit Dave",
+    "license": "CC BY-SA 4.0",
+    "url": "https://github.com/hermitdave/FrequencyWords"
+  },
+  {
+    "name": "FineWeb-2 and FineWeb",
+    "by": "Hugging Face",
+    "license": "ODC-By 1.0",
+    "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-2"
+  },
+  {
+    "name": "HPLT v2",
+    "by": "High Performance Language Technologies",
+    "license": "CC0",
+    "url": "https://hplt-project.org"
+  },
+  {
+    "name": "MADLAD-400",
+    "by": "Google",
+    "license": "ODC-By 1.0",
+    "url": "https://huggingface.co/datasets/allenai/MADLAD-400"
+  },
+  {
+    "name": "Reddit comments",
+    "by": "tensorshield/reddit_dataset_157",
+    "license": "MIT",
+    "url": "https://huggingface.co/datasets/tensorshield/reddit_dataset_157"
+  },
+  {
+    "name": "Vietnamese forums and reader comments",
+    "by": "VnExpress, Tuổi Trẻ, Tinhte, Otofun, Dạy Nhau Học",
+    "license": "word statistics",
+    "url": ""
+  },
+  {
+    "name": "Emoji names and keywords (CLDR)",
+    "by": "Unicode, Inc.",
+    "license": "Unicode License v3",
+    "url": "https://cldr.unicode.org"
+  },
+  {
+    "name": "Emojibase",
+    "by": "Miles Johnson",
+    "license": "MIT",
+    "url": "https://emojibase.dev"
+  },
+  {
+    "name": "ViLexNorm",
+    "by": "Nguyen et al., EACL 2024",
+    "license": "CC BY-NC-SA 4.0",
+    "url": "https://github.com/ngxtnhi/ViLexNorm"
+  },
+  {
+    "name": "UIT-ViCTSD",
+    "by": "UIT NLP Group",
+    "license": "research use",
+    "url": "https://huggingface.co/datasets/tarudesu/ViCTSD"
+  },
+  {
+    "name": "VietMix",
+    "by": "EACL 2026",
+    "license": "research use",
+    "url": "https://huggingface.co/datasets/razent/vietmix"
+  },
+  {
+    "name": "Tap typing with touch sensing images",
+    "by": "Google Research",
+    "license": "CC BY 4.0",
+    "url": "https://github.com/google-research-datasets/tap-typing-with-touch-sensing-images"
+  },
+  {
+    "name": "How We Type: Mobile",
+    "by": "Aalto University",
+    "license": "research use",
+    "url": "https://userinterfaces.aalto.fi/how-we-type-mobile"
+  },
+  {
+    "name": "GitHub Typo Corpus",
+    "by": "Hagiwara & Mita, LREC 2020",
+    "license": "research use",
+    "url": "https://github.com/mhagiwara/github-typo-corpus"
+  },
+  {
+    "name": "Birkbeck spelling error corpus",
+    "by": "Roger Mitton",
+    "license": "free to use",
+    "url": "https://www.dcs.bbk.ac.uk/~roger/corpora.html"
+  },
+  {
+    "name": "Lists of common misspellings",
+    "by": "Wikipedia",
+    "license": "CC BY-SA 4.0",
+    "url": "https://en.wikipedia.org/wiki/Wikipedia:Lists_of_common_misspellings"
+  }
+]

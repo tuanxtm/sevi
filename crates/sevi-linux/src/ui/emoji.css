@@ -1,0 +1,9 @@
+window.sevi-emoji { background:transparent; }
+.emoji-panel { background:@popover_bg_color; color:@popover_fg_color; border-radius:14px; margin:20px; box-shadow:0 0 0 1px alpha(black,0.10),0 2px 4px alpha(black,0.12),0 8px 24px alpha(black,0.22); }
+.emoji-search { font-size:17px; }
+.emoji-caret { background:#4F46E5; min-width:2px; min-height:18px; }
+.emoji-badge { font-size:11px; font-weight:600; padding:2px 6px; border-radius:5px; background:alpha(currentColor,0.10); }
+.emoji-allsel { background:alpha(@accent_bg_color,0.30); border-radius:3px; }
+.emoji-cur { font-size:22px; }
+menubutton.emoji-tone > button { font-size:18px; padding:0 4px; min-height:26px; }
+button.emoji-tone-item { font-size:20px; padding:2px 6px; }

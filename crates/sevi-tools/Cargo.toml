@@ -1,0 +1,29 @@
+[package]
+name = "sevi-tools"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+regex.workspace = true
+unicode-normalization.workspace = true
+unicode-segmentation = "1"
+chrono.workspace = true
+flate2 = "1"
+tar = "0.4"
+sevi-engine.workspace = true
+sevi-test-tools = { path = "../sevi-test-tools" }
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "native-tls"] }
+zip = { version = "2", default-features = false, features = ["deflate"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp"] }
+png = "0.18"
+webp = { version = "0.3", default-features = false }
+sha2 = "0.10"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "0.6"
+objc2-foundation = "0.3"
+objc2-app-kit = "0.3"

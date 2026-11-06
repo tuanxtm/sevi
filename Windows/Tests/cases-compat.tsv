@@ -1,0 +1,9 @@
+# Native Windows only: selection commands require actual control behavior.
+# name	start	keys	expected
+select_all_replace	vi	old{ctrl+a}tieengs vieetj.	tiếng việt.
+select_line_replace	vi	old{shift+home}tooi.	tôi.
+select_character_replace	vi	ab{shift+left}a.	aa.
+selected_backspace	vi	abcd{ctrl+a}\btieengs.	tiếng.
+home_end_continue	vi	xin {home}a{end}tooi.	axin tôi.
+undo_then_selection	vi	more \b{ctrl+a}tieengs.	tiếng.
+surrogate_selection	vi	😀{ctrl+a}aa.	â.

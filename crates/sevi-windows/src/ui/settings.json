@@ -1,0 +1,114 @@
+[
+  {
+    "id": "C_HOTKEY",
+    "label": "Phím chuyển Anh/Việt",
+    "tip": "Bấm tổ hợp phím này để chuyển giữa tiếng Việt và tiếng Anh. Bấm vào ô để đặt phím khác.",
+    "key": "SwitchKeyStatus",
+    "kind": "hotkey",
+    "default": 0
+  },
+  {
+    "id": "C_BEEP",
+    "label": "Âm báo khi chuyển",
+    "tip": "Phát một âm ngắn mỗi lần bạn bấm phím chuyển Anh/Việt: lên giọng khi sang tiếng Việt, xuống giọng khi sang tiếng Anh.",
+    "key": "",
+    "kind": "beep",
+    "default": 0
+  },
+  {
+    "id": "C_AUTO",
+    "label": "Tự chuyển Anh/Việt",
+    "tip": "Gõ một từ tiếng Anh khi đang ở tiếng Việt (hoặc ngược lại), Sevi tự sửa từ đó và chuyển chế độ. Bấm Xoá ngay sau đó để hoàn tác.",
+    "key": "AutoSwitchByTyping",
+    "kind": "toggle",
+    "default": 1
+  },
+  {
+    "id": "C_PAUSE",
+    "label": "Tạm dừng 5 giây",
+    "tip": "Khi bạn tự bấm chuyển Anh/Việt, Sevi không tự chuyển trong 5 giây, để giữ đúng lựa chọn của bạn.",
+    "key": "PauseAutoAfterManual",
+    "kind": "toggle",
+    "default": 1
+  },
+  {
+    "id": "C_SMART",
+    "label": "Nhớ theo ứng dụng",
+    "tip": "Sevi nhớ bạn dùng tiếng Anh hay tiếng Việt ở mỗi ứng dụng và tự chuyển lại khi bạn quay về ứng dụng đó.",
+    "key": "UseSmartSwitchKey",
+    "kind": "toggle",
+    "default": 1
+  },
+  {
+    "id": "C_SITE",
+    "label": "Nhớ theo trang web",
+    "tip": "Trong Chrome, Edge, Brave, Vivaldi, Opera, Firefox: nhớ tiếng Anh hay tiếng Việt cho từng trang web. Chỉ đọc địa chỉ tab đang mở, ngay trên máy bạn.",
+    "key": "SmartSwitchPerSite",
+    "kind": "toggle",
+    "default": 1
+  },
+  {
+    "id": "C_STYLE",
+    "label": "Kiểu gõ",
+    "tip": "Telex: [ ra ơ, ] ra ư, w ra ư. Telex đơn giản 1: [ ] là dấu ngoặc, w đứng riêng vẫn là w. Telex đơn giản 2: [ ] là dấu ngoặc, w vẫn ra ư. Cả ba kiểu đều gõ uw, ow, aw ra ư, ơ, ă.",
+    "key": "TelexStyle",
+    "kind": "style",
+    "default": 0
+  },
+  {
+    "id": "C_MARK",
+    "label": "Đặt dấu",
+    "tip": "Vị trí dấu thanh với oa, oe, uy: kiểu mới (hoà, thuý) hoặc kiểu cũ (hòa, thúy).",
+    "key": "ModernOrthography",
+    "kind": "mark",
+    "default": 1
+  },
+  {
+    "id": "C_SPELL",
+    "label": "Kiểm tra chính tả",
+    "tip": "Chỉ bỏ dấu khi từ đang gõ đúng quy tắc chính tả tiếng Việt.",
+    "key": "Spelling",
+    "kind": "toggle",
+    "default": 1
+  },
+  {
+    "id": "C_RESTORE",
+    "label": "Trả lại phím khi sai",
+    "tip": "Khi gõ xong một từ sai chính tả tiếng Việt, Sevi trả lại đúng các phím bạn đã gõ.",
+    "key": "RestoreIfInvalidWord",
+    "kind": "toggle",
+    "default": 1
+  },
+  {
+    "id": "C_EMOJI",
+    "label": "Bảng emoji",
+    "tip": "Bấm phím tắt để mở bảng emoji ở giữa màn hình. Tìm bằng tiếng Việt hoặc tiếng Anh, gõ Telex vẫn tìm được: \"ngựa\", \"horse\" đều ra 🐴. Enter để chèn, Esc để đóng.",
+    "key": "EmojiPicker",
+    "kind": "toggle",
+    "default": 0
+  },
+  {
+    "id": "C_EMOJIKEY",
+    "label": "Phím mở bảng emoji",
+    "tip": "Một phím kèm Ctrl, Alt hoặc Win, ví dụ Ctrl+Alt+E. Bấm vào ô để đặt phím khác.",
+    "key": "EmojiHotkey",
+    "kind": "emoji_hotkey",
+    "default": 0
+  },
+  {
+    "id": "C_LOGIN",
+    "label": "Mở Sevi khi đăng nhập",
+    "tip": "Tự mở Sevi mỗi khi bạn đăng nhập vào Windows.",
+    "key": "",
+    "kind": "login",
+    "default": 0
+  },
+  {
+    "id": "C_UPDATE",
+    "label": "Tự động cập nhật",
+    "tip": "Tự động cập nhật chỉ hoạt động khi đã cấu hình nguồn cập nhật riêng cho Sevi.",
+    "key": "AutoUpdate",
+    "kind": "toggle",
+    "default": 1
+  }
+]
