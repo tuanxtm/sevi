@@ -1,11 +1,16 @@
 # Acknowledgements
 
-Sevi is built on the code and data below. The app contains only word statistics counted from the data, never the text itself.
+Sevi is a Rust port of [Vikey](https://github.com/tonyminibot/Vikey) by
+Tony Dinh (Đinh Quang Trung, [@trungdq88](https://github.com/trungdq88)),
+which builds on [OpenKey](https://github.com/tuyenvm/OpenKey) by Tuyen Mai.
+Sevi is distributed under GPL-3.0-only; see [LICENSE](LICENSE).
+Original author credits and the component notices below are retained.
+
+The app contains only word statistics counted from the data below, never the text itself.
 
 ## Code
 
 - [Vikey](https://github.com/tonyminibot/Vikey), Tony Dinh (GPL-3.0), the original project ported to Rust as Sevi
-
 - [OpenKey](https://github.com/tuyenvm/OpenKey), Tuyen Mai (GPL-3.0)
 - [Sparkle](https://sparkle-project.org), Sparkle Project (MIT)
 - [TweetNaCl](https://tweetnacl.cr.yp.to), Daniel J. Bernstein et al. (public domain), Windows update signature check
