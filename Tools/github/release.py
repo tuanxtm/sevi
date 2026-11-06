@@ -76,7 +76,7 @@ def package(tag):
     shutil.copy2(ROOT.joinpath("target/x86_64-pc-windows-msvc/release/sevi.exe"), staging.joinpath("Sevi.exe"))
     shutil.copy2(ROOT.joinpath("LICENSE"), staging.joinpath("LICENSE"))
     staging.joinpath("THIRD_PARTY_NOTICES.txt").write_text(notes(), encoding="utf-8")
-    compilers = [shutil.which("ISCC.exe")]
+    compilers = [str(ROOT.joinpath("target/tools/inno/ISCC.exe")), shutil.which("ISCC.exe")]
     for directory in [os.environ.get("ProgramFiles(x86)"), os.environ.get("ProgramFiles")]:
         if directory:
             compilers.extend(str(Path(directory).joinpath("Inno Setup " + v, "ISCC.exe")) for v in ["7", "6"])

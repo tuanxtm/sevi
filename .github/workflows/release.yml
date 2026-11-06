@@ -48,6 +48,15 @@ jobs:
       - run: cargo test --locked -p sevi-windows --lib
       - run: cargo clippy --locked -p sevi-windows --all-targets -- -D warnings
       - run: cargo build --locked --release -p sevi-windows --bin sevi --target x86_64-pc-windows-msvc
+      - name: Install pinned Inno Setup compiler
+        run: |
+          $download = Join-Path (Get-Location) 'target\tool-downloads\innosetup-7.1.1-x64.exe'
+          New-Item -ItemType Directory -Force (Split-Path $download) | Out-Null
+          Invoke-WebRequest 'https://github.com/jrsoftware/issrc/releases/download/is-7_1_1/innosetup-7.1.1-x64.exe' -OutFile $download
+          if ((Get-FileHash $download -Algorithm SHA256).Hash.ToLower() -ne '8a5a6711c3766a6e5fb74f280ba0e3551e719ce94538d901fdbd1f8f9920b3f0') { throw 'Inno Setup checksum mismatch' }
+          $directory = Join-Path (Get-Location) 'target\tools\inno'
+          $process = Start-Process $download -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', '/CURRENTUSER', "/DIR=`"$directory`"" -PassThru -Wait
+          if ($process.ExitCode -ne 0) { throw "Inno Setup installation failed: $($process.ExitCode)" }
       - name: Installer and portable package
         run: python Tools/github/release.py package --tag $env:RELEASE_TAG
       - name: Sign installer and generate update feed
