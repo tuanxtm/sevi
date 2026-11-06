@@ -34,9 +34,12 @@ jobs:
           path: |
             ~/.cargo/registry
             ~/.cargo/git
-            target/x86_64-pc-windows-msvc
+            target
           key: release-windows-x64-${{ hashFiles('Cargo.lock') }}
-          restore-keys: release-windows-x64-
+          restore-keys: |
+            release-windows-x64-
+            check-Windows-${{ hashFiles('Cargo.lock') }}
+            check-Windows-
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: '3.13'
