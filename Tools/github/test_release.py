@@ -47,7 +47,7 @@ class ReleaseTests(unittest.TestCase):
 
     def test_distribution_notices_preserve_vietnamese_and_font_licenses(self):
         text = release.notes()
-        self.assertIn("Đinh", text)
+        self.assertIn("Tuổi Trẻ", text)
         self.assertIn("SIL OPEN FONT LICENSE", text)
         self.assertIn("Craft Launcher", text)
 
