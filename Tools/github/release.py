@@ -19,7 +19,7 @@ REPOSITORY = "tuanxtm/sevi"
 SPARKLE = "http://www.andymatuschak.org/xml-namespaces/sparkle"
 SEVI = "https://github.com/tuanxtm/sevi/xmlns"
 PUBLIC = ROOT.joinpath("updates/public-key.txt")
-PRIVATE = ROOT.joinpath("target/release-secrets/update-private-key.txt")
+PRIVATE = ROOT.joinpath(".secrets/update-private-key.txt")
 
 
 def version():

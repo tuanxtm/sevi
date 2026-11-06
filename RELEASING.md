@@ -24,6 +24,9 @@ only, run `python3 Tools/github/export.py` from Rust/ after editing the workspac
 then `git push sevi sevi-main:main` from the original checkout. The export uses a
 separate index and branch; it does not check out another tree or stage unrelated
 files. Future work is simplest in a normal clone of tuanxtm/sevi.
+When releasing from this original checkout, push the exported commit directly to
+the new repository's tag, for example `git push sevi sevi-main:refs/tags/v1.0.31`.
+This preserves the original repository's local tags, which can have the same names.
 
 ## Publish a Windows x64 version
 
@@ -71,6 +74,9 @@ The test executables built before this setup have no Sevi feed and trust a
 different public key. Install the first GitHub Setup.exe manually once. It can
 then receive later Sevi releases through the new feed. Portable users can use
 the same updater; the installer places Sevi in the account's Programs directory.
+Quit the old tray instance before this first install. If Start Sevi at login was
+enabled in the portable test build, turn it off and on in the newly installed app
+to replace the old executable path in the login entry.
 
 These signatures authenticate updates. They are separate from paid Windows
 Authenticode certificates; the initial installer is not Authenticode-signed.
@@ -78,7 +84,7 @@ Authenticode certificates; the initial installer is not Authenticode-signed.
 ## Keep the update key
 
 Only `updates/public-key.txt` is committed. The private backup generated for this
-checkout is `target/release-secrets/update-private-key.txt`, with owner-only
+checkout is `.secrets/update-private-key.txt`, with owner-only
 permissions and excluded by .gitignore. Keep a separate secure backup. Do not
 regenerate the key for routine releases: installed apps trust the existing public
 key. GitHub stores the private value encrypted as `SEVI_UPDATE_PRIVATE_KEY`.
@@ -86,7 +92,7 @@ key. GitHub stores the private value encrypted as `SEVI_UPDATE_PRIVATE_KEY`.
 To restore that repository secret from the private backup:
 
 ```sh
-gh secret set SEVI_UPDATE_PRIVATE_KEY --repo tuanxtm/sevi < target/release-secrets/update-private-key.txt
+gh secret set SEVI_UPDATE_PRIVATE_KEY --repo tuanxtm/sevi < .secrets/update-private-key.txt
 ```
 
 Release Python dependencies are build tools only (`Tools/github/requirements.txt`).
