@@ -45,6 +45,12 @@ class ReleaseTests(unittest.TestCase):
             for tag in ["v1.0.31", "main", "v1.0.30;echo bad", "v1.0.30-beta"]:
                 with self.assertRaises(ValueError): release.check_tag(tag)
 
+    def test_distribution_notices_preserve_vietnamese_and_font_licenses(self):
+        text = release.notes()
+        self.assertIn("Đinh", text)
+        self.assertIn("SIL OPEN FONT LICENSE", text)
+        self.assertIn("Craft Launcher", text)
+
     def test_published_assets_cannot_be_replaced(self):
         result = subprocess.CompletedProcess([], 0, json.dumps({"isDraft": False}), "")
         with patch.object(release, "check_tag"), patch.object(release.subprocess, "run", return_value=result) as run:

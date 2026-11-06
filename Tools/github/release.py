@@ -23,19 +23,19 @@ PRIVATE = ROOT.joinpath(".secrets/update-private-key.txt")
 
 
 def version():
-    return tomllib.loads(ROOT.joinpath("Cargo.toml").read_text())["workspace"]["package"]["version"]
+    return tomllib.loads(ROOT.joinpath("Cargo.toml").read_text(encoding="utf-8"))["workspace"]["package"]["version"]
 
 
 def check_tag(tag):
     if not re.fullmatch(r"v[0-9]+\.[0-9]+\.[0-9]+", tag) or tag != "v" + version():
         raise ValueError("Release tag must equal v plus the Cargo.toml version")
-    if len(base64.b64decode(PUBLIC.read_text().strip(), validate=True)) != 32:
+    if len(base64.b64decode(PUBLIC.read_text(encoding="utf-8").strip(), validate=True)) != 32:
         raise ValueError("Invalid update public key")
 
 
 def private_key(encoded):
     key = Ed25519PrivateKey.from_private_bytes(base64.b64decode(encoded.strip(), validate=True))
-    expected = base64.b64decode(PUBLIC.read_text().strip(), validate=True)
+    expected = base64.b64decode(PUBLIC.read_text(encoding="utf-8").strip(), validate=True)
     if key.public_key().public_bytes_raw() != expected:
         raise ValueError("Signing secret does not match the committed update public key")
     return key
@@ -44,7 +44,7 @@ def private_key(encoded):
 def keygen():
     PRIVATE.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
     if PRIVATE.exists():
-        key = Ed25519PrivateKey.from_private_bytes(base64.b64decode(PRIVATE.read_text().strip(), validate=True))
+        key = Ed25519PrivateKey.from_private_bytes(base64.b64decode(PRIVATE.read_text(encoding="utf-8").strip(), validate=True))
     else:
         if PUBLIC.exists():
             raise ValueError("Public key already exists. Restore its private backup; do not rotate it accidentally")
@@ -52,18 +52,18 @@ def keygen():
         with os.fdopen(os.open(PRIVATE, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), "w") as stream:
             stream.write(base64.b64encode(key.private_bytes_raw()).decode() + "\n")
     public = base64.b64encode(key.public_key().public_bytes_raw()).decode()
-    if PUBLIC.exists() and PUBLIC.read_text().strip() != public:
+    if PUBLIC.exists() and PUBLIC.read_text(encoding="utf-8").strip() != public:
         raise ValueError("Existing keys do not match")
     PUBLIC.parent.mkdir(parents=True, exist_ok=True)
-    PUBLIC.write_text(public + "\n")
+    PUBLIC.write_text(public + "\n", encoding="utf-8")
     print("Public update key:", public)
     print("Private backup (never commit):", PRIVATE)
 
 
 def notes():
-    parts = [ROOT.joinpath("ACKNOWLEDGEMENTS.md").read_text()]
+    parts = [ROOT.joinpath("ACKNOWLEDGEMENTS.md").read_text(encoding="utf-8")]
     for name in ["LICENSE-Craft-Launcher-MIT.txt", "OFL-Inter.txt", "OFL-GeistMono.txt"]:
-        parts.append(name + "\n\n" + ROOT.joinpath("crates/sevi-ui/assets", name).read_text())
+        parts.append(name + "\n\n" + ROOT.joinpath("crates/sevi-ui/assets", name).read_text(encoding="utf-8"))
     return "\n\n".join(parts)
 
 
