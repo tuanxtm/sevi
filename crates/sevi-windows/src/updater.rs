@@ -374,13 +374,7 @@ pub fn install_pending(at_launch: bool) -> bool {
         forget_pending();
         return false;
     }
-    if at_launch {
-        let installed = run_installer(&path, true);
-        forget_pending();
-        installed
-    } else {
-        let ok = run_installer(&path, true);
-        forget_pending();
-        ok
-    }
+    let installed = run_installer(&path, true);
+    forget_pending();
+    installed
 }
