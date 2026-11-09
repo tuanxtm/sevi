@@ -5,6 +5,7 @@ use sevi_engine::{
     *,
 };
 pub mod check;
+pub mod decisions;
 pub mod prep;
 pub mod rng;
 pub mod rtsim;

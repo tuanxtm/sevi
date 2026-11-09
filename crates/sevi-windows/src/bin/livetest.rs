@@ -131,6 +131,29 @@ mod native {
                     "delete" => key(VK_DELETE.0, false)?,
                     "add" => key(VK_ADD.0, false)?,
                     "caps" => key(VK_CAPITAL.0, false)?,
+                    named if named.starts_with("down:") || named.starts_with("up:") => {
+                        let up = named.starts_with("up:");
+                        let name = named.split_once(':').unwrap().1;
+                        let vk = match name {
+                            "alt" => VK_MENU.0,
+                            "ctrl" => VK_CONTROL.0,
+                            "shift" => VK_SHIFT.0,
+                            value if value.len() == 1 && value.is_ascii() => unsafe {
+                                VkKeyScanW(u16::from(value.as_bytes()[0])) as u16 & 255
+                            },
+                            _ => return Err(format!("unknown held key: {name}")),
+                        };
+                        send(&[input(
+                            vk,
+                            0,
+                            if up {
+                                KEYEVENTF_KEYUP
+                            } else {
+                                KEYBD_EVENT_FLAGS(0)
+                            },
+                        )])?;
+                        pump(30);
+                    }
                     named
                         if named.len() == 4
                             && named.starts_with("num")

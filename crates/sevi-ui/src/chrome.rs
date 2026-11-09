@@ -7,7 +7,6 @@ use sevi_ui_protocol::View;
 use std::sync::Arc;
 
 const CAPTION_W: f32 = 46.;
-const LANGUAGE_W: f32 = 48.;
 const EDGE: f32 = 5.;
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub(crate) enum Caption {
@@ -26,28 +25,21 @@ impl Caption {
         }
     }
 }
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub(crate) enum Action {
-    Language(bool),
-    Caption(Caption),
-}
 pub(crate) struct HeaderLayout {
     pub subtitle: Rect,
-    pub languages: [Rect; 2],
     pub captions: [Rect; 3],
 }
 impl HeaderLayout {
     pub fn new(rect: Rect) -> Self {
-        let x = rect.right() - CAPTION_W * 3. - LANGUAGE_W * 2.;
+        let x = rect.right() - CAPTION_W * 3.;
         let cell = |left: f32, width: f32| {
             Rect::from_min_size(pos2(left, rect.top()), vec2(width, rect.height()))
         };
         Self {
             subtitle: cell(rect.left(), x - rect.left()),
-            languages: [cell(x, LANGUAGE_W), cell(x + LANGUAGE_W, LANGUAGE_W)],
             captions: [
-                cell(x + 2. * LANGUAGE_W, CAPTION_W),
-                cell(x + 2. * LANGUAGE_W + CAPTION_W, CAPTION_W),
+                cell(x, CAPTION_W),
+                cell(x + CAPTION_W, CAPTION_W),
                 cell(rect.right() - CAPTION_W, CAPTION_W),
             ],
         }
@@ -90,13 +82,13 @@ fn centre(ui: &egui::Ui, rect: Rect, galley: Arc<egui::Galley>, color: Color32) 
     ui.painter()
         .galley_with_override_text_color(rect.center() - galley.size() / 2., galley, color);
 }
-pub(crate) fn header(ui: &mut egui::Ui, vietnamese: bool) -> Option<Action> {
+pub(crate) fn header(ui: &mut egui::Ui) -> Option<Caption> {
     let p = Palette::get(ui.ctx());
     let rect = ui.max_rect();
     let layout = HeaderLayout::new(rect);
     let drag = Rect::from_min_max(
         rect.min + vec2(EDGE, EDGE),
-        pos2(layout.languages[0].left(), rect.bottom()),
+        pos2(layout.captions[0].left(), rect.bottom()),
     );
     let response = ui.interact(
         drag,
@@ -111,7 +103,27 @@ pub(crate) fn header(ui: &mut egui::Ui, vietnamese: bool) -> Option<Action> {
             !ui.input(|i| i.viewport().maximized.unwrap_or(false)),
         ));
     }
-    let subtitle = hud(ui, "smart english/vietnamese input", p.muted, false);
+    let mut job = egui::text::LayoutJob::default();
+    for (initial, rest) in [
+        ("S", "MART "),
+        ("E", "NGLISH/"),
+        ("V", "IETNAMESE "),
+        ("I", "NPUT"),
+    ] {
+        for (text, color) in [(initial, p.accent), (rest, p.muted)] {
+            job.append(
+                text,
+                0.,
+                egui::TextFormat {
+                    font_id: FontId::new(theme::HUD_SIZE, theme::mono()),
+                    color,
+                    extra_letter_spacing: theme::HUD_SPACING,
+                    ..Default::default()
+                },
+            );
+        }
+    }
+    let subtitle = ui.painter().layout_job(job);
     let label = Rect::from_min_max(
         layout.subtitle.min + vec2(20., 0.),
         layout.subtitle.max - vec2(16., 0.),
@@ -123,45 +135,6 @@ pub(crate) fn header(ui: &mut egui::Ui, vietnamese: bool) -> Option<Action> {
         p.muted,
     );
     let mut action = None;
-    for (index, (label, vi)) in [("VI", true), ("EN", false)].into_iter().enumerate() {
-        let cell = layout.languages[index];
-        let band = if ui.input(|i| i.viewport().maximized.unwrap_or(false)) {
-            0.
-        } else {
-            EDGE
-        };
-        let response = ui.interact(
-            Rect::from_min_max(cell.min + vec2(0., band), cell.max),
-            ui.scope_id().with(("language", vi)),
-            Sense::click(),
-        );
-        let selected = vietnamese == vi;
-        let (fill, ink) = if selected {
-            (p.invert_bg, p.invert_fg)
-        } else if response.hovered() {
-            (p.sunken, p.strong)
-        } else {
-            (Color32::TRANSPARENT, p.muted)
-        };
-        ui.painter().rect_filled(cell, CornerRadius::ZERO, fill);
-        centre(ui, cell, hud(ui, label, ink, true), ink);
-        ui.painter()
-            .vline(cell.left(), cell.y_range(), p.hairline());
-        response.widget_info(|| {
-            egui::WidgetInfo::selected(
-                egui::Role::Button,
-                true,
-                selected,
-                if vi { "Vietnamese" } else { "English" },
-            )
-        });
-        if response
-            .on_hover_cursor(egui::CursorIcon::PointingHand)
-            .clicked()
-        {
-            action = Some(Action::Language(vi));
-        }
-    }
     let maximized = ui.input(|i| i.viewport().maximized.unwrap_or(false));
     for (rect, caption) in layout.captions.into_iter().zip([
         Caption::Minimize,
@@ -192,7 +165,7 @@ pub(crate) fn header(ui: &mut egui::Ui, vietnamese: bool) -> Option<Action> {
         response
             .widget_info(|| egui::WidgetInfo::labeled(egui::Role::Button, true, caption.label()));
         if response.clicked() {
-            action = Some(Action::Caption(caption));
+            action = Some(caption);
         }
     }
     ui.painter()
@@ -200,6 +173,61 @@ pub(crate) fn header(ui: &mut egui::Ui, vietnamese: bool) -> Option<Action> {
     ui.painter()
         .hline(rect.x_range(), rect.bottom() - 0.5, p.hairline());
     action
+}
+pub(crate) fn language_switch(ui: &mut egui::Ui, vietnamese: bool, height: f32) -> Option<bool> {
+    let p = Palette::get(ui.ctx());
+    let (rect, _) = ui.allocate_exact_size(vec2(ui.available_width(), height), Sense::hover());
+    let mut selected_language = None;
+    for (index, (label, vi)) in [("VIETNAMESE", true), ("ENGLISH", false)]
+        .into_iter()
+        .enumerate()
+    {
+        let cell = Rect::from_min_max(
+            pos2(rect.left() + index as f32 * rect.width() / 2., rect.top()),
+            pos2(
+                rect.left() + (index + 1) as f32 * rect.width() / 2.,
+                rect.bottom(),
+            ),
+        );
+        let response = ui.interact(cell, ui.scope_id().with(("language", vi)), Sense::click());
+        let selected = vietnamese == vi;
+        let (fill, ink) = if selected {
+            (p.invert_bg, p.invert_fg)
+        } else if response.hovered() || response.has_focus() {
+            (p.sunken, p.strong)
+        } else {
+            (p.background, p.muted)
+        };
+        ui.painter().rect_filled(cell, CornerRadius::ZERO, fill);
+        centre(ui, cell, hud(ui, label, ink, true), ink);
+        if response.has_focus() {
+            ui.painter().rect_stroke(
+                cell.shrink(3.),
+                0.,
+                Stroke::new(1., ink),
+                egui::StrokeKind::Inside,
+            );
+        }
+        response.widget_info(|| {
+            egui::WidgetInfo::selected(
+                egui::Role::Button,
+                true,
+                selected,
+                if vi { "Vietnamese" } else { "English" },
+            )
+        });
+        if response
+            .on_hover_cursor(egui::CursorIcon::PointingHand)
+            .clicked()
+        {
+            selected_language = Some(vi);
+        }
+    }
+    ui.painter()
+        .rect_stroke(rect, 0., p.hairline(), egui::StrokeKind::Inside);
+    ui.painter()
+        .vline(rect.center().x, rect.y_range(), p.hairline());
+    selected_language
 }
 fn caption_shapes(rect: Rect, caption: Caption, ink: Color32) -> Vec<egui::Shape> {
     let c = rect.center();
@@ -270,14 +298,9 @@ pub(crate) fn footer(
         }
         x += width + 24.;
     }
-    let version = hud(ui, &format!("SEVI V{version}"), p.muted, false);
-    let version_left = rect.right() - 8. - version.size().x;
-    ui.painter().galley(
-        pos2(version_left, rect.center().y - version.size().y / 2.),
-        version,
-        p.muted,
-    );
-    if !status.is_empty() {
+    let galley = if status.is_empty() {
+        hud(ui, &format!("SEVI V{version}"), p.muted, false)
+    } else {
         let mut job = egui::text::LayoutJob::single_section(
             status.into(),
             egui::TextFormat {
@@ -286,14 +309,18 @@ pub(crate) fn footer(
                 ..Default::default()
             },
         );
-        job.wrap = egui::text::TextWrapping::truncate_at_width((version_left - x - 16.).max(0.));
-        let galley = ui.painter().layout_job(job);
-        ui.painter().galley(
-            pos2(x, rect.center().y - galley.size().y / 2.),
-            galley,
-            p.accent,
-        );
-    }
+        job.wrap = egui::text::TextWrapping::truncate_at_width((rect.right() - 8. - x).max(0.));
+        ui.painter().layout_job(job)
+    };
+    let color = if status.is_empty() { p.muted } else { p.accent };
+    ui.painter().galley(
+        pos2(
+            rect.right() - 8. - galley.size().x,
+            rect.center().y - galley.size().y / 2.,
+        ),
+        galley,
+        color,
+    );
     ui.painter()
         .hline(rect.x_range(), rect.top() + 0.5, p.hairline());
     selected
@@ -382,14 +409,7 @@ mod tests {
         for width in [theme::MAIN_SIZE[0], 900.] {
             let rect = Rect::from_min_size(egui::Pos2::ZERO, vec2(width, theme::HEADER_H));
             let h = HeaderLayout::new(rect);
-            let cells = [
-                h.subtitle,
-                h.languages[0],
-                h.languages[1],
-                h.captions[0],
-                h.captions[1],
-                h.captions[2],
-            ];
+            let cells = [h.subtitle, h.captions[0], h.captions[1], h.captions[2]];
             assert_eq!(cells[0].left(), 0.);
             assert_eq!(cells.last().unwrap().right(), width);
             for cell in cells {

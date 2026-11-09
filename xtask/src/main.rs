@@ -173,7 +173,7 @@ fn main() -> Result {
             if args.get(1).is_some_and(|s| {
                 matches!(
                     s.as_str(),
-                    "build-dict" | "build-bigrams" | "build-teencode" | "keepgen"
+                    "build-dict" | "build-forms" | "build-bigrams" | "build-teencode" | "keepgen"
                 )
             }) && !args.iter().any(|s| s == "--output")
             {
@@ -283,6 +283,10 @@ fn check(update: bool) -> Result {
         "sevi-engine",
         "--package",
         "sevi-runtime",
+        "--package",
+        "sevi-ui",
+        "--package",
+        "sevi-ui-protocol",
         "--package",
         "sevi-windows",
         "--package",

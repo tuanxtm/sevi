@@ -334,12 +334,16 @@ unsafe extern "system" fn keyboard(code: i32, wp: WPARAM, lp: LPARAM) -> LRESULT
         }
         let flags = modifiers();
         h.session.synchronize_modifiers(flags);
+        h.session.log.secure = site::secure();
         if let Some(bit) = keys::modifier(event.vkCode) {
             let r = h.session.modifier(bit, down, now());
             h.effects(r);
             return false;
         }
         if !down {
+            if let Some(key) = keys::engine_key(event.vkCode) {
+                h.session.key_up(key);
+            }
             return false;
         }
         let key = keys::engine_key(event.vkCode);
@@ -351,8 +355,27 @@ unsafe extern "system" fn keyboard(code: i32, wp: WPARAM, lp: LPARAM) -> LRESULT
                 | ((hk & 0x800) >> 11);
             unsafe {
                 if hk != 0 && key == Some(hk & 255) && flags.0 & 15 == hk_flags {
-                    let _ = PostMessageW(Some(h.owner), WM_EMOJI, WPARAM(0), LPARAM(0));
-                } else if event.vkCode == VK_PACKET.0 as u32 {
+                    let result = h
+                        .session
+                        .key_down(key.unwrap(), flags.shift(), flags, now());
+                    h.effects(result);
+                    return true;
+                }
+                h.session.unmodeled_key(false);
+                use sevi_ui_protocol::windows_keys::{PickerKeyRoute, picker_key_route};
+                match picker_key_route(event.vkCode, flags.0) {
+                    PickerKeyRoute::CloseAndPass => {
+                        let picker = h.picker;
+                        h.picker = HWND::default();
+                        h.session.emoji_open = false;
+                        h.session.unmodeled_key(true);
+                        let _ = PostMessageW(Some(picker), WM_EMOJI_CLOSE, WPARAM(0), LPARAM(0));
+                        return false;
+                    }
+                    PickerKeyRoute::Pass => return false,
+                    PickerKeyRoute::Capture => (),
+                }
+                if event.vkCode == VK_PACKET.0 as u32 {
                     let _ = PostMessageW(
                         Some(h.picker),
                         WM_EMOJI_PACKET,
@@ -376,7 +399,6 @@ unsafe extern "system" fn keyboard(code: i32, wp: WPARAM, lp: LPARAM) -> LRESULT
             return false;
         };
         h.current_key = Some((event.vkCode as u16, event.flags.contains(LLKHF_EXTENDED)));
-        h.session.log.secure = site::secure();
         let thread = unsafe { GetWindowThreadProcessId(h.last_foreground, None) };
         let layout = unsafe { GetKeyboardLayout(thread) };
         let primary = layout.0 as usize & 0x3ff;

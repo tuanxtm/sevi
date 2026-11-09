@@ -170,3 +170,53 @@ D56	1	w 	ư 	1	Telex: a lone w is ư
 D58	1	docs 	docs 	0	docs (documentation) in Vietnamese mode stays English (X report, Tony)
 D58	1	xem docs nhes 	xem docs nhé 	1	docs in a Vietnamese sentence
 D58	1	nois docs 	nói dóc 	1	"nói dóc" (to lie) still converts
+D19	1	currentState 	currentState 	0	restore consumed tone key in a lowerCamelCase identifier
+D19	1	currentValue 	currentValue 	0	same identifier shape with a different suffix
+D19	1	dessert 	dessert 	0	keep the typed English word when deleting a letter also gives an English word
+D19	1	mousse 	mousse 	0	do not change one valid English spelling into another after Telex undo
+D19	1	mirrorless 	mirrorless 	0	restore literal keys for a multi-syllable word missing from the dictionary
+OOV-LITERAL	1	Sapa 	Sapa 	0	preserve a multi-syllable literal when the Telex rendering is unlisted
+OOV-LITERAL	1	Momo 	Momo 	0	same structural policy for lowercase or uppercase names
+OOV-LITERAL	1	mawca 	mâc 	1	explicit Telex modifier in an unlisted typo remains Vietnamese
+OOV-LITERAL	1	buwowng 	bương 	1	an unlisted syllable with explicit modifiers remains Vietnamese
+OOV-LITERAL	1	rieetj 	riệt 	1	keep an uncommon Vietnamese syllable
+OOV-LITERAL	1	chijt 	chịt 	1	keep an uncommon Vietnamese syllable with a tone
+OOV-LITERAL	1	hopoj 	hộp 	1	late circumflex modifier
+OOV-LITERAL	1	been Momo 	bên Momo 	0	a new literal name cannot justify rewriting the preceding Vietnamese word
+OOV-LITERAL	1	cuar Sapa 	của Sapa 	0	restore an unknown name without changing the preceding word
+OOV-LITERAL	1	This Samsung TV 	This Samsung TV 	0	keep existing lookback when spelling already provides English evidence
+OOV-LITERAL	1	buwowNg 	bươNg 	1	internal capitals must not bypass an explicit Telex w modifier
+OOV-LITERAL	1	rieeTj 	riệT 	1	internal capitals must not bypass a doubled vowel modifier
+D19	1	currentWindow 	currentWindow 	0	doubled-key literal restoration still accepts an internal capital with w
+OOV-LITERAL	1	hiszuf 	hìu 	1	tone removal between vowels is not a literal-word boundary
+OOV-LITERAL	1	hiszuf,	hìu,	1	same tone edit before punctuation
+OOV-LITERAL	1	hiszuf|	hìu|	1	same tone edit before Enter
+OOV-LITERAL	1	hiszuf <	hìu	1	Backspace after the boundary keeps the edited Vietnamese syllable
+OOV-LITERAL	1	amazing 	amazing 	0	a recognized English word containing z still restores
+OOV-LITERAL	1	organize 	organize 	0	known English restoration with z remains unchanged
+OOV-LITERAL	1	pizza 	pizza 	1	literal z letters remain in the output
+OOV-LITERAL	1	azure 	azure 	1	z between vowels is retained when it is a literal letter
+D19	1	curarize 	curarize 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	Curarize 	Curarize 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	deferrize 	deferrize 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	Deferrize 	Deferrize 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	horrorize 	horrorize 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	Horrorize 	Horrorize 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	mirrorize 	mirrorize 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	Mirrorize 	Mirrorize 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	sarrazin 	sarrazin 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	Sarrazin 	Sarrazin 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	sororize 	sororize 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	Sororize 	Sororize 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	terrazzo 	terrazzo 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	Terrazzo 	Terrazzo 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	terrorizer 	terrorizer 	0	z remains literal evidence after a doubled-key switch to English
+D19	1	Terrorizer 	Terrorizer 	0	z remains literal evidence after a doubled-key switch to English
+D60	0	this get resets 	this get resets 	0	EN mode: resets is a real form of an English word (SCOWL), though the frequency list has only reset; never rêts (Tony's report)
+D60	1	resets 	resets 	0	VN mode: the doubled s ends as the English word, not reets (D19: the dictionary decides at the end)
+D60	1	resizes 	resizes 	0	plural/verb forms the frequency list misses are English
+D60	1	quests 	quests 	0	quests, not quets
+D60	1	chi phis 	chi phí 	1	never when the letters are a Vietnamese word: phis (Greek letters) is phí
+D60	0	chi phis 	chi phí 	1	same in EN mode
+D60	1	thans 	thán 	1	a guessed form that isn't a real English word stays Vietnamese
+D60	0	crypto nos volatile 	crypto nó volatile 	1	words already in the frequency list keep their own score: D22's nos -> nó stays

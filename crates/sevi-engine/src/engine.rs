@@ -1244,6 +1244,36 @@ fn vowel_groups(keys: &[u32]) -> usize {
     }
     n
 }
+fn has_internal_capital(keys: &[u32]) -> bool {
+    keys.windows(2)
+        .any(|pair| pair[1] & CAPS_MASK != 0 && pair[0] & CAPS_MASK == 0)
+}
+fn has_separated_vowels(keys: &[u32], telex_tone_edits: bool) -> bool {
+    let (mut saw_vowel, mut after_consonant) = (false, false);
+    for key in keys {
+        if let Some(c) = letter(*key) {
+            if b"aeiouy".contains(&c) {
+                if after_consonant {
+                    return true;
+                }
+                saw_vowel = true;
+            } else if saw_vowel && !b"sfrxjw".contains(&c) && (c != b'z' || !telex_tone_edits) {
+                after_consonant = true;
+            }
+        }
+    }
+    false
+}
+fn has_literal_word_shape(keys: &[u32], telex_tone_edits: bool) -> bool {
+    // Explicit modifiers protect unlisted Vietnamese, even with internal capitals.
+    if keys.windows(2).any(|pair| {
+        letter(pair[1])
+            .is_some_and(|c| c == b'w' || (letter(pair[0]) == Some(c) && b"aeod".contains(&c)))
+    }) {
+        return false;
+    }
+    has_internal_capital(keys) || has_separated_vowels(keys, telex_tone_edits)
+}
 fn ratio(vn: i32, en: i32, min: i32, weight: f32) -> i32 {
     if vn + en < min {
         return 0;
@@ -1255,6 +1285,17 @@ fn ratio(vn: i32, en: i32, min: i32, weight: f32) -> i32 {
 }
 
 impl Engine {
+    pub fn english_score(&self, word: &str) -> i32 {
+        let score = data::EN.score(word.as_bytes());
+        if score == MISSING
+            && self.vietnamese_score(word) == MISSING
+            && data::EN_FORMS.contains(word.as_bytes())
+        {
+            data::EN_FORM_SCORE
+        } else {
+            score
+        }
+    }
     pub fn vietnamese_score(&self, word: &str) -> i32 {
         let score = data::VN.score(word.as_bytes());
         if score == MISSING && self.config.teencode {
@@ -1341,7 +1382,7 @@ impl Engine {
             return (MISSING, vec![]);
         }
         if !vietnamese {
-            let s = data::EN.score(word.as_bytes());
+            let s = self.english_score(word);
             return (
                 s,
                 if s == MISSING {
@@ -1464,7 +1505,7 @@ impl Engine {
         }
         out
     }
-    fn restore_english_core(&mut self) -> bool {
+    fn restore_english_core(&mut self, literal_only: &mut bool) -> bool {
         if !self.config.auto_switch
             || !self.word_start_ok
             || self.state_index < 2
@@ -1482,7 +1523,7 @@ impl Engine {
             self.spelling(true);
             let invalid = self.temp_disable;
             self.temp_disable = saved;
-            if raw_word(&full).is_some_and(|raw| data::EN.score(raw.as_bytes()) != MISSING)
+            if raw_word(&full).is_some_and(|raw| self.english_score(&raw) != MISSING)
                 && normalized.as_ref().is_none_or(|(word, t)| {
                     !*t || invalid || self.vietnamese_score(word) == MISSING
                 })
@@ -1500,7 +1541,7 @@ impl Engine {
         if !transformed {
             if raw
                 .as_ref()
-                .is_some_and(|r| r != &word && data::EN.score(r.as_bytes()) != MISSING)
+                .is_some_and(|r| r != &word && self.english_score(r) != MISSING)
             {
                 return true;
             }
@@ -1514,11 +1555,11 @@ impl Engine {
                 return false;
             }
             return raw.as_ref().is_some_and(|r| {
-                data::EN.score(r.as_bytes()) != MISSING && self.vietnamese_score(r) == MISSING
+                self.english_score(r) != MISSING && self.vietnamese_score(r) == MISSING
             });
         }
         let Some(raw) = raw else { return false };
-        let mut en = data::EN.score(raw.as_bytes());
+        let mut en = self.english_score(&raw);
         let vn = self.vietnamese_score(&word);
         if self.capitals.is_some()
             && vn != MISSING
@@ -1554,7 +1595,7 @@ impl Engine {
             return true;
         }
         if en == MISSING && self.apostrophe && raw.len() >= 3 && raw.ends_with('n') {
-            en = data::EN.score(&raw.as_bytes()[..raw.len() - 1])
+            en = self.english_score(&raw[..raw.len() - 1])
         }
         if en == MISSING {
             if AS_RESTORE_UNKNOWN <= 0
@@ -1575,7 +1616,11 @@ impl Engine {
             self.spelling(true);
             let invalid = self.temp_disable;
             self.temp_disable = saved;
-            return invalid;
+            if invalid {
+                return true;
+            }
+            *literal_only = has_literal_word_shape(&self.states[..self.state_index], true);
+            return *literal_only;
         }
         if (self.bigram_weight > 0.0 || self.trigrams.is_some())
             && vn != MISSING
@@ -1612,8 +1657,9 @@ impl Engine {
         }
         vn == MISSING || (vn < AS_VN_FLOOR && en - vn >= AS_PREFER) || en - vn >= AS_VN_EXTREME
     }
-    fn should_restore_english(&mut self) -> bool {
-        if !self.restore_english_core() {
+    fn should_restore_english(&mut self, literal_only: &mut bool) -> bool {
+        *literal_only = false;
+        if !self.restore_english_core(literal_only) {
             return false;
         }
         if !self.drops.is_empty()
@@ -1623,7 +1669,7 @@ impl Engine {
             let full = self.full_states(MAX_BUFF - 1);
             if vowel_groups(&full) >= 2
                 && raw_word(&self.states[..self.state_index])
-                    .is_none_or(|r| data::EN.score(r.as_bytes()) == MISSING)
+                    .is_none_or(|r| self.english_score(&r) == MISSING)
             {
                 self.states[..full.len()].copy_from_slice(&full);
                 self.state_index = full.len();
@@ -1681,7 +1727,7 @@ impl Engine {
             && self.state_index >= self.index
             && let (Some((word, t)), Some(raw)) = (self.word_key(), raw_word(&w.raw))
         {
-            w.en = data::EN.score(raw.as_bytes());
+            w.en = self.english_score(&raw);
             if t {
                 w.vn = self.vietnamese_score(&word);
                 w.lookback_ok =
@@ -1694,7 +1740,7 @@ impl Engine {
         self.previous.insert(0, w);
         self.previous.truncate(AS_LOOKBACK_WORDS);
     }
-    fn restore_english(&mut self, code: HookCode) {
+    fn restore_english(&mut self, code: HookCode, literal_only: bool) {
         self.restored_keys.clear();
         if self.state_index > 0 && self.state_index < MAX_BUFF {
             self.restored_keys
@@ -1702,7 +1748,8 @@ impl Engine {
         }
         let (mut back, mut n, mut delete) = (0, self.state_index, self.index);
         let acronym = !few_capitals(&self.states[..self.state_index]);
-        while !acronym
+        while !literal_only
+            && !acronym
             && back < self.previous.len()
             && self.previous[back].lookback_ok
             && n + self.previous[back].raw.len() + 1 < MAX_BUFF
@@ -1753,7 +1800,7 @@ impl Engine {
         if !few_capitals(keys) && !all_caps {
             return false;
         }
-        let en = data::EN.score(raw.as_bytes());
+        let en = self.english_score(&raw);
         let (vn, result, _, states) = self.replay(keys);
         let mut pair = 0;
         if (self.bigram_weight > 0.0 || self.trigrams.is_some())
@@ -1811,7 +1858,7 @@ impl Engine {
             && cap < AS_CAP_MARGIN
             && let Some(p) = raw_word(&previous[0])
         {
-            let pen = data::EN.score(p.as_bytes());
+            let pen = self.english_score(&p);
             let (pvn, _, _, _) = self.replay(&previous[0]);
             if pen != MISSING && (pvn == MISSING || pen - pvn >= AS_PREFER) {
                 return false;
@@ -1825,7 +1872,7 @@ impl Engine {
             if pc < 2 || !few_capitals(pk) {
                 break;
             }
-            let pen = data::EN.score(p.as_bytes());
+            let pen = self.english_score(&p);
             let (pvn, mut text, changed, _) = self.replay(pk);
             if !changed {
                 if pen != MISSING || self.vietnamese_score(&p) == MISSING {
@@ -1891,12 +1938,18 @@ impl Engine {
             return false;
         };
         let (en_full, en_single) = (
-            data::EN.score(raw_full.as_bytes()) != MISSING,
-            data::EN.score(raw_single.as_bytes()) != MISSING,
+            self.english_score(&raw_full) != MISSING,
+            self.english_score(&raw_single) != MISSING,
         );
         let fixed = if self.double_both && !en_full && en_single {
             &single
-        } else if !self.double_both && !en_single && (en_full || !few_capitals(&full)) {
+        } else if !self.double_both
+            && (en_full
+                || (!en_single
+                    && (!few_capitals(&full)
+                        || has_internal_capital(&full)
+                        || has_literal_word_shape(&full, false))))
+        {
             &full
         } else {
             return false;
@@ -1923,7 +1976,7 @@ impl Engine {
             return -1;
         }
         let Some(raw) = raw_word(keys) else { return -1 };
-        let en = data::EN.score(raw.as_bytes());
+        let en = self.english_score(&raw);
         let (vn, _, _, _) = self.replay(keys);
         if en != MISSING && vn == MISSING {
             0
@@ -2032,6 +2085,7 @@ impl Engine {
         self.nav = None;
         self.nav_offset = 0;
         let is_caps = caps == 1 || caps == 2;
+        let mut literal_only = false;
         if (is_number(key) && caps == 1)
             || control
             || self.is_break(event, key)
@@ -2044,7 +2098,7 @@ impl Engine {
             self.apostrophe = key == KEY_QUOTE && caps != 1;
             let switch = (self.switch_break(event, key, caps, control)
                 && self.space_count == 0
-                && self.should_restore_english())
+                && self.should_restore_english(&mut literal_only))
                 || (key == KEY_MINUS
                     && caps != 1
                     && !control
@@ -2052,7 +2106,7 @@ impl Engine {
                     && self.hyphen_restore());
             self.apostrophe = false;
             if switch {
-                self.restore_english(HookCode::RestoreAndReset)
+                self.restore_english(HookCode::RestoreAndReset, literal_only)
             } else if self.config.restore_if_invalid && self.is_break(event, key) {
                 if !self.temp_disable && self.config.spelling {
                     self.spelling(true)
@@ -2089,8 +2143,8 @@ impl Engine {
             if !self.temp_disable && self.config.spelling {
                 self.spelling(true)
             }
-            if self.should_restore_english() {
-                self.restore_english(HookCode::Restore);
+            if self.should_restore_english(&mut literal_only) {
+                self.restore_english(HookCode::Restore, literal_only);
                 self.space_count += 1
             } else if self.config.restore_if_invalid && self.temp_disable {
                 if !self.restore_invalid(HookCode::Restore) {
@@ -2204,7 +2258,7 @@ impl Engine {
                             .find(|&i| self.states[i] & CHAR_MASK == key);
                         let both = first.is_none()
                             || raw_word(&self.states[..self.state_index])
-                                .is_some_and(|r| data::EN.score(r.as_bytes()) != MISSING);
+                                .is_some_and(|r| self.english_score(&r) != MISSING);
                         self.hook.backspaces = self.index;
                         self.hook.new_chars = 0;
                         for i in (0..self.state_index - 1).rev() {

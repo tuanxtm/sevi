@@ -8,6 +8,7 @@ exclusive tools are outside this migration.
 | Command | Existing task |
 |---|---|
 | `build-dict` | Blend word frequencies, spelling acceptance and overrides |
+| `build-forms <SCOWL-directory>` | Expand the supplied en_US Hunspell dictionary with `unmunch`, keeping only missing forms of listed English base words; refresh frozen Rust data unless `--output` is supplied |
 | `build-bigrams` | Generate scored word pairs |
 | `build-teencode` | Generate teencode forms and frequencies |
 | `keepgen <word-file>` | Generate protected-word data |
@@ -40,6 +41,11 @@ mkdir -p target
 cargo run --release -p sevi-test-tools --bin prep -- Tools/autoswitch/sim/corpus/chat_messages.txt > target/chat.units
 cargo run --release -p sevi-test-tools --bin sim -- target/chat.units --lazy
 ```
+
+`cargo xtask check` also audits historical decisions against tagged rules and the
+Rust references in `Tools/autoswitch/rules/decisions.tsv`.
+`cargo run -p sevi-test-tools --bin sevi-test-tools -- decisions` runs that audit alone. Explicit `open` entries report native-acceptance
+gaps; `none` entries record removed, rejected or mobile-only behavior.
 
 Dictionary/corpus tools retain the original private-data defaults. Use `--data`
 or `SEVI_DATA`, `--source` and `--output` for project-owned fixtures. Default

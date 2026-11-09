@@ -164,6 +164,33 @@ pub(super) fn run() -> glib::ExitCode {
                                     delay(600).await;
                                 } else if command == "wait" {
                                     delay(1500).await;
+                                } else if command.starts_with("down:")
+                                    || command.starts_with("up:")
+                                    || command.starts_with("keydown ")
+                                    || command.starts_with("keyup ")
+                                {
+                                    let (operation, key) = if let Some(key) = command
+                                        .strip_prefix("down:")
+                                        .or_else(|| command.strip_prefix("keydown "))
+                                    {
+                                        ("keydown", key)
+                                    } else {
+                                        (
+                                            "keyup",
+                                            command
+                                                .strip_prefix("up:")
+                                                .or_else(|| command.strip_prefix("keyup "))
+                                                .unwrap(),
+                                        )
+                                    };
+                                    let key = match key {
+                                        "alt" => "Alt_L",
+                                        "ctrl" => "Control_L",
+                                        "shift" => "Shift_L",
+                                        key => key,
+                                    };
+                                    xdo(&[operation, key]).await;
+                                    delay(300).await;
                                 } else {
                                     let mapped = match command.as_str() {
                                         "num1" => "KP_1",

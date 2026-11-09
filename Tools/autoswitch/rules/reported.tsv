@@ -21,3 +21,4 @@ R17	2026-10-30	D48	fixed	1	la vowis os 	la với ó 	1	"la với ó" gave "la v�
 R18	2026-10-30	D49	fixed	1	xin #hello#<s	xin hells	1	"xin ⌥Z hello ⌥Z ⌫ s" gave "xin heín"
 R19	2026-10-31	D53	fixed	1	zui zer 	zui zẻ 	1	teencode chat spelling ("zui zẻ", "zậy", "gòy", "thík") was put back to its keys
 R20	2026-11-02	D58	fixed	1	docs 	docs 	0	"docs" gave "dóc" (X user report via Tony)
+R21	2026-11-08	D60	fixed	0	this get resets 	this get resets 	0	"typing 'this get resets ' turns into 'this get rêts '" (macOS)

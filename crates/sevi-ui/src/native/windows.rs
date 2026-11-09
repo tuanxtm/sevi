@@ -125,7 +125,7 @@ unsafe extern "system" fn proc(
     let state = unsafe { &mut *(data as *mut Data) };
     let mut input = None;
     if msg == CLOSE {
-        input = Some(PickerInput::Escape);
+        input = Some(PickerInput::Close);
     }
     if msg == PACKET {
         let unit = wp.0 as u16;
@@ -157,18 +157,12 @@ unsafe extern "system" fn proc(
             0x27 => Some(PickerInput::Move { dx: 1, dy: 0 }),
             0x26 => Some(PickerInput::Move { dx: 0, dy: -1 }),
             0x28 => Some(PickerInput::Move { dx: 0, dy: 1 }),
-            0x41 if ctrl => Some(PickerInput::SelectAll),
-            0x56 if ctrl => Some(PickerInput::Paste),
-            _ if !ctrl && !alt && flags & 8 == 0 => unsafe {
+            0x41 if ctrl && !alt => Some(PickerInput::SelectAll),
+            0x56 if ctrl && !alt => Some(PickerInput::Paste),
+            _ if sevi_ui_protocol::windows_keys::translation_state(flags).is_some() => unsafe {
                 let thread = GetWindowThreadProcessId(GetForegroundWindow(), None);
                 let layout = GetKeyboardLayout(thread);
-                let mut keys = [0u8; 256];
-                if flags & 1 != 0 {
-                    keys[VK_SHIFT.0 as usize] = 0x80;
-                }
-                if flags & 16 != 0 {
-                    keys[VK_CAPITAL.0 as usize] = 1;
-                }
+                let keys = sevi_ui_protocol::windows_keys::translation_state(flags).unwrap();
                 let mut text = [0u16; 8];
                 let n = ToUnicodeEx(
                     u32::from(vk),

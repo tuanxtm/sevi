@@ -6,7 +6,7 @@ use std::{
     io::{self, BufRead, Write},
 };
 
-pub const VERSION: u32 = 1;
+pub const VERSION: u32 = 2;
 pub const MAX_MESSAGE: usize = 2 * 1024 * 1024;
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
@@ -183,12 +183,20 @@ pub enum UiCommand {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub enum PickerInput {
     Text(String),
-    Backspace { word: bool, all: bool },
+    Backspace {
+        word: bool,
+        all: bool,
+    },
     SelectAll,
     Paste,
-    Move { dx: i32, dy: i32 },
+    Move {
+        dx: i32,
+        dy: i32,
+    },
     Enter,
     Escape,
+    /// Outside clicks and OS shortcuts dismiss immediately, even with search text.
+    Close,
 }
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub enum UiEvent {
@@ -202,6 +210,7 @@ pub enum UiEvent {
 }
 
 pub mod host;
+pub mod windows_keys;
 
 pub fn read<T: serde::de::DeserializeOwned>(reader: &mut impl BufRead) -> io::Result<Option<T>> {
     let mut bytes = Vec::new();

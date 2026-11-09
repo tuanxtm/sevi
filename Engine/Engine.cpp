@@ -12,6 +12,7 @@
 #include <cmath>
 #include <list>
 #include "AutoSwitchData.h"
+#include "EnglishFormsData.h"
 #include "BigramData.h"
 #include <string>
 #include <unordered_map>
@@ -1368,8 +1369,29 @@ static inline int asVietnameseScore(const char* key) {
     return v;
 }
 
-static inline int asEnglishScore(const char* word) {
+static inline int asEnglishLookup(const char* word) {
     return asLookup(kAutoSwitchEnWords, kAutoSwitchEnOffsets, kAutoSwitchEnScores, kAutoSwitchEnCount, word);
+}
+
+/** A real English word form the list (subtitles) is missing: "resets", "quests" (D60; SCOWL en_US forms,
+ *  Tools/autoswitch/build_forms.py). It counts as English, rarer than every listed word, and never when its
+ *  letters are a Vietnamese word: "phis" (Greek letters) is phí. */
+#define AS_EN_FORM_SCORE (-8)
+static int asEnglishForm(const char* word) {
+    if (asVietnameseScore(word) != AS_MISSING) return AS_MISSING;
+    int lo = 0, hi = kEnglishFormsCount - 1;
+    while (lo <= hi) {
+        int mid = (lo + hi) >> 1;
+        int c = strcmp(kEnglishFormsWords + kEnglishFormsOffsets[mid], word);
+        if (c == 0) return AS_EN_FORM_SCORE;
+        if (c < 0) lo = mid + 1; else hi = mid - 1;
+    }
+    return AS_MISSING;
+}
+
+static inline int asEnglishScore(const char* word) {
+    int s = asEnglishLookup(word);
+    return s != AS_MISSING ? s : asEnglishForm(word);
 }
 
 /** Normalized key of the word in TypingWord; transformed = it has a tone, ^, w-horn/breve or đ. */
@@ -1630,7 +1652,45 @@ static int asStatesWithDrops(Uint32* full, const int& maxN) {
     return n;
 }
 
-static bool asShouldRestoreToEnglishCore() {
+// A case boundary inside the typed word is evidence for an identifier.
+static bool asHasInternalCapital(const Uint32* keys, int count) {
+    for (int i = 1; i < count; ++i)
+        if ((keys[i] & CAPS_MASK) && !(keys[i-1] & CAPS_MASK)) return true;
+    return false;
+}
+
+// A single Vietnamese syllable has one vowel nucleus. Ignore keys that
+// can be Telex modifiers (including z to remove a tone), so editing
+// a tone does not create a false boundary between vowel groups. In the
+// English doubled-key path, z remains literal evidence rather than an edit.
+static bool asHasSeparatedVowels(const Uint32* keys, int count, bool telexToneEdits) {
+    bool sawVowel = false, afterConsonant = false;
+    for (int i = 0; i < count; ++i) {
+        const char c = asLetterOf(keys[i]);
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y') {
+            if (afterConsonant) return true;
+            sawVowel = true;
+        } else if (sawVowel && c && c != 's' && c != 'f' && c != 'r' &&
+                   c != 'x' && c != 'j' && c != 'w' && (c != 'z' || !telexToneEdits)) {
+            afterConsonant = true;
+        }
+    }
+    return false;
+}
+
+// Classify an unlisted literal only after excluding explicit Telex modifiers.
+static bool asHasLiteralWordShape(const Uint32* keys, int count, bool telexToneEdits) {
+    // Explicit Telex modifiers remain evidence for an unlisted Vietnamese
+    // syllable or a Vietnamese typo, even with a late modifier ("mawca").
+    for (int i = 1; i < count; ++i) {
+        const char c = asLetterOf(keys[i]), previous = asLetterOf(keys[i-1]);
+        if (c == 'w' || (c == previous && (c == 'a' || c == 'e' || c == 'o' || c == 'd')))
+            return false;
+    }
+    return asHasInternalCapital(keys, count) || asHasSeparatedVowels(keys, count, telexToneEdits);
+}
+
+static bool asShouldRestoreToEnglishCore(bool& literalOnly) {
     if (!asEnabled() || !_asWordStartOk) return false;
     asInitLetters();
     if (_stateIndex < 2 || _stateIndex < _index) return false;
@@ -1730,12 +1790,17 @@ static bool asShouldRestoreToEnglishCore() {
         if (vowelGroups <= 1)
             for (int x = 0; x < _index; x++) if (TypingWord[x] & (TONE_MASK | TONEW_MASK)) return false;
 #endif
-        //rare but valid syllables (riệt, chịt) are not in the list: require the spelling rules to fail too
+        // Restore an unknown literal only with positive evidence: the
+        // rendered spelling fails, or the original looks like a multi-syllable
+        // word or identifier. Recognized Vietnamese is handled above.
+        // Rare but valid syllables (riệt, chịt) may be absent from the list.
         bool savedTemp = tempDisableKey;
         checkSpelling(true);
         bool invalid = tempDisableKey;
         tempDisableKey = savedTemp;
-        return invalid;
+        if (invalid) return true;
+        literalOnly = asHasLiteralWordShape(KeyStates, _stateIndex, true);
+        return literalOnly;
     }
 #else
     if (en == AS_MISSING) return false;
@@ -1765,8 +1830,9 @@ static bool asShouldRestoreToEnglishCore() {
 
 /** Whether to put the word back to the keys typed. A foreign word restored as typed gets back the keys
  *  Telex undid on the way too ("deepseek", not "deepsek"); a known English word without them stays. */
-static bool asShouldRestoreToEnglish() {
-    if (!asShouldRestoreToEnglishCore()) return false;
+static bool asShouldRestoreToEnglish(bool& literalOnly) {
+    literalOnly = false;
+    if (!asShouldRestoreToEnglishCore(literalOnly)) return false;
     if (_asDropN > 0 && _stateIndex >= 3 && _stateIndex + _asDropN < MAX_BUFF - 1) {
         char raw[AS_KEY_LEN];
         Uint32 full[MAX_BUFF];
@@ -1802,7 +1868,7 @@ static bool asHyphenRestore() {
 bool vAutoSwitchPrevRestored = false;        //previous[0] of the next English-word check is a word auto switch put back to English
 Uint32 vAutoSwitchRestoredKeys[MAX_BUFF];   //the keys of the word just put back to English (D35: a later word can look back on it)
 int vAutoSwitchRestoredCount = 0;
-static void asRestoreToEnglish(const int& handleCode) {
+static void asRestoreToEnglish(const int& handleCode, bool literalOnly) {
     vAutoSwitchRestoredCount = 0;
     if (_stateIndex > 0 && _stateIndex < MAX_BUFF) {
         memcpy(vAutoSwitchRestoredKeys, KeyStates, _stateIndex * sizeof(Uint32));
@@ -1813,7 +1879,7 @@ static void asRestoreToEnglish(const int& handleCode) {
     //words before ("bên ASL", "của USA" stay Vietnamese: Tony, D42)
     int back = 0, newCount = _stateIndex, deleteCount = _index;
     bool acronym = !asFewCapitals(KeyStates, _stateIndex);
-    while (!acronym && back < _asPrevCount && _asPrev[back].lookbackOk &&
+    while (!literalOnly && !acronym && back < _asPrevCount && _asPrev[back].lookbackOk &&
            newCount + _asPrev[back].rawCount + 1 < MAX_BUFF && deleteCount + _asPrev[back].shownCount + 1 < MAX_BUFF) {
         newCount += _asPrev[back].rawCount + 1;
         deleteCount += _asPrev[back].shownCount + 1;
@@ -2104,6 +2170,7 @@ void vKeyHandleEvent(const vKeyEvent& event,
     _appendedStandalone = false;
     _isCaps = (capsStatus == 1 || //shift
                capsStatus == 2); //caps lock
+    bool literalOnly = false;
     if ((IS_NUMBER_KEY(data) && capsStatus == 1)
         || otherControlKey || isWordBreak(event, state, data) || (IS_NUMBER_KEY(data) && (_index == 0 || _spaceCount > 0))) {   //a digit after a space starts a new word: "mua 1casi" -> "1cái" (D33); glued to letters (abc1def) it stays part of them
         hCode = vDoNothing;
@@ -2114,11 +2181,11 @@ void vKeyHandleEvent(const vKeyEvent& event,
         _asApostrophe = data == KEY_QUOTE && capsStatus != 1;
         //after a space the word was already checked at the space: a later ( . , etc. must not reach back over the space
         //("zẻo" space "(" gave "zzero(", D53; same as the hyphen in D52)
-        bool asSwitch = (asIsSwitchBreak(event, data, capsStatus, otherControlKey) && _spaceCount == 0 && asShouldRestoreToEnglish()) ||
+        bool asSwitch = (asIsSwitchBreak(event, data, capsStatus, otherControlKey) && _spaceCount == 0 && asShouldRestoreToEnglish(literalOnly)) ||
                         (data == KEY_MINUS && capsStatus != 1 && !otherControlKey && _spaceCount == 0 && asHyphenRestore());   //a hyphen after a space isn't part of the word ("wr -" gave "wr wr-", D52)
         _asApostrophe = false;
         if (asSwitch) {
-            asRestoreToEnglish(vRestoreAndStartNewSession); //auto switch: an English word typed in Vietnamese mode
+            asRestoreToEnglish(vRestoreAndStartNewSession, literalOnly); //auto switch: an English word typed in Vietnamese mode
         } else if (vRestoreIfWrongSpelling && isWordBreak(event, state, data)) { //restore key if wrong spelling with break-key
             if (!tempDisableKey && vCheckSpelling) {
                 checkSpelling(true); //force check spelling
@@ -2158,8 +2225,8 @@ void vKeyHandleEvent(const vKeyEvent& event,
         if (!tempDisableKey && vCheckSpelling) {
             checkSpelling(true); //force check spelling
         }
-        if (asShouldRestoreToEnglish()) { //auto switch: an English word typed in Vietnamese mode
-            asRestoreToEnglish(vRestore);
+        if (asShouldRestoreToEnglish(literalOnly)) { //auto switch: an English word typed in Vietnamese mode
+            asRestoreToEnglish(vRestore, literalOnly);
             _spaceCount++;
         } else if (vRestoreIfWrongSpelling && tempDisableKey) { //restore key if wrong spelling
             if (!checkRestoreIfWrongSpelling(vRestore)) {
@@ -2342,8 +2409,17 @@ bool vAutoSwitchFixDoubledKey(const Uint32* keys, const int& count) {
     const Uint32* fixed;
     int fixedCount;
     if (_asDoubleBoth && !enFull && enSingle) { fixed = single; fixedCount = m; }            //"mixx" -> "mix"
-    else if (!_asDoubleBoth && enFull && !enSingle) { fixed = full; fixedCount = total; }   //"terible" -> "terrible"
-    else if (!_asDoubleBoth && !enSingle && !asFewCapitals(full, total)) { fixed = full; fixedCount = total; }   //ASUS, not "AUS"
+    else if (!_asDoubleBoth &&
+             (enFull || (!enSingle && (!asFewCapitals(full, total) ||
+                                       asHasInternalCapital(full, total) ||
+                                       asHasLiteralWordShape(full, total, false))))) {
+        // Keep a recognized literal even when deleting the key also spells
+        // an English word. For unknown words require structural evidence.
+        // This path already undid a doubled key into English; retain case
+        // evidence here even when the identifier also contains a Telex key.
+        fixed = full;
+        fixedCount = total;
+    }
     else return false;
     if (fixedCount < 1) return false;
     vAutoSwitchUndoCount = 0;   //Backspace right after puts back what was on screen

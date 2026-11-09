@@ -2,7 +2,9 @@
 use crate::{
     host,
     prefs::{self, RegistryPreferences},
-    shared_ui, site, ui, updater, wide,
+    shared_ui, site,
+    tray_click::TrayClick,
+    ui, updater, wide,
 };
 use sevi_engine::Language;
 use sevi_runtime::prefs::Preferences;
@@ -14,7 +16,10 @@ use windows::{
             LibraryLoader::GetModuleHandleW,
             Threading::{CreateMutexW, ReleaseMutex},
         },
-        UI::{Controls::*, HiDpi::*, Shell::*, WindowsAndMessaging::*},
+        UI::{
+            Controls::*, HiDpi::*, Input::KeyboardAndMouse::GetDoubleClickTime, Shell::*,
+            WindowsAndMessaging::*,
+        },
     },
     core::{PCWSTR, w},
 };
@@ -27,12 +32,14 @@ const UPDATE: usize = 104;
 const ABOUT: usize = 107;
 const QUIT: usize = 108;
 const GUIDE: usize = 110;
+const TIMER_TRAY_CLICK: usize = 3;
 struct App {
     window: HWND,
     notification: NOTIFYICONDATAW,
     vi: HICON,
     en: HICON,
     taskbar_created: u32,
+    click: TrayClick,
 }
 thread_local! {static APP:RefCell<Option<App>>=const{RefCell::new(None)};}
 fn state<T: Default>(f: impl FnOnce(&mut App) -> T) -> T {
@@ -148,7 +155,17 @@ unsafe extern "system" fn proc(h: HWND, m: u32, w: WPARAM, l: LPARAM) -> LRESULT
         match m {
             WM_TRAY => {
                 match (l.0 & 65535) as u32 {
-                    WM_LBUTTONUP => shared_ui::open(sevi_ui_protocol::View::Settings),
+                    WM_LBUTTONDOWN => state(|a| a.click.press()),
+                    WM_LBUTTONUP if state(|a| a.click.release()) => {
+                        // Wait only for the OS double-click interval. This
+                        // timer never runs on the keyboard hook path.
+                        SetTimer(Some(h), TIMER_TRAY_CLICK, GetDoubleClickTime(), None);
+                    }
+                    WM_LBUTTONDBLCLK => {
+                        let _ = KillTimer(Some(h), TIMER_TRAY_CLICK);
+                        state(|a| a.click.double_click());
+                        shared_ui::open(sevi_ui_protocol::View::Settings);
+                    }
                     WM_RBUTTONUP | WM_CONTEXTMENU => menu(),
                     _ => (),
                 }
@@ -219,6 +236,13 @@ unsafe extern "system" fn proc(h: HWND, m: u32, w: WPARAM, l: LPARAM) -> LRESULT
             }
             WM_TIMER if w.0 == 2 => {
                 shared_ui::tick();
+                return LRESULT(0);
+            }
+            WM_TIMER if w.0 == TIMER_TRAY_CLICK => {
+                let _ = KillTimer(Some(h), TIMER_TRAY_CLICK);
+                if state(|a| a.click.expire()) {
+                    host::set_language(host::language().toggled(), true);
+                }
                 return LRESULT(0);
             }
             WM_SETTINGCHANGE | WM_DISPLAYCHANGE | WM_DPICHANGED => {
@@ -334,6 +358,7 @@ pub fn run() -> windows::core::Result<()> {
                 vi,
                 en,
                 taskbar_created: RegisterWindowMessageW(w!("TaskbarCreated")),
+                click: TrayClick::default(),
             })
         });
         if let Err(e) = host::start(window) {

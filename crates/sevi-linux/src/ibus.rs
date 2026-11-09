@@ -464,11 +464,16 @@ unsafe extern "C" fn process(engine: *mut Engine, keyval: u32, _keycode: u32, fl
             return 0;
         }
         if release {
+            if let Some((key, _)) = keys::engine_key(keyval) {
+                a.session.key_up(key);
+            }
             return 0;
         }
         let (mut purpose, mut hints) = (0, 0);
         unsafe { ibus_engine_get_content_type(engine, &mut purpose, &mut hints) }
         if purpose == 8 || purpose == 9 {
+            a.session.synchronize_modifiers(keys::flags(flags));
+            a.session.unmodeled_key(false);
             a.flush_pre();
             return 0;
         }

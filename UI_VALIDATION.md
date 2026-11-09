@@ -14,20 +14,42 @@ emoji popup is 430 × 430. Settings have no scroll area; Help, About, credits an
 long application lists can scroll.
 UI fonts are embedded Inter and Geist Mono; colored emoji use the system font.
 The title bar is 48 logical pixels high and the footer is 34; both meet the window
-edges. VI/EN uses inverted square header cells. Caption icons are painted vectors.
+edges. VIETNAMESE/ENGLISH uses two equal inverted square cells spanning the ACTIVE INPUT
+section. The switch top matches the Enable emoji picker checkbox top; its bottom
+matches the Emoji shortcut text baseline, using measured font and checkbox geometry.
+The light background is #f1f2f2, black is #111111 and the accent is #F15A22.
+The title's S/E/V/I initials and Credits links use the accent. Caption icons are painted vectors.
 Header/footer and section rules use one hairline stroke. Text actions use uppercase
 Geist Mono with hover/focus underlines; selects show text and an arrow, opening a
 boxed menu whose selected row uses the VI/EN inverse colors. Shortcut menus retain
 the existing recorder. Back combines an 8-by-6-pixel vector arrow and 11-pixel mono BACK;
 only the text underlines. There is no page name or rule on its row. The title bar
-has only the subtitle, language and caption controls. Help/About/Credits sit at the footer's
-left and `SEVI V1.0.30` at the right; the right content inset is 8 logical pixels.
+has only the subtitle and caption controls. Help/About/Credits sit at the footer's
+left and `SEVI V1.0.40` at the right; status notices replace the version for 10 seconds
+before it returns. A new notice restarts the timer. The right content inset is 8 logical pixels.
 Mono tracking is 0.44 logical pixels. Checked boxes use solid inset squares and
-retain egui keyboard/accessibility behavior. Emoji/System share one horizontal row.
+retain egui keyboard/accessibility behavior. Emoji/Active Input share one horizontal row;
+System sits between Automatic Switching and Active Input in the right column.
 The arrow tip shares the content's left inset. Credits opens directly from the footer,
-with no duplicate action in About. About presents a version heading, overview and implementation columns. The visible
+with no duplicate action in About. About presents a version heading with a `(CHECK FOR UPDATE)`
+text button that turns accent-colored on hover, a wrapped overview paragraph and implementation
+details labeled CORE, UI and PLATFORM. The visible
 credits list focuses on Vikey, OpenKey and language/evaluation data; third-party
 license files and source acknowledgements remain available in the repository.
+The Overview paragraph uses three explicit lines:
+
+```text
+Smart-detects English/Vietnamese,
+no more manual switching.
+(Well, 99.5% of the time, anyway).
+```
+
+The Credits language-data section includes SCOWL/English Speller Database
+attribution; its complete notice is retained in `ACKNOWLEDGEMENTS.md`.
+Private helper protocol version 2 distinguishes Escape (clear search, then close)
+from immediate dismissal by outside clicks and Windows shortcuts. Windows
+shortcuts pass through after dismissing the picker; device keys pass through
+without dismissing it. AltGr translation retains Ctrl+Alt, Shift and Caps Lock.
 History has been removed from windows, native menus,
 private commands and Linux launch options. Legacy recording preferences are ignored;
 existing history files are not deleted or modified by this removal.
@@ -66,8 +88,9 @@ cargo xtask check
 
 The layout test covers Windows, Linux and the extra macOS controls at 100%,
 125%, 150%, 200% and 300% display scaling, including content sizing and aligned
-Emoji/System headings. About layout checks verify left-aligned text, matching
-column rows and uniform vertical spacing in both themes. Picker tests cover multilingual search,
+Emoji/Active Input headings, checkbox/switch tops and shortcut/switch baselines. A simulated clock verifies footer
+notice expiry, version restoration and replacement notices. About layout checks verify the requested
+copy, paragraph wrapping and aligned columns in both themes. Picker tests cover multilingual search,
 grapheme deletion, selection and skin-tone frequency keys. Protocol tests cover
 truncation, size limits, Unicode, the last command before helper exit and reopen.
 Existing engine/desktop insertion regressions remain applicable.

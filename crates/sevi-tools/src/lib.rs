@@ -9,6 +9,7 @@ mod corpus;
 mod dictionary;
 mod emoji;
 mod experiments;
+mod forms;
 mod generators;
 mod images;
 mod log;
@@ -55,6 +56,7 @@ pub fn run(root: &Path, args: &[String]) -> Result {
     };
     match args.first().map(String::as_str){
         Some("build-dict")=>dictionary::run(&a),
+        Some("build-forms")=>forms::run(&a),
         Some("build-bigrams")=>generators::bigrams(&a),
         Some("build-teencode")=>generators::teencode(&a),
         Some("keepgen")=>generators::keep(&a),

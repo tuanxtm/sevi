@@ -44,31 +44,31 @@ impl Palette {
     pub fn for_theme(dark: bool) -> Self {
         if dark {
             Self {
-                background: rgb(0x121316),
+                background: rgb(0x111111),
                 sunken: rgb(0x060607),
-                ink: rgb(0xf2f1ee),
+                ink: rgb(0xf1f2f2),
                 strong: Color32::WHITE,
-                muted: alpha(0xf2f1ee, 153),
-                faint: alpha(0xf2f1ee, 97),
-                line: alpha(0xf2f1ee, 38),
-                line_strong: alpha(0xf2f1ee, 102),
-                accent: rgb(0x74aaff),
+                muted: alpha(0xf1f2f2, 153),
+                faint: alpha(0xf1f2f2, 97),
+                line: alpha(0xf1f2f2, 38),
+                line_strong: alpha(0xf1f2f2, 102),
+                accent: rgb(0xf15a22),
                 invert_bg: Color32::WHITE,
-                invert_fg: rgb(0x0b0b0c),
+                invert_fg: rgb(0x111111),
             }
         } else {
             Self {
-                background: rgb(0xf2f1ee),
-                sunken: rgb(0xe9e8e4),
-                ink: rgb(0x101014),
-                strong: Color32::BLACK,
-                muted: alpha(0x101014, 158),
-                faint: alpha(0x101014, 107),
-                line: alpha(0x101014, 41),
-                line_strong: alpha(0x101014, 102),
-                accent: rgb(0x1659c4),
-                invert_bg: rgb(0x101014),
-                invert_fg: rgb(0xf2f1ee),
+                background: rgb(0xf1f2f2),
+                sunken: rgb(0xe8e9e9),
+                ink: rgb(0x111111),
+                strong: rgb(0x111111),
+                muted: alpha(0x111111, 158),
+                faint: alpha(0x111111, 107),
+                line: alpha(0x111111, 41),
+                line_strong: alpha(0x111111, 102),
+                accent: rgb(0xf15a22),
+                invert_bg: rgb(0x111111),
+                invert_fg: rgb(0xf1f2f2),
             }
         }
     }
@@ -137,7 +137,7 @@ pub(crate) fn install(ctx: &egui::Context) {
         visuals.hyperlink_color = p.accent;
         visuals.window_corner_radius = egui::CornerRadius::ZERO;
         visuals.menu_corner_radius = egui::CornerRadius::ZERO;
-        visuals.selection.bg_fill = rgb(0x2d81ff);
+        visuals.selection.bg_fill = p.accent;
         visuals.selection.stroke = Stroke::new(1., Color32::WHITE);
         for (widget, fill, line, ink) in [
             (

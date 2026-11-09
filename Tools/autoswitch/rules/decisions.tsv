@@ -1,0 +1,29 @@
+# Historical decision coverage adapted to Sevi's Rust desktop implementation.
+# Decisions tagged D<n> in the engine TSV suites need no additional row.
+# decision kind Rust path::named test/check, or an explicit scope/native-acceptance reason
+D1	open	macOS event tap/watchdog recovery needs native macOS acceptance
+D2	none	Historical upstream PR selection process
+D3	open	Browser Automation consent and real per-site integration need native macOS/Windows acceptance
+D4	none	Rejected neural switching experiment
+D7	none	Typing History was intentionally removed from Sevi
+D11	test	crates/sevi-ui/src/app.rs::fn settings_fit_one_page_at_all_display_scales()
+D12	test	crates/sevi-runtime/tests/desktop_cases.rs::fn removed_history_stays_off_after_reload_on_every_platform() ; crates/sevi-ui/src/app.rs::fn about_copy_wraps_and_columns_are_aligned()
+D15	open	Historical macOS browser consent/help defaults and the replacement shared UI require native acceptance; Windows' per-site default is separately tested
+D16	test	crates/sevi-windows/src/feed.rs::fn signatures_are_checked_over_the_entire_file() ; crates/sevi-windows/src/feed.rs::fn sevi_feed_is_the_default_and_explicit_overrides_are_preserved()
+D21	test	crates/sevi-runtime/tests/desktop_cases.rs::fn manual_pause_expires()
+D24	test	xtask/src/main.rs::performance budget exceeded
+D25	test	xtask/src/main.rs::touch/auto-correct budget exceeded
+D26	test	xtask/src/main.rs::auto-correct changed clean typing ; xtask/src/main.rs::touch/auto-correct budget exceeded
+D29	none	Corpus selection and tuning process; no runtime behavior
+D31	none	Website and historical branding; Sevi retains its own identity
+D32	test	crates/sevi-test-tools/src/check.rs::pub fn undo() ; crates/sevi-runtime/tests/desktop_cases.rs::fn windows_desktop_cases()
+D36	test	crates/sevi-runtime/tests/desktop_cases.rs::fn windows_desktop_cases()
+D37	none	Rejected/unshipped capitalized-name experiment
+D38	test	crates/sevi-runtime/tests/desktop_cases.rs::fn linux_desktop_cases() ; crates/sevi-runtime/tests/desktop_cases.rs::fn hotkey_repeats_are_swallowed_and_holding_alt_allows_another_press()
+D43	none	Android keyboard and its device tests are outside the Rust desktop port
+D44	test	crates/sevi-runtime/tests/desktop_cases.rs::fn windows_desktop_cases()
+D45	test	crates/sevi-runtime/tests/desktop_cases.rs::fn linux_desktop_cases()
+D46	none	Decision not to add Linux per-site memory or an automatic install
+D54	open	IBus clients that never report surrounding text need native compositor/client acceptance, including GNOME Wayland
+D55	test	crates/sevi-tools/src/pacman.rs::fn arch_dependencies_keep_version_constraints() ; crates/sevi-tools/src/pacman.rs::fn arch_dependencies_accept_generated_shared_library_requirements()
+D59	none	Phone-keyboard colon/semicolon snapback is excluded from the desktop port

@@ -106,6 +106,14 @@ fn reported() -> Result<(), Box<dyn Error>> {
 }
 pub fn undo() -> Result<(), Box<dyn Error>> {
     for (keys, want) in [
+        ("currentState ", "currentState "),
+        ("currentState <", "curentState"),
+        ("dessert ", "dessert "),
+        ("dessert <", "desert"),
+        ("Sapa ", "Sapa "),
+        ("Sapa <", "Sâp"),
+        ("been Momo ", "bên Momo "),
+        ("been Momo <", "bên Môm"),
         ("booj source vaay ", "bộ source vây "),
         ("booj source vaay <", "bộ source vaay"),
         ("booj source vaay <j ", "bộ source vậy "),
@@ -288,6 +296,7 @@ pub fn run(args: &[String]) -> Result<(), Box<dyn Error>> {
             Ok(())
         }
         Some("reported") => reported(),
+        Some("decisions") => crate::decisions::audit(root()).map(|_| ()),
         Some("undo") => undo(),
         Some("golden") => golden(args.get(1).is_some_and(|s| s == "update")),
         Some("check") | None => {
@@ -295,10 +304,14 @@ pub fn run(args: &[String]) -> Result<(), Box<dyn Error>> {
             rules("telex_simple1.tsv", TelexStyle::Simple1)?;
             rules("telex_simple2.tsv", TelexStyle::Simple2)?;
             reported()?;
+            crate::decisions::audit(root())?;
             undo()?;
             golden(args.get(1).is_some_and(|s| s == "update"))?;
             Ok(())
         }
-        _ => Err("usage: sevi-test-tools [check | rules [file] | reported | undo | golden]".into()),
+        _ => Err(
+            "usage: sevi-test-tools [check | rules [file] | reported | decisions | undo | golden]"
+                .into(),
+        ),
     }
 }

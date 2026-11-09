@@ -19,13 +19,19 @@
   },
   {
     "title": "LANGUAGE DATA",
-    "note": "Language switching uses word statistics derived from these sources. Source texts are not bundled.",
+    "note": "Language switching uses word statistics and English word forms from these sources. Source texts are not bundled.",
     "items": [
       [
         "FrequencyWords (OpenSubtitles 2018)",
         "Hermit Dave",
         "CC BY-SA 4.0",
         "https://github.com/hermitdave/FrequencyWords"
+      ],
+      [
+        "SCOWL / English Speller Database",
+        "Kevin Atkinson",
+        "Permissive license; full notice in ACKNOWLEDGEMENTS.md",
+        "https://github.com/en-wl/wordlist"
       ],
       [
         "FineWeb-2 and FineWeb",

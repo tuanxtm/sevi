@@ -85,6 +85,7 @@ impl Picker {
     }
     pub fn input(&mut self, event: PickerInput, snapshot: &UiSnapshot) -> Option<UiCommand> {
         match event {
+            PickerInput::Close => return Some(UiCommand::PickerClosed),
             PickerInput::Text(text) => {
                 if self.all_selected {
                     self.query.clear();
@@ -379,5 +380,16 @@ mod tests {
         assert_eq!(base, p.index.all[at].text);
         assert_eq!(text, p.index.all[at].skins[2]);
         assert_ne!(text, base);
+    }
+    #[test]
+    fn os_dismissal_closes_without_clearing_the_search_first() {
+        let snapshot = UiSnapshot::default();
+        let mut picker = Picker::new(&snapshot);
+        picker.input(PickerInput::Text("nguwaj".into()), &snapshot);
+        assert!(!picker.query.is_empty());
+        assert!(matches!(
+            picker.input(PickerInput::Close, &snapshot),
+            Some(UiCommand::PickerClosed)
+        ));
     }
 }

@@ -156,6 +156,7 @@ fn run(
                 recording: None,
                 pending_mods: 0,
                 status: String::new(),
+                status_until: None,
                 configured: false,
                 native_sender,
                 native_events,
@@ -177,6 +178,7 @@ struct App {
     recording: Option<Setting>,
     pending_mods: u32,
     status: String,
+    status_until: Option<f64>,
     configured: bool,
     native_sender: mpsc::Sender<PickerInput>,
     native_events: mpsc::Receiver<PickerInput>,
@@ -187,6 +189,26 @@ struct App {
     settings_size: Option<egui::Vec2>,
 }
 impl App {
+    fn set_status(&mut self, ctx: &egui::Context, message: String) {
+        self.status = if let Some(rest) = message.strip_prefix("Sevi ") {
+            format!("SEVI {rest}")
+        } else {
+            message
+        };
+        self.status_until = (!self.status.is_empty()).then(|| ctx.input(|i| i.time) + 10.);
+        ctx.request_repaint();
+    }
+    fn expire_status(&mut self, ctx: &egui::Context) {
+        if let Some(until) = self.status_until {
+            let remaining = until - ctx.input(|i| i.time);
+            if remaining <= 0. {
+                self.status.clear();
+                self.status_until = None;
+            } else {
+                ctx.request_repaint_after(std::time::Duration::from_secs_f64(remaining));
+            }
+        }
+    }
     fn send(&self, command: UiCommand) {
         let _ = self.commands.send(command);
     }
@@ -222,38 +244,36 @@ impl App {
         chrome::heading(ui, text, p);
     }
     fn header(&mut self, ui: &mut egui::Ui) {
-        use chrome::{Action, Caption};
-        if let Some(action) = chrome::header(ui, self.snapshot.language_vi) {
+        use chrome::Caption;
+        if let Some(action) = chrome::header(ui) {
             match action {
-                Action::Language(vi) => {
-                    self.snapshot.language_vi = vi;
-                    self.send(UiCommand::SetLanguage(vi));
-                }
-                Action::Caption(Caption::Close) => {
+                Caption::Close => {
                     self.send(UiCommand::Close);
                     ui.ctx().send_viewport_cmd(egui::ViewportCommand::Close);
                 }
-                Action::Caption(Caption::Minimize) => ui
+                Caption::Minimize => ui
                     .ctx()
                     .send_viewport_cmd(egui::ViewportCommand::Minimized(true)),
-                Action::Caption(Caption::Maximize) => ui
+                Caption::Maximize => ui
                     .ctx()
                     .send_viewport_cmd(egui::ViewportCommand::Maximized(true)),
-                Action::Caption(Caption::Restore) => ui
+                Caption::Restore => ui
                     .ctx()
                     .send_viewport_cmd(egui::ViewportCommand::Maximized(false)),
             }
         }
     }
-    fn boolean(&mut self, ui: &mut egui::Ui, key: Setting, text: &str) {
+    fn boolean(&mut self, ui: &mut egui::Ui, key: Setting, text: &str) -> egui::Response {
         let mut value = self.snapshot.enabled(key);
-        if controls::checkbox(ui, &mut value, text).changed() {
+        let response = controls::checkbox(ui, &mut value, text);
+        if response.changed() {
             self.snapshot.settings.insert(key, i32::from(value));
             self.send(UiCommand::Set {
                 setting: key,
                 value: i32::from(value),
             });
         }
+        response
     }
     fn combo(&mut self, ui: &mut egui::Ui, key: Setting, label: &str, items: &[&str]) {
         ui.horizontal(|ui| {
@@ -279,9 +299,16 @@ impl App {
             });
         });
     }
-    fn shortcut(&mut self, ui: &mut egui::Ui, key: Setting, label: &str) {
+    fn shortcut(&mut self, ui: &mut egui::Ui, key: Setting, label: &str) -> f32 {
         ui.horizontal(|ui| {
-            ui.label(label);
+            let response = ui.label(label);
+            let galley = ui.painter().layout_no_wrap(
+                label.into(),
+                egui::TextStyle::Body.resolve(ui.style()),
+                ui.visuals().text_color(),
+            );
+            let row = &galley.rows[0];
+            let baseline = response.rect.top() + row.pos.y + row.glyphs[0].pos.y;
             ui.with_layout(egui::Layout::right_to_left(Align::Center), |ui| {
                 let text = if self.recording == Some(key) {
                     "Press shortcut…".into()
@@ -309,7 +336,9 @@ impl App {
                     }
                 });
             });
-        });
+            baseline
+        })
+        .inner
     }
     fn settings(&mut self, ui: &mut egui::Ui, p: Palette) {
         ui.columns(2, |columns| {
@@ -384,17 +413,7 @@ impl App {
                     self.send(UiCommand::SetAppAuto(on));
                 }
             }
-        });
-        ui.add_space(10.);
-        ui.columns(2, |columns| {
-            let left = &mut columns[0];
-            Self::heading(left, "EMOJI", p);
-            self.boolean(left, Setting::EmojiPicker, "Enable emoji picker");
-            left.add_enabled_ui(self.snapshot.enabled(Setting::EmojiPicker), |ui| {
-                self.shortcut(ui, Setting::EmojiHotkey, "Emoji shortcut")
-            });
-
-            let right = &mut columns[1];
+            right.add_space(6.);
             Self::heading(right, "SYSTEM", p);
             if self.snapshot.capabilities.permission
                 && !self.snapshot.permission_granted
@@ -404,7 +423,7 @@ impl App {
             }
             if self.snapshot.capabilities.login {
                 let mut on = self.snapshot.login;
-                if controls::checkbox(right, &mut on, "Start Sevi at login").changed() {
+                if controls::checkbox(right, &mut on, "Start SEVI at login").changed() {
                     self.snapshot.login = on;
                     self.send(UiCommand::SetLogin(on));
                 }
@@ -423,6 +442,30 @@ impl App {
                 self.open(View::Excluded);
             }
         });
+        ui.add_space(6.);
+        ui.columns(2, |columns| {
+            let left = &mut columns[0];
+            Self::heading(left, "EMOJI", p);
+            let checkbox = self.boolean(left, Setting::EmojiPicker, "Enable emoji picker");
+            let checkbox_top = checkbox.rect.center().y - left.spacing().icon_width / 2.;
+            let shortcut_baseline = left
+                .add_enabled_ui(self.snapshot.enabled(Setting::EmojiPicker), |ui| {
+                    self.shortcut(ui, Setting::EmojiHotkey, "Emoji shortcut")
+                })
+                .inner;
+
+            let right = &mut columns[1];
+            Self::heading(right, "ACTIVE INPUT", p);
+            right.add_space((checkbox_top - right.next_widget_position().y).max(0.));
+            if let Some(vi) = chrome::language_switch(
+                right,
+                self.snapshot.language_vi,
+                shortcut_baseline - checkbox_top,
+            ) {
+                self.snapshot.language_vi = vi;
+                self.send(UiCommand::SetLanguage(vi));
+            }
+        });
     }
     fn secondary(&mut self, ui: &mut egui::Ui, p: Palette) {
         if controls::back(ui).clicked() {
@@ -433,19 +476,33 @@ impl App {
             View::About => {
                 egui::ScrollArea::vertical().show(ui, |ui| {
                     ui.spacing_mut().item_spacing.y = 8.;
-                    Self::heading(ui, &format!("SEVI VERSION {}", self.snapshot.version), p);
-                    Self::about_row(ui, "Smart English/Vietnamese input.");
+                    let version = chrome::hud(
+                        ui,
+                        &format!("SEVI VERSION {}", self.snapshot.version),
+                        p.muted,
+                        false,
+                    );
+                    let size = version.size();
+                    let (row, _) = ui.allocate_exact_size(
+                        egui::vec2(ui.available_width(), size.y + 7.),
+                        egui::Sense::hover(),
+                    );
+                    ui.painter().galley(row.min, version, p.muted);
+                    ui.painter()
+                        .hline(row.x_range(), row.bottom(), p.hairline());
+                    if self.snapshot.capabilities.updates
+                        && controls::check_updates(ui, row.min + egui::vec2(size.x + 8., 0.))
+                            .clicked()
+                    {
+                        self.send(UiCommand::CheckUpdates);
+                    }
+                    Self::about_row(ui, "Q: What is this program actually about ?");
+                    Self::about_row(ui, "A: Just another IME, honestly. Nothing shiny or new here.");
                     ui.add_space(8.);
                     ui.columns(2, |columns| {
                         let left = &mut columns[0];
                         Self::heading(left, "OVERVIEW", p);
-                        for line in [
-                            "Detect English and Vietnamese.",
-                            "Compose Vietnamese with Telex.",
-                            "Small, native desktop input.",
-                        ] {
-                            Self::about_row(left, line);
-                        }
+                        left.add(egui::Label::new("Smart-detects English/Vietnamese,\nno more manual switching.\n(Well, 99.5% of the time, anyway).").wrap());
                         let right = &mut columns[1];
                         Self::heading(right, "IMPLEMENTATION", p);
                         egui::Grid::new("about-details")
@@ -455,7 +512,7 @@ impl App {
                                 for (key, value) in [
                                     ("CORE", "Rust"),
                                     ("UI", "egui / eframe"),
-                                    ("DESKTOP", "Windows, Linux, macOS"),
+                                    ("PLATFORM", "Windows, Linux, macOS"),
                                 ] {
                                     chrome::label(ui, key, p.muted);
                                     ui.label(value);
@@ -463,12 +520,6 @@ impl App {
                                 }
                             });
                     });
-                    if self.snapshot.capabilities.updates {
-                        ui.add_space(8.);
-                        if controls::action(ui, "Check for updates").clicked() {
-                            self.send(UiCommand::CheckUpdates);
-                        }
-                    }
                     if let Some((version, notes)) = self.update_offer.clone() {
                         ui.separator();
                         ui.label(format!("Sevi {version} is available."));
@@ -481,7 +532,7 @@ impl App {
                         if controls::action(ui, "Download update").clicked() {
                             self.send(UiCommand::AcceptUpdate);
                             self.update_offer = None;
-                            self.status = "Opening update…".into();
+                            self.set_status(ui.ctx(), "Opening update…".into());
                         }
                     }
                 });
@@ -504,7 +555,7 @@ impl App {
                                 let url = row[3].as_str().unwrap_or("");
                                 if url.is_empty() {
                                     ui.label(title);
-                                } else if ui.link(title).clicked() {
+                                } else if ui.link(RichText::new(title).color(p.accent)).clicked() {
                                     self.send(UiCommand::OpenLink(url.into()));
                                 }
                                 ui.label(
@@ -613,6 +664,7 @@ impl App {
 impl App {
     fn draw(&mut self, ui: &mut egui::Ui) {
         let ctx = ui.ctx().clone();
+        self.expire_status(&ctx);
         let p = Palette::get(&ctx);
         ui.painter().rect_filled(ui.max_rect(), 0., p.background);
         if self.view == View::Emoji {
@@ -734,7 +786,7 @@ impl eframe::App for App {
             match event {
                 UiEvent::Snapshot(snapshot) => {
                     if !snapshot.status.is_empty() {
-                        self.status = snapshot.status.clone();
+                        self.set_status(ctx, snapshot.status.clone());
                     }
                     self.snapshot = *snapshot;
                 }
@@ -750,7 +802,7 @@ impl eframe::App for App {
                         }
                     }
                 }
-                UiEvent::Error(error) => self.status = error,
+                UiEvent::Error(error) => self.set_status(ctx, error),
                 UiEvent::UpdateOffer { version, notes } => {
                     self.update_offer = Some((version, notes));
                     self.open(View::About);
@@ -1039,6 +1091,7 @@ mod tests {
             recording: None,
             pending_mods: 0,
             status: String::new(),
+            status_until: None,
             configured: false,
             native_sender,
             native_events,
@@ -1103,8 +1156,51 @@ mod tests {
                         };
                         assert_eq!(
                             at("EMOJI").y,
-                            at("SYSTEM").y,
+                            at("ACTIVE INPUT").y,
                             "section alignment at {scale}"
+                        );
+                        assert!(at("AUTOMATIC SWITCHING").y < at("SYSTEM").y);
+                        assert!(at("SYSTEM").y < at("ACTIVE INPUT").y);
+                        assert!(at("VIETNAMESE").y > at("ACTIVE INPUT").y);
+                        assert_eq!(at("VIETNAMESE").y, at("ENGLISH").y);
+                        let text_shape = |label: &str| {
+                            output
+                                .shapes
+                                .iter()
+                                .find_map(|shape| match &shape.shape {
+                                    egui::Shape::Text(text) if text.galley.job.text == label => {
+                                        Some(text)
+                                    }
+                                    _ => None,
+                                })
+                                .unwrap()
+                        };
+                        let switch = output
+                            .shapes
+                            .iter()
+                            .find_map(|shape| match &shape.shape {
+                                egui::Shape::Rect(rect)
+                                    if (rect.rect.left() - at("ACTIVE INPUT").x).abs() < 0.5
+                                        && rect.rect.contains(at("VIETNAMESE"))
+                                        && rect.rect.contains(at("ENGLISH")) =>
+                                {
+                                    Some(rect.rect)
+                                }
+                                _ => None,
+                            })
+                            .expect("full-width language switch");
+                        let label = text_shape("Enable emoji picker");
+                        let checkbox_top = label.pos.y + label.galley.size().y / 2. - 17. / 2.;
+                        let shortcut = text_shape("Emoji shortcut");
+                        let row = &shortcut.galley.rows[0];
+                        let baseline = shortcut.pos.y + row.pos.y + row.glyphs[0].pos.y;
+                        assert!(
+                            (switch.top() - checkbox_top).abs() <= 0.5,
+                            "checkbox alignment at {scale}"
+                        );
+                        assert!(
+                            (switch.bottom() - baseline).abs() <= 0.5,
+                            "shortcut baseline alignment at {scale}"
                         );
                         assert!(
                             size.y <= 550.,
@@ -1118,7 +1214,7 @@ mod tests {
         }
     }
     #[test]
-    fn about_rows_are_left_aligned_with_uniform_spacing() {
+    fn about_copy_wraps_and_columns_are_aligned() {
         for dark in [false, true] {
             let ctx = egui::Context::default();
             theme::install(&ctx);
@@ -1151,21 +1247,155 @@ mod tests {
                             })
                             .unwrap_or_else(|| panic!("missing {label}"))
                     };
-                    let rows = [
-                        at("Detect English and Vietnamese."),
-                        at("Compose Vietnamese with Telex."),
-                        at("Small, native desktop input."),
-                    ];
-                    assert_eq!(at("Smart English/Vietnamese input.").x, 20.);
-                    for row in rows {
-                        assert_eq!(row.x, 20.);
-                    }
-                    assert_eq!(rows[1].y - rows[0].y, rows[2].y - rows[1].y);
-                    assert_eq!(rows[0].y, at("Rust").y);
-                    assert_eq!(rows[1].y, at("egui / eframe").y);
+                    assert_eq!(at("Q: What is this program actually about ?").x, 20.);
+                    assert_eq!(
+                        at("A: Just another IME, honestly. Nothing shiny or new here.").x,
+                        20.
+                    );
+                    assert_eq!(at("OVERVIEW").y, at("IMPLEMENTATION").y);
+                    assert!(at("PLATFORM").y > at("UI").y);
+                    let overview = output.shapes.iter().find_map(|shape| match &shape.shape {
+                        egui::Shape::Text(text) if text.galley.job.text == "Smart-detects English/Vietnamese,\nno more manual switching.\n(Well, 99.5% of the time, anyway)." => Some(text),
+                        _ => None,
+                    }).expect("overview paragraph");
+                    assert_eq!(overview.pos.x, 20.);
+                    assert_eq!(overview.galley.rows.len(), 3);
+                    assert!(overview.pos.x + overview.galley.size().x < at("IMPLEMENTATION").x);
                 }
                 output.textures_delta.clear();
             }
+        }
+    }
+    #[test]
+    fn about_update_button_sends_a_check_only_when_updates_are_available() {
+        for updates in [true, false] {
+            let ctx = egui::Context::default();
+            theme::install(&ctx);
+            let mut app = app(Platform::Windows);
+            app.view = View::About;
+            app.snapshot.capabilities.updates = updates;
+            let (sender, commands) = mpsc::channel();
+            app.commands = sender;
+            let mut input = egui::RawInput {
+                screen_rect: Some(egui::Rect::from_min_size(
+                    egui::Pos2::ZERO,
+                    egui::Vec2::from(theme::MAIN_SIZE),
+                )),
+                ..Default::default()
+            };
+            let mut button = egui::Pos2::ZERO;
+            for _ in 0..2 {
+                let mut output = ctx.run_ui(input.clone(), |ui| app.draw(ui));
+                for shape in &output.shapes {
+                    if let egui::Shape::Text(text) = &shape.shape
+                        && text.galley.job.text.starts_with("SEVI VERSION ")
+                    {
+                        let size = text.galley.size();
+                        button = text.pos + egui::vec2(size.x + 12., size.y / 2.);
+                    }
+                }
+                output.textures_delta.clear();
+            }
+            assert_ne!(button, egui::Pos2::ZERO);
+            for pressed in [true, false] {
+                input.events = vec![
+                    egui::Event::PointerMoved(button),
+                    egui::Event::PointerButton {
+                        pos: button,
+                        button: egui::PointerButton::Primary,
+                        pressed,
+                        modifiers: egui::Modifiers::default(),
+                    },
+                ];
+                let mut output = ctx.run_ui(input.clone(), |ui| app.draw(ui));
+                let label = output.shapes.iter().find_map(|shape| match &shape.shape {
+                    egui::Shape::Text(text) if text.galley.job.text == "(CHECK FOR UPDATE)" => {
+                        Some(text)
+                    }
+                    _ => None,
+                });
+                assert_eq!(label.is_some(), updates);
+                if let Some(label) = label {
+                    assert_eq!(
+                        label.galley.job.sections[0].format.color,
+                        Palette::get(&ctx).accent
+                    );
+                }
+                output.textures_delta.clear();
+            }
+            let checks = commands
+                .try_iter()
+                .filter(|command| matches!(command, UiCommand::CheckUpdates))
+                .count();
+            assert_eq!(checks, usize::from(updates));
+        }
+    }
+    #[test]
+    fn footer_notice_replaces_version_for_ten_seconds_and_restarts_for_new_notices() {
+        let ctx = egui::Context::default();
+        theme::install(&ctx);
+        let mut app = app(Platform::Windows);
+        let version = format!("SEVI V{}", app.snapshot.version);
+        for (time, new_notice, visible) in [
+            (
+                0.,
+                Some("Sevi 1.0.30 is up to date."),
+                Some("SEVI 1.0.30 is up to date."),
+            ),
+            (9.9, None, Some("SEVI 1.0.30 is up to date.")),
+            (10., None, None),
+            (
+                11.,
+                Some("Checking for updates…"),
+                Some("Checking for updates…"),
+            ),
+            (
+                15.,
+                Some("Sevi 1.0.30 is up to date."),
+                Some("SEVI 1.0.30 is up to date."),
+            ),
+            (21., None, Some("SEVI 1.0.30 is up to date.")),
+            (25., None, None),
+        ] {
+            let input = egui::RawInput {
+                time: Some(time),
+                screen_rect: Some(egui::Rect::from_min_size(
+                    egui::Pos2::ZERO,
+                    egui::Vec2::from(theme::MAIN_SIZE),
+                )),
+                ..Default::default()
+            };
+            let mut output = ctx.run_ui(input, |ui| {
+                if let Some(message) = new_notice {
+                    app.set_status(ui.ctx(), message.into());
+                }
+                app.draw(ui);
+            });
+            let texts: Vec<_> = output
+                .shapes
+                .iter()
+                .filter_map(|shape| match &shape.shape {
+                    egui::Shape::Text(text) => Some(text),
+                    _ => None,
+                })
+                .collect();
+            assert_eq!(
+                texts.iter().any(|text| text.galley.job.text == version),
+                visible.is_none(),
+                "at {time}s"
+            );
+            if let Some(message) = visible {
+                let text = texts
+                    .iter()
+                    .find(|text| text.galley.job.text == message)
+                    .expect("visible notice");
+                assert!(
+                    (text.pos.x + text.galley.size().x - (theme::MAIN_SIZE[0] - 8.)).abs() <= 1.
+                );
+            } else {
+                assert!(app.status.is_empty());
+            }
+            output.textures_delta.clear();
         }
     }
     #[test]

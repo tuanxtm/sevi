@@ -13,6 +13,8 @@ auto_tie_vi_kept	vi	tô thí 	tô thí
 undo_backspace	vi	more \b	moẻ
 identifier_guard	en	obj.dir my_var 	obj.dir my_var 
 hotkey_switch	vi	{alt+z}tieng 	tieng 
+hotkey_alt_held_twice	vi	{down:alt}zz{up:alt}vieetj 	việt 
+hotkey_held_switches_once	vi	{down:alt}{down:z}{down:z}{down:z}{up:z}{up:alt}vieetj 	vieetj 
 undo_then_continue_D32	en	vaay \bj 	vậy 
 undo_same_word_D32	en	vaay \b 	vaay 
 digits_vi_D33	vi	5trawm 	5trăm 

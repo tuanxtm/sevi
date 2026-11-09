@@ -360,6 +360,24 @@ pub fn run(check: bool) -> Result {
             scores.into_iter().map(|v| v as u8).collect(),
         );
     }
+    let forms = fs::read_to_string(engine.join("EnglishFormsData.h"))?;
+    let mut form_words = Vec::new();
+    for token in initializer(&forms, "kEnglishFormsWords")? {
+        match token {
+            Token::Bytes(bytes) => form_words.extend(bytes),
+            _ => return Err("unexpected English form token".into()),
+        }
+    }
+    form_words.push(0);
+    let form_offsets = numeric(&forms, "kEnglishFormsOffsets")?;
+    files.insert("data/en-forms.words".into(), form_words);
+    files.insert(
+        "data/en-forms.offsets".into(),
+        form_offsets
+            .into_iter()
+            .flat_map(u32::to_le_bytes)
+            .collect(),
+    );
     let keep = fs::read_to_string(engine.join("KeepWords.inc"))?;
     let words = strings(&keep, "kKeepWords")?;
     let mut bytes = vec![];

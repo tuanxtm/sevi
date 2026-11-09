@@ -93,6 +93,7 @@ pub struct DesktopSession {
     flags: Modifiers,
     last_flags: Modifiers,
     modifier_chord_used: bool,
+    held_hotkey: Option<u32>,
     key: u32,
     en: Vec<u32>,
     valid: bool,
@@ -154,6 +155,7 @@ impl DesktopSession {
             flags: Modifiers(0),
             last_flags: Modifiers(0),
             modifier_chord_used: false,
+            held_hotkey: None,
             key: 0,
             en: vec![],
             valid: true,
@@ -222,6 +224,7 @@ impl DesktopSession {
     }
     /// Apply an acknowledged UI change already present in the host's memory cache.
     pub fn apply_cached_settings(&mut self, now: f64) -> EventResult {
+        self.held_hotkey = None;
         let language = if self.preferences.int("InputMethod", 1) != 0 {
             Language::Vietnamese
         } else {
@@ -353,6 +356,12 @@ impl DesktopSession {
         }
     }
     pub fn focus_changed(&mut self, app: &str, now: f64) -> EventResult {
+        self.held_hotkey = None;
+        if self.platform == Platform::Linux {
+            self.flags.0 &= Modifiers::CAPS.0;
+            self.last_flags = Modifiers::default();
+            self.modifier_chord_used = false;
+        }
         if !app.is_empty() {
             self.front_app = app.into()
         }
@@ -457,7 +466,12 @@ impl DesktopSession {
         if bit == Modifiers::CAPS {
             return EventResult::default();
         }
-        if self.platform == Platform::Mac && self.modifier_chord_used {
+        if self.platform == Platform::Windows && self.log.secure {
+            self.cancel_modifier_chord();
+            self.held_hotkey = None;
+            return EventResult::default();
+        }
+        if self.modifier_chord_used {
             self.last_flags = Modifiers(0);
             if self.flags.0 & 15 == 0 {
                 self.modifier_chord_used = false;
@@ -732,6 +746,12 @@ impl DesktopSession {
     pub fn key_down(&mut self, key: u32, shift: bool, flags: Modifiers, now: f64) -> EventResult {
         self.key_down_event(key, shift, flags, false, now)
     }
+    /// Windows and IBus do not supply an autorepeat bit; pair physical presses with releases.
+    pub fn key_up(&mut self, key: u32) {
+        if self.held_hotkey == Some(key) {
+            self.held_hotkey = None;
+        }
+    }
     pub fn key_down_event(
         &mut self,
         key: u32,
@@ -743,14 +763,26 @@ impl DesktopSession {
         self.tick(now);
         self.flags = Modifiers((flags.0 & !1) | u32::from(shift));
         self.key = key;
+        // Password and not-yet-checked Windows fields receive even hotkey letters unchanged.
+        // Delivery failures use a separate guard below, where hotkeys remain available.
+        if self.platform == Platform::Windows && self.log.secure {
+            self.cancel_modifier_chord();
+            self.held_hotkey = None;
+            self.reset_typing();
+            return EventResult::default();
+        }
+        let repeat = repeat || (self.platform != Platform::Mac && self.held_hotkey == Some(key));
+        self.held_hotkey = (self.hotkey & 255 == key
+            || (self.emoji_hotkey != 0 && self.emoji_hotkey & 255 == key))
+            .then_some(key);
         if self.emoji_hotkey != 0
             && !self.excluded
-            && self.hotkey_matches(self.emoji_hotkey, self.flags, true)
+            && self.hotkey_matches(self.emoji_hotkey, flags, true)
         {
             self.cancel_modifier_chord();
             return EventResult {
                 consumed: true,
-                effects: if self.platform == Platform::Mac && repeat {
+                effects: if repeat {
                     vec![]
                 } else {
                     vec![Effect::OpenEmoji]
@@ -759,16 +791,8 @@ impl DesktopSession {
         }
         if self.hotkey & 0xff != key {
             self.cancel_modifier_chord();
-        } else if self.hotkey_matches(
-            self.hotkey,
-            if self.platform == Platform::Mac {
-                self.flags
-            } else {
-                self.last_flags
-            },
-            true,
-        ) {
-            if self.platform == Platform::Mac && repeat {
+        } else if self.hotkey_matches(self.hotkey, flags, true) {
+            if repeat {
                 return EventResult {
                     consumed: true,
                     effects: vec![],
@@ -785,9 +809,8 @@ impl DesktopSession {
         {
             return EventResult::default();
         }
-        // Windows' UI Automation password/unknown-focus guard is checked after
-        // hotkeys, before undo, logging, and any text transformation.
-        if self.platform == Platform::Windows && (self.log.secure || self.insertion_blocked) {
+        // A failed output blocks further rewrites but does not disable language hotkeys.
+        if self.platform == Platform::Windows && self.insertion_blocked {
             self.reset_typing();
             return EventResult::default();
         }
@@ -864,9 +887,8 @@ impl DesktopSession {
         out
     }
     pub fn click(&mut self) -> EventResult {
-        if self.platform == Platform::Mac {
-            self.cancel_modifier_chord();
-        }
+        self.cancel_modifier_chord();
+        self.held_hotkey = None;
         self.undo = None;
         self.log.since_auto = false;
         self.log
@@ -898,13 +920,14 @@ impl DesktopSession {
     }
     fn cancel_modifier_chord(&mut self) {
         self.last_flags = Modifiers(0);
-        if self.platform == Platform::Mac && self.flags.0 & 15 != 0 {
+        if self.flags.0 & 15 != 0 {
             self.modifier_chord_used = true;
         }
     }
     /// An unmodeled physical key bypasses transformation, but may end the word.
     pub fn unmodeled_key(&mut self, ends_word: bool) {
         self.cancel_modifier_chord();
+        self.held_hotkey = None;
         if ends_word {
             self.log
                 .end_word("other", &mut *self.preferences, self.platform);

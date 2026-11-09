@@ -8,6 +8,40 @@ Each entry records what was asked, what was decided, and its status. Newest firs
 
 Status values: **Shipped** (in a build Tony has), **Agreed** (decided, not built yet), **Rejected**.
 
+## 60. English word forms the list is missing: "resets" stays "resets"
+
+**Status:** Built 2026-11-08, not in a release yet (Tony's report).
+
+**Problem.** On the Mac, "this get resets " gave "this get rêts ". The English list comes from subtitles: it has "reset" but not "resets". So in English mode the keys weren't English, and their Telex replay "rêts" has the same lookup key as the real word "rết" (the trailing s reads as the sắc tone), so the word was converted. In Vietnamese mode the doubled s gave "reets" (D19: the dictionary decides at the end, and "resets" wasn't in it).
+
+**Fix.** Real English word forms come from SCOWL, the database behind the standard en_US spell-check dictionaries: its en_US Hunspell dictionary, with every word expanded by its own affix rules (plurals, past tense, -ing, irregular forms). `Tools/autoswitch/build_forms.py` keeps the forms of entries whose base word is in our list and that the list is missing (18,197, ~180 KB): "resets", "quests", "resizes". `Engine/EnglishFormsData.h` holds them; the engine counts them as English, rarer than every listed word, and never when the letters are a Vietnamese word ("phis", Greek letters, is phí). Words already in the list keep their own score.
+
+Tony rejected a first version that guessed from suffixes (any listed word + -s, -es, -ed, -ing): English doesn't work that way. Also tried: every word SCOWL knows (48,102, not only forms of listed words). Worse: "nos", "cos", "sex" stopped converting to nó, có, sẽ; manual switches 58 → 60 (chat).
+
+**Result.** Rules D60 (8 cases), reported bug R21. All other rules, reported bugs and the Telex lock unchanged. Golden: "reie" → "resize" (chat, both sets), "quets" → "quests" (synthetic). Manual switches 58 → 57 (chat), 71 → 70 (chat_typos), 111 → 110 (synthetic); wrong words unchanged.
+
+**Every decision has a test.** `rules/decisions.py` (in check.sh) fails when a decision has neither cases tagged with it nor a row in `rules/decisions.tsv` naming its tests, or saying why it has none. Open (behavior, no automated test yet): D1, D3, D15, D21, D54, all app-level (they need a live test on that platform).
+
+## 59. ":" and ";" after a space stay where they are (phone keyboards)
+
+**Status:** Shipped 2026-11-02 (Tony changed his mind on the earlier behavior).
+
+**Problem.** On iPhone and Android, punctuation typed right after a space went back onto the word, like the system keyboard: "Hello : " gave "Hello: ", and the emoticon "haha :)" gave "haha:)".
+
+**Fix.** Only . , ? ! and closing ) " still snap back ("this ." → "this."). : and ; stay as typed, so emoticons (:) :D ;)) and "Hello : " keep their space. Desktop typing never had this behavior.
+
+**Result.** iOS test `testColonAndSemicolonStay` ("haha :) ", "hello : ", "ok ;) "); `testPeriodSnapsBack` still passes.
+
+## 58. "docs" in Vietnamese mode is English
+
+**Status:** Shipped 2026-11-02 (bug from an X user, via Tony).
+
+**Problem.** In Vietnamese mode "docs" gave "dóc": the subtitle corpus has "docs" at English score -1, below "dóc" (1).
+
+**Fix.** "docs" gets English score 20 (build_dict.py `EN_OVERRIDE`, patched in the built data like D48). 10 was not enough. "nói dóc" (to lie) still converts: the word before decides it.
+
+**Result.** Manual switches 64 → 61 (chat), 77 → 74 (chat_typos), 123 → 120 (synthetic); wrong words unchanged; three golden lines now keep "docs". Rules D58 (3 cases), reported bug R20.
+
 ## 57. Backspace over punctuation lost the word before it
 
 **Status:** Agreed (2026-11-01): a bug fix, in PR #33.
@@ -105,6 +139,8 @@ If every listed change is intended, accept them with `Tools/autoswitch/check.sh 
 **Fix.** On the first ← inside (or right after) a word, the engine keeps a copy of its state; more ← count away, → counts back, and when the cursor is back at the word's end the copy comes back. Any other key, a click or Shift+arrow forgets it (typing somewhere else is a new word there). The Mac, Windows and Linux cores do the same for the English-mode word buffer. On the Mac, arrow keys carry the Fn and numeric-pad flags, which counted as "another modifier"; a plain arrow no longer does.
 
 **Result.** Cursor round trips needing a retyped word: 28% → under 2%. Goldens unchanged. Rules D51 (3 cases); the harness gets `{` `}` for ← →.
+
+**Later fix.** A click or a language switch while away didn't forget it (the desktops' English-mode copy, and the engine's across ⌥Z), so → brought the old word back at the new spot and the next key rewrote text there ("meeting th ← click → if " gave "meeting thì "). Both forget it now. Goldens unchanged; 5 more D51 rules.
 
 ## 50. Backspace on a toned letter takes all its keys
 
@@ -956,3 +992,15 @@ Word recording can be turned off in the log window. Nothing leaves the Mac; Tony
 **Cause.** macOS disables the event tap when it times out or on user input (a slow Mac, secure input), and the app never turned it back on.
 
 **Fix.** Re-enable the tap when macOS reports it was disabled. A 2-second watchdog also re-enables it if needed.
+
+### Literal restoration after Telex transformations
+
+At a word boundary, restore the complete typed spelling when it is a
+recognized English word, including cases where the shortened spelling is
+also recognized. Internal case boundaries and separated vowel groups can
+provide structural evidence for an unlisted literal. Explicit Telex
+modifiers continue to protect unlisted Vietnamese syllables.
+
+Restoration based solely on the new unlisted-literal evidence applies to
+the current word. Existing spelling-based restoration retains its lookback
+behavior.

@@ -42,6 +42,7 @@ fn key_with_flags(
     *now += 0.03;
     let result = session.key_down(key, shift, flags, *now);
     effects(&result, text);
+    session.key_up(key);
     if !result.consumed {
         if key == KEY_DELETE {
             text.pop();
@@ -64,6 +65,7 @@ fn run(source: &str, platform: Platform) {
         let mut now = 0.0;
         let mut caret = None;
         let mut flags = Modifiers::default();
+        let mut held = std::collections::BTreeSet::new();
         let mut chars = input.chars();
         while let Some(c) = chars.next() {
             if c == '{' {
@@ -75,8 +77,57 @@ fn run(source: &str, platform: Platform) {
                     let r = s.key_down(KEY_Z, false, Modifiers::ALT, now);
                     assert!(r.consumed, "hotkey {name}");
                     effects(&r, &mut text);
+                    s.key_up(KEY_Z);
                     now += 0.03;
                     effects(&s.modifier(Modifiers::ALT, false, now), &mut text);
+                } else if command.starts_with("down:")
+                    || command.starts_with("up:")
+                    || command.starts_with("keydown ")
+                    || command.starts_with("keyup ")
+                {
+                    let (down, named) = if let Some(named) = command
+                        .strip_prefix("down:")
+                        .or_else(|| command.strip_prefix("keydown "))
+                    {
+                        (true, named)
+                    } else {
+                        (
+                            false,
+                            command
+                                .strip_prefix("up:")
+                                .or_else(|| command.strip_prefix("keyup "))
+                                .unwrap(),
+                        )
+                    };
+                    now += 0.03;
+                    if let Some(bit) = match named {
+                        "alt" => Some(Modifiers::ALT),
+                        "ctrl" => Some(Modifiers::CONTROL),
+                        "shift" => Some(Modifiers::SHIFT),
+                        _ => None,
+                    } {
+                        if down {
+                            flags.0 |= bit.0;
+                        } else {
+                            flags.0 &= !bit.0;
+                        }
+                        effects(&s.modifier(bit, down, now), &mut text);
+                    } else {
+                        let raw = named.chars().next().expect("held key");
+                        let (keycode, _) = sevi_test_tools::key_for(raw).expect("mapped held key");
+                        if down {
+                            let repeat = !held.insert(keycode);
+                            let result =
+                                s.key_down_event(keycode, flags.shift(), flags, repeat, now);
+                            effects(&result, &mut text);
+                            if !result.consumed {
+                                text.push(raw);
+                            }
+                        } else {
+                            held.remove(&keycode);
+                            s.key_up(keycode);
+                        }
+                    }
                 } else if command == "caps" {
                     flags.0 ^= Modifiers::CAPS.0;
                 } else if let Some(value) = command.strip_prefix("cmd:emoji ") {
@@ -353,44 +404,49 @@ fn windows_other_ime_keeps_keys_and_resets_at_word_boundaries() {
 }
 
 #[test]
-fn mac_hotkey_repeats_are_swallowed_and_holding_alt_allows_another_press() {
-    let mut s = DesktopSession::new(Platform::Mac, Box::<MemoryPreferences>::default());
-    s.modifier(Modifiers::ALT, true, 0.1);
-    assert!(s.key_down(KEY_Z, false, Modifiers::ALT, 0.2).consumed);
-    assert_eq!(s.language(), Language::English);
-    let repeated = s.key_down_event(KEY_Z, false, Modifiers::ALT, true, 0.3);
-    assert!(repeated.consumed);
-    assert!(repeated.effects.is_empty());
-    assert_eq!(s.language(), Language::English);
-    assert!(s.key_down(KEY_Z, false, Modifiers::ALT, 0.4).consumed);
-    assert_eq!(s.language(), Language::Vietnamese);
+fn hotkey_repeats_are_swallowed_and_holding_alt_allows_another_press() {
+    for platform in [Platform::Mac, Platform::Windows, Platform::Linux] {
+        let mut s = DesktopSession::new(platform, Box::<MemoryPreferences>::default());
+        s.modifier(Modifiers::ALT, true, 0.1);
+        assert!(s.key_down(KEY_Z, false, Modifiers::ALT, 0.2).consumed);
+        assert_eq!(s.language(), Language::English);
+        let repeated = s.key_down_event(KEY_Z, false, Modifiers::ALT, true, 0.3);
+        assert!(repeated.consumed);
+        assert!(repeated.effects.is_empty());
+        assert_eq!(s.language(), Language::English);
+        s.key_up(KEY_Z);
+        assert!(s.key_down(KEY_Z, false, Modifiers::ALT, 0.4).consumed);
+        assert_eq!(s.language(), Language::Vietnamese);
+    }
 }
 #[test]
-fn mac_modifier_hotkey_is_cancelled_until_every_modifier_is_released() {
-    for use_click in [false, true] {
-        let mut p = MemoryPreferences::default();
-        p.set_int("SwitchKeyStatus", 0x9fe).unwrap();
-        let mut s = DesktopSession::new(Platform::Mac, Box::new(p));
-        s.modifier(Modifiers::CONTROL, true, 0.1);
-        s.modifier(Modifiers::SHIFT, true, 0.2);
-        s.modifier(Modifiers::ALT, true, 0.3);
-        if use_click {
-            s.click();
-        } else {
-            s.key_down(KEY_K, true, Modifiers(7), 0.4);
+fn modifier_hotkey_is_cancelled_until_every_modifier_is_released() {
+    for platform in [Platform::Mac, Platform::Windows, Platform::Linux] {
+        for use_click in [false, true] {
+            let mut p = MemoryPreferences::default();
+            p.set_int("SwitchKeyStatus", 0x9fe).unwrap();
+            let mut s = DesktopSession::new(platform, Box::new(p));
+            s.modifier(Modifiers::CONTROL, true, 0.1);
+            s.modifier(Modifiers::SHIFT, true, 0.2);
+            s.modifier(Modifiers::ALT, true, 0.3);
+            if use_click {
+                s.click();
+            } else {
+                s.key_down(KEY_K, true, Modifiers(7), 0.4);
+            }
+            for (bit, time) in [
+                (Modifiers::ALT, 0.5),
+                (Modifiers::SHIFT, 0.6),
+                (Modifiers::CONTROL, 0.7),
+            ] {
+                assert!(!s.modifier(bit, false, time).consumed);
+            }
+            assert_eq!(s.language(), Language::Vietnamese);
+            s.modifier(Modifiers::CONTROL, true, 0.8);
+            s.modifier(Modifiers::SHIFT, true, 0.9);
+            assert!(s.modifier(Modifiers::SHIFT, false, 1.).consumed);
+            assert_eq!(s.language(), Language::English);
         }
-        for (bit, time) in [
-            (Modifiers::ALT, 0.5),
-            (Modifiers::SHIFT, 0.6),
-            (Modifiers::CONTROL, 0.7),
-        ] {
-            assert!(!s.modifier(bit, false, time).consumed);
-        }
-        assert_eq!(s.language(), Language::Vietnamese);
-        s.modifier(Modifiers::CONTROL, true, 0.8);
-        s.modifier(Modifiers::SHIFT, true, 0.9);
-        assert!(s.modifier(Modifiers::SHIFT, false, 1.).consumed);
-        assert_eq!(s.language(), Language::English);
     }
 }
 #[test]
@@ -421,29 +477,115 @@ fn caps_lock_restoration_keeps_semicolon_and_quote() {
 }
 
 #[test]
-fn mac_emoji_repeat_and_release_do_not_toggle_language() {
-    let mut prefs = MemoryPreferences::default();
-    prefs.set_int("SwitchKeyStatus", 0x9fe).unwrap();
-    prefs.set_int("EmojiPicker", 1).unwrap();
-    prefs
-        .set_int("EmojiHotkey", (0x900 | KEY_E) as i32)
-        .unwrap();
-    let mut session = DesktopSession::new(Platform::Mac, Box::new(prefs));
-    session.modifier(Modifiers::CONTROL, true, 0.1);
-    session.modifier(Modifiers::SHIFT, true, 0.2);
-    let first = session.key_down(KEY_E, true, Modifiers(3), 0.3);
-    assert!(first.consumed);
-    assert_eq!(first.effects, [Effect::OpenEmoji]);
-    let repeat = session.key_down_event(KEY_E, true, Modifiers(3), true, 0.4);
-    assert!(repeat.consumed);
-    assert!(repeat.effects.is_empty());
-    assert!(!session.modifier(Modifiers::SHIFT, false, 0.5).consumed);
-    assert!(!session.modifier(Modifiers::CONTROL, false, 0.6).consumed);
-    assert_eq!(session.language(), Language::Vietnamese);
-    session.modifier(Modifiers::CONTROL, true, 0.7);
-    session.modifier(Modifiers::SHIFT, true, 0.8);
-    assert!(session.modifier(Modifiers::SHIFT, false, 0.9).consumed);
+fn emoji_repeat_and_release_do_not_toggle_language() {
+    for platform in [Platform::Mac, Platform::Windows, Platform::Linux] {
+        let mut prefs = MemoryPreferences::default();
+        prefs.set_int("SwitchKeyStatus", 0x9fe).unwrap();
+        prefs.set_int("EmojiPicker", 1).unwrap();
+        prefs
+            .set_int("EmojiHotkey", (0x900 | KEY_E) as i32)
+            .unwrap();
+        let mut session = DesktopSession::new(platform, Box::new(prefs));
+        session.modifier(Modifiers::CONTROL, true, 0.1);
+        session.modifier(Modifiers::SHIFT, true, 0.2);
+        let first = session.key_down(KEY_E, true, Modifiers(3), 0.3);
+        assert!(first.consumed);
+        assert_eq!(first.effects, [Effect::OpenEmoji]);
+        let repeat = session.key_down_event(KEY_E, true, Modifiers(3), true, 0.4);
+        assert!(repeat.consumed);
+        assert!(repeat.effects.is_empty());
+        assert!(!session.modifier(Modifiers::SHIFT, false, 0.5).consumed);
+        assert!(!session.modifier(Modifiers::CONTROL, false, 0.6).consumed);
+        assert_eq!(session.language(), Language::Vietnamese);
+        session.modifier(Modifiers::CONTROL, true, 0.7);
+        session.modifier(Modifiers::SHIFT, true, 0.8);
+        assert!(session.modifier(Modifiers::SHIFT, false, 0.9).consumed);
+        assert_eq!(session.language(), Language::English);
+    }
+}
+
+#[test]
+fn unmatched_hotkey_press_does_not_become_a_switch_after_modifiers_change() {
+    for platform in [Platform::Windows, Platform::Linux] {
+        let mut session = DesktopSession::new(platform, Box::<MemoryPreferences>::default());
+        session.modifier(Modifiers::ALT, true, 0.1);
+        session.modifier(Modifiers::SHIFT, true, 0.2);
+        session.key_down(KEY_Z, true, Modifiers(5), 0.3);
+        session.modifier(Modifiers::SHIFT, false, 0.4);
+        let repeated = session.key_down(KEY_Z, false, Modifiers::ALT, 0.5);
+        assert!(repeated.consumed);
+        assert!(repeated.effects.is_empty());
+        assert_eq!(session.language(), Language::Vietnamese);
+        session.key_up(KEY_Z);
+        assert!(session.key_down(KEY_Z, false, Modifiers::ALT, 0.6).consumed);
+        assert_eq!(session.language(), Language::English);
+    }
+}
+#[test]
+fn missed_hotkey_release_is_cleared_by_click_focus_and_settings_reload() {
+    for platform in [Platform::Windows, Platform::Linux] {
+        for reset in 0..3 {
+            let mut session = DesktopSession::new(platform, Box::<MemoryPreferences>::default());
+            session.modifier(Modifiers::ALT, true, 0.1);
+            session.key_down(KEY_Z, false, Modifiers::ALT, 0.2);
+            assert_eq!(session.language(), Language::English);
+            match reset {
+                0 => {
+                    session.click();
+                }
+                1 => {
+                    session.focus_changed("Another editor", 0.3);
+                }
+                _ => {
+                    session.reload_settings(0.3);
+                }
+            }
+            session.key_down(KEY_Z, false, Modifiers::ALT, 0.4);
+            assert_eq!(
+                session.language(),
+                Language::Vietnamese,
+                "{platform:?} reset {reset}"
+            );
+        }
+    }
+}
+#[test]
+fn windows_password_hotkey_letters_and_modifier_chords_pass_through() {
+    for hotkey in [0x800 | KEY_Z, 0x9fe] {
+        let mut session =
+            DesktopSession::new(Platform::Windows, Box::<MemoryPreferences>::default());
+        session.hotkey = hotkey;
+        session.log.secure = true;
+        session.modifier(Modifiers::CONTROL, true, 0.1);
+        session.modifier(Modifiers::SHIFT, true, 0.2);
+        let result = session.key_down(KEY_Z, true, Modifiers::SHIFT, 0.3);
+        assert!(!result.consumed);
+        assert!(result.effects.is_empty());
+        assert!(!session.modifier(Modifiers::SHIFT, false, 0.4).consumed);
+        assert!(!session.modifier(Modifiers::CONTROL, false, 0.5).consumed);
+        assert_eq!(session.language(), Language::Vietnamese);
+    }
+}
+#[test]
+fn linux_caps_lock_uppercase_key_is_not_a_shift_hotkey_modifier() {
+    let mut session = DesktopSession::new(Platform::Linux, Box::<MemoryPreferences>::default());
+    assert!(session.key_down(KEY_Z, true, Modifiers(20), 0.1).consumed);
     assert_eq!(session.language(), Language::English);
+}
+#[test]
+fn bypassed_keys_keep_modifier_chords_used_until_all_keys_are_released() {
+    for platform in [Platform::Windows, Platform::Linux] {
+        let mut session = DesktopSession::new(platform, Box::<MemoryPreferences>::default());
+        session.hotkey = 0x9fe;
+        for bit in [Modifiers::CONTROL, Modifiers::SHIFT, Modifiers::ALT] {
+            session.modifier(bit, true, 0.1);
+        }
+        session.unmodeled_key(false);
+        for bit in [Modifiers::ALT, Modifiers::SHIFT, Modifiers::CONTROL] {
+            assert!(!session.modifier(bit, false, 0.2).consumed);
+        }
+        assert_eq!(session.language(), Language::Vietnamese);
+    }
 }
 
 #[test]

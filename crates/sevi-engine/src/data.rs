@@ -68,6 +68,42 @@ pub static EN: Dictionary = Dictionary {
     offsets: include_bytes!("data/en.offsets"),
     scores: include_bytes!("data/en.scores"),
 };
+/// Supplemental SCOWL forms have no frequency scores of their own.
+pub struct WordList {
+    pub words: &'static [u8],
+    pub offsets: &'static [u8],
+}
+impl WordList {
+    pub fn len(&self) -> usize {
+        self.offsets.len() / 4
+    }
+    pub fn is_empty(&self) -> bool {
+        self.offsets.is_empty()
+    }
+    pub fn word(&self, index: usize) -> &'static [u8] {
+        let offset =
+            u32::from_le_bytes(self.offsets[index * 4..index * 4 + 4].try_into().unwrap()) as usize;
+        let rest = &self.words[offset..];
+        &rest[..rest.iter().position(|byte| *byte == 0).unwrap()]
+    }
+    pub fn contains(&self, word: &[u8]) -> bool {
+        let (mut low, mut high) = (0, self.len());
+        while low < high {
+            let middle = (low + high) / 2;
+            match self.word(middle).cmp(word) {
+                std::cmp::Ordering::Less => low = middle + 1,
+                std::cmp::Ordering::Greater => high = middle,
+                std::cmp::Ordering::Equal => return true,
+            }
+        }
+        false
+    }
+}
+pub const EN_FORM_SCORE: i32 = -8;
+pub static EN_FORMS: WordList = WordList {
+    words: include_bytes!("data/en-forms.words"),
+    offsets: include_bytes!("data/en-forms.offsets"),
+};
 pub static BIGRAM: Dictionary = Dictionary {
     words: include_bytes!("data/bigram.words"),
     offsets: include_bytes!("data/bigram.offsets"),
@@ -151,5 +187,27 @@ mod tests {
                 }
             }
         }
+    }
+    #[test]
+    fn supplemental_forms_are_sorted_and_do_not_override_frequency_or_vietnamese() {
+        assert_eq!(EN_FORMS.len(), 18197);
+        for index in 0..EN_FORMS.len() {
+            let word = EN_FORMS.word(index);
+            assert!(EN_FORMS.contains(word));
+            assert!(
+                EN.index(word).is_err(),
+                "forms must not replace existing frequencies"
+            );
+            if index > 0 {
+                assert!(EN_FORMS.word(index - 1) < word);
+            }
+        }
+        let engine = crate::Engine::default();
+        for word in ["resets", "quests"] {
+            assert_eq!(engine.english_score(word), EN_FORM_SCORE);
+        }
+        assert_eq!(engine.english_score("nos"), EN.score(b"nos"));
+        assert_eq!(engine.english_score("phis"), MISSING);
+        assert_eq!(engine.english_score("thans"), MISSING);
     }
 }

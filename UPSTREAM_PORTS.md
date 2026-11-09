@@ -3,15 +3,20 @@
 - Repository: https://github.com/tonyminibot/Vikey.git (`origin`).
 - Rust branch: `rust-port`; initial saved port: `950c93e`.
 - Original migration baseline: `490820bc70c48c38b864cb1b63f6de61f9a44ab3`.
-- Last reviewed upstream: **`350efb25f49f1462814f69532c55c6e80ab4eb90`**, reviewed 2026-11-06 UTC (21 additional commits since the previous review at `b74496a5fd3997a28de51064ec39bf26c4fbbc5d`).
+- Last integrated and validated upstream: **`79e0c50c4f78902866c18384e4045249d623bb9a`**, 2026-11-09 UTC (27 commits since `350efb25f49f1462814f69532c55c6e80ab4eb90`). All selected changes from the assessment below are implemented; explicit exclusions remain listed.
 - Scope: Windows, Linux, macOS and shared desktop typing/tool behavior. **iOS and Android are excluded.**
 
-This is a behavioral port of selected fixes, not a merge of the original hosts into the Rust implementation. Upstream release numbers do not identify a Rust release: this branch retains version 1.0.30/build 32.
+This is a behavioral port of selected fixes, not a merge of the original hosts into the Rust implementation. Upstream release numbers do not identify a Sevi release. Sevi 1.0.40/build 33 packages these approved ports; the integration artifacts below were produced with the preceding 1.0.30/build 32 test build.
 
 ## Applied
 
 | Upstream commits | Rust behavior |
 | --- | --- |
+| `5112c3a`, `59f2a3a`, `061bbe1` | Full literal restoration preserves recognized English spellings, internal-capital identifiers and unlisted multi-syllable names. Explicit Telex modifiers and tone removal remain protected. New literal-only evidence cannot rewrite a preceding Vietnamese word. The doubled-key path and eight driver undo regressions are included. |
+| `7e7c618`, `5069ba8` (D60) | Added the pinned 18,197 SCOWL en_US forms, compact Rust word/offset tables, deterministic importer, Rust Hunspell-based regeneration command, R21 and attribution. Original English scores retain precedence; forms score -8 only when Vietnamese recognition fails. Imported the 219-rule suite and upstream's documented golden changes. |
+| `c9fc6f2`, `fbef873`, `5723d0f`, `5c70f96`, `7ee723f`, `e6e8cc4` | Windows/Linux key hotkeys use the current modifiers. Physical key releases distinguish fresh presses from repeats, including an initially unmatched chord. Used modifier chords remain suppressed until all modifiers are released. Click/focus/reload clear held-key state. Windows password/unknown-focus keys bypass hotkeys and transformations; the separate failed-insertion guard still permits language hotkeys. Rust portable/native runners support held-key fixtures. |
+| `ed3002f`, `93ae46c`, `297de56` | Windows shortcuts immediately dismiss the emoji picker and pass through, device keys pass through without dismissal, and other keys stay captured. The helper translates AltGr using the foreground keyboard layout. Private protocol 2 distinguishes immediate dismissal from Escape's clear-then-close behavior. Portable routing/state tests and nonempty-search dismissal regression pass. |
+| `5069ba8` coverage tooling | `cargo xtask check` audits the historical decisions against tagged engine cases and named Rust tests/checks. A Rust manifest records removed/mobile behavior and native-only gaps. Tests verify that missing coverage and stale named references fail the audit. Current result: 46 tested, four explicit native-acceptance gaps, nine scope exclusions. |
 | `06a82f1`, `aa3d0b3`, `f2927da` | Windows/Linux numpad digits follow digit word boundaries. Unmodeled printable/operator keys end typing/log context and cancel pending modifier hotkeys without becoming Esc. Restoring a word preserves the original physical key, including Home and Windows' extended flag; Windows leaves physically held Shift alone. Both live runners understand the new upstream fixtures. |
 | `e06b4b1` | Linux updates IBus menu properties only when their displayed values change, and refreshes them on focus. |
 | `8125896`, `588747c`, `3824cae`, `9725b77` | Linux stats accumulate in memory until the existing flush timer; failed writes remain dirty for retry, settings reload preserves pending counters, and Clear resets the engine's pending word/counters/events as well as the UI's files. |
@@ -98,6 +103,116 @@ Artifacts are under `Rust/target/upstream-2026-11-06/`. The complete 21-commit r
 
 The refreshed Windows executable and matching live runner/PDB are under `Rust/target/windows-test/`; `Sevi-x64.json` records their hashes and the previous package's preserved location. Native Windows/macOS acceptance remains pending. Version/build stay at 1.0.30/32.
 
+## Assessment — 2026-11-09 (completed by the validated port below)
+
+Fetched `origin main` after the requested UI adjustments. Reviewed the complete
+`350efb2..79e0c50` range (27 commits, 44 changed files). Upstream's desktop version
+is 1.0.32; Sevi remains 1.0.30/build 32. The initial assessment did not apply
+changes. The subsequent user-authorized implementation is recorded below.
+
+Artifacts are under `Rust/target/upstream-review-2026-11-09/`: `commits.txt`, the
+complete `upstream.diff`, and `rule-comparison.json`. At assessment time, replaying
+all **50 newly added upstream rules** with the then-current Rust harness gave
+**21 matches and 29 differences**. All 50 now pass as part of the 219-rule suite.
+
+### Approved implementation plan (now completed)
+
+| Priority | Upstream commits | Decision and Rust targets |
+| --- | --- | --- |
+| 1 | `5112c3a`, `59f2a3a`, `061bbe1`, merge `51c4899` | Port literal restoration as one complete behavior change in `sevi-engine/src/engine.rs`. Preserve full recognized English spellings and internal-capital identifiers, allow unlisted multi-syllable literals, and keep explicit Telex modifiers/tone removal protected. New literal-only evidence must restore the current word without rewriting preceding Vietnamese. Include the doubled-key path, Backspace undo and all accompanying guards. |
+| 2 | `7e7c618`, final implementation `5069ba8` | Port D60's **18,197 SCOWL en_US word forms**, their importer/generator, regression R21 and attribution. Integrate through `sevi-engine/src/data.rs` and every English-scoring call path. Existing dictionary scores take precedence; a missing form scores -8 only when it is not Vietnamese. Use the final affix-expanded, listed-base-word dataset, rather than the rejected suffix guess or unrestricted dictionary. Update acknowledgements and UI Credits when the data is actually included. |
+| 3 | `c9fc6f2`, `fbef873`, `5723d0f`, `5c70f96`, `7ee723f`, `e6e8cc4`, merges `0c79876`, `a74c78e` | Port Windows/Linux hotkey parity into `sevi-runtime/src/session.rs`, Windows `host.rs` and Linux `ibus.rs`. Match current key modifiers; distinguish a fresh press from held-key repeats, including an initially unmatched chord; suppress modifier-only switches after clicks, other keys and emoji chords until all modifiers are released. Clear held/chord state on focus changes and settings reload. Check Windows password/unknown-focus protection before language hotkeys. Import held-key native fixture syntax and cases into the Rust runners. |
+| 4 | `ed3002f`, `93ae46c`, `297de56`, merge `3113ead` | Port Windows picker key routing in `sevi-windows/src/host.rs` and `sevi-ui/src/native/windows.rs`: Windows shortcuts close the picker and pass through; media/browser/launch/PrintScreen keys pass through while it stays open; other keys remain captured. Support AltGr through Ctrl+Alt translation in the foreground keyboard layout, preserving Alt+Backspace and clipboard actions. |
+| 5 | `5069ba8` decision coverage tooling | Adapt decision-to-test coverage to Rust `xtask check` after the engine/data ports. The upstream manifest refers to C++/Swift tests and excluded mobile paths; map applicable decisions to Rust tests, with explicit native-acceptance gaps, rather than copying that manifest unchanged. |
+
+Representative gaps measured before the port (now corrected; spaces omitted here for readability):
+
+| Typed text / initial language | Current Rust output | Upstream expectation |
+| --- | --- | --- |
+| `currentState` / Vietnamese | `curentState` | `currentState` |
+| `dessert` / Vietnamese | `desert` | `dessert` |
+| `Sapa` / Vietnamese | `Sâp` | `Sapa` |
+| `been Momo` / Vietnamese | `bên Môm` | `bên Momo` |
+| `this get resets` / English | `this get rêts` | `this get resets` |
+| `quests` / Vietnamese | `quets` | `quests` |
+
+The pre-port harness already preserved the sampled Telex guards `hiszuf` → `hìu`
+and `chi phis` → `chi phí`; it also already restores `resizes`. Preserve those
+successes while fixing the missing cases. Before the port, the shared runtime's
+repeat/current-flag and used-chord protections were restricted to macOS, and Windows
+routed all picker keydowns into a helper whose translation guard rejected AltGr.
+The completed port corrects these production paths.
+
+Bring the new **219-rule** upstream suite, R21, the eight new driver undo cases,
+held-key live fixtures and documented golden changes with the corresponding ports.
+Validate default and Simple Telex, portable desktop/session behavior, native live
+typing, and non-timing quality parity. The upstream golden wrong-word counts are
+unchanged; manual-switch counts improve from 61/74/120 to 57/70/110 across chat,
+chat_typos and synthetic sets. These are upstream results, not results claimed for
+the pre-port Rust implementation. The completed comparison below confirms parity.
+
+### Deferred or excluded from this range
+
+- `a8980e3`, `99b394f`, merge `394120a`: defer the Linux first-install IBus recovery
+  until there is an appropriate Sevi setup action. Upstream runs an asynchronous
+  `ibus list-engine --name-only` query at a specific onboarding step and restarts
+  once only after a successful nonempty list omits its engine. Sevi opens its shared
+  settings directly and has no equivalent setup step. Do not put a restart on every
+  settings launch or copy the upstream `vikey` engine identifier. Any future recovery
+  should use `sevi`, retain the failed/empty/already-known guards, and run only in the
+  intended setup flow. No IBus query, restart or shared-service change was performed
+  during this assessment.
+- `c8342ab`, `f8e2fa0`, `edefd0c`, `fce5b00`: iOS release, review/feedback nudges,
+  hidden diagnostics and mobile suggestion-strip changes remain excluded.
+- `9556269`, `79e0c50`: upstream changelog/release metadata, appcast, hashes and
+  version/build changes are excluded. Keep Sevi's branding, updater configuration,
+  icons, release process and local UI changes.
+
+## Validation — 2026-11-09 approved ports
+
+The implementation, data and fixture changes are confined to `Rust/`. Reference
+engine/undo sources preserve the existing Sevi identifiers. The new Overview copy
+has the requested three explicit lines; all earlier title, color, section, footer
+timer, Credits and full-label switch changes remain present.
+
+- `cargo xtask check`: passed. All **219 rules**, both **14-case** Simple Telex
+  suites, **21 reported regressions**, **14 driver undo cases**, exact upstream
+  goldens/metrics and the unchanged **11,092-syllable** snapshot pass. Engine,
+  desktop, persistence, tools, UI and protocol tests pass. The performance and
+  realistic-edit/touch budgets pass; the existing synthetic stuck-case baseline
+  remains unchanged, with zero guard/elsewhere text-safety violations.
+- `cargo xtask import-legacy-data --check`: all reference tables match byte for
+  byte, including the supplemental form blob and offsets. The original English
+  table's 41,225 entries and frequency scores are unchanged by D60.
+- Quality comparison against `79e0c50`: **every non-timing measurement matches**,
+  including all 219 locked cases, 21/21 reports and zero bad text edits. This run
+  measured 640 ns/key for Rust versus 567 ns/key for C++; the Rust check's measured
+  mean was 643 ns/key against the 1,000 ns/key budget. These are Linux engine
+  microbenchmarks, not native Windows application-latency measurements.
+- Native GTK4/IBus X11 typing: **46/46 passed**, including holding Alt for two
+  distinct Z presses, a held/repeating Z switching once, prior Caps Lock cases,
+  restored-word navigation and emoji insertion. The session used a project-owned
+  profile, PID/network/mount namespaces, Xvfb and private D-Bus/IBus. No normal
+  desktop configuration or shared service was changed. The task namespace exited.
+- Strict Clippy passes for portable/tool/UI code, Windows x64 (including native
+  hook/helper/live-runner targets), and Linux with `native-tests,settings-ui`.
+  Linux production tests and the final protocol policy tests pass. Both native
+  Linux fixture/settings binaries and Windows app/live-runner binaries build.
+- Windows PE checks confirm AMD64, GUI subsystem and system DLL imports without
+  a Visual C++/dynamic CRT dependency. Native Windows shortcut routing, AltGr in
+  actual keyboard layouts and password-field acceptance still require Windows;
+  cross-building and portable policy tests do not establish those OS interactions.
+  macOS bundle/runtime and GNOME Wayland acceptance remain native follow-ups.
+
+Validation artifacts are under `Rust/target/upstream-port-2026-11-09/`, including
+`check.log`, `quality.json`, the private-session launcher and
+`native.fsYX01/live.log`. The refreshed executable is
+`Rust/target/windows-test/Sevi-upstream-20261109-x64.exe` (SHA-256
+`6dfe299167e5db25fca7d7adda8b59154addeac94895439cfe4926a7a0ed40ad`), with a
+matching `Sevi-upstream-20261109-livetest-x64.exe` and acknowledgement file.
+Earlier test executables are preserved. No commit, push, publication, signing,
+installer execution, global installation, mobile port or version bump was made.
+
 ## Next review
 
 The port and its reference fixtures now live entirely under `Rust/`. Apply
@@ -105,4 +220,4 @@ selected upstream changes to those copies; the original source folders beside
 `Rust/` are not inputs to the port. Run import/check/scorecard commands from
 `Rust/`. Historical artifact paths above predate this relocation.
 
-Fetch `origin main`, then review the diff **from the Last reviewed upstream SHA above**, not from the merge-base (which stays at the original C++ baseline). Select desktop bug fixes, translate behavior into the Rust hosts, import applicable upstream regression expectations, and advance this marker only after reviewing the entire range. Keep mobile/new-feature exclusions explicit. Avoid a wholesale merge or cherry-pick of native C++/Swift host changes.
+Fetch `origin main`, then review the diff **from the last integrated and validated SHA above**, not from the merge-base (which stays at the original C++ baseline). Select desktop bug fixes, translate behavior into the Rust hosts, import applicable upstream regression expectations, and review the entire range before advancing the marker. Keep the deferred Linux setup behavior, mobile/new-feature exclusions and native acceptance limits explicit. Avoid a wholesale merge or cherry-pick of native C++/Swift host changes.

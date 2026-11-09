@@ -19,6 +19,8 @@ pub mod shared_ui;
 pub mod site;
 #[cfg(any(windows, test))]
 mod storage;
+#[cfg(any(windows, test))]
+mod tray_click;
 #[cfg(windows)]
 pub mod ui;
 #[cfg(windows)]

@@ -76,12 +76,10 @@ pub(crate) fn back(ui: &mut egui::Ui) -> Response {
     let p = Palette::get(ui.ctx());
     let galley = hud(ui, "BACK", p.ink, false);
     let (rect, response) = ui.allocate_exact_size(vec2(20. + galley.size().x, 24.), Sense::click());
-    let c = pos2(rect.left() + 4., rect.center().y);
+    let c = pos2(rect.left(), rect.center().y);
     let stroke = Stroke::new(1., p.ink);
-    ui.painter()
-        .line_segment([c + vec2(-4., 0.), c + vec2(4., 0.)], stroke);
     ui.painter().add(egui::Shape::line(
-        vec![c + vec2(-1., -3.), c + vec2(-4., 0.), c + vec2(-1., 3.)],
+        vec![c + vec2(3., -3.), c, c + vec2(3., 3.)],
         stroke,
     ));
     let at = pos2(rect.left() + 20., rect.center().y - galley.size().y / 2.);
@@ -92,6 +90,24 @@ pub(crate) fn back(ui: &mut egui::Ui) -> Response {
     }
     response.widget_info(|| egui::WidgetInfo::labeled(egui::Role::Button, true, "Back"));
     response.on_hover_cursor(egui::CursorIcon::PointingHand)
+}
+pub(crate) fn check_updates(ui: &mut egui::Ui, at: egui::Pos2) -> Response {
+    let p = Palette::get(ui.ctx());
+    let label = "(CHECK FOR UPDATE)";
+    let rect = egui::Rect::from_min_size(at, hud(ui, label, p.muted, false).size());
+    let response = ui.interact(rect, ui.scope_id().with("check-updates"), Sense::click());
+    let ink = if response.hovered() || response.has_focus() {
+        p.accent
+    } else {
+        p.muted
+    };
+    ui.painter().galley(at, hud(ui, label, ink, false), ink);
+    response.widget_info(|| {
+        egui::WidgetInfo::labeled(egui::Role::Button, ui.is_enabled(), "Check for update")
+    });
+    response
+        .on_hover_cursor(egui::CursorIcon::PointingHand)
+        .on_hover_text("Check for update")
 }
 /// Retain egui's label layout, keyboard behavior and checked accessibility state,
 /// replacing only the painted tick with a solid inset square.
