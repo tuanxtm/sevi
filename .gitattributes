@@ -1,0 +1,5 @@
+# Keep frozen-data checksums and scripts identical on every desktop platform.
+* text=auto eol=lf
+*.words -text
+*.offsets -text
+*.scores -text

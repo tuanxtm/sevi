@@ -215,9 +215,12 @@ installer execution, global installation, mobile port or version bump was made.
 
 ## Next review
 
-The port and its reference fixtures now live entirely under `Rust/`. Apply
-selected upstream changes to those copies; the original source folders beside
-`Rust/` are not inputs to the port. Run import/check/scorecard commands from
-`Rust/`. Historical artifact paths above predate this relocation.
+The Rust implementation and regression fixtures live entirely under `Rust/`.
+The copied C/C++/Objective-C++/Swift implementations and header importer have
+been retired. Translate selected upstream behavior into Rust and retain relevant
+regression cases. Generate Rust data directly with `cargo xtask tool`, review
+intentional data changes, then run `cargo xtask lock-data` and `cargo xtask check`.
+Scorecard comparisons require a Rust-era revision. Historical import/check
+results and artifact paths above describe the implementation at that time.
 
 Fetch `origin main`, then review the diff **from the last integrated and validated SHA above**, not from the merge-base (which stays at the original C++ baseline). Select desktop bug fixes, translate behavior into the Rust hosts, import applicable upstream regression expectations, and review the entire range before advancing the marker. Keep the deferred Linux setup behavior, mobile/new-feature exclusions and native acceptance limits explicit. Avoid a wholesale merge or cherry-pick of native C++/Swift host changes.

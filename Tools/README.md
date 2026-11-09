@@ -1,14 +1,14 @@
 # Rust support tools
 
 Run commands from the `Rust/` workspace root with `cargo xtask tool <command> [arguments]`.
-The existing Python, Swift and C++ files are migration references; active build,
-test, CI and release entrypoints use Rust. Deleted mobile projects and their
-exclusive tools are outside this migration.
+Engine, corpus and dictionary tools are implemented in Rust. Superseded Python,
+Swift and C++ implementations have been retired. Shell/PowerShell wrappers and
+the standalone GitHub release automation remain. Mobile projects are excluded.
 
 | Command | Existing task |
 |---|---|
 | `build-dict` | Blend word frequencies, spelling acceptance and overrides |
-| `build-forms <SCOWL-directory>` | Expand the supplied en_US Hunspell dictionary with `unmunch`, keeping only missing forms of listed English base words; refresh frozen Rust data unless `--output` is supplied |
+| `build-forms <SCOWL-directory>` | Expand the supplied en_US Hunspell dictionary with `unmunch`, keeping only missing forms of listed English base words |
 | `build-bigrams` | Generate scored word pairs |
 | `build-teencode` | Generate teencode forms and frequencies |
 | `keepgen <word-file>` | Generate protected-word data |
@@ -19,7 +19,7 @@ exclusive tools are outside this migration.
 | `bulk`, `margins`, `sweep` | Existing dictionary accuracy and threshold experiments |
 | `teen-eval` | Evaluate the existing teencode corpus |
 | `compare-driver <units> [en\|vi]` | Compare driver and lazy-simulator text |
-| `scorecard [--compare REF] [--json PATH]` | Measure public corpora and compare archived Rust/C++ reference behavior |
+| `scorecard [--compare REF] [--json PATH]` | Measure public corpora and compare a Rust-era Git revision; pre-Rust revisions are rejected |
 | `clean-viblo`, `fetch-viblo`, `gen-chat` | Existing corpus cleaning, fetch and chat generation tasks |
 | `dl-shots desktop\|scene\|macdesk ...` | Compose existing desktop download-page pictures |
 | `dmg-background <output.png>` | Generate the existing 2× DMG background |
@@ -47,9 +47,14 @@ Rust references in `Tools/autoswitch/rules/decisions.tsv`.
 `cargo run -p sevi-test-tools --bin sevi-test-tools -- decisions` runs that audit alone. Explicit `open` entries report native-acceptance
 gaps; `none` entries record removed, rejected or mobile-only behavior.
 
-Dictionary/corpus tools retain the original private-data defaults. Use `--data`
-or `SEVI_DATA`, `--source` and `--output` for project-owned fixtures. Default
-dictionary-generator output also refreshes the Rust engine's frozen data. The
+Dictionary/corpus inputs default to the workspace's `data/` directory. Use
+`--data` or `SEVI_DATA` and `--source` to select explicitly supplied inputs.
+Dictionary generators write directly into `crates/sevi-engine/src/data/`;
+`--output DIRECTORY` writes isolated outputs for review. No C headers or importer
+are involved. The dictionary commands produce `vn.*`/`en.*`, `en-forms.*`,
+`bigram.*`, `teencode.rs` and `keep.words`, respectively. After reviewing deliberate
+data changes, run `cargo fmt --all` and `cargo xtask lock-data`. `check-data` verifies
+the committed SHA-256 manifest without requiring original private corpora. The
 original frequency knobs keep their names. The engine's original `AS_*`
 compile-time experiments use environment variables supplied to Cargo; `sweep`
 builds its variants under `target/experiment-sweep`.

@@ -29,8 +29,13 @@ understand the change and have tested it yourself, the same as code you typed by
 | Windows | `Windows/Tests/` | `pwsh Windows/check.ps1` |
 
 `check.sh` locks the engine's behavior with golden snapshots. If your change is meant to change typing results,
-review the diffs it prints, then run `Tools/autoswitch/rules/golden.py update` and say in the pull request which
+review the diffs it prints, then run `cargo xtask check update` and say in the pull request which
 results changed and why.
+
+Data generators write Rust engine data directly. Review deliberate data changes,
+format Rust sources, then run `cargo xtask lock-data` to accept their checksums.
+`cargo xtask check` rejects changed data until explicitly accepted, and rejects
+reintroduced C/C++/Objective-C++/Swift implementation sources.
 
 ## Before you open the pull request
 

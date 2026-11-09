@@ -3,11 +3,10 @@ use std::{
     error::Error,
     fs,
     path::{Path, PathBuf},
-    process::{Command, Stdio},
+    process::Command,
 };
 
 type Result<T = ()> = std::result::Result<T, Box<dyn Error>>;
-mod import_data;
 
 fn root() -> PathBuf {
     Path::new(env!("CARGO_MANIFEST_DIR"))
@@ -22,166 +21,13 @@ fn run(cmd: &mut Command) -> Result {
     }
     Ok(())
 }
-fn copy_tree(from: &Path, to: &Path) -> Result {
-    fs::create_dir_all(to)?;
-    for entry in fs::read_dir(from)? {
-        let entry = entry?;
-        let path = entry.path();
-        if entry.file_type()?.is_dir() {
-            if !matches!(
-                entry.file_name().to_str(),
-                Some("build" | "dist" | "__pycache__")
-            ) {
-                copy_tree(&path, &to.join(entry.file_name()))?;
-            }
-        } else if entry.file_type()?.is_file() {
-            fs::copy(&path, to.join(entry.file_name()))?;
-        } else {
-            return Err(format!("refusing to copy symlink {}", path.display()).into());
-        }
-    }
-    Ok(())
-}
-fn legacy_build() -> Result<PathBuf> {
-    let root = root();
-    let dest = root.join("target/legacy");
-    for dir in ["Engine", "Tools/autoswitch"] {
-        copy_tree(&root.join(dir), &dest.join(dir))?;
-    }
-    let revision = Command::new("git")
-        .args(["rev-parse", "HEAD"])
-        .current_dir(&root)
-        .output()?;
-    let paths = Command::new("git")
-        .args([
-            "ls-files",
-            "Engine",
-            "Tools/autoswitch",
-            "App",
-            "Linux",
-            "Windows",
-        ])
-        .current_dir(&root)
-        .output()?;
-    let mut hashes = String::from_utf8(revision.stdout)?;
-    for path in String::from_utf8(paths.stdout)?.lines() {
-        if root.join(path).is_file() {
-            let output = Command::new("git")
-                .args(["hash-object", "--", path])
-                .current_dir(&root)
-                .output()?;
-            hashes.push_str(&format!(
-                "{} {path}\n",
-                String::from_utf8(output.stdout)?.trim()
-            ));
-        }
-    }
-    fs::write(dest.join("baseline.txt"), hashes)?;
-    let engine = dest.join("Engine");
-    let tools = dest.join("Tools/autoswitch");
-    let cc = env::var("CXX").unwrap_or_else(|_| {
-        if cfg!(target_os = "macos") {
-            "clang++"
-        } else {
-            "g++"
-        }
-        .into()
-    });
-    for (name, file, driver, touch, testing) in [
-        ("test/harness", "test/harness.cpp", false, false, false),
-        ("sim/sim", "sim/sim.cpp", false, false, true),
-        ("sim/rtsim", "sim/rtsim.cpp", false, false, true),
-        ("driver/drvlazy", "driver/drvlazy.cpp", true, false, false),
-        ("driver/bench", "driver/bench.cpp", true, false, false),
-        (
-            "driver/undo_test",
-            "driver/undo_test.cpp",
-            true,
-            false,
-            false,
-        ),
-        ("touch/touchsim", "touch/touchsim.cpp", true, true, false),
-        ("touch/typoeval", "touch/typoeval.cpp", false, true, false),
-        ("touch/normeval", "touch/normeval.cpp", false, true, false),
-    ] {
-        println!("reference: {name}");
-        let mut cmd = Command::new(&cc);
-        cmd.args(["-std=c++17", "-O2", "-w", "-I"])
-            .arg(&engine)
-            .arg(tools.join(file));
-        for file in ["Engine.cpp", "Vietnamese.cpp", "SmartSwitchKey.cpp"] {
-            cmd.arg(engine.join(file));
-        }
-        if driver {
-            cmd.arg(engine.join("Driver.cpp"));
-        }
-        if touch {
-            cmd.arg(engine.join("TouchModel.cpp"));
-        }
-        if testing {
-            cmd.arg("-DAS_TESTING");
-        }
-        run(cmd.arg("-o").arg(tools.join(name)))?;
-    }
-    Ok(dest)
-}
-fn legacy_check() -> Result {
-    let dest = legacy_build()?;
-    let tools = dest.join("Tools/autoswitch");
-    let tmp = dest.join("tmp");
-    fs::create_dir_all(&tmp)?;
-    let mut failed = Vec::new();
-    for (script, arg, style) in [
-        ("rules/run_rules.py", None, "0"),
-        ("rules/run_rules.py", Some("telex_simple1.tsv"), "1"),
-        ("rules/run_rules.py", Some("telex_simple2.tsv"), "2"),
-        ("rules/run_reported.py", None, "0"),
-        ("rules/golden.py", Some("check"), "0"),
-    ] {
-        let mut cmd = Command::new("python3");
-        cmd.arg(script);
-        if let Some(arg) = arg {
-            cmd.arg(arg);
-        }
-        if !cmd
-            .current_dir(&tools)
-            .env("SEVI_TELEX_STYLE", style)
-            .env_remove("SEVI_AUTO_OFF")
-            .env_remove("SEVI_TEENCODE")
-            .env("TMPDIR", &tmp)
-            .status()?
-            .success()
-        {
-            failed.push(script);
-        }
-    }
-    run(&mut Command::new(tools.join("driver/undo_test")))?;
-    if !failed.is_empty() {
-        return Err(format!("reference checks failed: {failed:?}").into());
-    }
-    println!(
-        "Reference checks passed. Sources and outputs are isolated in {}",
-        dest.display()
-    );
-    Ok(())
-}
 fn main() -> Result {
     let args: Vec<String> = env::args().skip(1).collect();
     match args.first().map(String::as_str) {
-        Some("tool") => {
-            sevi_tools::run(&root(), &args[1..])?;
-            if args.get(1).is_some_and(|s| {
-                matches!(
-                    s.as_str(),
-                    "build-dict" | "build-forms" | "build-bigrams" | "build-teencode" | "keepgen"
-                )
-            }) && !args.iter().any(|s| s == "--output")
-            {
-                import_data::run(false)?;
-            }
-            Ok(())
-        }
-        Some("import-legacy-data") => import_data::run(args.get(1).is_some_and(|s| s == "--check")),
+        Some("tool") => sevi_tools::run(&root(), &args[1..]),
+        Some("check-data") => sevi_tools::check_data(&root()),
+        Some("lock-data") => sevi_tools::lock_data(&root()),
+        Some("check-sources") => sevi_tools::check_sources(&root()),
         Some("build-macos") => build_macos(),
         Some("check") => {
             let update = match args.get(1).map(String::as_str) {
@@ -191,32 +37,7 @@ fn main() -> Result {
             };
             check(update)
         }
-        Some("baseline") => {
-            if args.get(1).map(String::as_str) == Some("check") {
-                legacy_check()
-            } else {
-                legacy_build().map(|_| ())
-            }
-        }
-        Some("legacy-run") => {
-            let binary = args.get(1).ok_or("legacy-run requires a binary")?;
-            if Path::new(binary).components().any(|p| {
-                matches!(
-                    p,
-                    std::path::Component::ParentDir
-                        | std::path::Component::RootDir
-                        | std::path::Component::Prefix(_)
-                )
-            }) {
-                return Err("invalid binary path".into());
-            }
-            run(
-                Command::new(root().join("target/legacy/Tools/autoswitch").join(binary))
-                    .args(&args[2..])
-                    .stdin(Stdio::inherit()),
-            )
-        }
-        _ => Err("usage: cargo xtask baseline [check] | legacy-run <binary> [args]".into()),
+        _ => Err("usage: cargo xtask check [check|update] | check-data | lock-data | check-sources | tool <command> | build-macos".into()),
     }
 }
 
@@ -275,6 +96,8 @@ fn build_macos() -> Result {
 }
 
 fn check(update: bool) -> Result {
+    sevi_tools::check_data(&root())?;
+    sevi_tools::check_sources(&root())?;
     let cargo = env::var_os("CARGO").unwrap_or_else(|| "cargo".into());
     run(Command::new(&cargo).current_dir(root()).args([
         "test",

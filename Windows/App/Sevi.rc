@@ -1,12 +1,14 @@
 #include <windows.h>
-#include "resource.h"
+#define IDI_APP 101
+#define IDI_TRAY_VI 102
+#define IDI_TRAY_EN 103
+#ifndef SEVI_VERSION
+#define SEVI_VERSION "0.1.0"
+#endif
 IDI_APP ICON "Sevi.ico"
 IDI_TRAY_VI ICON "tray-v.ico"
 IDI_TRAY_EN ICON "tray-e.ico"
 1 24 "Sevi.manifest"
-IDR_SOUND_VI RCDATA "Sounds/SwitchToVietnamese.wav"
-IDR_SOUND_EN RCDATA "Sounds/SwitchToEnglish.wav"
-IDR_EMOJI_JSON RCDATA "../../App/Resources/Emoji.json"
 VS_VERSION_INFO VERSIONINFO
  FILEVERSION 1,0,14,0
  PRODUCTVERSION 1,0,14,0

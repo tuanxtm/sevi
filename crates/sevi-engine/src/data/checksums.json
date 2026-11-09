@@ -1,0 +1,17 @@
+{
+  "data/bigram.offsets": "b24192f92b2bdce2c442d0b4e253a2dfa80130e31edabae7848b324a1f0c03c7",
+  "data/bigram.scores": "cbc8f3e928ec36d3fc1905ae6a3c80f53585eea515cd7d326d5aecf463d5387e",
+  "data/bigram.words": "fd8fe72f6167c91ac0b5422569823e7edf995ba2ac6574aee6e77a67fe7025ba",
+  "data/en-forms.offsets": "dbd3cac64c3c69d532227e515535a48db170ad604f06b7ff7754291f6f3f9435",
+  "data/en-forms.words": "92263b782cd6a85702f2165e499e98beefbebe19cc1eb06d2625f0829a809718",
+  "data/en.offsets": "eb9d345e73a5ca5fa01d1e7052f666a57a79530040f41056bfe9bb56ae04d28e",
+  "data/en.scores": "6d419215889ce3941e1b3ccc751fc24d90f0f30138c08078bd99d7479f05329d",
+  "data/en.words": "1536073e750786864f4b86cdc912ee52ffe1f3507f2b2e93c17e84f92f28525f",
+  "data/keep.words": "3c916e2aa9770938a9fbde013628a9bc10df4b7d3f177ea51736f5f673e2ad99",
+  "data/teencode.rs": "3d5187906359ec77c56174aeb307e743563823cad309e4ab47fc0b4a494a4e70",
+  "data/vn.offsets": "f4a8dc4286a7e1b8ea96e4618466abaf802f6ff4cf001dc4c24296dabf22f064",
+  "data/vn.scores": "815cff0c180eba3552d0f84728b9db0f59a9785098e114f8a45fcea634f1fba1",
+  "data/vn.words": "a1deac9998853d3facfd8e6f40312658aaea74b37c8bff509c987721407ba770",
+  "keys.rs": "8c6f86bc3a20cb14242f55db7a002e317fefcce01354e2e163cf7d0c30a742ca",
+  "tables.rs": "3c2cc7c398a429451f160cfa8f8cb24e0f4479e3bfb925dec698a40fdaca1cae"
+}

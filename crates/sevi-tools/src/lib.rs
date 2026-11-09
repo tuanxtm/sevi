@@ -6,7 +6,9 @@ use std::{
 pub type Result<T = ()> = std::result::Result<T, Box<dyn Error>>;
 mod appcast;
 mod corpus;
+mod data_files;
 mod dictionary;
+pub use data_files::{check_data, check_sources, lock_data};
 mod emoji;
 mod experiments;
 mod forms;
@@ -41,9 +43,7 @@ impl Args<'_> {
         self.option("--data")
             .map(PathBuf::from)
             .or_else(|| std::env::var_os("SEVI_DATA").map(PathBuf::from))
-            .unwrap_or_else(|| {
-                PathBuf::from(std::env::var_os("HOME").unwrap_or_default()).join("Work/sevi-data")
-            })
+            .unwrap_or_else(|| self.root.join("data"))
     }
     pub fn output(&self, name: &str) -> PathBuf {
         self.path("--output", self.root.join(name))
@@ -102,44 +102,4 @@ pub fn counts(path: &Path) -> Result<Vec<(String, f64)>> {
             Ok((word, count))
         })
         .collect()
-}
-pub fn emit_words(name: &str, table: &std::collections::BTreeMap<String, i32>) -> String {
-    let keys: Vec<_> = table.keys().collect();
-    let mut out = format!("static const char {name}Words[] =\n");
-    let mut offsets = vec![];
-    let mut offset = 0usize;
-    for chunk in keys.chunks(200) {
-        out.push_str("    \"");
-        for key in chunk {
-            offsets.push(offset);
-            offset += key.len() + 1;
-            out.push_str(key);
-            out.push_str("\\0");
-        }
-        out.push_str("\"\n");
-    }
-    if !keys.is_empty() {
-        out.pop();
-    }
-    out.push_str(";\n");
-    out.push_str(&format!(
-        "static const unsigned int {name}Offsets[{}] = {{{}}};\n",
-        keys.len(),
-        offsets
-            .iter()
-            .map(usize::to_string)
-            .collect::<Vec<_>>()
-            .join(",")
-    ));
-    out.push_str(&format!(
-        "static const signed char {name}Scores[{}] = {{{}}};\n",
-        keys.len(),
-        table
-            .values()
-            .map(i32::to_string)
-            .collect::<Vec<_>>()
-            .join(",")
-    ));
-    out.push_str(&format!("static const int {name}Count = {};\n", keys.len()));
-    out
 }

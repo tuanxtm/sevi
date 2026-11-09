@@ -25,7 +25,7 @@ boxed menu whose selected row uses the VI/EN inverse colors. Shortcut menus reta
 the existing recorder. Back combines an 8-by-6-pixel vector arrow and 11-pixel mono BACK;
 only the text underlines. There is no page name or rule on its row. The title bar
 has only the subtitle and caption controls. Help/About/Credits sit at the footer's
-left and `SEVI V1.0.40` at the right; status notices replace the version for 10 seconds
+left and the current Cargo version at the right; status notices replace the version for 10 seconds
 before it returns. A new notice restarts the timer. The right content inset is 8 logical pixels.
 Mono tracking is 0.44 logical pixels. Checked boxes use solid inset squares and
 retain egui keyboard/accessibility behavior. Emoji/Active Input share one horizontal row;
@@ -192,4 +192,4 @@ The previous executable is preserved in
 An `opt-level="s"` comparison was larger than `"z"`, so the smaller configuration
 is retained. No executable packer, glyph removal or typing-engine size optimization
 is used. The emoji JSON and both switch sounds occur exactly once in the final
-Windows executable; their compatibility RC entries remain in the reference source.
+Windows executable; the superseded compatibility RC entries have been retired.

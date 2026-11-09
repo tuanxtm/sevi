@@ -13,7 +13,8 @@ The app contains word statistics and English word forms from the data below, nev
 - [Vikey](https://github.com/tonyminibot/Vikey), Tony Dinh (GPL-3.0), the original project ported to Rust as Sevi
 - [OpenKey](https://github.com/tuyenvm/OpenKey), Tuyen Mai (GPL-3.0)
 - [Sparkle](https://sparkle-project.org), Sparkle Project (MIT)
-- [TweetNaCl](https://tweetnacl.cr.yp.to), Daniel J. Bernstein et al. (public domain), Windows update signature check
+- `ed25519-dalek`, dalek contributors, Rust Windows update signature verification
+- [TweetNaCl](https://tweetnacl.cr.yp.to), Daniel J. Bernstein et al. (public domain), retired upstream Windows verifier; historical attribution retained
 - [Inno Setup](https://jrsoftware.org/isinfo.php), Jordan Russell, Martijn Laan (Inno Setup License), Windows installer
 - [egui / eframe](https://github.com/emilk/egui), egui contributors (MIT OR Apache-2.0), shared desktop UI
 - [Inter](https://rsms.me/inter/), Rasmus Andersson (SIL Open Font License 1.1)

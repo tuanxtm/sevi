@@ -1,5 +1,8 @@
 .DS_Store
 /target/
+# Local crash dumps are diagnostics, not source files.
+/core
+/core.*
 .secrets/
 .env
 .env.*

@@ -50,7 +50,7 @@ fn state<T: Default>(f: impl FnOnce(&mut App) -> T) -> T {
             .unwrap_or_default()
     })
 }
-// These IDs match IDI_TRAY_VI/IDI_TRAY_EN in Windows/App/resource.h.
+// These IDs match IDI_TRAY_VI/IDI_TRAY_EN in Windows/App/Sevi.rc.
 fn tray_icons(instance: HINSTANCE) -> windows::core::Result<(HICON, HICON)> {
     unsafe {
         let vi = LoadIconMetric(Some(instance), PCWSTR(102usize as *const u16), LIM_SMALL)?;

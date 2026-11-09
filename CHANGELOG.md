@@ -1,5 +1,32 @@
 # Changelog
 
+## 1.0.50 — 2026-11-09
+
+- Finished retiring the parallel C/C++/Objective-C++ and Swift implementations.
+  The engine, native desktop hosts, shared UI and engine tools use Rust. Removed
+  the transitional engine C ABI and alternative native build paths; the engine
+  now unconditionally forbids unsafe code.
+- Made Rust engine data authoritative. Dictionary, word-pair, English-form,
+  protected-word and teencode generators write Rust's compact data formats
+  directly, without C headers or an importer. Existing words and scores are
+  preserved byte for byte.
+- Added frozen-data SHA-256 checks, generator regression checks and a source
+  audit to prevent retired implementation files from returning. Pinned checkout
+  line endings so data checks remain consistent across desktop platforms.
+- Simplified CMake packaging, removed superseded reference tools, and updated
+  build, contribution and conversion documentation. Build artifacts and crash
+  dumps remain outside source control.
+
+Validation: 219 typing rules, 21 reported regressions, golden/syllable snapshots,
+driver parity, realistic-edit safety, touch/performance limits, strict Rust lint
+and the Linux release build passed. The Windows x64 cleanup test build was
+cross-built and its manifest, version, static runtime and icon resources checked;
+the user reported testing it without problems. Broader application compatibility,
+installed update flows and native macOS acceptance remain separate checks.
+
+Windows x64 downloads include the installer, standalone executable, portable ZIP,
+signed automatic-update feed and SHA-256 checksums. This is Sevi build 34.
+
 ## 1.0.40 — 2026-11-09
 
 - Refined the shared desktop UI with the new background, black and orange accent colors, accented title initials and Credits links, and full-width VIETNAMESE/ENGLISH controls under ACTIVE INPUT. The switch spans the emoji checkbox top through the shortcut text baseline.

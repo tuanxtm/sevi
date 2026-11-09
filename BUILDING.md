@@ -3,7 +3,7 @@
 This repository contains the complete Rust workspace. Run the commands below
 from its root, with the Rust toolchain pinned in `rust-toolchain.toml` (1.95.0).
 In the original upstream checkout, the same workspace is inside `Rust/`.
-Builds use the workspace's own resources, fixtures and reference code.
+Builds use the workspace's own Rust sources, resources and regression fixtures.
 
 ## Workspace
 
@@ -11,14 +11,16 @@ Builds use the workspace's own resources, fixtures and reference code.
 | --- | --- |
 | `crates/` | Rust engine, shared runtime, native desktop apps and support tools |
 | `xtask/`, `.cargo/`, `Cargo.*`, `rust-toolchain.toml` | Cargo workspace and development commands |
-| `App/`, `Linux/`, `Windows/` | Desktop resources, packaging, native fixtures and reference hosts |
-| `Engine/`, `Tools/autoswitch/` | Reference engine/data and regression corpora |
-| `cmake/`, `project.yml` | CMake integration and macOS project generation |
-| `site/`, `site-shots/`, `Tools/` | Inputs for support tools and retained publishing references |
+| `App/`, `Linux/`, `Windows/` | Desktop resources, packaging and native acceptance fixtures |
+| `crates/sevi-engine/src/data/`, `Tools/autoswitch/` | Engine data, regression cases and corpora |
+| `Linux/CMakeLists.txt`, `Windows/CMakeLists.txt`, `project.yml` | Packaging and macOS project generation |
+| `site/`, `site-shots/`, `Tools/` | Website inputs, command wrappers and release tooling |
 | `target/` | Ignored generated builds, checks and test executables |
 
-The original desktop sources are retained for reference and compatibility;
-the default desktop implementations are the Rust crates. Mobile apps are excluded.
+Application behavior, native desktop integration and engine tools are Rust.
+The old C/C++/Objective-C++/Swift implementations and build alternatives have
+been retired. Platform SDKs, native libraries, Windows RC metadata and the tiny
+macOS assembly entry remain necessary build inputs. Mobile apps are excluded.
 GitHub workflows live in `.github/workflows/`. Legacy upstream publishing commands
 are disabled; use [RELEASING.md](RELEASING.md) for Sevi releases and updates.
 
@@ -104,6 +106,10 @@ Run the typing-rule checks, corpus snapshots and performance checks:
 ```sh
 cargo xtask check
 ```
+
+This includes a Rust-only source audit and SHA-256 checks of the frozen engine
+data. After intentionally regenerating data, review the changes, run
+`cargo fmt --all`, then explicitly accept the data with `cargo xtask lock-data`.
 
 - [Contributing](CONTRIBUTING.md): checks for each part of the project.
 - [Decisions](DECISIONS.md): typing rules and their rationale.

@@ -1,27 +1,34 @@
-# Frozen engine data
+# Engine data
 
-These files contain pinned Sevi/OpenKey tables transferred to Rust without retraining. Supplemental English forms come from the reviewed upstream SCOWL en_US snapshot.
+The committed Rust tables and compact blobs are authoritative; no C headers or
+legacy importer are needed to build, regenerate or verify them.
 
-| Files | Representation | Entries |
+| Files | Representation | Frozen entries |
 | --- | --- | --- |
-| `vn.*` | NUL-separated ASCII keys, little-endian `u32` offsets, signed `i8` scores | 8,143 |
+| `vn.*` | NUL-separated ASCII keys, little-endian u32 offsets, signed i8 scores | 8,143 |
 | `en.*` | Same representation | 41,225 |
-| `en-forms.*` | NUL-separated ASCII forms and little-endian `u32` offsets, no stored scores | 18,197 |
-| `bigram.*` | NUL-separated UTF-8 keys, little-endian `u32` offsets, unsigned logarithmic count bytes | 160,386 |
-| `keep.words` | Sorted ASCII words, one per line | 13,490 |
+| `en-forms.*` | NUL-separated ASCII forms, little-endian u32 offsets, no frequency scores | 18,197 |
+| `bigram.*` | NUL-separated UTF-8 keys, little-endian u32 offsets, unsigned logarithmic count bytes | 160,386 |
+| `keep.words` | Sorted ASCII protected words, one per line | 13,490 |
+| `teencode.rs` | Rust constants for teencode forms and their scores | Pinned forms/scores |
 
-The word blobs retain the C string literals' final terminator, including their extra trailing NUL. Table lookups do not require native byte order or runtime file access.
-Missing English forms score -8 only after the primary English lookup fails and Vietnamese recognition fails. Existing frequency scores are unchanged.
+Word blobs retain the extra final NUL from the original data representation.
+Missing English forms score -8 only after the main English lookup and Vietnamese
+recognition fail. Existing frequency scores are unchanged.
 
-The character, spelling, and teencode tables are in `../tables.rs`. Canonical key codes are in `../keys.rs`.
+Spelling/character tables are in `../tables.rs`; canonical key codes are in
+`../keys.rs`. `checksums.json` records SHA-256 hashes for all frozen data and
+these Rust tables. `cargo xtask check-data` verifies them without private corpora.
 
-Verify all transferred bytes and table values against the reference sources:
+The Rust commands `build-dict`, `build-forms`, `build-bigrams`, `keepgen` and
+`build-teencode` write these formats directly. Run them through `cargo xtask tool`.
+`--output DIRECTORY` writes reviewable fixture data separately. See
+[Tools](../../../../Tools/README.md) for inputs and command details.
+After deliberate changes, review the data, run `cargo fmt --all`, then explicitly
+accept its checksums with `cargo xtask lock-data`. Normal checks never rewrite
+or accept the manifest.
 
-```sh
-cargo xtask import-legacy-data --check
-```
-
-`cargo xtask import-legacy-data` explicitly imports the reference tables again. It does not fetch dictionaries or retrain them. Run `cargo fmt --all` after an import. Normal builds use only the committed Rust data.
-
-Original attribution remains in the reference headers and [ACKNOWLEDGEMENTS.md](../../../../ACKNOWLEDGEMENTS.md). Word frequencies derive from FrequencyWords/OpenSubtitles (CC BY-SA 4.0); word-pair sources include FineWeb, HPLT, MADLAD, Reddit, and the original forum crawl. Preserve these notices when redistributing or regenerating the data.
-The supplemental forms retain the SCOWL/English Speller Database notice in that acknowledgement file. `cargo xtask tool build-forms <SCOWL-directory>` uses Hunspell's `unmunch` and the supplied en_US affix rules; it keeps only missing forms of listed base words.
+Attribution is retained in [ACKNOWLEDGEMENTS.md](../../../../ACKNOWLEDGEMENTS.md):
+FrequencyWords/OpenSubtitles (CC BY-SA 4.0); FineWeb, HPLT, MADLAD, Reddit and
+Vietnamese forum word-pair statistics; SCOWL/English Speller Database en_US forms.
+The original OpenKey/Vikey credits and license notices remain in the project.

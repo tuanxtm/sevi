@@ -1,5 +1,7 @@
 # Cargo owns both native desktop executables. CMake retains distribution packaging.
 find_program(SEVI_CARGO cargo REQUIRED)
+# This project packages Cargo executables without enabling C/C++ architecture probes.
+set(CMAKE_INSTALL_LIBDIR "lib" CACHE PATH "Library install directory")
 include(GNUInstallDirs)
 set(SEVI_CARGO_TARGET "${CMAKE_CURRENT_BINARY_DIR}/cargo")
 file(GLOB_RECURSE SEVI_RUST_SOURCES CONFIGURE_DEPENDS

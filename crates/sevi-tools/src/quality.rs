@@ -76,9 +76,10 @@ fn build_reference(root: &Path, work: &Path, reference: &str) -> Result<PathBuf>
     }
     let repository = PathBuf::from(String::from_utf8(repository.stdout)?.trim());
     // Archives use repository-relative paths, even when invoked inside Rust/.
-    // Retain comparisons against both earlier root workspaces and upstream C++.
+    // Compare Rust-era references only; retired C++ implementations are not rebuilt.
     let rust_layout = [
         ("Rust/", "sevi-test-tools"),
+        ("", "sevi-test-tools"),
         ("Rust/", "vikey-test-tools"),
         ("", "vikey-test-tools"),
     ]
@@ -94,16 +95,18 @@ fn build_reference(root: &Path, work: &Path, reference: &str) -> Result<PathBuf>
             .output()
             .is_ok_and(|o| o.status.success())
     });
-    let paths = match rust_layout {
-        Some(("Rust/", _)) => vec!["Rust"],
-        Some(_) => vec![
+    let (directory, package) = rust_layout
+        .ok_or("comparison reference predates the Rust port; choose a Rust-era commit")?;
+    let paths = if directory == "Rust/" {
+        vec!["Rust"]
+    } else {
+        vec![
             "Cargo.toml",
             "Cargo.lock",
             "rust-toolchain.toml",
             "crates",
             "xtask",
-        ],
-        None => vec!["Engine", "Tools/autoswitch"],
+        ]
     };
     let archive = Command::new("git")
         .current_dir(&repository)
@@ -116,58 +119,16 @@ fn build_reference(root: &Path, work: &Path, reference: &str) -> Result<PathBuf>
     let sources = work.join("reference");
     fs::create_dir_all(&sources)?;
     tar::Archive::new(Cursor::new(archive.stdout)).unpack(&sources)?;
-    if let Some((directory, package)) = rust_layout {
-        let target = work.join("reference-target");
-        let status = Command::new(std::env::var_os("CARGO").unwrap_or_else(|| "cargo".into()))
-            .current_dir(sources.join(directory))
-            .args(["build", "--locked", "--release", "-p", package, "--bins"])
-            .env("CARGO_TARGET_DIR", &target)
-            .status()?;
-        if !status.success() {
-            return Err("building archived Rust reference failed".into());
-        }
-        return Ok(target.join("release"));
+    let target = work.join("reference-target");
+    let status = Command::new(std::env::var_os("CARGO").unwrap_or_else(|| "cargo".into()))
+        .current_dir(sources.join(directory))
+        .args(["build", "--locked", "--release", "-p", package, "--bins"])
+        .env("CARGO_TARGET_DIR", &target)
+        .status()?;
+    if !status.success() {
+        return Err("building archived Rust reference failed".into());
     }
-    let engine = sources.join("Engine");
-    let out = work.join("refbin");
-    fs::create_dir_all(&out)?;
-    for (name, path, extra, testing) in [
-        ("sim", "sim/sim.cpp", vec![], true),
-        ("rtsim", "sim/rtsim.cpp", vec![], true),
-        ("harness", "test/harness.cpp", vec![], false),
-        (
-            "touchsim",
-            "touch/touchsim.cpp",
-            vec!["TouchModel.cpp", "Driver.cpp"],
-            false,
-        ),
-        ("bench", "driver/bench.cpp", vec!["Driver.cpp"], false),
-    ] {
-        let mut command = Command::new(std::env::var_os("CXX").unwrap_or_else(|| "c++".into()));
-        command
-            .current_dir(root)
-            .args(["-std=c++17", "-O2", "-w"])
-            .arg(format!("-I{}", engine.display()))
-            .arg(format!("-I{}", engine.join("platforms").display()));
-        if testing {
-            command.arg("-DAS_TESTING");
-        }
-        command
-            .arg("-o")
-            .arg(executable(&out, name))
-            .arg(sources.join("Tools/autoswitch").join(path));
-        for source in
-            extra
-                .into_iter()
-                .chain(["Engine.cpp", "Vietnamese.cpp", "SmartSwitchKey.cpp"])
-        {
-            command.arg(engine.join(source));
-        }
-        if !command.status()?.success() {
-            return Err(format!("reference {name} build failed").into());
-        }
-    }
-    Ok(out)
+    Ok(target.join("release"))
 }
 fn units(root: &Path, work: &Path, corpus: &str, typos: f64) -> Result<PathBuf> {
     let path = work.join(format!("{corpus}_{typos}.units"));

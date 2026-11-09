@@ -2,8 +2,8 @@
 
 The Rust engine in `crates/sevi-engine` preserves the existing Telex and
 auto-switch behavior. Frequency data and existing regression/golden fixtures
-remain in this directory. C++, Python and Swift sources are retained as
-migration references.
+remain in this directory. All engine and data-generation commands use Rust;
+superseded C++, Python and Swift implementations have been retired.
 
 Run from the `Rust/` workspace root:
 
@@ -16,9 +16,9 @@ cargo xtask check
 ```
 
 On macOS, `cargo xtask tool spellfilter` filters words on standard input using
-the existing English spelling policy. The generators refresh Rust engine data
-when writing their default output. Use `--source`, `--data` and `--output`
-for isolated fixtures.
+the existing English spelling policy. Generators write Rust engine data directly.
+Use `--source`, `--data` and `--output DIRECTORY` for isolated fixtures. Review
+intentional data changes, run `cargo fmt --all`, then `cargo xtask lock-data`.
 
 - `vi_50k.txt`, `en_50k.txt`: FrequencyWords by Hermit Dave (OpenSubtitles 2018), CC BY-SA 4.0.
 - `en_spell_ok.txt`: lowercase or capitalized words accepted by the macOS checker.
