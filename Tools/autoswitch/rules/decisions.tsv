@@ -1,6 +1,7 @@
 # Historical decision coverage adapted to Sevi's Rust desktop implementation.
 # Decisions tagged D<n> in the engine TSV suites need no additional row.
 # decision kind Rust path::named test/check, or an explicit scope/native-acceptance reason
+D61	test	crates/sevi-test-tools/src/check.rs::pub fn undo() ; crates/sevi-runtime/tests/desktop_cases.rs::fn windows_desktop_cases()
 D1	open	macOS event tap/watchdog recovery needs native macOS acceptance
 D2	none	Historical upstream PR selection process
 D3	open	Browser Automation consent and real per-site integration need native macOS/Windows acceptance

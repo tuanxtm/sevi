@@ -10,13 +10,16 @@ auto_double_key_mix	vi	mixx 	mix
 auto_en_to_vi	en	truowfng 	trường 
 auto_en_stays_en	en	the theme of rust 	the theme of rust 
 auto_tie_vi_kept	vi	tô thí 	tô thí 
-undo_backspace	vi	more \b	moẻ
+undo_backspace	vi	more \b\b	moẻ
+late_comma_keeps_fix_D61	vi	more \b,	more,
 identifier_guard	en	obj.dir my_var 	obj.dir my_var 
 hotkey_switch	vi	{alt+z}tieng 	tieng 
 hotkey_alt_held_twice	vi	{down:alt}zz{up:alt}vieetj 	việt 
 hotkey_held_switches_once	vi	{down:alt}{down:z}{down:z}{down:z}{up:z}{up:alt}vieetj 	vieetj 
-undo_then_continue_D32	en	vaay \bj 	vậy 
-undo_same_word_D32	en	vaay \b 	vaay 
+undo_then_continue_D32	en	vaay \b\bj 	vậy 
+undo_same_word_D32	en	vaay \b\b 	vaay 
+late_comma_en_to_vi_D61	en	vaay \b,	vây,
+punctuation_cancels_undo_D61	en	vaay \b,\b	vây
 digits_vi_D33	vi	5trawm 	5trăm 
 digits_en_D33	en	mua 1casi 	mua 1cái 
 digits_unit_D33	vi	sacj 2w 	sạc 2w 
@@ -29,4 +32,4 @@ numpad_operator_ends_word	vi	a{add}a	a+a
 restore_then_home_moves	vi	testflight{home}a	atestflight
 capslock_comma_after_acronym	vi	NAS{caps},{caps}	NAS,
 capslock_period_en_D41	en	THOONG{caps}.{caps}	THÔNG.
-capslock_undo_at_space	vi	more{caps} {caps}\b	moẻ
+capslock_undo_at_space	vi	more{caps} {caps}\b\b	moẻ

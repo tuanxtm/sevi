@@ -4,13 +4,13 @@ default-members = ["crates/sevi-engine", "crates/sevi-runtime", "crates/sevi-win
 resolver = "3"
 
 [workspace.package]
-version = "1.0.50"
+version = "1.0.60"
 edition = "2024"
 rust-version = "1.95"
 license = "GPL-3.0-only"
 
 [workspace.metadata.sevi]
-build = 34
+build = 35
 macos-deployment-target = "13.0"
 baseline = "490820bc70c48c38b864cb1b63f6de61f9a44ab3"
 

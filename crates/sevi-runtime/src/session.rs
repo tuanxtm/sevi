@@ -61,6 +61,7 @@ pub struct EventResult {
 #[derive(Clone)]
 struct Undo {
     remove: usize,
+    separator_removed: bool,
     text: String,
     language: Language,
     keys: Vec<u32>,
@@ -579,7 +580,8 @@ impl DesktopSession {
             self.engine.undo_data.clone()
         };
         self.undo = Some(Undo {
-            remove: corrected + 1,
+            remove: corrected,
+            separator_removed: false,
             text,
             language: self.language(),
             keys,
@@ -703,11 +705,12 @@ impl DesktopSession {
         ]
         .contains(&k)
             || (shift && [KEY_SLASH, KEY_1, KEY_QUOTE, KEY_0].contains(&k));
+        let fix_at = word_end && !matches!(k, KEY_ENTER | KEY_RETURN);
         let en = std::mem::take(&mut self.en);
         let valid = self.valid;
         let double = self.after_double;
         self.after_double = false;
-        if double && word_end && self.engine.fix_doubled_key(&en) {
+        if double && fix_at && self.engine.fix_doubled_key(&en) {
             self.start_english(word_start(k, shift));
             self.previous.clear();
             let corrected = self.engine.hook.new_chars;
@@ -716,7 +719,7 @@ impl DesktopSession {
             return true;
         }
         self.start_english(word_start(k, shift));
-        let mut checked = word_end && valid && en.len() >= 2 && !self.other_language;
+        let mut checked = fix_at && valid && en.len() >= 2 && !self.other_language;
         if !self.undone.is_empty() {
             if en == self.undone {
                 checked = false
@@ -779,6 +782,7 @@ impl DesktopSession {
             && !self.excluded
             && self.hotkey_matches(self.emoji_hotkey, flags, true)
         {
+            self.undo = None;
             self.cancel_modifier_chord();
             return EventResult {
                 consumed: true,
@@ -816,11 +820,16 @@ impl DesktopSession {
         }
         if key == KEY_DELETE
             && !self.flags.control()
-            && let Some(undo) = self.undo.take()
+            && let Some(mut undo) = self.undo.take()
         {
-            return self.undo_fix(undo);
+            if undo.separator_removed {
+                return self.undo_fix(undo);
+            }
+            undo.separator_removed = true;
+            self.undo = Some(undo);
+        } else {
+            self.undo = None;
         }
-        self.undo = None;
         self.log.key(
             key,
             self.flags,
@@ -928,6 +937,7 @@ impl DesktopSession {
     pub fn unmodeled_key(&mut self, ends_word: bool) {
         self.cancel_modifier_chord();
         self.held_hotkey = None;
+        self.undo = None;
         if ends_word {
             self.log
                 .end_word("other", &mut *self.preferences, self.platform);

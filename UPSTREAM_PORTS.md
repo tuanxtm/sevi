@@ -3,7 +3,7 @@
 - Repository: https://github.com/tonyminibot/Vikey.git (`origin`).
 - Rust branch: `rust-port`; initial saved port: `950c93e`.
 - Original migration baseline: `490820bc70c48c38b864cb1b63f6de61f9a44ab3`.
-- Last integrated and validated upstream: **`79e0c50c4f78902866c18384e4045249d623bb9a`**, 2026-11-09 UTC (27 commits since `350efb25f49f1462814f69532c55c6e80ab4eb90`). All selected changes from the assessment below are implemented; explicit exclusions remain listed.
+- Last upstream review: **`5f2bfb0257146eb86301f1b86e5c2fb313b1dcd8`** (43 commits since `79e0c50`). The two selected desktop fixes are recorded below.
 - Scope: Windows, Linux, macOS and shared desktop typing/tool behavior. **iOS and Android are excluded.**
 
 This is a behavioral port of selected fixes, not a merge of the original hosts into the Rust implementation. Upstream release numbers do not identify a Sevi release. Sevi 1.0.40/build 33 packages these approved ports; the integration artifacts below were produced with the preceding 1.0.30/build 32 test build.
@@ -213,6 +213,25 @@ matching `Sevi-upstream-20261109-livetest-x64.exe` and acknowledgement file.
 Earlier test executables are preserved. No commit, push, publication, signing,
 installer execution, global installation, mobile port or version bump was made.
 
+## Port — 2026-11-19
+
+The November 19 review ported Vikey #121 (D61) and #128 (D62). Backspace
+first removes the separator, and a second consecutive Backspace restores the
+original word and language. Return and keypad Enter end the word without
+rewriting it. The regression cases cover both language directions and keep
+the corpus snapshots based on the exact key sequences. The manual-switch
+simulator also tries a space before Enter if it would correct the last word.
+
+`cargo xtask check` passed all 229 rules with the existing typing metrics
+and safety limits. Native GTK4/IBus X11 passed 55 cases, including both fixes,
+after a warm-up key. A cold run duplicated the first fixture and passed the
+other 49. Windows and macOS were covered by the portable desktop tests.
+
+The macOS stapling retry (`e1ea59e`) remains deferred until macOS release
+work. Mobile suggestions, tap areas, memory fixes, and model loads are
+outside the desktop port. The unmerged word-pair scoring experiment was
+reviewed separately and remains deferred.
+
 ## Next review
 
 The Rust implementation and regression fixtures live entirely under `Rust/`.
@@ -223,4 +242,8 @@ intentional data changes, then run `cargo xtask lock-data` and `cargo xtask chec
 Scorecard comparisons require a Rust-era revision. Historical import/check
 results and artifact paths above describe the implementation at that time.
 
-Fetch `origin main`, then review the diff **from the last integrated and validated SHA above**, not from the merge-base (which stays at the original C++ baseline). Select desktop bug fixes, translate behavior into the Rust hosts, import applicable upstream regression expectations, and review the entire range before advancing the marker. Keep the deferred Linux setup behavior, mobile/new-feature exclusions and native acceptance limits explicit. Avoid a wholesale merge or cherry-pick of native C++/Swift host changes.
+Fetch `origin main`, then review the diff from the last reviewed upstream SHA
+above. Select desktop bug fixes, translate behavior into the Rust hosts,
+import applicable upstream regression expectations, and review the entire
+range before advancing the marker. Keep the deferred Linux setup behavior,
+mobile and new feature exclusions, and native acceptance limits explicit.

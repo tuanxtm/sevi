@@ -1,7 +1,8 @@
-# Linux-only live cases (DECISIONS.md D32, D33, D35, D39, D41, D42 and the emoji command); same format as Windows/Tests/cases.tsv.
+# Linux-only live cases (DECISIONS.md D32, D33, D35, D39, D41, D42, D61 and the emoji command); same format as Windows/Tests/cases.tsv.
 # keys: \b Backspace, {alt+z} a key for xdotool, {keydown alt} {keyup alt} a key held across others, {cmd:...} a line written to the engine command file
-undo_then_continue_D32	vi	booj source vaay \bj 	bộ source vậy 
-undo_same_word_stays_D32	vi	booj source vaay \b 	bộ source vaay 
+undo_then_continue_D32	vi	booj source vaay \b\bj 	bộ source vậy 
+undo_same_word_stays_D32	vi	booj source vaay \b\b 	bộ source vaay 
+late_comma_keeps_fix_D61	vi	booj source vaay \b,	bộ source vây,
 digits_new_word_D33	vi	mua 1casi 	mua 1cái 
 digit_code_D33	vi	abc1def 	abc1def 
 digit_unit_w_D33	vi	sacj 2w 	sạc 2w 

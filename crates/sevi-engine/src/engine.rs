@@ -65,6 +65,10 @@ pub struct Engine {
     pub restored_keys: Vec<u32>,
     pub previous_restored: bool,
     pub last_side: i32,
+    #[cfg(feature = "simulation")]
+    pub(crate) track_word_side: bool,
+    #[cfg(feature = "simulation")]
+    lookback_pair_guard: bool,
     pub(crate) word: [u32; MAX_BUFF],
     pub(crate) index: usize,
     states: [u32; MAX_BUFF],
@@ -106,6 +110,10 @@ impl Default for Engine {
     }
 }
 impl Engine {
+    #[cfg(feature = "simulation")]
+    pub fn set_lookback_pair_guard(&mut self, enabled: bool) {
+        self.lookback_pair_guard = enabled;
+    }
     pub fn load_bigrams(&mut self, path: Option<&std::path::Path>, weight: f32, min: i32) {
         self.bigram_weight = weight;
         self.bigram_min = min;
@@ -151,6 +159,10 @@ impl Engine {
             restored_keys: vec![],
             previous_restored: false,
             last_side: -1,
+            #[cfg(feature = "simulation")]
+            track_word_side: false,
+            #[cfg(feature = "simulation")]
+            lookback_pair_guard: false,
             word: [0; MAX_BUFF],
             index: 0,
             states: [0; MAX_BUFF],
@@ -1213,6 +1225,14 @@ fn raw_word(keys: &[u32]) -> Option<String> {
     }
     keys.iter().map(|k| letter(*k).map(char::from)).collect()
 }
+#[cfg(feature = "simulation")]
+fn shown_word(text: &[u32]) -> Option<String> {
+    let surface: String = text
+        .iter()
+        .map(|&value| char::from_u32(rendered_char(value)))
+        .collect::<Option<_>>()?;
+    Some(surface.to_lowercase())
+}
 fn few_capitals(keys: &[u32]) -> bool {
     let mut n = 0;
     for (i, k) in keys.iter().enumerate() {
@@ -1436,6 +1456,32 @@ impl Engine {
                 .map(|i| 2f64.powf(data::BIGRAM.scores[i] as f64 / 8.0).round() as i32)
                 .unwrap_or(0)
         }
+    }
+    #[cfg(feature = "simulation")]
+    fn pair_guard_prefers_shown(
+        &self,
+        anchor: Option<&str>,
+        shown: &str,
+        replacement: &str,
+        following: &str,
+    ) -> bool {
+        if self.bigram_weight <= 0.0 || shown == replacement {
+            return false;
+        }
+        let vote = |kept: &str, replaced: &str| {
+            ratio(self.pair_count(kept), self.pair_count(replaced), 6, 1.0)
+        };
+        let before = anchor.map_or(0, |anchor| {
+            vote(
+                &format!("{anchor}\t{shown}"),
+                &format!("{anchor}\t{replacement}"),
+            )
+        });
+        let after = vote(
+            &format!("{shown}\t{following}"),
+            &format!("{replacement}\t{following}"),
+        );
+        before + after >= 5
     }
     fn bigram_vote(&self, prev: &str, prev_vi: bool, word: &str) -> i32 {
         if self.bigram_weight <= 0.0 {
@@ -1718,11 +1764,15 @@ impl Engine {
             vn: MISSING,
             ..Default::default()
         };
-        self.last_side = if self.word_start_ok {
-            self.word_side(&w.raw)
-        } else {
-            -1
-        };
+        // Only the simulator's optional early-switch policy consumes this extra replay.
+        #[cfg(feature = "simulation")]
+        if self.track_word_side {
+            self.last_side = if self.word_start_ok {
+                self.word_side(&w.raw)
+            } else {
+                -1
+            };
+        }
         if self.word_start_ok
             && self.state_index >= self.index
             && let (Some((word, t)), Some(raw)) = (self.word_key(), raw_word(&w.raw))
@@ -1755,6 +1805,30 @@ impl Engine {
             && n + self.previous[back].raw.len() + 1 < MAX_BUFF
             && delete + self.previous[back].shown.len() + 1 < MAX_BUFF
         {
+            #[cfg(feature = "simulation")]
+            if self.lookback_pair_guard
+                && !self.previous[back].same
+                && let Some(shown) = shown_word(&self.previous[back].shown)
+                && let Some(replacement) = raw_word(&self.previous[back].raw)
+                && let Some(following) = if back == 0 {
+                    raw_word(&self.restored_keys)
+                } else {
+                    raw_word(&self.previous[back - 1].raw)
+                }
+            {
+                let anchor = self
+                    .previous
+                    .get(back + 1)
+                    .and_then(|p| shown_word(&p.shown));
+                if self.pair_guard_prefers_shown(
+                    anchor.as_deref(),
+                    &shown,
+                    &replacement,
+                    &following,
+                ) {
+                    break;
+                }
+            }
             n += self.previous[back].raw.len() + 1;
             delete += self.previous[back].shown.len() + 1;
             back += 1
@@ -1890,6 +1964,18 @@ impl Engine {
             {
                 break;
             }
+            #[cfg(feature = "simulation")]
+            if self.lookback_pair_guard
+                && changed
+                && let Some(replacement) = shown_word(&text)
+                && let Some(following) =
+                    shown_word(earlier.last().map_or(&result, |(text, _)| text))
+            {
+                let anchor = previous.get(back + 1).and_then(|p| raw_word(p));
+                if self.pair_guard_prefers_shown(anchor.as_deref(), &p, &replacement, &following) {
+                    break;
+                }
+            }
             if result.len() + n + text.len() + 1 >= MAX_BUFF || delete + pc + 1 >= MAX_BUFF {
                 break;
             }
@@ -2007,15 +2093,7 @@ impl Engine {
     fn switch_break(&self, event: Event, key: u32, caps: u8, control: bool) -> bool {
         event == Event::Keyboard
             && !control
-            && ([
-                KEY_COMMA,
-                KEY_DOT,
-                KEY_SEMICOLON,
-                KEY_ENTER,
-                KEY_RETURN,
-                KEY_QUOTE,
-            ]
-            .contains(&key)
+            && ([KEY_COMMA, KEY_DOT, KEY_SEMICOLON, KEY_QUOTE].contains(&key)
                 || (caps == 1 && [KEY_SLASH, KEY_1, KEY_0, KEY_9].contains(&key))
                 || (self.config.telex_style != TelexStyle::Telex && is_bracket(key)))
     }
@@ -2107,7 +2185,10 @@ impl Engine {
             self.apostrophe = false;
             if switch {
                 self.restore_english(HookCode::RestoreAndReset, literal_only)
-            } else if self.config.restore_if_invalid && self.is_break(event, key) {
+            } else if self.config.restore_if_invalid
+                && !matches!(key, KEY_ENTER | KEY_RETURN)
+                && self.is_break(event, key)
+            {
                 if !self.temp_disable && self.config.spelling {
                     self.spelling(true)
                 }

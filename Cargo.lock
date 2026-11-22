@@ -3750,11 +3750,11 @@ dependencies = [
 
 [[package]]
 name = "sevi-engine"
-version = "1.0.50"
+version = "1.0.60"
 
 [[package]]
 name = "sevi-linux"
-version = "1.0.50"
+version = "1.0.60"
 dependencies = [
  "chrono",
  "gio",
@@ -3773,7 +3773,7 @@ dependencies = [
 
 [[package]]
 name = "sevi-macos"
-version = "1.0.50"
+version = "1.0.60"
 dependencies = [
  "block2 0.6.2",
  "chrono",
@@ -3792,7 +3792,7 @@ dependencies = [
 
 [[package]]
 name = "sevi-runtime"
-version = "1.0.50"
+version = "1.0.60"
 dependencies = [
  "base64 0.22.1",
  "chrono",
@@ -3806,7 +3806,7 @@ dependencies = [
 
 [[package]]
 name = "sevi-test-tools"
-version = "1.0.50"
+version = "1.0.60"
 dependencies = [
  "regex",
  "serde_json",
@@ -3816,7 +3816,7 @@ dependencies = [
 
 [[package]]
 name = "sevi-tools"
-version = "1.0.50"
+version = "1.0.60"
 dependencies = [
  "chrono",
  "flate2",
@@ -3841,7 +3841,7 @@ dependencies = [
 
 [[package]]
 name = "sevi-ui"
-version = "1.0.50"
+version = "1.0.60"
 dependencies = [
  "block2 0.6.2",
  "eframe",
@@ -3867,7 +3867,7 @@ dependencies = [
 
 [[package]]
 name = "sevi-ui-protocol"
-version = "1.0.50"
+version = "1.0.60"
 dependencies = [
  "serde",
  "serde_json",
@@ -3875,7 +3875,7 @@ dependencies = [
 
 [[package]]
 name = "sevi-windows"
-version = "1.0.50"
+version = "1.0.60"
 dependencies = [
  "chrono",
  "ed25519-dalek",
@@ -5386,7 +5386,7 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
 
 [[package]]
 name = "xtask"
-version = "1.0.50"
+version = "1.0.60"
 dependencies = [
  "regex",
  "serde",

@@ -232,14 +232,25 @@ mod tests {
             ("reference\n", false),
             ("reference\n", true),
         ] {
+            let submits = input.ends_with('\n');
+            let language = if submits {
+                Language::Vietnamese
+            } else {
+                Language::English
+            };
             let mut original = Registry::default();
+            original.set_int("InputMethod", 1).unwrap();
             original
                 .set_int("TypingLogEnabled", i32::from(logging))
                 .unwrap();
             let mut direct = DesktopSession::new(Platform::Windows, Box::new(original));
             let expected = type_word(&mut direct, input);
-            assert_eq!(direct.language(), Language::English);
+            assert_eq!(direct.language(), language);
+            if submits {
+                assert_eq!(expected.last(), Some(&EventResult::default()));
+            }
             let mut registry = Registry::default();
+            registry.set_int("InputMethod", 1).unwrap();
             registry
                 .set_int("TypingLogEnabled", i32::from(logging))
                 .unwrap();
@@ -271,9 +282,12 @@ mod tests {
                 "typing waited for blocked storage"
             );
             assert_eq!(actual, expected);
-            assert_eq!(session.language(), Language::English);
-            assert_eq!(saved.int("InputMethod", -1), 0);
-            assert!(!session.preferences.binary("smartSwitchKey").is_empty());
+            assert_eq!(session.language(), language);
+            assert_eq!(saved.int("InputMethod", -1), language as i32);
+            assert_eq!(
+                session.preferences.binary("smartSwitchKey").is_empty(),
+                submits
+            );
             assert!(!session.log.enabled);
             assert!(session.log.pending.is_empty());
             assert!(saved.keys().iter().all(|key| !key.starts_with("TLStat_")));

@@ -4,7 +4,7 @@ Có bug gì mới không mà phải deploy chiều nay?	Có bug gì mới không
 Anh A báo task deploy api endpoint, còn đợi review từ team lead	Anh A báo task deploy api endpoint, còn đợi review từ team lead
 I've fixed the authentication issue, can someone check my branch?	I've fixed the authentication issue, can someone check my branch?
 Cái bug search không work trên mobile, ai pick up cái này không?	Cái bug search không work trên mobile, ai pick up cái này không?
-Mình đã test thorough, performance improve khoảng 30  so với before	Mình đã test thorough, performance improve khoảng 30  so với before
+Mình đã test thorough, performance improve khoảng 30  so với beỏe	Mình đã test thorough, performance improve khoảng 30  so với before
 Chờ xíu, mình đang fix merge conflict ở database migration	Chờ xíu, mình đang fix merge conflict ở database migration
 Backend ready rồi, frontend team chưa merge branch của mình	Backend ready rồi, frontend team chưa merge branch của mình
 Ai có time review pull request  456? Đã push 2 tiếng rồi	Ai có time review pull request  456? Đã push 2 tiếng rồi
@@ -30,8 +30,8 @@ Deploy staging version đã ok, ready move to production	Deploy staging version 
 Ai có checklist cho code review không? Để đảm bảo quality	Ai có checklist cho code review không? Để đảm bảo quality
 Tối nay phải fix thêm vài edge case, task này còn chưa xong hoàn toàn	Tối nay phải fix thêm vài edge case, task này còn chưa xong hoàn toàn
 Mình conflict ở 3 chỗ, có thể help merge không, bận quá	Mình conflict ở 3 chỗ, có thể help merge không, bận quá
-Performance test result: load time từ 3s xuống 800ms, pretty good	Performance test result: load time từ 3s xuống 800ms, pretty good
-Chờ deploy đi, mình còn test e2e ở local, xong sẽ push	Chờ deploy đi, mình còn test e2e ở local, xong sẽ push
+Performance test result: load time từ 3s xuống 800ms, pretty gôd	Performance test result: load time từ 3s xuống 800ms, pretty good
+Chờ deploy đi, mình còn test e2e ở local, xong sẽ púh	Chờ deploy đi, mình còn test e2e ở local, xong sẽ push
 Có issue gì urgent không? Hay proceed với sprint plan như thường?	Có issue gì urgent không? Hay proceed với sprint plan như thường?
 PR review cần bao lâu? Deploy window là 2h nữa thôi	PR review cần bao lâu? Deploy window là 2h nữa thôi
 Lỗi deploy: Docker image không build được, dependency issue	Lỗi deploy: Docker image không build được, dependency issue
@@ -50,11 +50,11 @@ roadmap này khó quá, phải cut mấy feature để hit deadline	roadmap này
 KPI tháng này 15k DAU, giờ có 12k rồi, tạm ổn	KPI tháng này 15k DAU, giờ có 12k rồi, tạm ổn
 em làm xong mockup cho onboarding flow rồi	em làm xong mockup cho onboarding flow rồi
 We need to increase conversion rate by 20  by end of month	We need to increase conversion rate by 20  by end of month
-mấy cái analytics data chưa có, phải đợi data team làm	mấy cái analytics data chưa có, phải đợi data team làm
+mấy cái analytics data chưa có, phải đợi data team lamf	mấy cái analytics data chưa có, phải đợi data team làm
 có ai gọi cái customer success team được không, cần clarify requirement	có ai gọi cái customer success team được không, cần clarify requirement
 feature payment gateway phức tạp hơn mình tưởng, mà deadline cận rồi	feature payment gateway phức tạp hơn mình tưởng, mà deadline cận rồi
 So the product roadmap shows we're behind on mobile optimization	So the product roadmap shows we're behind on mobile optimization
-retention rate giảm mấy tuần này, là vì cái bug ở version 1.2 đó	retention rate giảm mấy tuần này, là vì cái bug ở version 1.2 đó
+retention rate giảm mấy tuần này, là vì cái bug ở version 1.2 ddos	retention rate giảm mấy tuần này, là vì cái bug ở version 1.2 đó
 chúng ta nên focus vào core feature trước, feature khác đẩy sang q4	chúng ta nên focus vào core feature trước, feature khác đẩy sang q4
 check lại estimate cho sprint này đi, có vẻ hơi lạc quan	check lại estimate cho sprint này đi, có vẻ hơi lạc quan
 mình suggest priority theo business impact, không phải theo độ khó	mình suggest priority theo business impact, không phải theo độ khó
@@ -70,7 +70,7 @@ eng team nói backend scaling là blocker, phải fix trước khi scale	eng tea
 I think we should prioritize based on customer feedback, not just revenue	I think we should prioritize based on customer feedback, not just revenue
 user acquisition cost tăng 30  đó, tại sao vậy	user acquisition cost tăng 30  đó, tại sao vậy
 chúng ta phải redefine success metrics cho product này	chúng ta phải redefine success metrics cho product này
-em nghĩ feature X không cần phải launch cùng version 1.0, delay sang q4 được	em nghĩ feature X không cần phải launch cùng version 1.0, delay sang q4 được
+em nghĩ feature X không cần phải launch cùng version 1.0, delay sang q4 dduwowcj	em nghĩ feature X không cần phải launch cùng version 1.0, delay sang q4 được
 có ai review cái proposal này chưa, deadline vote sáng mai	có ai review cái proposal này chưa, deadline vote sáng mai
 dependency giữa team frontend và backend cần clarify lại	dependency giữa team frontend và backend cần clarify lại
 Let me share the updated product roadmap with timeline and owners	Let me share the updated product roadmap with timeline and owners
@@ -78,10 +78,10 @@ acquisition strategy cần shift từ paid sang organic, bdd cost quá cao	acqui
 retention metric là indicator chính, phải focus vào cái này trước	retention metric là indicator chính, phải focus vào cái này trước
 mình check lại data, DAU tăng nhưng engagement rate không tăng	mình check lại data, DAU tăng nhưng engagement rate không tăng
 monthly recurring revenue target là 100k, hiện tại 65k	monthly recurring revenue target là 100k, hiện tại 65k
-anh ơi roadmap tháng 9 chưa lock được, vẫn đang discussion	anh ơi roadmap tháng 9 chưa lock được, vẫn đang discussion
-feature này complexity cao, scope creep là risk lớn	feature này complexity cao, scope creep là risk lớn
+anh ơi roadmap tháng 9 chưa lock được, vẫn đang dícussion	anh ơi roadmap tháng 9 chưa lock được, vẫn đang discussion
+feature này complexity cao, scope creep là risk lowsn	feature này complexity cao, scope creep là risk lớn
 Can we do a quick sync about the KPI definition? I'm confused about churn rate	Can we do a quick sync about the KPI definition? I'm confused about churn rate
-các feature trong roadmap phải map với business goal rõ ràng	các feature trong roadmap phải map với business goal rõ ràng
+các feature trong roadmap phải map với business goal rox rafng	các feature trong roadmap phải map với business goal rõ ràng
 em gửi user research finding rồi, check lại recommendation nhé	em gửi user research finding rồi, check lại recommendation nhé
 The technical debt is slowing us down, need to allocate time for refactoring	The technical debt is slowing us down, need to allocate time for refactoring
 DAU, MAU, churn rate, lifetime value, mấy cái metric này là core KPI	DAU, MAU, churn rate, lifetime value, mấy cái metric này là core KPI
@@ -124,7 +124,7 @@ I already confirmed the booking, they sent me the confirmation email	I already c
 Phải thanh toán trước hay thanh toán khi check-in?	Phải thanh toán trước hay thanh toán khi check-in?
 Already paid full, mình dùng credit card online	Already paid full, mình dùng credit card online
 Sao mình không nhắn trước? Chắc mình còn muốn xem tính toán lại	Sao mình không nhắn trước? Chắc mình còn muốn xem tính toán lại
-Sorry, mình bảo nhưng mấy bạn không on, nên mình cứ book luôn	Sorry, mình bảo nhưng mấy bạn không on, nên mình cứ book luôn
+Sorry, mình bảo nhưng mấy bạn không on, nên mình cứ book luoon	Sorry, mình bảo nhưng mấy bạn không on, nên mình cứ book luôn
 Thôi được rồi, có confirmation code gì để show lúc check-in không?	Thôi được rồi, có confirmation code gì để show lúc check-in không?
 Có, mình copy link booking vào note rồi, sẽ forward cho mấy bạn	Có, mình copy link booking vào note rồi, sẽ forward cho mấy bạn
 Lúc nào check-in? Sáng hay chiều?	Lúc nào check-in? Sáng hay chiều?
@@ -137,7 +137,7 @@ Vậy thì mình đi 8h, check-in vào 2h, đó là checkout mấy giờ?	Vậy 
 Checkout lúc 12h trưa hôm sau	Checkout lúc 12h trưa hôm sau
 Mình sợ lúc checkout phải vội, có thể late checkout không?	Mình sợ lúc checkout phải vội, có thể late checkout không?
 Usually mất thêm tiền, nhưng mình hỏi khách sạn xem thế nào	Usually mất thêm tiền, nhưng mình hỏi khách sạn xem thế nào
-Được rồi, cái còn lại là book xe đi	Được rồi, cái còn lại là book xe đi
+Được rồi, cái còn lại là book xe ddi	Được rồi, cái còn lại là book xe đi
 Mình cần xin phép đi học thêm thứ 3 tuần sau, có được không?	Mình cần xin phép đi học thêm thứ 3 tuần sau, có được không?
 Can I use the meeting room B2 tomorrow at 2pm?	Can I use the meeting room B2 tomorrow at 2pm?
 Thôi em xin lỗi, em gửi leave request rồi đó	Thôi em xin lỗi, em gửi leave request rồi đó
@@ -159,7 +159,7 @@ Tôi cần xin phép 2 ngày liên tiếp để đi dự thi chứng chỉ	Tôi 
 Duyệt leave em cái, công việc em xong rồi	Duyệt leave em cái, công việc em xong rồi
 Can I get approval for my annual leave request by tomorrow?	Can I get approval for my annual leave request by tomorrow?
 Phòng 105 bao giờ trống? Mình cần họp 1 tiếng	Phòng 105 bao giờ trống? Mình cần họp 1 tiếng
-Em gửi leave request hôm qua nhưng sao không thấy được confirm	Em gửi leave request hôm qua nhưng sao không thấy được confirm
+Em gửi leave request hôm qua nhưng sao không thấy được cònirm	Em gửi leave request hôm qua nhưng sao không thấy được confirm
 The meeting room reservation system needs better scheduling	The meeting room reservation system needs better scheduling
 Mình cần phòng có sẵn audio/video setup, có phòng nào không?	Mình cần phòng có sẵn audio/video setup, có phòng nào không?
 HR said leave balance sẽ update vào cuối tuần	HR said leave balance sẽ update vào cuối tuần
@@ -174,7 +174,7 @@ Meeting schedule conflict, can we move to another room?	Meeting schedule conflic
 Tháng này phép năm em còn bao nhiêu ngày?	Tháng này phép năm em còn bao nhiêu ngày?
 HR haven't processed my request yet, it's been 5 days already	HR haven't processed my request yet, it's been 5 days already
 Phòng họp 3 có wifi không? Internet ở đó yếu lắm	Phòng họp 3 có wifi không? Internet ở đó yếu lắm
-Xin luôn vài ngày để thăm nhà, em sẽ remote work	Xin luôn vài ngày để thăm nhà, em sẽ remote work
+Xin luôn vài ngày để thăm nhà, em sẽ remote ưỏk	Xin luôn vài ngày để thăm nhà, em sẽ remote work
 Booking meeting room lúc nào cũng conflict, khó quá	Booking meeting room lúc nào cũng conflict, khó quá
 Chào bạn, cần giúp gì không? Tôi có thể assist cho bạn được	Chào bạn, cần giúp gì không? Tôi có thể assist cho bạn được
 Em check hàng trong kho, chút nữa báo cho bạn	Em check hàng trong kho, chút nữa báo cho bạn
@@ -189,14 +189,14 @@ Cái jacket này quality rất tốt, nhiều người comment 5 sao lắm	Cái 
 Không có khách hàng nào complain về size, thường on point	Không có khách hàng nào complain về size, thường on point
 Bạn có thể return trong 7 ngày nếu không hài lòng, free shipping for returns	Bạn có thể return trong 7 ngày nếu không hài lòng, free shipping for returns
 Em recommend size L cho bạn vì model này tend to run small	Em recommend size L cho bạn vì model này tend to run small
-Vừa update inventory, còn 3 cái left lang thang thôi	Vừa update inventory, còn 3 cái left lang thang thôi
+Vừa update inventory, còn 3 cái left lang thang thooi	Vừa update inventory, còn 3 cái left lang thang thôi
 Thank you so much for your purchase! Really appreciate your support	Thank you so much for your purchase! Really appreciate your support
 Tracking number gửi qua SMS cho bạn rồi, check lại số điện thoại nếu chưa nhận	Tracking number gửi qua SMS cho bạn rồi, check lại số điện thoại nếu chưa nhận
 Chất liệu này là cotton 100 , rất mát, perfect cho mùa hè	Chất liệu này là cotton 100 , rất mát, perfect cho mùa hè
-Bạn pay bằng bank transfer được không? Em chỉ accept Momo hoặc bank transfer thôi	Bạn pay bằng bank transfer được không? Em chỉ accept Momo hoặc bank transfer thôi
+Bạn pay bằng bank transfer được không? Em chỉ accept Momo hoặc bank transfer thooi	Bạn pay bằng bank transfer được không? Em chỉ accept Momo hoặc bank transfer thôi
 Anh có voucher code không? Mình có sale 30  cho ngày hôm nay	Anh có voucher code không? Mình có sale 30  cho ngày hôm nay
 Em sorry, item này discontinue rồi, có similar product khác không?	Em sorry, item này discontinue rồi, có similar product khác không?
-Cái này được import từ Hàn Quốc, chất lượng guaranteed	Cái này được import từ Hàn Quốc, chất lượng guaranteed
+Cái này được import từ Hàn Quốc, chất lượng guẩnteed	Cái này được import từ Hàn Quốc, chất lượng guaranteed
 Bạn có discount code nào không? Em có VIPFIRST50 cho khách VIP	Bạn có discount code nào không? Em có VIPFIRST50 cho khách VIP
 The new collection just dropped, wanna check it out?	The new collection just dropped, wanna check it out?
 Em update price rồi, hiện tại sale off 25  cho tất cả item	Em update price rồi, hiện tại sale off 25  cho tất cả item
@@ -212,12 +212,12 @@ Em phải confirm size với bạn lại, vì sizing chart có khác nhau	Em ph�
 Sorry for the delay, packaging ngon lành, ship sớm nhất là ngày mai	Sorry for the delay, packaging ngon lành, ship sớm nhất là ngày mai
 Đơn hàng của bạn đang trong kho, ready to ship	Đơn hàng của bạn đang trong kho, ready to ship
 Cái sản phẩm trending rất hot trên TikTok lúc này	Cái sản phẩm trending rất hot trên TikTok lúc này
-Bạn có subscribe newsletter không? Để nhận deal exclusive	Bạn có subscribe newsletter không? Để nhận deal exclusive
+Bạn có subscribe newsletter không? Để nhận deal ẽclusive	Bạn có subscribe newsletter không? Để nhận deal exclusive
 Em recommend bạn try cái combo package, tiết kiệm hơn	Em recommend bạn try cái combo package, tiết kiệm hơn
 Hôm nay em close shop sớm, nên reply sẽ hơi lâu một chút	Hôm nay em close shop sớm, nên reply sẽ hơi lâu một chút
 Bạn có question gì khác không? Happy to help anytime	Bạn có question gì khác không? Happy to help anytime
 Your order has been delivered according to the logistics system	Your order has been delivered according to the logistics system
-Em sorry em busy, có nhiều customer lắm	Em sorry em busy, có nhiều customer lắm
+Em sorry em busy, có nhiều customer lawsm	Em sorry em busy, có nhiều customer lắm
 Cám ơn bạn, hope bạn sẽ recommend shop cho friend nhé	Cám ơn bạn, hope bạn sẽ recommend shop cho friend nhé
 Bạn ơi cái campaign này có convert không? Em check metrics mà thấy CPC cao quá đó	Bạn ơi cái campaign này có convert không? Em check metrics mà thấy CPC cao quá đó
 Tối nay mình họp lại cái strategy cho Q4 nhé, mấy anh chị có free không	Tối nay mình họp lại cái strategy cho Q4 nhé, mấy anh chị có free không
@@ -236,8 +236,8 @@ Có phải chúng ta cần tuyển thêm graphic designer không, workload quá 
 Tôi vừa submit creative brief, cần mấy ngày để design team hoàn thành không	Tôi vừa submit creative brief, cần mấy ngày để design team hoàn thành không
 ROAS của campaign cuối cùng là 3.2, vượt target là 3.0 rồi, tốt lắm	ROAS của campaign cuối cùng là 3.2, vượt target là 3.0 rồi, tốt lắm
 Cái content pillar nào nên prioritize trước, organic hay paid	Cái content pillar nào nên prioritize trước, organic hay paid
-Bạn check roi của email marketing campaign được không, tối nào họp mình discuss	Bạn check roi của email marketing campaign được không, tối nào họp mình discuss
-Mình sẽ up lên social media vào 9 chiều, kịp không, các bạn verify hộ	Mình sẽ up lên social media vào 9 chiều, kịp không, các bạn verify hộ
+Bạn check roi của email marketing campaign được không, tối nào họp mình dícuss	Bạn check roi của email marketing campaign được không, tối nào họp mình discuss
+Mình sẽ up lên social media vào 9 chiều, kịp không, các bạn verify hooj	Mình sẽ up lên social media vào 9 chiều, kịp không, các bạn verify hộ
 Dữ liệu competitor thì chị đã compile xong chưa, mình cần chóng lắm	Dữ liệu competitor thì chị đã compile xong chưa, mình cần chóng lắm
 Hôm nay trafic từ TikTok lên gấp đôi so với tuần trước, chúng mình làm được gì khác không	Hôm nay trafic từ TikTok lên gấp đôi so với tuần trước, chúng mình làm được gì khác không
 Chắc phải tạo landing page mới cho retargeting campaign này, cái cũ CTR quá thấp	Chắc phải tạo landing page mới cho retargeting campaign này, cái cũ CTR quá thấp
@@ -253,7 +253,7 @@ Push notification open rate mình thấp quá, có lẽ message timing hoặc co
 Nhóm data analytics sẽ output dashboard chỉ tiêu marketing tuần này khi nào	Nhóm data analytics sẽ output dashboard chỉ tiêu marketing tuần này khi nào
 Chúng mình có nên paused cái campaign lơ-performing này không để tiết kiệm budget	Chúng mình có nên paused cái campaign low-performing này không để tiết kiệm budget
 Bốn content pieces nào sẽ publish tuần tới, em cần finalize video editing	Bốn content pieces nào sẽ publish tuần tới, em cần finalize video editing
-Bạn có sẵn template cho monthly performance report không, em cần ASAP	Bạn có sẵn template cho monthly performance report không, em cần ASAP
+Bạn có sẵn template cho monthly performance report không, em cần ẤP	Bạn có sẵn template cho monthly performance report không, em cần ASAP
 Conversion funnel analysis đã done chưa, chúng ta cần optimize top-ò-funnel	Conversion funnel analysis đã done chưa, chúng ta cần optimize top-of-funnel
 Em thấy CPM TikTok ads rẻ hơn Instagram, nên reallocate budget sang TikTok không	Em thấy CPM TikTok ads rẻ hơn Instagram, nên reallocate budget sang TikTok không
 Ê bạn rank mấy rồi cái game này	Ê bạn rank mấy rồi cái game này
@@ -271,7 +271,7 @@ Mình đi rank với mấy bạn tối nay được không?	Mình đi rank với
 Đồ ngố, sao nó lại tank thế vào match cuối cùng	Đồ ngố, sao nó lại tank thế vào match cuối cùng
 Game này rank system nó hơi broken, skill thấp mà rank cao	Game này rank system nó hơi broken, skill thấp mà rank cao
 Bạn main hero nào vậy, cái rank này chỉ có những pro thôi	Bạn main hero nào vậy, cái rank này chỉ có những pro thôi
-Tối qua carry team mình 35 kill luôn, main damage dealer mà	Tối qua carry team mình 35 kill luôn, main damage dealer mà
+Tối qua carry team mình 35 kill luôn, main damage dealer maf	Tối qua carry team mình 35 kill luôn, main damage dealer mà
 Rank match kia thua do support kém, không có vision gì hết	Rank match kia thua do support kém, không có vision gì hết
 Anh chơi Ranked hay Normal nhiều hơn	Anh chơi Ranked hay Normal nhiều hơn
 Nay nằm ở rank thấp vì đồng đội nó noob liên tục	Nay nằm ở rank thấp vì đồng đội nó noob liên tục
@@ -288,11 +288,11 @@ Những người chơi ở rank cao toàn từ server Hàn Quốc đó	Những n
 Queue time hơi lâu, bạn chờ mình một chút	Queue time hơi lâu, bạn chờ mình một chút
 Ông này main support à, sao không rank lên được	Ông này main support à, sao không rank lên được
 Rank này mình thấy enemy lúc nào cũng bằng hoặc mạnh hơn	Rank này mình thấy enemy lúc nào cũng bằng hoặc mạnh hơn
-Cần mấy win nữa là lên cấp độ mới, grind hard	Cần mấy win nữa là lên cấp độ mới, grind hard
+Cần mấy win nữa là lên cấp độ mới, grind hảd	Cần mấy win nữa là lên cấp độ mới, grind hard
 Hôm qua match chung với streamer, performance tệ lắm	Hôm qua match chung với streamer, performance tệ lắm
-Bạn có thích chơi competitive không, mình ưa rank hơn casual	Bạn có thích chơi competitive không, mình ưa rank hơn casual
+Bạn có thích chơi competitive không, mình ưa rank hơn cấul	Bạn có thích chơi competitive không, mình ưa rank hơn casual
 Lúc nào cũng bị rank thấp đồng đội kéo, unlucky thôi	Lúc nào cũng bị rank thấp đồng đội kéo, unlucky thôi
-Vừa dodge một match vì ally nó bad pick, lose LP rồi	Vừa dodge một match vì ally nó bad pick, lose LP rồi
+Vừa dodge một match vì ally nó bad pick, lose LP rooif	Vừa dodge một match vì ally nó bad pick, lose LP rồi
 Mình à, cứ rank match là thường thua, tilted quá	Mình à, cứ rank match là thường thua, tilted quá
 Solo queue khó vãi đít, cần duo mới lên được rank	Solo queue khó vãi đít, cần duo mới lên được rank
 Thằng ADC lúc nào cũng chạy vào, position kém kinh khủng	Thằng ADC lúc nào cũng chạy vào, position kém kinh khủng
@@ -344,8 +344,8 @@ em submit hôm qua rồi, may mà kịp trước 11:59pm	em submit hôm qua rồ
 Chị ơi có thể giúp em hiểu cái phần này không? Em đang ngồi fix code từ sáng mà vẫn error	Chị ơi có thể giúp em hiểu cái phần này không? Em đang ngồi fix code từ sáng mà vẫn error
 I'm just gonna copy-paste from the internet and hope no one notices lol	I'm just gonna copy-paste from the internet and hope no one notices lol
 Cô mình nói bài này trọng số 40  luôn, ko được phép nộp trễ đâu nha các bạn	Cô mình nói bài này trọng số 40  luôn, ko được phép nộp trễ đâu nha các bạn
-Thôi chết rồi, em quên hoàn toàn cái assignment này	Thôi chết rồi, em quên hoàn toàn cái assignment này
-Bạn, cái database schema này có cần normalize không? Confuse quá	Bạn, cái database schema này có cần normalize không? Confuse quá
+Thôi chết rồi, em quên hoàn toàn cái assignment nafy	Thôi chết rồi, em quên hoàn toàn cái assignment này
+Bạn, cái database schema này có cần normalize không? Confuse quas	Bạn, cái database schema này có cần normalize không? Confuse quá
 I spent 3 hours on this and still only have 2 pages done	I spent 3 hours on this and still only have 2 pages done
 Ai có cách nào để extend deadline không, khủng hoảng quá	Ai có cách nào để extend deadline không, khủng hoảng quá
 Mình báo cô, cô có thể cho extend vài ngày được không ạ?	Mình báo cô, cô có thể cho extend vài ngày được không ạ?
@@ -389,14 +389,14 @@ component này tái sử dụng được không, check xem đã setup chưa	comp
 đợi anh update link lại, cái cũ không access được nữa	đợi anh update link lại, cái cũ không access được nữa
 the padding on this button needs to be 16px not 12px	the padding on this button needs to be 16px not 12px
 mình comment vào artboard rồi, coi giúp đi	mình comment vào artboard rồi, coi giúp đi
-hey, should we change the primary color? thấy hơi dark quá	hey, should we change the primary color? thấy hơi dark quá
+hey, should we change the primary color? thấy hơi dark quas	hey, should we change the primary color? thấy hơi dark quá
 design này ready để handoff cho dev team chưa	design này ready để handoff cho dev team chưa
 ai review cái này rồi? mình gửi mail rồi mà	ai review cái này rồi? mình gửi mail rồi mà
 Can you export the assets in 2x and 3x please	Can you export the assets in 2x and 3x please
-component library cần update thêm variation nữa	component library cần update thêm variation nữa
+component library cần update thêm variation nuwax	component library cần update thêm variation nữa
 feedback của product manager là muốn bỏ animation ở đây	feedback của product manager là muốn bỏ animation ở đây
-you should check the contrast ratio, might fail accessibility test	you should check the contrast ratio, might fail accessibility test
-đây là v2, mình có làm thay đổi khá nhiều từ version trước	đây là v2, mình có làm thay đổi khá nhiều từ version trước
+you should check the contrast ratio, might fail accessibility tét	you should check the contrast ratio, might fail accessibility test
+đây là v2, mình có làm thay đổi khá nhiều từ version truwowcs	đây là v2, mình có làm thay đổi khá nhiều từ version trước
 team designer ngồi discuss design thinking tis, bạn có vào không	team designer ngồi discuss design thinking tí, bạn có vào không
 need to create a new frame for the tablet breakpoint	need to create a new frame for the tablet breakpoint
 cái wireframe này có phải đúng requirement không, chắc chưa lắm	cái wireframe này có phải đúng requirement không, chắc chưa lắm
@@ -429,13 +429,13 @@ nói đúng, đã có kế hoạch rồi, tuần này buy thêm 1000 cái	nói �
 btw, thị trường chứng khoán Việt sao hôm nay đỏ lè lẹt thế	btw, thị trường chứng khoán Việt sao hôm nay đỏ lè lẹt thế
 VNIndex giảm 40 điểm, nó chỉ là correction bình thường, ko lo	VNIndex giảm 40 điểm, nó chỉ là correction bình thường, ko lo
 thế là mất hơn 2 triệu, rồi mình sẽ cover lại à	thế là mất hơn 2 triệu, rồi mình sẽ cover lại à
-cover lại bằng gì, tiền cash còn không, lại còn đang margin	cover lại bằng gì, tiền cash còn không, lại còn đang margin
+cover lại bằng gì, tiền cash còn không, lại còn đang mảgin	cover lại bằng gì, tiền cash còn không, lại còn đang margin
 ơi bạn, cẩn thận với margin, nó là đôi lưỡi kiếm đó	ơi bạn, cẩn thận với margin, nó là đôi lưỡi kiếm đó
 They can liquidate you really quick if the market turns	They can liquidate you really quick if the market turns
 mình setup stop loss ở -15 , should be fine
 15  	mình setup stop loss ở -15 , should be fine
 15  
-là nhiều thế, lại còn crypto, có thể down 15  trong 1 tiếng	là nhiều thế, lại còn crypto, có thể down 15  trong 1 tiếng
+là nhiều thế, lại còn crypto, có thể down 15  trong 1 tieengs	là nhiều thế, lại còn crypto, có thể down 15  trong 1 tiếng
 tao biết, nhưng portfolio mình 80  cash, nên ổn	tao biết, nhưng portfolio mình 80  cash, nên ổn
 What's your allocation right now, stocks or crypto?
 70  	What's your allocation right now, stocks or crypto?
@@ -452,12 +452,12 @@ Okay, I'll look into it. You think it'll hit  200 by end of year?	Okay, I'll loo
 khó nói, phụ thuộc vào earnings report, nó sẽ công bố cuối tháng này	khó nói, phụ thuộc vào earnings report, nó sẽ công bố cuối tháng này
 earnings season là lúc nó up, nhưng cũng có thể down nếu miss estimate	earnings season là lúc nó up, nhưng cũng có thể down nếu miss estimate
 chính xác, volatility sẽ tăng tuần tới, chuẩn bị tinh thần	chính xác, volatility sẽ tăng tuần tới, chuẩn bị tinh thần
-mình vừa nạp thêm 5 triệu vào sàn chứng khoán, tính setup position
+mình vừa nạp thêm 5 triệu vào sàn chứng khoán, tính setup póition
 5 	mình vừa nạp thêm 5 triệu vào sàn chứng khoán, tính setup position
 5 
 triệu là ít hay nhiều trong portfolio mình vậy	triệu là ít hay nhiều trong portfolio mình vậy
-phụ thuộc vào tổng asset, nhưng nên keep 6 tháng emergency fund trước	phụ thuộc vào tổng asset, nhưng nên keep 6 tháng emergency fund trước
-ối bạn, mình còn nợ credit card chứ, quên cái emergency fund đi	ối bạn, mình còn nợ credit card chứ, quên cái emergency fund đi
+phụ thuộc vào tổng asset, nhưng nên keep 6 tháng emergency fund truwowsc	phụ thuộc vào tổng asset, nhưng nên keep 6 tháng emergency fund trước
+ối bạn, mình còn nợ credit card chứ, quên cái emergency fund ddi	ối bạn, mình còn nợ credit card chứ, quên cái emergency fund đi
 Dude, that's not good. Pay off the debt first, interest rate's killing you	Dude, that's not good. Pay off the debt first, interest rate's killing you
 debt của mình 8  APR, chứng khoán mình 12 , so mathematically profitable	debt của mình 8  APR, chứng khoán mình 12 , so mathematically profitable
 nhưng nó rủi ro hơn nhiều, tinh thần sẽ bị stress	nhưng nó rủi ro hơn nhiều, tinh thần sẽ bị stress
@@ -465,14 +465,14 @@ tao đã chấp nhận rồi, risk management là key	tao đã chấp nhận r�
 luôn, setup stop loss và don't chase losses, đó là rule cơ bản	luôn, setup stop loss và don't chase losses, đó là rule cơ bản
 mình còn sợ hơn là mình bị FOMO và all-in vào cái gì đó	mình còn sợ hơn là mình bị FOMO và all-in vào cái gì đó
 All-in vào Dogecoin à, rồi nó down 80 	All-in vào Dogecoin à, rồi nó down 80 
-Hahahaha đừng nhắc, tao vẫn có 50k coin từ 2017, worthless	Hahahaha đừng nhắc, tao vẫn có 50k coin từ 2017, worthless
+Hahahaha đừng nhắc, tao vẫn có 50k coin từ 2017, ưởthless	Hahahaha đừng nhắc, tao vẫn có 50k coin từ 2017, worthless
 giữ cho vui thôi, maybe 10 years later nó lên lại, who knows	giữ cho vui thôi, maybe 10 years later nó lên lại, who knows
 bạn bây giờ có portfolio nào ngoài DOGE không, chia sẻ một chút	bạn bây giờ có portfolio nào ngoài DOGE không, chia sẻ một chút
 Main holdings mình: Apple, Nvidia, ngân hàng Vietcombank, và BTC, ETH	Main holdings mình: Apple, Nvidia, ngân hàng Vietcombank, và BTC, ETH
 balanced portfolio, tao thích cách này	balanced portfolio, tao thích cách này
 ngân hàng quá boring, nhưng dividend nó ổn định, 5-6  mỗi năm	ngân hàng quá boring, nhưng dividend nó ổn định, 5-6  mỗi năm
 boring là an toàn, tao mix boring và exciting, sleep well at night	boring là an toàn, tao mix boring và exciting, sleep well at night
-thế đúng rồi, mental health cũng là part of investing, nghe lắm	thế đúng rồi, mental health cũng là part of investing, nghe lắm
+thế đúng rồi, mental health cũng là part of investing, nghe lawms	thế đúng rồi, mental health cũng là part of investing, nghe lắm
 Anh ơi, cái dashboard của em bị lag từ sáng nay, có vấn đề gì không?	Anh ơi, cái dashboard của em bị lag từ sáng nay, có vấn đề gì không?
 không biết, check network của em xem sao	không biết, check network của em xem sao
 em đã restart browser rồi mà vẫn bị	em đã restart browser rồi mà vẫn bị
@@ -494,10 +494,10 @@ Pro plan là 99k/tháng hoặc 999k/năm	Pro plan là 99k/tháng hoặc 999k/nă
 được rồi, em sẽ nâng cấp. Nó sẽ active ngay không?	được rồi, em sẽ nâng cấp. Nó sẽ active ngay không?
 sẽ active ngay lập tức sau khi thanh toán xong	sẽ active ngay lập tức sau khi thanh toán xong
 I have 50 employees accessing the system, will there be any performance issues?	I have 50 employees accessing the system, will there be any performance issues?
-không vấn đề gì, server của chúng tôi support up to 500 concurrent users	không vấn đề gì, server của chúng tôi support up to 500 concurrent users
+không vấn đề gì, server của chúng tôi support up to 500 concurrent ué	không vấn đề gì, server của chúng tôi support up to 500 concurrent users
 vậy thì tốt, em sẽ recommend cho các đồng nghiệp	vậy thì tốt, em sẽ recommend cho các đồng nghiệp
 cảm ơn bạn! nếu cần support lần sau cứ msg ở đây	cảm ơn bạn! nếu cần support lần sau cứ msg ở đây
-em bị lỗi "Invalid API key" khi integrate với third-party tool	em bị lỗi "Invalid API key" khi integrate với third-party tool
+em bị lỗi "Invalid API key" khi integrate với third-party tôl	em bị lỗi "Invalid API key" khi integrate với third-party tool
 check lại API key xem có expired không, hoặc reset nó đi	check lại API key xem có expired không, hoặc reset nó đi
 em vừa regenerate xong, giờ ok rồi	em vừa regenerate xong, giờ ok rồi
 tốt, nếu lần sau gặp vấn đề tương tự thì biết cách fix rồi	tốt, nếu lần sau gặp vấn đề tương tự thì biết cách fix rồi
@@ -535,21 +535,21 @@ CTE nó sẽ giúp query dễ đọc hơn và có thể nhanh hơn	CTE nó sẽ 
 Ừ, mình vừa thử xong, query chạy chỉ còn 20 giây thôi	Ừ, mình vừa thử xong, query chạy chỉ còn 20 giây thôi
 OK được rồi, mình refactor lại dashboard vì data mới đã ready	OK được rồi, mình refactor lại dashboard vì data mới đã ready
 Dashboard nào bạn? Cái dashboard sales hay cái dashboard ops?	Dashboard nào bạn? Cái dashboard sales hay cái dashboard ops?
-Cái dashboard tổng quan cho management as, 3 cái chart chính	Cái dashboard tổng quan cho management á, 3 cái chart chính
+Cái dashboard tổng quan cho management as, 3 cái chart chinhs	Cái dashboard tổng quan cho management á, 3 cái chart chính
 Mình vừa update data source, giờ nó pull từ data warehouse	Mình vừa update data source, giờ nó pull từ data warehouse
 Tốt rồi, bạn refresh dashboard đi, dùng cái new query mình gửi	Tốt rồi, bạn refresh dashboard đi, dùng cái new query mình gửi
-Bạn gửi cho mình cái query đó được không? mình đưa vào dashboard	Bạn gửi cho mình cái query đó được không? mình đưa vào dashboard
+Bạn gửi cho mình cái query đó được không? mình đưa vào dáhboard	Bạn gửi cho mình cái query đó được không? mình đưa vào dashboard
 SELECT   FROM sales WHERE date    '2024-01-01' GROUP BY region	SELECT   FROM sales WHERE date    '2024-01-01' GROUP BY region
 Ngoài ra còn có cái segment analysis nữa, mình đang làm	Ngoài ra còn có cái segment analysis nữa, mình đang làm
 Segment analysis thì cần pull thêm customer profile data không?	Segment analysis thì cần pull thêm customer profile data không?
 Có, tớ đang join với customer table, nhưng data bị duplicate	Có, tớ đang join với customer table, nhưng data bị duplicate
 Duplicate vì sao? có phải do LEFT JOIN sai không?	Duplicate vì sao? có phải do LEFT JOIN sai không?
-Chắc là bảng customer có multiple records per ID rồi	Chắc là bảng customer có multiple records per ID rồi
+Chắc là bảng customer có multiple records per ID rooif	Chắc là bảng customer có multiple records per ID rồi
 Bạn check distinct count xem sao?	Bạn check distinct count xem sao?
 SELECT COUNT(DISTINCT customer id) FROM customer segments;	SELECT COUNT(DISTINCT customer id) FROM customer segments;
 Kết quả là 50k, nhưng bảng gốc có 70k rớ	Kết quả là 50k, nhưng bảng gốc có 70k rows
-Chắc có trùng lắm, có thể filter active customers thôi	Chắc có trùng lắm, có thể filter active customers thôi
-Ừ, mình filter WHERE status   'active' xong rồi	Ừ, mình filter WHERE status   'active' xong rồi
+Chắc có trùng lắm, có thể filter active customers thooi	Chắc có trùng lắm, có thể filter active customers thôi
+Ừ, mình filter WHERE status   'active' xong rooif	Ừ, mình filter WHERE status   'active' xong rồi
 Thế dashboard hiển thị đúng chưa?	Thế dashboard hiển thị đúng chưa?
 Còn một cái issue nữa là cái timestamp, nó store as string	Còn một cái issue nữa là cái timestamp, nó store as string
 Bạn cần convert sang datetime format trước khi join	Bạn cần convert sang datetime format trước khi join
@@ -557,18 +557,18 @@ CÁT(timestamp column AS DATETIME) hoặc thử TO DATE() function	CAST(timestam
 Mình dùng database gì để biết dùng function nào hợp lý	Mình dùng database gì để biết dùng function nào hợp lý
 Bạn dùng PostgreSQL hay MySQL?	Bạn dùng PostgreSQL hay MySQL?
 Chúng tớ xài PostgreSQL ở production, MySQL ở dev	Chúng tớ xài PostgreSQL ở production, MySQL ở dev
-Thì dùng TO TIMESTAMP() function nha, nó chuẩn PostgreSQL	Thì dùng TO TIMESTAMP() function nha, nó chuẩn PostgreSQL
+Thì dùng TO TIMESTAMP() function nha, nó chuẩn PótgreSQL	Thì dùng TO TIMESTAMP() function nha, nó chuẩn PostgreSQL
 Vừa làm xong, dashboard giờ hiển thị đầy đủ dữ liệu rồi	Vừa làm xong, dashboard giờ hiển thị đầy đủ dữ liệu rồi
 Good job! Bạn commit code chưa?	Good job! Bạn commit code chưa?
 Commit rồi, tớ tạo pull request, bạn review giúp tớ	Commit rồi, tớ tạo pull request, bạn review giúp tớ
-Mình xem ngay, cảm ơn bạn đã optimize query	Mình xem ngay, cảm ơn bạn đã optimize query
+Mình xem ngay, cảm ơn bạn đã optimize queỷ	Mình xem ngay, cảm ơn bạn đã optimize query
 Không có gì, đây là team work mà, mình lại phải cảm ơn bạn	Không có gì, đây là team work mà, mình lại phải cảm ơn bạn
 chào anh, em gửi file design đã xong rồi, check xem có ổn không	chào anh, em gửi file design đã xong rồi, check xem có ổn không
 ok vậy, em chỉnh theo feedback của anh luôn	ok vậy, em chỉnh theo feedback của anh luôn
 cảm ơn anh đã feedback, em sẽ update trong 2 tiếng nữa	cảm ơn anh đã feedback, em sẽ update trong 2 tiếng nữa
 Actually, I realized we need to change the color scheme a bit. Can you do that?	Actually, I realized we need to change the color scheme a bit. Can you do that?
 được, em sẽ đổi sang tone màu nào ạ	được, em sẽ đổi sang tone màu nào ạ
-có cái này là anh muốn trend 2024 hay vẫn giữ aesthetic cũ	có cái này là anh muốn trend 2024 hay vẫn giữ aesthetic cũ
+có cái này là anh muốn trend 2024 hay vẫn giữ aesthetic cux	có cái này là anh muốn trend 2024 hay vẫn giữ aesthetic cũ
 vâng, em đã push code lên repository rồi	vâng, em đã push code lên repository rồi
 mấy cái bug ở dashboard, em đang fix đó	mấy cái bug ở dashboard, em đang fix đó
 Let me know if there's anything else you need from my end	Let me know if there's anything else you need from my end
@@ -577,27 +577,27 @@ em check file assets mà anh gửi, chất lượng tốt lắm	em check file as
 anh có approve được timeline không, em sợ deadline sát quá	anh có approve được timeline không, em sợ deadline sát quá
 được rồi, vậy em bắt đầu phase 2 từ thứ 2 tuần sau	được rồi, vậy em bắt đầu phase 2 từ thứ 2 tuần sau
 Tôi sẽ send you the revised mockups by end of day	Tôi sẽ send you the revised mockups by end of day
-em có cần access vào admin panel không để test feature mới	em có cần access vào admin panel không để test feature mới
+em có cần access vào admin panel không để test feature mowsi	em có cần access vào admin panel không để test feature mới
 uhh đợi anh tí, em đang optimize image kia	uhh đợi anh tí, em đang optimize image kia
 The responsive design looks great on mobile now	The responsive design looks great on mobile now
 chốt được backend integration rồi, có thể merge được rồi	chốt được backend integration rồi, có thể merge được rồi
 em xin lỗi anh, hôm nay internet bị lag nên slow	em xin lỗi anh, hôm nay internet bị lag nên slow
 không sao anh, em hiểu	không sao anh, em hiểu
 vậy API endpoint nào bị issue thế anh	vậy API endpoint nào bị issue thế anh
-cái authentication flow, em implement xong rồi nhưng chưa test kỹ	cái authentication flow, em implement xong rồi nhưng chưa test kỹ
-ok, anh có thể review code em trước khi merge không	ok, anh có thể review code em trước khi merge không
+cái authentication flow, em implement xong rồi nhưng chưa test kyx	cái authentication flow, em implement xong rồi nhưng chưa test kỹ
+ok, anh có thể review code em trước khi merge khoong	ok, anh có thể review code em trước khi merge không
 em sẽ refactor lại component này để performance tốt hơn	em sẽ refactor lại component này để performance tốt hơn
 Can you send me the figma link again? I lost it	Can you send me the figma link again? I lost it
 ơ cái link mà anh share lúc nãy bị hỏng hình như	ơ cái link mà anh share lúc nãy bị hỏng hình như
 em đã fix xong bug login rồi	em đã fix xong bug login rồi
 test lại xem được không, nếu có issue gì thì ping em	test lại xem được không, nếu có issue gì thì ping em
-anh yêu cầu gì ở phần này không, em setup default value trước	anh yêu cầu gì ở phần này không, em setup default value trước
+anh yêu cầu gì ở phần này không, em setup default value truwowsc	anh yêu cầu gì ở phần này không, em setup default value trước
 em dự tính deploy version này vào thứ 5 okay không	em dự tính deploy version này vào thứ 5 okay không
 I'll make sure everything is bug-free before deployment	I'll make sure everything is bug-free before deployment
 em xin lỡ, em nhầm file sass rồi, fix lại ngay	em xin lỡ, em nhầm file sass rồi, fix lại ngay
 cảm ơn anh vì patience, em làm fast hơn từ giờ	cảm ơn anh vì patience, em làm fast hơn từ giờ
 phần payment gateway, anh muốn integrate stripe hay paypal	phần payment gateway, anh muốn integrate stripe hay paypal
-em suggest stripe vì nó stable hơn và support nhiều currency	em suggest stripe vì nó stable hơn và support nhiều currency
+em suggest stripe vì nó stable hơn và support nhiều curency	em suggest stripe vì nó stable hơn và support nhiều currency
 được, em setup payment integration từ bây giờ	được, em setup payment integration từ bây giờ
 Design assets đã sẵn sàng chưa anh, em cần để start development	Design assets đã sẵn sàng chưa anh, em cần để start development
 Anh làm xong việc chưa? Tối nay có đi ăn không?	Anh làm xong việc chưa? Tối nay có đi ăn không?
@@ -643,7 +643,7 @@ Bác nào on-call hôm nay? Call ngay đi	Bác nào on-call hôm nay? Call ngay 
 Something is wrong with the load balancer, we need to restart it immediately	Something is wrong with the load balancer, we need to restart it immediately
 Database connection pool đã hết rồi, có 500 connection pending	Database connection pool đã hết rồi, có 500 connection pending
 Restart service thử xem sao	Restart service thử xem sao
-Đợi đã, check monitoring dashboard trước	Đợi đã, check monitoring dashboard trước
+Đợi đã, check monitoring dashboard truwowsc	Đợi đã, check monitoring dashboard trước
 Alert đâu mà không thấy báo gì cả?	Alert đâu mà không thấy báo gì cả?
 Kubernetes pod nó không health check được, ôm killer đã xoá mất rồi	Kubernetes pod nó không health check được, oom killer đã xoá mất rồi
 CPU usage 95  trên prod, không thể chịu được nữa	CPU usage 95  trên prod, không thể chịu được nữa
@@ -652,7 +652,7 @@ Tôi đang deploy version mới, có phải vì vậy không?	Tôi đang deploy 
 No, deployment đã xong 2 tiếng trước rồi	No, deployment đã xong 2 tiếng trước rồi
 Traffic surge có thể từ marketing campaign hôm nay	Traffic surge có thể từ marketing campaign hôm nay
 Sao không scale up trước khi chạy campaign?	Sao không scale up trước khi chạy campaign?
-Kubernetes autoscaling cứ delay mãi, response time 5s rồi	Kubernetes autoscaling cứ delay mãi, response time 5s rồi
+Kubernetes autoscaling cứ delay mãi, response time 5s rooif	Kubernetes autoscaling cứ delay mãi, response time 5s rồi
 Rollback version cũ thử xem	Rollback version cũ thử xem
 Đang rollback, chờ chút	Đang rollback, chờ chút
 Yeah we're seeing errors spike across all regions now	Yeah we're seeing errors spike across all regions now
@@ -669,11 +669,11 @@ Upgrade sẽ down thêm 5 phút nữa, ready chưa?	Upgrade sẽ down thêm 5 ph
 Oke, notify team rồi	Oke, notify team rồi
 Application logs toàn error 500, không rõ nguyên nhân	Application logs toàn error 500, không rõ nguyên nhân
 Stack trace đâu?	Stack trace đâu?
-Logger bị turn off mất, upgrade thì queen config lại	Logger bị turn off mất, upgrade thì quên config lại
+Logger bị turn off mất, upgrade thì queen config laij	Logger bị turn off mất, upgrade thì quên config lại
 Thế là có thể rollback ngay mà	Thế là có thể rollback ngay mà
 Deploy again with proper logging enabled	Deploy again with proper logging enabled
 Bác nào commit cái thay đổi logger đó?	Bác nào commit cái thay đổi logger đó?
-Tôi, nhưng không test kỹ, sorry	Tôi, nhưng không test kỹ, sorry
+Tôi, nhưng không test kỹ, sory	Tôi, nhưng không test kỹ, sorry
 Alright, it happens, let's focus on recovery	Alright, it happens, let's focus on recovery
 Memory usage giảm xuống rồi sau khi restart pod	Memory usage giảm xuống rồi sau khi restart pod
 Good, traffic bình thường rồi không?	Good, traffic bình thường rồi không?
@@ -709,10 +709,10 @@ Ai review security audit chưa? Bắt buộc trước khi submit	Ai review secur
 Have you tested the app on iPhone SE yet?	Have you tested the app on iPhone SE yet?
 Phiên bản này optimization tốt hơn version trước nhiều	Phiên bản này optimization tốt hơn version trước nhiều
 Phải wait app store review khoảng mấy ngày thường	Phải wait app store review khoảng mấy ngày thường
-Em download TestFlight build từ link này test luôn	Em download TestFlight build từ link này test luôn
+Em download TestFlight build từ link này test luoon	Em download TestFlight build từ link này test luôn
 Cái deep link tracking cos implement chưa?	Cái deep link tracking có implement chưa?
 The rejection reason is related to user data handling, I'll fix it ASAP	The rejection reason is related to user data handling, I'll fix it ASAP
-Mình có 10 testers sẵn sàng, pass link TestFlight đi	Mình có 10 testers sẵn sàng, pass link TestFlight đi
+Mình có 10 testers sẵn sàng, pass link TestFlight ddi	Mình có 10 testers sẵn sàng, pass link TestFlight đi
 TestFlight hơi slow hôm nay, network issue hay gì?	TestFlight hơi slow hôm nay, network issue hay gì?
 Cần check app permissions trước khi submit tiếp	Cần check app permissions trước khi submit tiếp
 Permissions request popup có display đúng không?	Permissions request popup có display đúng không?
@@ -757,7 +757,7 @@ Không phải cái gì cũng dùng AI được, có nhiều task vẫn cần con
 Fine-tuning model riêng của mình thì expensive nhưng kết quả sẽ chính xác hơn	Fine-tuning model riêng của mình thì expensive nhưng kết quả sẽ chính xác hơn
 Bạn thử dùng system prompt chưa? Nó giúp định hướng AI response rất tốt	Bạn thử dùng system prompt chưa? Nó giúp định hướng AI response rất tốt
 Mình xây dựng workflow với ChatGPT API, automated được nhiều thứ rồi	Mình xây dựng workflow với ChatGPT API, automated được nhiều thứ rồi
-API của OpenAI dạo này đắt đỏi, cần optimize token usage	API của OpenAI dạo này đắt đỏi, cần optimize token usage
+API của OpenAI dạo này đắt đỏi, cần optimize token uáge	API của OpenAI dạo này đắt đỏi, cần optimize token usage
 Có một khoá Coursera về prompt engineering, đáng học lắm	Có một khoá Coursera về prompt engineering, đáng học lắm
 Regulation về AI còn mơ hồ, nhất là cái về copyright	Regulation về AI còn mơ hồ, nhất là cái về copyright
 Mình kết hợp ChatGPT với các tool khác, output chất lượng tăng đáng kể	Mình kết hợp ChatGPT với các tool khác, output chất lượng tăng đáng kể
@@ -794,7 +794,7 @@ mình order thêm nước, nhưng giao tới thì còn lại nửa thôi	mình o
 từ lần này, mình chỉ order từ quán nào có rating từ 4.8 trở lên	từ lần này, mình chỉ order từ quán nào có rating từ 4.8 trở lên
 gà kho tiêu đó, gọi một phần cho em ăn cơm trưa	gà kho tiêu đó, gọi một phần cho em ăn cơm trưa
 cả nhóm mình vừa ăn xong buffet lẩu kia, bao cơm, bao nước	cả nhóm mình vừa ăn xong buffet lẩu kia, bao cơm, bao nước
-mấy cái dimsum bây giờ ship xa lắm, chắc sẽ không còn warm	mấy cái dimsum bây giờ ship xa lắm, chắc sẽ không còn warm
+mấy cái dimsum bây giờ ship xa lắm, chắc sẽ không còn ửam	mấy cái dimsum bây giờ ship xa lắm, chắc sẽ không còn warm
 looking for a good Vietnamese banh mi place that delivers, suggestions?	looking for a good Vietnamese banh mi place that delivers, suggestions?
 có ai order Phở từ Foodpanda chưa, giao tới mất bao lâu	có ai order Phở từ Foodpanda chưa, giao tới mất bao lâu
 bánh flan from that French bakery is literally the best thing ever	bánh flan from that French bakery is literally the best thing ever
@@ -860,7 +860,7 @@ zoom meeting lúc 2h chiều, đừng quên nhé	zoom meeting lúc 2h chiều, �
 ok, tao sẽ set reminder. Cái meeting có cần prep gì không?	ok, tao sẽ set reminder. Cái meeting có cần prep gì không?
 vâng, chuẩn bị slide về Q4 roadmap. Gửi qua slack trước 1h30	vâng, chuẩn bị slide về Q4 roadmap. Gửi qua slack trước 1h30
 đã hiểu. Tao sẽ xong trước đó. BTW có mấy slide từ tháng trước mình dùng lại được không?	đã hiểu. Tao sẽ xong trước đó. BTW có mấy slide từ tháng trước mình dùng lại được không?
-được, check channel  archives thôi, có tất cả các version cũ	được, check channel  archives thôi, có tất cả các version cũ
+được, check channel  archives thôi, có tất cả các version cux	được, check channel  archives thôi, có tất cả các version cũ
 tao vừa remote từ quán cà phê, may mà wifi nó khoẻ. Bây giờ mới online được	tao vừa remote từ quán cà phê, may mà wifi nó khoẻ. Bây giờ mới online được
 ơi bạn, tao chuyên mục công việc sang team khác thì sao? Car slack workspace của cả công ty có thể xem được hết	ơi bạn, tao chuyên mục công việc sang team khác thì sao? Cả slack workspace của cả công ty có thể xem được hết
 Đúng là mình share team workspace chung để dễ quản lý. Cần access tới team nào thì nhắn HR	Đúng là mình share team workspace chung để dễ quản lý. Cần access tới team nào thì nhắn HR
@@ -914,7 +914,7 @@ Hay lắm, để mình xem kỹ hôm nay rồi gọi anh sau	Hay lắm, để m�
 Được bạn, mình đang chờ, hãy liên hệ khi cần thông tin thêm	Được bạn, mình đang chờ, hãy liên hệ khi cần thông tin thêm
 Anh ơi, mình xem xong rồi, cảm thấy vị trí tốt lắm, nhưng có thể hạ giá xuống 2.7 tỷ không?	Anh ơi, mình xem xong rồi, cảm thấy vị trí tốt lắm, nhưng có thể hạ giá xuống 2.7 tỷ không?
 Anh ơi, mình hôm nay mới biết được căn bên cạnh nó bán 2.65 tỷ, 80m2 chỉ	Anh ơi, mình hôm nay mới biết được căn bên cạnh nó bán 2.65 tỷ, 80m2 chỉ
-Được lắm, 2.65 tỷ là giá khá cạnh tranh trong khu này. Mình có thể consider	Được lắm, 2.65 tỷ là giá khá cạnh tranh trong khu này. Mình có thể consider
+Được lắm, 2.65 tỷ là giá khá cạnh tranh trong khu này. Mình có thể cónider	Được lắm, 2.65 tỷ là giá khá cạnh tranh trong khu này. Mình có thể consider
 Mình có thể offer 2.68 tỷ, đó là mức cao nhất rồi	Mình có thể offer 2.68 tỷ, đó là mức cao nhất rồi
 Let me check with the owner, may take a few hours	Let me check with the owner, may take a few hours
 Vâng anh, mình đợi tin từ anh	Vâng anh, mình đợi tin từ anh
@@ -945,7 +945,7 @@ tôi đang fix bug login redirect, có vẻ là issue với cookie domain	tôi �
 anh Minh review PR  234 chưa? mình cần merge vào develop hôm nay	anh Minh review PR  234 chưa? mình cần merge vào develop hôm nay
 We found a critical bug in the payment flow yesterday, it's blocking production	We found a critical bug in the payment flow yesterday, it's blocking production
 mình deploy staging version tối qua, test case nào fail không mấy bạn?	mình deploy staging version tối qua, test case nào fail không mấy bạn?
-đợi tí, lúc nãy pull latest code và conflict ghê quá, resolve xong rồi	đợi tí, lúc nãy pull latest code và conflict ghê quá, resolve xong rồi
+đợi tí, lúc nãy pull latest code và conflict ghê quá, resolve xong rooif	đợi tí, lúc nãy pull latest code và conflict ghê quá, resolve xong rồi
 That PR has too many changes, can we split it into smaller chunks?	That PR has too many changes, can we split it into smaller chunks?
 bọn em xong feature login social rồi, tạo PR lên develop	bọn em xong feature login social rồi, tạo PR lên develop
 À có ai thấy bug với image upload không? mình test ở local nó không lỗi	À có ai thấy bug với image upload không? mình test ở local nó không lỗi
@@ -995,7 +995,7 @@ Vậy em pull data từ 2 platform đó ra, compare xem sao	Vậy em pull data t
 Mình có need liên hệ với Analytics team không? Họ có raw data	Mình có need liên hệ với Analytics team không? Họ có raw data
 Yes, I just reached out to them. They'll send dashboard by EOD	Yes, I just reached out to them. They'll send dashboard by EOD
 Cảm ơn. Vậy roadmap thì sao, có conflict nào không?	Cảm ơn. Vậy roadmap thì sao, có conflict nào không?
-Feature discovery đẩy lên priority sau. User feedback chỉ 30  positive	Feature discovery đẩy lên priority sau. User feedback chỉ 30  positive
+Feature discovery đẩy lên priority sau. User feedback chỉ 30  póitive	Feature discovery đẩy lên priority sau. User feedback chỉ 30  positive
 Vậy push nó sang sprint 2 được không? Sprint 1 đã packed rồi	Vậy push nó sang sprint 2 được không? Sprint 1 đã packed rồi
 Được, nhưng PM nó sẽ không hài lòng. Đã commit rồi	Được, nhưng PM nó sẽ không hài lòng. Đã commit rồi
 Chúng mình cần prioritize based on business impact, không phải commitment	Chúng mình cần prioritize based on business impact, không phải commitment
@@ -1022,7 +1022,7 @@ We're targeting 40  DAU adoption within 3 months
 3 	We're targeting 40  DAU adoption within 3 months
 3 
 tháng là dài. Có acceleration plan không?	tháng là dài. Có acceleration plan không?
-Plan in-app notification, email campaign, và community referral	Plan in-app notification, email campaign, và community referral
+Plan in-app notification, email campaign, và community referal	Plan in-app notification, email campaign, và community referral
 Those are good channels. Need to coordinate with marketing	Those are good channels. Need to coordinate with marketing
 Marketing already in loop. They have separate budget for this	Marketing already in loop. They have separate budget for this
 Great. Vậy chúng mình có need adjust pricing model không?	Great. Vậy chúng mình có need adjust pricing model không?
@@ -1051,7 +1051,7 @@ Tao đã check Booking.com rồi, có nhiều hotel ngon ở quanh Hàng Năng	T
 Giá bao nhiêu? Mình có budget khoảng 500-600k/đêm thôi	Giá bao nhiêu? Mình có budget khoảng 500-600k/đêm thôi
 Hotel Dalat Plaza dạo này khoảng 550k, review khá tốt luôn	Hotel Dalat Plaza dạo này khoảng 550k, review khá tốt luôn
 Ủa mình thấy cái khác rẻ hơn, để mình gửi link	Ủa mình thấy cái khác rẻ hơn, để mình gửi link
-Actually, let me check Agoda tô, sometimes they have better deals than Booking	Actually, let me check Agoda too, sometimes they have better deals than Booking
+Actually, let me check Agoda tô, sometimes they have better deals than Bôking	Actually, let me check Agoda too, sometimes they have better deals than Booking
 Vừa check xong, Agoda có cái package 480k/đêm, 4 đêm là 1.9 triệu	Vừa check xong, Agoda có cái package 480k/đêm, 4 đêm là 1.9 triệu
 Cả nhóm mấy người? Tính một phòng hay multiple rooms?	Cả nhóm mấy người? Tính một phòng hay multiple rooms?
 Mình nghĩ 2 phòng là tốt nhất, mỗi phòng 2-3 người
@@ -1072,14 +1072,14 @@ Mình gợi ý 22-25 tháng 11, thế được không?	Mình gợi ý 22-25 thá
 Ừ được, mình available từ 21 tháng 11, nên có thể flexible	Ừ được, mình available từ 21 tháng 11, nên có thể flexible
 Tôi chỉ có thể đi từ 23 tháng 11 thôi, công việc không cho phép	Tôi chỉ có thể đi từ 23 tháng 11 thôi, công việc không cho phép
 Vậy thì check-in 23, check-out 27, tức là 4 đêm, được không?	Vậy thì check-in 23, check-out 27, tức là 4 đêm, được không?
-Hmm, I think 23-26 is better, bớt một đêm để save cost	Hmm, I think 23-26 is better, bớt một đêm để save cost
+Hmm, I think 23-26 is better, bớt một đêm để save cót	Hmm, I think 23-26 is better, bớt một đêm để save cost
 Mình agree, 3 đêm cũng đủ để chơi, không cần 4 đêm	Mình agree, 3 đêm cũng đủ để chơi, không cần 4 đêm
 OK, thế là 23-26 tháng 11, ai là người chủ yếu book?	OK, thế là 23-26 tháng 11, ai là người chủ yếu book?
-Để mình book, mình có account Booking.com credit card ready rồi	Để mình book, mình có account Booking.com credit card ready rồi
+Để mình book, mình có account Booking.com credit card ready roofi	Để mình book, mình có account Booking.com credit card ready rồi
 Cảm ơn bạn! Sau khi book xong thì báo nhóm luôn nhé	Cảm ơn bạn! Sau khi book xong thì báo nhóm luôn nhé
 Chắc chắn, mình sẽ confirm booking và gửi email xác nhận cho mấy bạn	Chắc chắn, mình sẽ confirm booking và gửi email xác nhận cho mấy bạn
 Có cần đặt trước pickup airport hay sao? Mình sợ mệt khi xuống máy bay	Có cần đặt trước pickup airport hay sao? Mình sợ mệt khi xuống máy bay
-Để tao xem cái hotel này có shuttle service không	Để tao xem cái hotel này có shuttle service không
+Để tao xem cái hotel này có shuttle service khoong	Để tao xem cái hotel này có shuttle service không
 Sau khi book xong, mình gọi hotel để hỏi. Or we can book Grab there, rẻ hơn	Sau khi book xong, mình gọi hotel để hỏi. Or we can book Grab there, rẻ hơn
 Được, đừng quên gửi confirmation code cho mấy bạn	Được, đừng quên gửi confirmation code cho mấy bạn
 Yep, I'll forward everything once the booking is confirmed	Yep, I'll forward everything once the booking is confirmed
@@ -1109,7 +1109,7 @@ nhân viên HR mấy hôm nay bận với payroll, để em chờ sau	nhân viê
 phòng họp C không có điều hoà, khỏi dùng cái đó	phòng họp C không có điều hoà, khỏi dùng cái đó
 I'll submit the meeting room booking form right now	I'll submit the meeting room booking form right now
 em xin phép từ 22/10 đến 25/10, có thể duyệt được không ạ?	em xin phép từ 22/10 đến 25/10, có thể duyệt được không ạ?
-phòng họp nào cũng được miễn là có bảng trắng với marker	phòng họp nào cũng được miễn là có bảng trắng với marker
+phòng họp nào cũng được miễn là có bảng trắng với mảker	phòng họp nào cũng được miễn là có bảng trắng với marker
 Tôi cần book phòng cho tổ chức team building, bao nhiêu phòng thì đủ?	Tôi cần book phòng cho tổ chức team building, bao nhiêu phòng thì đủ?
 mình vừa nhìn calendar, phòng D trống hết buổi chiều	mình vừa nhìn calendar, phòng D trống hết buổi chiều
 sorry mình book nhầm phòng rồi, bạn cancel giúp mình với	sorry mình book nhầm phòng rồi, bạn cancel giúp mình với
@@ -1122,7 +1122,7 @@ mình book phòng họp cho meeting với client hôm thứ 6	mình book phòng 
 tối nay có team meeting ở phòng A từ 6h, nhớ đến nhé	tối nay có team meeting ở phòng A từ 6h, nhớ đến nhé
 Do you know how many vacation days I have left this year?	Do you know how many vacation days I have left this year?
 phòng nào cũng được, chỉ cần không phải phòng có cửa sổ vào chiều	phòng nào cũng được, chỉ cần không phải phòng có cửa sổ vào chiều
-mình submit leave request rồi, giờ chỉ chờ boss approve thôi	mình submit leave request rồi, giờ chỉ chờ boss approve thôi
+mình submit leave request rồi, giờ chỉ chờ boss approve thooi	mình submit leave request rồi, giờ chỉ chờ boss approve thôi
 chào bạn, cần giúp gì không ạ?	chào bạn, cần giúp gì không ạ?
 mình có size M còn hàng đó, bạn muốn order bây giờ không?	mình có size M còn hàng đó, bạn muốn order bây giờ không?
 okay, tôi sẽ ghi nhận order của bạn, thanh toán qua Momo được không	okay, tôi sẽ ghi nhận order của bạn, thanh toán qua Momo được không
@@ -1137,7 +1137,7 @@ có sao không, sao order của bạn chưa giao được?	có sao không, sao o
 tìm lại số order của bạn đi, mình sẽ track cho	tìm lại số order của bạn đi, mình sẽ track cho
 chuyển phát không giao được vì bạn không có nhà, mình sẽ liên hệ với bạn	chuyển phát không giao được vì bạn không có nhà, mình sẽ liên hệ với bạn
 actually, we can arrange another delivery time for you	actually, we can arrange another delivery time for you
-bạn muốn return hàng à, okay nhưng phải còn tag và không được wash	bạn muốn return hàng à, okay nhưng phải còn tag và không được wash
+bạn muốn return hàng à, okay nhưng phải còn tag và không được ứah	bạn muốn return hàng à, okay nhưng phải còn tag và không được wash
 tiền return sẽ về account trong 3-5 ngày làm việc	tiền return sẽ về account trong 3-5 ngày làm việc
 thank you for your purchase! please leave us a review	thank you for your purchase! please leave us a review
 bạn nói hàng lỗi à, send photo lên được không?	bạn nói hàng lỗi à, send photo lên được không?
@@ -1150,12 +1150,12 @@ We offer free shipping for orders above 200k	We offer free shipping for orders a
 bundle 3 cái áo được discount 15 , bạn có muốn không?	bundle 3 cái áo được discount 15 , bạn có muốn không?
 sorry, chúng tôi chỉ ship trong nước thôi, không giao quốc tế	sorry, chúng tôi chỉ ship trong nước thôi, không giao quốc tế
 liên hệ support team mình để xử lý vấn đề này nhé	liên hệ support team mình để xử lý vấn đề này nhé
-bạn xác nhận size chính xác không trước khi order	bạn xác nhận size chính xác không trước khi order
+bạn xác nhận size chính xác không trước khi ỏder	bạn xác nhận size chính xác không trước khi order
 actually, we have this item in different colors	actually, we have this item in different colors
 mình recommend cho bạn size M vì bạn cao khoảng 165 phải không	mình recommend cho bạn size M vì bạn cao khoảng 165 phải không
 chiếc này hợp với da bạn lắm, style nó rất hot hiện tại	chiếc này hợp với da bạn lắm, style nó rất hot hiện tại
 bạn có muốn thêm accessories không, mình có deal gom hàng	bạn có muốn thêm accessories không, mình có deal gom hàng
-thank you so much for being a loyal customer	thank you so much for being a loyal customer
+thank you so much for being a loyal cútomer	thank you so much for being a loyal customer
 mình remember bạn, lần này bạn order gì vậy?	mình remember bạn, lần này bạn order gì vậy?
 nếu bạn rể bạn bè thì được voucher 50k nha	nếu bạn refer bạn bè thì được voucher 50k nha
 program member của mình có nhiều benefit lắm, bạn đã join chưa?	program member của mình có nhiều benefit lắm, bạn đã join chưa?
@@ -1179,9 +1179,9 @@ Tao setting retargeting campaign xong rồi, ready to launch	Tao setting retarge
 hay là chúng ta nên A/B test cái headline này	hay là chúng ta nên A/B test cái headline này
 có thể adjust budget allocation không, performance còn yếu	có thể adjust budget allocation không, performance còn yếu
 mấy cái video ads không convert tốt, có thể do creative	mấy cái video ads không convert tốt, có thể do creative
-Mình suggest chúng ta focus vào organic reach trước	Mình suggest chúng ta focus vào organic reach trước
+Mình suggest chúng ta focus vào organic reach truowsc	Mình suggest chúng ta focus vào organic reach trước
 Performance marketing campaign nos ra sao	Performance marketing campaign nó ra sao
-chỉnh sửa xong rồi, xin feedback từ creative director	chỉnh sửa xong rồi, xin feedback từ creative director
+chỉnh sửa xong rồi, xin feedback từ creative diẻctor	chỉnh sửa xong rồi, xin feedback từ creative director
 We're getting good engagement but CTR is still low	We're getting good engagement but CTR is still low
 ad spend vs revenue ratio hiện tại bao nhiêu nhân	ad spend vs revenue ratio hiện tại bao nhiêu nhân
 tao vừa mua thêm audience segment cho lookalike campaign	tao vừa mua thêm audience segment cho lookalike campaign
@@ -1199,7 +1199,7 @@ tao xong phần targeting rồi, bây giờ pending creative approval	tao xong p
 Facebook pixel đang track đúng 100  chưa	Facebook pixel đang track đúng 100  chưa
 Chúng ta cần hire freelancer designer thêm không	Chúng ta cần hire freelancer designer thêm không
 Can we schedule a sync tomorrow to review metrics?	Can we schedule a sync tomorrow to review metrics?
-các bạn optimize landing page UX chưa	các bạn optimize landing page UX chưa
+các bạn optimize landing page UX chuwa	các bạn optimize landing page UX chưa
 Impressions tăng nhưng conversion rate giảm, strange	Impressions tăng nhưng conversion rate giảm, strange
 tôi recommend chúng ta test TikTok ads next month	tôi recommend chúng ta test TikTok ads next month
 Chi phí acquisition hiện tại cao hơn budget dự tính	Chi phí acquisition hiện tại cao hơn budget dự tính
@@ -1213,11 +1213,11 @@ tối nay mày on không? Tao muốn chơi team rank	tối nay mày on không? T
 anh ơi mình out vì còn bài tập, tối mình nhắn lại	anh ơi mình out vì còn bài tập, tối mình nhắn lại
 Bạn chơi gì thế? Dota hay Valorant?	Bạn chơi gì thế? Dota hay Valorant?
 không, tao chơi LoL thôi, rank solo queue bây giờ	không, tao chơi LoL thôi, rank solo queue bây giờ
-Mày có muốn duo không? Tao tin mình carry được	Mày có muốn duo không? Tao tin mình carry được
+Mày có muốn duo không? Tao tin mình carry dduwowcj	Mày có muốn duo không? Tao tin mình carry được
 okay tớ vào, chờ tớ setup pc xíu	okay tớ vào, chờ tớ setup pc xíu
-Match vừa rồi mình sao support kém thế? Anh carry được	Match vừa rồi mình sao support kém thế? Anh carry được
+Match vừa rồi mình sao support kém thế? Anh carry dduwowcj	Match vừa rồi mình sao support kém thế? Anh carry được
 cái ult của mày lúc đó kinh khủng vl, làm sợ cả team địch	cái ult của mày lúc đó kinh khủng vl, làm sợ cả team địch
-bạn nào có smurf không? Tao muốn test champ mới	bạn nào có smurf không? Tao muốn test champ mới
+bạn nào có smurf không? Tao muốn test champ mowsi	bạn nào có smurf không? Tao muốn test champ mới
 có chứ, tao có acc plat 3, mày muốn chơi cùng không	có chứ, tao có acc plat 3, mày muốn chơi cùng không
 được, lát nữa thêm mình vào	được, lát nữa thêm mình vào
 sao hôm nay mày chơi mid mà feed vậy bạn ơi	sao hôm nay mày chơi mid mà feed vậy bạn ơi
@@ -1228,7 +1228,7 @@ ping bao nhiêu vậy?
 ping luôn, chỉ muốn có tiền mua router cái	ping luôn, chỉ muốn có tiền mua router cái
 tao có thể cho mày chiếc router cũ, miễn là mày ủng hộ mình	tao có thể cho mày chiếc router cũ, miễn là mày ủng hộ mình
 thật luôn ơi? Tao xin tiền ba má mua nốt	thật luôn ơi? Tao xin tiền ba má mua nốt
-tối nay chúng mình queue rank 5 được không? Tao muốn lên emerald	tối nay chúng mình queue rank 5 được không? Tao muốn lên emerald
+tối nay chúng mình queue rank 5 được không? Tao muốn lên ểmald	tối nay chúng mình queue rank 5 được không? Tao muốn lên emerald
 I'm down for that, but can you bring your A-game please?	I'm down for that, but can you bring your A-game please?
 tất nhiên rồi, tao siêu xạo hôm nay cơ	tất nhiên rồi, tao siêu xạo hôm nay cơ
 xạo cái gì mà nói mặt như vậy, lần trước mày lock supp rồi đi jungle	xạo cái gì mà nói mặt như vậy, lần trước mày lock supp rồi đi jungle
@@ -1240,10 +1240,10 @@ okay so we got 4, need one more	okay so we got 4, need one more
 Tao gọi Huy được không? Huy rank cũng được đấy	Tao gọi Huy được không? Huy rank cũng được đấy
 rank còn thấp hơn mình, nhưng micro nó okela	rank còn thấp hơn mình, nhưng micro nó okela
 vậy thôi, chỉ cần có người top chắc cái	vậy thôi, chỉ cần có người top chắc cái
-Mày top main phải không? Pick Garen đi, ez win	Mày top main phải không? Pick Garen đi, ez win
+Mày top main phải không? Pick Garen đi, ez ưin	Mày top main phải không? Pick Garen đi, ez win
 tao main support mà bạn, top tao chơi không giỏi lắm	tao main support mà bạn, top tao chơi không giỏi lắm
 thế thì lạy chúa, mình còn thiếu gì nữa	thế thì lạy chúa, mình còn thiếu gì nữa
-mình đã có mid, jungle, adc rồi, lính top là okela, chỉ cần win lane thôi	mình đã có mid, jungle, adc rồi, lính top là okela, chỉ cần win lane thôi
+mình đã có mid, jungle, adc rồi, lính top là okela, chỉ cần win lane thooi	mình đã có mid, jungle, adc rồi, lính top là okela, chỉ cần win lane thôi
 vậy tối nay 8h rank được không? Tao chuẩn bị	vậy tối nay 8h rank được không? Tao chuẩn bị
 ủa 8h sớm quá, tao còn đang học	ủa 8h sớm quá, tao còn đang học
 okay then 9h, hopefully everyone's free by then	okay then 9h, hopefully everyone's free by then
@@ -1251,7 +1251,7 @@ okay then 9h, hopefully everyone's free by then	okay then 9h, hopefully everyone
 thanks for organizing this man, really appreciate it	thanks for organizing this man, really appreciate it
 không sao, mình chơi game mà, cuối cùng là vui thôi	không sao, mình chơi game mà, cuối cùng là vui thôi
 que verdad, let's get this W tonight	que verdad, let's get this W tonight
-tao không hiểu tiếng Tây Ban Nha nhưng same energy anh ơi	tao không hiểu tiếng Tây Ban Nha nhưng same energy anh ơi
+tao không hiểu tiếng Tây Ban Nha nhưng same energy anh owi	tao không hiểu tiếng Tây Ban Nha nhưng same energy anh ơi
 Các con yêu, mẹ vừa nấu xong cơm chiều, ai về sớm ăn cơm không?	Các con yêu, mẹ vừa nấu xong cơm chiều, ai về sớm ăn cơm không?
 Mẹ ơi, con còn ở công ty, khoảng 7h tối mới về được	Mẹ ơi, con còn ở công ty, khoảng 7h tối mới về được
 Ừ, mẹ để nóng trong nồi cho, đừng để nguội đâu	Ừ, mẹ để nóng trong nồi cho, đừng để nguội đâu
@@ -1290,7 +1290,7 @@ Con sẽ cố gắng về, nhưng còn tuỳ công việc	Con sẽ cố gắng v
 Công việc gì hoài vậy? Công ty có quá nhiều việc không?	Công việc gì hoài vậy? Công ty có quá nhiều việc không?
 Không phải vậy mẹ, chỉ là có dự án deadline sắp tới thôi	Không phải vậy mẹ, chỉ là có dự án deadline sắp tới thôi
 Thôi được, con ưu tiên công việc trước, mẹ hiểu	Thôi được, con ưu tiên công việc trước, mẹ hiểu
-Mày có làm xong assignment của moon Data Structure chưa	Mày có làm xong assignment của môn Data Structure chưa
+Mày có làm xong assignment của moon Data Structure chuwa	Mày có làm xong assignment của môn Data Structure chưa
 Chưa bro, còn 2 ngày nữa mà
 2 	Chưa bro, còn 2 ngày nữa mà
 2 
@@ -1344,7 +1344,7 @@ I think the color palette needs to be more vibrant, it looks too muted right now
 Em xem cái prototype mới chưa, được hơn lần trước rồi	Em xem cái prototype mới chưa, được hơn lần trước rồi
 Ai vừa modify cái layout ở mobile view này, sao khác hẳn	Ai vừa modify cái layout ở mobile view này, sao khác hẳn
 Can you check the alignment on the buttons? Something seems off	Can you check the alignment on the buttons? Something seems off
-Figma workspace hơi messy, mình nên reorganize components đi	Figma workspace hơi messy, mình nên reorganize components đi
+Figma workspace hơi messy, mình nên reorganize components ddi	Figma workspace hơi messy, mình nên reorganize components đi
 Feedback từ client quá nhiều, designer nó chắc tức rồi	Feedback từ client quá nhiều, designer nó chắc tức rồi
 Ơi mình cần update cái color token kia trong design system	Ơi mình cần update cái color token kia trong design system
 Ai giải thích được sao spacing này lại khác như vậy	Ai giải thích được sao spacing này lại khác như vậy
@@ -1359,10 +1359,10 @@ Figma comment quá dài, có khi mở file xong chết đứng	Figma comment qu�
 Mình thấy contrast của text color không enough cho accessibility	Mình thấy contrast của text color không enough cho accessibility
 Đã save version mới rồi, các bạn có thể review được	Đã save version mới rồi, các bạn có thể review được
 Why is the hover state different from what we defined?	Why is the hover state different from what we defined?
-Cái text này cần formatting lại theo guideline designer đưa	Cái text này cần formatting lại theo guideline designer đưa
+Cái text này cần formatting lại theo guideline designer dduwa	Cái text này cần formatting lại theo guideline designer đưa
 Team design đang chỉnh UI kit, chờ có update thông báo	Team design đang chỉnh UI kit, chờ có update thông báo
 Figma plugin này hay lắm, tiết kiệm time export asset	Figma plugin này hay lắm, tiết kiệm time export asset
-Chị ơi, feedback này implement được không, có technical issue không	Chị ơi, feedback này implement được không, có technical issue không
+Chị ơi, feedback này implement được không, có technical issue khoong	Chị ơi, feedback này implement được không, có technical issue không
 The responsive behavior cần adjust lại cho tablet view	The responsive behavior cần adjust lại cho tablet view
 Em check lại stroke width của icon, bị inconsistent	Em check lại stroke width của icon, bị inconsistent
 Mình vừa add comment trong Figma, chị xem giúp	Mình vừa add comment trong Figma, chị xem giúp
@@ -1380,7 +1380,7 @@ Bro mình vừa mua thêm 50k BTC lúc dip, chắc đã lòng rồi  	Bro mình 
 anh ơi BTC giờ bao nhiêu rồi	anh ơi BTC giờ bao nhiêu rồi
 mình chốt lãi được 200 triệu từ cổ phiếu ngân hàng tuần trước	mình chốt lãi được 200 triệu từ cổ phiếu ngân hàng tuần trước
 Bạn vào crypto từ lúc nào, sao giờ mới nói đến	Bạn vào crypto từ lúc nào, sao giờ mới nói đến
-tôi hold doge coin từ năm 2021, giờ đợi mooning	tôi hold doge coin từ năm 2021, giờ đợi mooning
+tôi hold doge coin từ năm 2021, giờ đợi môning	tôi hold doge coin từ năm 2021, giờ đợi mooning
 Dude, you should really check the fundamentals before you buy anything	Dude, you should really check the fundamentals before you buy anything
 ảnh nào hay trading altcoin, chia tips với mình luôn	ảnh nào hay trading altcoin, chia tips với mình luôn
 FPT như vậy có nên mua không? nghe bảo sắp up	FPT như vậy có nên mua không? nghe bảo sắp up
@@ -1395,21 +1395,21 @@ I just got into index funds, should I also do crypto	I just got into index funds
 nó chỉ là FOMO mà bạn, đừng mua hết tài sản vào đó	nó chỉ là FOMO mà bạn, đừng mua hết tài sản vào đó
 mình quyết định sell tất cả ngân hàng khi Fed nhóm lãi suất 5 	mình quyết định sell tất cả ngân hàng khi Fed nhóm lãi suất 5 
 anh holding BNB bao lâu rồi	anh holding BNB bao lâu rồi
-bán đừng bán, cứ hold long term đi	bán đừng bán, cứ hold long term đi
+bán đừng bán, cứ hold long term ddi	bán đừng bán, cứ hold long term đi
 BTC gonna hit 100k by end of year, mark my words	BTC gonna hit 100k by end of year, mark my words
 mấy cái meme coin kiếm được lãi to nhưng mất nhanh hơn	mấy cái meme coin kiếm được lãi to nhưng mất nhanh hơn
-thị trường đỏ lum xum, có ai dám average down không	thị trường đỏ lum xum, có ai dám average down không
+thị trường đỏ lum xum, có ai dám average down khoong	thị trường đỏ lum xum, có ai dám average down không
 nếu bạn sợ thị trường, hãy đừng đầu tư vào crypto	nếu bạn sợ thị trường, hãy đừng đầu tư vào crypto
 Chia sẻ cái app bạn dùng để track portfolio được không	Chia sẻ cái app bạn dùng để track portfolio được không
 cái công ty IPO mới này, nhìn chart có vẻ bị pump ậy	cái công ty IPO mới này, nhìn chart có vẻ bị pump ậy
 I went all in on ETH last month, already up 40 	I went all in on ETH last month, already up 40 
 nhiều người nói crypto là tương lai, nhưng mình vẫn chưa yên tâm	nhiều người nói crypto là tương lai, nhưng mình vẫn chưa yên tâm
-bạn ơi, stop loss rồi chứ, sao không quản lý risk	bạn ơi, stop loss rồi chứ, sao không quản lý risk
+bạn ơi, stop loss rồi chứ, sao không quản lý rík	bạn ơi, stop loss rồi chứ, sao không quản lý risk
 tất cả mọi người gọi tôi điên vì mua crypto, nhưng giờ họ hỏi tip	tất cả mọi người gọi tôi điên vì mua crypto, nhưng giờ họ hỏi tip
 đầu tư thế này còn bao lâu thì bạn mới chọn được strategy riêng	đầu tư thế này còn bao lâu thì bạn mới chọn được strategy riêng
 Honestly the market is too unpredictable right now, I'm just holding	Honestly the market is too unpredictable right now, I'm just holding
 tôi có một người bạn kiếm 10 tỷ từ coin shitcoin lúc 2017	tôi có một người bạn kiếm 10 tỷ từ coin shitcoin lúc 2017
-phải chăng nên diversify thêm vào real estate	phải chăng nên diversify thêm vào real estate
+phải chăng nên diversify thêm vào real étate	phải chăng nên diversify thêm vào real estate
 mình trading intraday, có chút stress nhưng lợi nhuận khá tốt	mình trading intraday, có chút stress nhưng lợi nhuận khá tốt
 tại sao mình không tham gia vào IPO pool được, bực quá	tại sao mình không tham gia vào IPO pool được, bực quá
 anh nào biết fundamental analysis, chia tips được không	anh nào biết fundamental analysis, chia tips được không
@@ -1431,7 +1431,7 @@ We had a minor server issue this morning, it's resolved now	We had a minor serve
 tốt rồi, nhưng làm sao tôi biết mấy lần down như vậy? Có cách theo dõi status không?	tốt rồi, nhưng làm sao tôi biết mấy lần down như vậy? Có cách theo dõi status không?
 Có cái status page tại status.ourapp.com, bạn bookmark lại nhé	Có cái status page tại status.ourapp.com, bạn bookmark lại nhé
 thanks, sẽ check liên tục từ đây	thanks, sẽ check liên tục từ đây
-Bạn muốn tôi tạo webhook không? Cái này sẽ send notification khi có issue	Bạn muốn tôi tạo webhook không? Cái này sẽ send notification khi có issue
+Bạn muốn tôi tạo webhook không? Cái này sẽ send notification khi có isue	Bạn muốn tôi tạo webhook không? Cái này sẽ send notification khi có issue
 Webhook là gì vậy? Nghe phức tạp lắm, có hướng dẫn không?	Webhook là gì vậy? Nghe phức tạp lắm, có hướng dẫn không?
 Mình có docs đầy đủ tại đây, cũng không khó đâu bạn	Mình có docs đầy đủ tại đây, cũng không khó đâu bạn
 Okay, let me read this first, will contact you lại if có problem	Okay, let me read this first, will contact you lại if có problem
@@ -1445,7 +1445,7 @@ k hơi mắc đó, có discount bundle không?	k hơi mắc đó, có discount b
 We have annual billing discount, nó sẽ rẻ khoảng 20  so with monthly	We have annual billing discount, nó sẽ rẻ khoảng 20  so with monthly
 Được, tôi sẽ upgrade annual luôn, bao giờ có hiệu lực?	Được, tôi sẽ upgrade annual luôn, bao giờ có hiệu lực?
 It will be effective immediately after payment, link thanh toán tôi gửi qua email ngay	It will be effective immediately after payment, link thanh toán tôi gửi qua email ngay
-Mình vừa thanh toán xong rồi, nhưng vẫn không thấy 5 users mới	Mình vừa thanh toán xong rồi, nhưng vẫn không thấy 5 users mới
+Mình vừa thanh toán xong rồi, nhưng vẫn không thấy 5 users mowsi	Mình vừa thanh toán xong rồi, nhưng vẫn không thấy 5 users mới
 Let me check your account real quick	Let me check your account real quick
 Okay found it, your account is being processed, usually takes 5 to 10 minutes	Okay found it, your account is being processed, usually takes 5 to 10 minutes
 Tôi chờ thêm, cảm ơn bạn đã respond nhanh	Tôi chờ thêm, cảm ơn bạn đã respond nhanh
@@ -1472,15 +1472,15 @@ SELECT   FROM users WHERE created at   '2024-01-01' còn chậm lắm	SELECT   F
 Có thể là missing index, mình check lại	Có thể là missing index, mình check lại
 Dashboard hiển thị sai số liệu rồi	Dashboard hiển thị sai số liệu rồi
 Cái metric nào sai hả bạn?	Cái metric nào sai hả bạn?
-Revenue số mà hiện lên không match với database	Revenue số mà hiện lên không match với database
+Revenue số mà hiện lên không match với dâtbase	Revenue số mà hiện lên không match với database
 Query nào calc revenue bạn? Tao kiểm tra lại	Query nào calc revenue bạn? Tao kiểm tra lại
 SELECT SUM(amount) FROM orders WHERE status   'completed', query này đúng mà	SELECT SUM(amount) FROM orders WHERE status   'completed', query này đúng mà
-Chắc là ETL process của mình bị issue	Chắc là ETL process của mình bị issue
+Chắc là ETL process của mình bị isue	Chắc là ETL process của mình bị issue
 ETL schedule hôm qua có chạy không?	ETL schedule hôm qua có chạy không?
 Chưa, pipeline fail từ sáng rồi	Chưa, pipeline fail từ sáng rồi
 Fix xong chưa? Cần report cho boss hôm nay	Fix xong chưa? Cần report cho boss hôm nay
-Just fixed it, running again now	Just fixed it, running again now
-Dashboard cos update data chưa?	Dashboard có update data chưa?
+Just fixed it, running again nơ	Just fixed it, running again now
+Dashboard có update data chưa?	Dashboard có update data chưa?
 Waiting for the ETL to finish	Waiting for the ETL to finish
 Thường mất bao lâu nhỉ?	Thường mất bao lâu nhỉ?
 Depends on how much data we're processing, usually 2-3 hours	Depends on how much data we're processing, usually 2-3 hours
@@ -1508,7 +1508,7 @@ Tao xem cái stored procedure của department kia được không?	Tao xem cái
 Đã fix hết các issue trên dashboard chưa?	Đã fix hết các issue trên dashboard chưa?
 Còn 2-3 cái nữa, đang check	Còn 2-3 cái nữa, đang check
 Alert notification có setup chưa?	Alert notification có setup chưa?
-Chưa, chờ dashboard stable trước	Chưa, chờ dashboard stable trước
+Chưa, chờ dashboard stable truowcs	Chưa, chờ dashboard stable trước
 Data validation test có pass không?	Data validation test có pass không?
 Fail mấy case, đang fix	Fail mấy case, đang fix
 Mình merge code vào main được không?	Mình merge code vào main được không?
@@ -1519,11 +1519,11 @@ Batch job nó chạy mấy lần một ngày?
 2 
 lần, sáng 8h và chiều 5h	lần, sáng 8h và chiều 5h
 Performance monitoring đã setup trên dashboard chưa?	Performance monitoring đã setup trên dashboard chưa?
-Setup rồi, có slowdown lúc peak hours	Setup rồi, có slowdown lúc peak hours
+Setup rồi, có slowdown lúc peak hóu	Setup rồi, có slowdown lúc peak hours
 Database connection pool có cần tăng không?	Database connection pool có cần tăng không?
 Maybe, let me check the metrics	Maybe, let me check the metrics
 Tối nay tao có meeting với stakeholder về data, cần gì không?	Tối nay tao có meeting với stakeholder về data, cần gì không?
-Đưa report latest analytics đi	Đưa report latest analytics đi
+Đưa report latest analytics ddi	Đưa report latest analytics đi
 chào, em vừa nhận được brief từ anh, sẽ bắt đầu làm ngay	chào, em vừa nhận được brief từ anh, sẽ bắt đầu làm ngay
 chuẩn rồi, em sẽ deliver bản đầu tiên trong 3 ngày	chuẩn rồi, em sẽ deliver bản đầu tiên trong 3 ngày
 anh check xem file design mà em gửi hôm qua được không?	anh check xem file design mà em gửi hôm qua được không?
@@ -1545,16 +1545,16 @@ em sẽ update theo yêu cầu của anh, hôm nay sẽ xong	em sẽ update theo
 actually, let me reconsider this approach, maybe we need to pivot	actually, let me reconsider this approach, maybe we need to pivot
 em đang test responsiveness trên các device khác nhau	em đang test responsiveness trên các device khác nhau
 anh có template nào mà em tham khảo không, hay em design from scratch?	anh có template nào mà em tham khảo không, hay em design from scratch?
-từng part của design em sẽ optimize performance-wise	từng part của design em sẽ optimize performance-wise
-em đã integrate feedback của anh vào version 3 rồi	em đã integrate feedback của anh vào version 3 rồi
+từng part của design em sẽ optimize performance-ứie	từng part của design em sẽ optimize performance-wise
+em đã integrate feedback của anh vào version 3 roofi	em đã integrate feedback của anh vào version 3 rồi
 The latest version is ready for review, I'll send the link shortly	The latest version is ready for review, I'll send the link shortly
 em còn cần clarify thêm về brand guidelines không anh?	em còn cần clarify thêm về brand guidelines không anh?
 anh muốn em làm interactive prototype không, hay static design là được?	anh muốn em làm interactive prototype không, hay static design là được?
-em test kỹ rồi, quality assurance pass hết	em test kỹ rồi, quality assurance pass hết
+em test kỹ rồi, quality assurance pass heets	em test kỹ rồi, quality assurance pass hết
 bây giờ em đang handle revision, sẽ hoàn thành cuối tuần này	bây giờ em đang handle revision, sẽ hoàn thành cuối tuần này
 em có thể add extra features không, hay stick with scope hiện tại?	em có thể add extra features không, hay stick with scope hiện tại?
 anh check timeline có bị tight không, em có thể adjust nếu cần	anh check timeline có bị tight không, em có thể adjust nếu cần
-em đã refactor code một số chỗ để improve performance	em đã refactor code một số chỗ để improve performance
+em đã refactor code một số chỗ để improve pẻomance	em đã refactor code một số chỗ để improve performance
 ready to ship whenever you give the green light	ready to ship whenever you give the green light
 em sẽ prepare documentation cho deliverables	em sẽ prepare documentation cho deliverables
 anh cần em brief team của anh không, or em just hand over files?	anh cần em brief team của anh không, or em just hand over files?
@@ -1587,7 +1587,7 @@ Anh có gặp vấn đề nào với manager không? Em nghe công ty bạn anh 
 Không có vấn đề gì đâu, sao em hỏi? Có sao không?	Không có vấn đề gì đâu, sao em hỏi? Có sao không?
 Thôi, em chỉ lo cho anh. Sợ anh stress quá	Thôi, em chỉ lo cho anh. Sợ anh stress quá
 Anh cảm ơn, nhưng anh ổn mà. Chỉ là bthuowfng công việc thôi	Anh cảm ơn, nhưng anh ổn mà. Chỉ là bthuowfng công việc thôi
-haha okee, anh don't overwork yourself	haha okee, anh don't overwork yourself
+haha okee, anh don't overwork yóuelf	haha okee, anh don't overwork yourself
 I won't babe, I promise	I won't babe, I promise
 Em sẽ nấu cơm ngon để anh thư giãn	Em sẽ nấu cơm ngon để anh thư giãn
 Thank you baby, that's so sweet of you	Thank you baby, that's so sweet of you
@@ -1610,7 +1610,7 @@ server down rồi à? check log xem sao?	server down rồi à? check log xem sao
 Vâng, production down từ 10h sáng rồi	Vâng, production down từ 10h sáng rồi
 API timeout liên tục, có ai check database không?	API timeout liên tục, có ai check database không?
 mình vừa SSH vào server, load average 95 	mình vừa SSH vào server, load average 95 
-phải restart service ngay thôi	phải restart service ngay thôi
+phải restart service ngay thooi	phải restart service ngay thôi
 wait, đừng restart bừa, phải tìm root cause trước đã	wait, đừng restart bừa, phải tìm root cause trước đã
 Uh, nếu không restart thì customer sẽ phàn nàn thêm nữa	Uh, nếu không restart thì customer sẽ phàn nàn thêm nữa
 Có memory leak trong app mới deploy hôm qua	Có memory leak trong app mới deploy hôm qua
@@ -1618,11 +1618,11 @@ Sao deploy mà không test kỹ hơn chứ?	Sao deploy mà không test kỹ hơn
 Lỗi này xảy ra ở staging không à?	Lỗi này xảy ra ở staging không à?
 Staging ok bình thường, nhưng traffic production lớn hơn nhiều	Staging ok bình thường, nhưng traffic production lớn hơn nhiều
 Let me check the metrics real quick	Let me check the metrics real quick
-mình thấy CPU spike lúc 10:05, đúng lúc traffic tăng	mình thấy CPU spike lúc 10:05, đúng lúc traffic tăng
+mình thấy CPU spike lúc 10:05, đúng lúc traffic tawng	mình thấy CPU spike lúc 10:05, đúng lúc traffic tăng
 Vậy phải scale up instances trước, restart sau	Vậy phải scale up instances trước, restart sau
 Đang configure auto-scaling, chút nữa ok	Đang configure auto-scaling, chút nữa ok
 có bao nhiêu user bị affected?	có bao nhiêu user bị affected?
-khoảng 40  traffic bị failed request, tầm 2000 user	khoảng 40  traffic bị failed request, tầm 2000 user
+khoảng 40  traffic bị failed request, tầm 2000 uẻ	khoảng 40  traffic bị failed request, tầm 2000 user
 This is serious, need to roll back immediately	This is serious, need to roll back immediately
 Code mới có issue gì không? Không thể roll back ngay được	Code mới có issue gì không? Không thể roll back ngay được
 Restart service xong rồi, monitoring xem sao	Restart service xong rồi, monitoring xem sao
@@ -1630,10 +1630,10 @@ Traffic bắt đầu trở lại bình thường	Traffic bắt đầu trở lạ
 Still seeing some errors in the logs	Still seeing some errors in the logs
 Có vẻ là connection pool exhausted	Có vẻ là connection pool exhausted
 Tăng connection pool từ 50 lên 200 được không?	Tăng connection pool từ 50 lên 200 được không?
-Được, mình sửa config rồi, restart lại	Được, mình sửa config rồi, restart lại
+Được, mình sửa config rồi, restart laij	Được, mình sửa config rồi, restart lại
 Status: healthy, 99.9  request success rate	Status: healthy, 99.9  request success rate
 Thật không? Vậy incident resolved rồi hả?	Thật không? Vậy incident resolved rồi hả?
-Chưa hoàn toàn, cần xem lại architecture	Chưa hoàn toàn, cần xem lại architecture
+Chưa hoàn toàn, cần xem lại ảchitecture	Chưa hoàn toàn, cần xem lại architecture
 Application chạy trên bao nhiêu instances hiện tại?	Application chạy trên bao nhiêu instances hiện tại?
 AWS có 4 instances, mỗi cái 2 vCPU	AWS có 4 instances, mỗi cái 2 vCPU
 Load balancing có cấu hình round-robin không?	Load balancing có cấu hình round-robin không?
@@ -1642,7 +1642,7 @@ Need to do a proper post-mortem after this	Need to do a proper post-mortem after
 Vâng, sáng mai mình họp với team	Vâng, sáng mai mình họp với team
 Can someone update the status page?	Can someone update the status page?
 Status page đã update, khách hàng được notify rồi	Status page đã update, khách hàng được notify rồi
-Cảm ơn, damage control xong rồi	Cảm ơn, damage control xong rồi
+Cảm ơn, damage control xong rooif	Cảm ơn, damage control xong rồi
 Mình sẽ viết incident report trong hôm nay	Mình sẽ viết incident report trong hôm nay
 Chi phí downtime này bao nhiêu thế?	Chi phí downtime này bao nhiêu thế?
 Khoảng 50k USD theo estimate	Khoảng 50k USD theo estimate
@@ -1656,7 +1656,7 @@ Just pushed the latest version with bug fixes for payment flow	Just pushed the l
 Ai review hết chưa? Mình cần feedback trước khi submit lên App Store	Ai review hết chưa? Mình cần feedback trước khi submit lên App Store
 Cái UI của onboarding screen bị lệch, có ai khác thấy thế không	Cái UI của onboarding screen bị lệch, có ai khác thấy thế không
 Em đã fix xong cái issue với deep linking, lên build rồi	Em đã fix xong cái issue với deep linking, lên build rồi
-Check the staging environment, payment integration might have some issues	Check the staging environment, payment integration might have some issues
+Check the staging environment, payment integration might have some isues	Check the staging environment, payment integration might have some issues
 TestFlight version bây giờ support dark mode rồi nhé, mọi người test xem	TestFlight version bây giờ support dark mode rồi nhé, mọi người test xem
 Vừa nhận feedback từ QA, có 3 bugs cần fix trước khi submit	Vừa nhận feedback từ QA, có 3 bugs cần fix trước khi submit
 Em chưa update TestFlight app, cái build cũ đó không có fixes của hôm qua	Em chưa update TestFlight app, cái build cũ đó không có fixes của hôm qua
@@ -1668,7 +1668,7 @@ Can anyone test the video upload feature? Found a bug that needs verification	Ca
 Bản test trên TestFlight nó không hiện notification, sao vậy	Bản test trên TestFlight nó không hiện notification, sao vậy
 Em restart máy rồi test lại, notification hoạt động bình thường	Em restart máy rồi test lại, notification hoạt động bình thường
 Ai prepare document cho App Store review chưa? Mình cần hôm nay	Ai prepare document cho App Store review chưa? Mình cần hôm nay
-App Store review team có thể reject nếu chúng mình không fix cái permission issue này	App Store review team có thể reject nếu chúng mình không fix cái permission issue này
+App Store review team có thể reject nếu chúng mình không fix cái permission issue nayf	App Store review team có thể reject nếu chúng mình không fix cái permission issue này
 I'll submit to App Store tomorrow morning, make sure everything is ready by EOD	I'll submit to App Store tomorrow morning, make sure everything is ready by EOD
 Vừa fix xong cái bug ở analytics tracking, version mới sẽ lên TestFlight lúc 3h	Vừa fix xong cái bug ở analytics tracking, version mới sẽ lên TestFlight lúc 3h
 Mọi người tải build 1.2.4 từ TestFlight đi, em đã fix hết các vấn đề trước đó	Mọi người tải build 1.2.4 từ TestFlight đi, em đã fix hết các vấn đề trước đó
@@ -1678,17 +1678,17 @@ Thể's a critical issue with image compression, we need to delay the submission
 Bản trước bị feedback từ Apple về privacy policy, em update xong rồi	Bản trước bị feedback từ Apple về privacy policy, em update xong rồi
 Just tested on different devices, looks good to me, ready for App Store submission	Just tested on different devices, looks good to me, ready for App Store submission
 Cái in-app purchase flow có vẻ bị lỗi, test thêm chút nữa xem sao	Cái in-app purchase flow có vẻ bị lỗi, test thêm chút nữa xem sao
-Em sửa xong cái UI inconsistency giữa iOS và Android version	Em sửa xong cái UI inconsistency giữa iOS và Android version
+Em sửa xong cái UI inconsistency giữa iOS và Android veión	Em sửa xong cái UI inconsistency giữa iOS và Android version
 Mình check lại App Store review guidelines, chúng mình phải comply với vài điều nữa	Mình check lại App Store review guidelines, chúng mình phải comply với vài điều nữa
 Ai có device iPhone cũ để test compatibility không? Em cần kiểm tra iOS 13	Ai có device iPhone cũ để test compatibility không? Em cần kiểm tra iOS 13
 Version hiện tại đã pass hết internal testing, sẵn sàng external beta testing	Version hiện tại đã pass hết internal testing, sẵn sàng external beta testing
 App Store review có thể mất 1-2 ngày, nên submit sớm càng tốt	App Store review có thể mất 1-2 ngày, nên submit sớm càng tốt
-Vừa update TestFlight, version này có performance improvement kha khá	Vừa update TestFlight, version này có performance improvement kha khá
+Vừa update TestFlight, version này có performance improvement kha khas	Vừa update TestFlight, version này có performance improvement kha khá
 Em đang chờ QA team cuối cùng check, thì submit luôn được rồi	Em đang chờ QA team cuối cùng check, thì submit luôn được rồi
 TestFlight build mới lên rồi, các bạn help test tính năng thanh toán nhé	TestFlight build mới lên rồi, các bạn help test tính năng thanh toán nhé
-Bị reject từ App Store vì lỗi metadata, em fix lại và resubmit rồi	Bị reject từ App Store vì lỗi metadata, em fix lại và resubmit rồi
+Bị reject từ App Store vì lỗi metadata, em fix lại và resubmit rooif	Bị reject từ App Store vì lỗi metadata, em fix lại và resubmit rồi
 One more round of testing needed before we can confidently submit to App Store	One more round of testing needed before we can confidently submit to App Store
-Mình vừa check lại cái certificate, nó expire tháng sau, phải renew	Mình vừa check lại cái certificate, nó expire tháng sau, phải renew
+Mình vừa check lại cái certificate, nó expire tháng sau, phải rênw	Mình vừa check lại cái certificate, nó expire tháng sau, phải renew
 Đã submit version 1.3.0 lên App Store, chờ review team feedback	Đã submit version 1.3.0 lên App Store, chờ review team feedback
 Mày có dùng ChatGPT chưa? Cái này thực sự hữu ích cho công việc	Mày có dùng ChatGPT chưa? Cái này thực sự hữu ích cho công việc
 I've been using it for like 3 weeks now, game changer for content creation	I've been using it for like 3 weeks now, game changer for content creation
@@ -1700,7 +1700,7 @@ Just try to be specific about what you want, like very detailed instructions	Jus
 Mình vừa prompt nó "hãy viết như một chuyên gia marketing" thì output ngon hơn	Mình vừa prompt nó "hãy viết như một chuyên gia marketing" thì output ngon hơn
 Cái model nào tốt nhất? GPT-4 hay GPT-3.5?	Cái model nào tốt nhất? GPT-4 hay GPT-3.5?
 GPT-4 thì chất lượng tốt hơn nhưng chậm hơn, tuỳ nhu cầu mà chọn	GPT-4 thì chất lượng tốt hơn nhưng chậm hơn, tuỳ nhu cầu mà chọn
-Tớ mê cái feature ở phần system prompt, customize được cái personality	Tớ mê cái feature ở phần system prompt, customize được cái personality
+Tớ mê cái feature ở phần system prompt, customize được cái péonality	Tớ mê cái feature ở phần system prompt, customize được cái personality
 Có thể dùng ChatGPT cho việc brainstorm ideas không?	Có thể dùng ChatGPT cho việc brainstorm ideas không?
 Dùng được chứ, mình thường dùng để kick off creative projects	Dùng được chứ, mình thường dùng để kick off creative projects
 Prompt của mình: "hãy tưởng tuộ 10 ý tưởng business startup tại Việt Nam"	Prompt của mình: "hãy tưởng tuộ 10 ý tưởng business startup tại Việt Nam"
@@ -1713,7 +1713,7 @@ Nhưng strategic thinking và creativity nó làm được mà, tớ sợ thật
 Tớ đang test các AI tools khác nữa, Claude, Gemini, mấy cái gì đó	Tớ đang test các AI tools khác nữa, Claude, Gemini, mấy cái gì đó
 Chất lượng của Claude hơi tốt hơn ChatGPT cho viết dài	Chất lượng của Claude hơi tốt hơn ChatGPT cho viết dài
 Mình dùng ChatGPT API trong ứng dụng của công ty, pretty powerful stuff	Mình dùng ChatGPT API trong ứng dụng của công ty, pretty powerful stuff
-Cái prompt template của mình có khoảng 500 characters, nó consistent lắm	Cái prompt template của mình có khoảng 500 characters, nó consistent lắm
+Cái prompt template của mình có khoảng 500 characters, nó consistent lawms	Cái prompt template của mình có khoảng 500 characters, nó consistent lắm
 Vấn đề là khi prompt quá dài thì nó hay bỏ qua context ở cuối	Vấn đề là khi prompt quá dài thì nó hay bỏ qua context ở cuối
 Mình học được trick là chia prompt thành multiple messages, tốt hơn	Mình học được trick là chia prompt thành multiple messages, tốt hơn
 Có ai dùng prompt injection để test security không?	Có ai dùng prompt injection để test security không?
@@ -1736,7 +1736,7 @@ Cách để improve là add more context about brand voice và target audience	C
 Mình thử dùng ChatGPT cho customer service, chưa tốt lắm	Mình thử dùng ChatGPT cho customer service, chưa tốt lắm
 Có thể setup custom instructions để nó follow company guidelines tốt hơn	Có thể setup custom instructions để nó follow company guidelines tốt hơn
 I think AI is gonna replace a lot of job roles within 5 years honestly	I think AI is gonna replace a lot of job roles within 5 years honestly
-Mình nghĩ nó sẽ augment jobs hơn là replace, need human oversight luôn	Mình nghĩ nó sẽ augment jobs hơn là replace, need human oversight luôn
+Mình nghĩ nó sẽ augment jobs hơn là replace, need human oversight luoon	Mình nghĩ nó sẽ augment jobs hơn là replace, need human oversight luôn
 Tớ training team mình về cách dùng ChatGPT hiệu quả	Tớ training team mình về cách dùng ChatGPT hiệu quả
 Prompt best practices gì vậy, share cho mình cái list?	Prompt best practices gì vậy, share cho mình cái list?
 Tao đói quá, gọi cơm tấm được không, mà lấy riêng xương và mỡ gà	Tao đói quá, gọi cơm tấm được không, mà lấy riêng xương và mỡ gà
@@ -1766,11 +1766,11 @@ cơm gà Hainanese bên kia mình ở còn ngon không ta	cơm gà Hainanese bê
 mình point order được không, app tracking system nó lag lắm	mình point order được không, app tracking system nó lag lắm
 tớ sợ giao nhầm địa chỉ, bao giờ mình verify lại không	tớ sợ giao nhầm địa chỉ, bao giờ mình verify lại không
 quán mặn quá, đặt lại yêu cầu không mặn lần sau nhé	quán mặn quá, đặt lại yêu cầu không mặn lần sau nhé
-app notification của mình nó bị delay, không biết order ready chưa	app notification của mình nó bị delay, không biết order ready chưa
+app notification của mình nó bị delay, không biết order ready chuwa	app notification của mình nó bị delay, không biết order ready chưa
 bạn gọi chưa, mà gọi luôn cho tao nữa đi	bạn gọi chưa, mà gọi luôn cho tao nữa đi
 bánh tráng nướng bên quán Phương thì chuẩn lắm, recommend 100 	bánh tráng nướng bên quán Phương thì chuẩn lắm, recommend 100 
 shipping fee đắt quá, tao quyết định mua hàng trong siêu thị rồi	shipping fee đắt quá, tao quyết định mua hàng trong siêu thị rồi
-mấy ông thích ăn buffet hay à la carte hơn	mấy ông thích ăn buffet hay à la carte hơn
+mấy ông thích ăn buffet hay à la carte hown	mấy ông thích ăn buffet hay à la carte hơn
 tớ order rồi, nó đang prep, khoảng 15 phút nữa là giao	tớ order rồi, nó đang prep, khoảng 15 phút nữa là giao
 the payment method is not working, can you try another card	the payment method is not working, can you try another card
 tao ăn phở đã 3 ngày liên tiếp rồi, muốn đổi một cái gì đó mới	tao ăn phở đã 3 ngày liên tiếp rồi, muốn đổi một cái gì đó mới
@@ -1834,7 +1834,7 @@ workspace này chậm vãi, có ai khác bị không?	workspace này chậm vãi
 tao đã set status thành away rồi nhé, trong lúc call client	tao đã set status thành away rồi nhé, trong lúc call client
 Zoom recording lưu ở đâu vậy? Mình cần download cái file	Zoom recording lưu ở đâu vậy? Mình cần download cái file
 You should check the channel pinned messages first	You should check the channel pinned messages first
-có gì mới không? Tao offline cả sáng để focus work	có gì mới không? Tao offline cả sáng để focus work
+có gì mới không? Tao offline cả sáng để focus ưỏk	có gì mới không? Tao offline cả sáng để focus work
 mấy cái notification quá nhiều quá, inbox tao 999  rồi	mấy cái notification quá nhiều quá, inbox tao 999  rồi
 disconnect rồi, reconnect lại xem sao	disconnect rồi, reconnect lại xem sao
 Slack ko sync được messages, refresh page xem thế nào	Slack ko sync được messages, refresh page xem thế nào
@@ -1875,7 +1875,7 @@ Có có, fully equipped gym, swimming pool, co-working space, tất cả đều 
 Phí quản lý bao nhiêu một tháng?	Phí quản lý bao nhiêu một tháng?
 Khoảng 25-30k/m2/tháng, tuỳ theo floor và loại unit	Khoảng 25-30k/m2/tháng, tuỳ theo floor và loại unit
 Vậy căn 65 tỷ kia thì phí bao nhiêu tiền?	Vậy căn 65 tỷ kia thì phí bao nhiêu tiền?
-Tính ra khoảng 4-5 triệu một tháng, khá reasonable	Tính ra khoảng 4-5 triệu một tháng, khá reasonable
+Tính ra khoảng 4-5 triệu một tháng, khá reaónable	Tính ra khoảng 4-5 triệu một tháng, khá reasonable
 Hmm, giá phí thì ok, chủ yếu là chưa biết lên loan hay không	Hmm, giá phí thì ok, chủ yếu là chưa biết lên loan hay không
 Mình có thể giúp bạn kết nối với mortgage advisor, họ có tỷ lệ rất tốt	Mình có thể giúp bạn kết nối với mortgage advisor, họ có tỷ lệ rất tốt
 Được, cho mình contact info của họ đi	Được, cho mình contact info của họ đi
@@ -1883,7 +1883,7 @@ Mình có thể giúp bạn kết nối với mortgage advisor, họ có tỷ l�
 Cảm ơn nhé. Còn vấn đề nữa là mình đang bận việc công ty, full schedule	Cảm ơn nhé. Còn vấn đề nữa là mình đang bận việc công ty, full schedule
 Không sao, mình có thể arrange virtual tour cho bạn trước, xem video 360 trước	Không sao, mình có thể arrange virtual tour cho bạn trước, xem video 360 trước
 Video tour? Sao không face time luôn cho nhanh	Video tour? Sao không face time luôn cho nhanh
-Được, mình có video tour link, send cho bạn link nè: bit.ly/landmark81-tour	Được, mình có video tour link, send cho bạn link nè: bit.ly/landmark81-tour
+Được, mình có video tour link, send cho bạn link nè: bit.ly/landmark81-tỏu	Được, mình có video tour link, send cho bạn link nè: bit.ly/landmark81-tour
 Cảm ơn, để mình xem cái video xong báo lại với bạn	Cảm ơn, để mình xem cái video xong báo lại với bạn
 Ok không vội, mình chờ feedback của bạn. Có câu hỏi gì khác không?	Ok không vội, mình chờ feedback của bạn. Có câu hỏi gì khác không?
 Còn một cái là phía quanh kia có hàng xóm hay không, vì mình muốn yên tĩnh	Còn một cái là phía quanh kia có hàng xóm hay không, vì mình muốn yên tĩnh

@@ -8,6 +8,20 @@ Each entry records what was asked, what was decided, and its status. Newest firs
 
 Status values: **Shipped** (in a build Tony has), **Agreed** (decided, not built yet), **Rejected**.
 
+## 62. Enter submits the text on screen
+
+Enter and keypad Enter end the current word without converting it, restoring
+the original keys, or changing language. Space and punctuation still trigger
+corrections. This preserves browser completions and the text visible when a
+form or message is submitted. Upstream: Vikey #128.
+
+## 61. Backspace removes the separator before undoing a correction
+
+After an automatic word correction, the first Backspace removes the trailing
+space or punctuation. The next consecutive Backspace restores the original
+word and language. Typing another key, clicking, or changing context cancels
+the pending undo. Upstream: Vikey #121.
+
 ## 60. English word forms the list is missing: "resets" stays "resets"
 
 **Status:** Built 2026-11-08, not in a release yet (Tony's report).

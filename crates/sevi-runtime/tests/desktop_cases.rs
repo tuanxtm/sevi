@@ -252,7 +252,12 @@ fn mac_rewrite_and_undo_request_different_native_output_policies() {
         }
     }
     let r = s.key_down(KEY_DELETE, false, Modifiers::default(), now + 0.1);
+    assert!(!r.consumed);
+    assert!(r.effects.is_empty());
+    assert_eq!(s.language(), Language::English);
+    let r = s.key_down(KEY_DELETE, false, Modifiers::default(), now + 0.2);
     assert!(r.consumed);
+    assert_eq!(s.language(), Language::Vietnamese);
     assert_eq!(
         r.effects[0],
         Effect::MacRewrite {
@@ -260,6 +265,37 @@ fn mac_rewrite_and_undo_request_different_native_output_policies() {
             selection: false
         }
     );
+}
+#[test]
+fn enter_passes_through_and_starts_a_new_word() {
+    for platform in [Platform::Windows, Platform::Linux, Platform::Mac] {
+        for enter in [KEY_RETURN, KEY_ENTER] {
+            for (start, before, after, expected) in [
+                (Language::English, "ver", "lamf ", "ver\nlàm "),
+                (Language::Vietnamese, "push", "tieengs ", "púh\ntiếng "),
+            ] {
+                let mut session =
+                    DesktopSession::new(platform, Box::<MemoryPreferences>::default());
+                session.engine.config.language = start;
+                let mut text = Vec::new();
+                let mut now = 0.0;
+                for c in before.chars() {
+                    let (code, shift) = sevi_test_tools::key_for(c).unwrap();
+                    key(&mut session, &mut text, code, shift, c, &mut now);
+                }
+                now += 0.03;
+                let result = session.key_down(enter, false, Modifiers::default(), now);
+                assert!(!result.consumed && result.effects.is_empty());
+                assert_eq!(session.language(), start);
+                text.push('\n');
+                for c in after.chars() {
+                    let (code, shift) = sevi_test_tools::key_for(c).unwrap();
+                    key(&mut session, &mut text, code, shift, c, &mut now);
+                }
+                assert_eq!(text.iter().collect::<String>(), expected);
+            }
+        }
+    }
 }
 #[test]
 fn manual_pause_expires() {

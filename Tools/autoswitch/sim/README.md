@@ -44,3 +44,9 @@ person (typos fixed with Backspace, Backspace into the last word, cursor ← →
 public data only: accuracy and manual switches (chat, chat with typos, synthetic), text safety and slip recovery
 (realistic typing), auto-correct, speed, locked edge cases, and reported bugs fixed (`rules/reported.tsv`).
 CI prints it in the job summary of every push and PR, compared with the engine before the change.
+
+Set `SIM_PAIR_GUARD=1` when running `sim`, `rtsim`, or `bench` to try the
+word-pair experiment. It uses the existing pair counts to stop an automatic
+switch from rewriting an earlier word when its displayed spelling has stronger
+support from its neighbors. The app keeps the existing policy. The benchmark
+reports separate distributions for letters, Space, punctuation, and Enter.

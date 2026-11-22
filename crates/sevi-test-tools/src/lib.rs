@@ -277,7 +277,7 @@ impl Harness {
             self.screen.push(c as u16);
             return;
         }
-        let word_end = [KEY_SPACE, KEY_COMMA, KEY_DOT, KEY_RETURN, KEY_SEMICOLON].contains(&key)
+        let fix_at = [KEY_SPACE, KEY_COMMA, KEY_DOT, KEY_SEMICOLON].contains(&key)
             || (caps && [KEY_SLASH, KEY_1, KEY_QUOTE, KEY_0].contains(&key));
         let en = std::mem::take(&mut self.en);
         let valid = self.valid;
@@ -288,16 +288,14 @@ impl Harness {
             || key == KEY_QUOTE;
         let double = self.after_double;
         self.after_double = false;
-        if double && word_end && self.engine.fix_doubled_key(&en) {
+        if double && fix_at && self.engine.fix_doubled_key(&en) {
             self.previous.clear();
             self.output(key, caps);
             return;
         }
         self.engine.previous_restored = self.previous_restored && !self.previous.is_empty();
-        let converted = word_end
-            && valid
-            && en.len() >= 2
-            && self.engine.check_english_word(&en, &self.previous);
+        let converted =
+            fix_at && valid && en.len() >= 2 && self.engine.check_english_word(&en, &self.previous);
         if !converted && key == KEY_SPACE && valid && !en.is_empty() {
             self.previous_restored = false;
             self.previous.insert(0, en);

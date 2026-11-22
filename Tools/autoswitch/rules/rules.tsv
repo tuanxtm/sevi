@@ -220,3 +220,13 @@ D60	1	chi phis 	chi phí 	1	never when the letters are a Vietnamese word: phis (
 D60	0	chi phis 	chi phí 	1	same in EN mode
 D60	1	thans 	thán 	1	a guessed form that isn't a real English word stays Vietnamese
 D60	0	crypto nos volatile 	crypto nó volatile 	1	words already in the frequency list keep their own score: D22's nos -> nó stays
+D62	0	ver|	ver|	0	Enter sends what's on screen: no fix at Enter (Chrome address bar: "ver" + Enter must open the highlighted vercel.com)
+D62	0	ver |	vẻ |	1	a space before Enter still fixes the word
+D62	0	ver.|	vẻ.|	1	so does a dot
+D62	0	data team lamf|	data team lamf|	0	English mode: the last word stays as typed at Enter
+D62	0	data team lamf |	data team làm |	1	a space first, then Enter
+D62	0	ddi|	ddi|	0	no conversion at Enter, even for a common Vietnamese word
+D62	1	push|	púh|	1	Vietnamese mode: no restore to English at Enter either
+D62	1	push |	push |	0	a space first, then Enter
+D62	1	discussion|	dícussion|	1	the same for a long English word
+D62	1	choeeuf|	choêù|	1	no restore-if-wrong-spelling at Enter

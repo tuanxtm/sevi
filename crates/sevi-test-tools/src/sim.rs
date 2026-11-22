@@ -44,6 +44,9 @@ pub struct Simulator {
 impl Simulator {
     pub fn new(config: EngineConfig) -> Self {
         let mut driver = Driver::new(config);
+        driver
+            .engine
+            .set_lookback_pair_guard(std::env::var_os("SIM_PAIR_GUARD").is_some());
         let integer = |name: &str, default| {
             std::env::var(name)
                 .ok()
@@ -189,7 +192,7 @@ pub fn wrong_words(a: &[u16], b: &[u16]) -> usize {
 pub fn run(args: &[String]) -> Result<(), Box<dyn Error>> {
     let path = args
         .first()
-        .ok_or("usage: sim units [--lazy] [--start en|vi] [--off] [--dump file]")?;
+        .ok_or("usage: sim units [--lazy] [--as-typed] [--start en|vi] [--off] [--dump file]")?;
     let units = units(&fs::read_to_string(path)?);
     let mut config = crate::config_from_env();
     config.auto_switch = !args.iter().any(|a| a == "--off");
@@ -204,6 +207,7 @@ pub fn run(args: &[String]) -> Result<(), Box<dyn Error>> {
     let auto = config.auto_switch;
     let mut s = Simulator::new(config);
     let lazy = args.iter().any(|a| a == "--lazy");
+    let as_typed = args.iter().any(|a| a == "--as-typed");
     let trace = args.iter().any(|a| a == "--trace");
     let mut show: usize = value(if lazy { "--show-lazy" } else { "--show" })
         .unwrap_or("0")
@@ -251,6 +255,20 @@ pub fn run(args: &[String]) -> Result<(), Box<dyn Error>> {
             let saved = s.clone();
             s.type_text(&u.keys);
             s.type_text(&u.separators);
+            // A typist can see whether the last word needs a correction before submitting.
+            if !as_typed && u.word && u.separators.starts_with('\n') && s.screen != want {
+                let mut retry = saved.clone();
+                retry.type_text(&u.keys);
+                retry.press(KEY_SPACE, false);
+                retry.type_text(&u.separators);
+                let space = want.len() - u.separators.encode_utf16().count();
+                want.insert(space, u16::from(b' '));
+                if retry.screen == want {
+                    s = retry;
+                } else {
+                    want.remove(space);
+                }
+            }
             if s.screen != want {
                 s = saved;
                 if std::env::var_os("SIM_MANUAL_LOG").is_some() {
@@ -322,4 +340,38 @@ pub fn run(args: &[String]) -> Result<(), Box<dyn Error>> {
         )
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn pair_guard_keeps_the_previous_word_without_blocking_the_current_switch() {
+        for (start, keys, before, after) in [
+            (
+                Language::Vietnamese,
+                "thif queen config ",
+                "thì queen config ",
+                "thì quên config ",
+            ),
+            (
+                Language::English,
+                "Pro Max quas ",
+                "Pro Mã quá ",
+                "Pro Max quá ",
+            ),
+        ] {
+            for (enabled, expected) in [(false, before), (true, after)] {
+                let mut simulator = Simulator::new(EngineConfig {
+                    language: start,
+                    ..EngineConfig::default()
+                });
+                simulator.driver.engine.set_lookback_pair_guard(enabled);
+                simulator.type_text(keys);
+                assert_eq!(String::from_utf16_lossy(&simulator.screen), expected);
+                assert_eq!(simulator.driver.language(), start.toggled());
+            }
+        }
+    }
 }

@@ -23,6 +23,18 @@ pub fn key_character(key: u32) -> u32 {
         .map(|(_, v)| *v)
         .unwrap_or(0)
 }
+fn packed_word<'a>(words: &'a [u8], offsets: &[u8], index: usize) -> &'a [u8] {
+    let position = index * 4;
+    let start = u32::from_le_bytes(offsets[position..position + 4].try_into().unwrap()) as usize;
+    if let Some(next) = offsets.get(position + 4..position + 8) {
+        // The next entry starts immediately after this word's NUL terminator.
+        let end = u32::from_le_bytes(next.try_into().unwrap()) as usize - 1;
+        &words[start..end]
+    } else {
+        let tail = &words[start..];
+        &tail[..tail.iter().position(|byte| *byte == 0).unwrap()]
+    }
+}
 pub struct Dictionary {
     pub words: &'static [u8],
     pub offsets: &'static [u8],
@@ -36,9 +48,7 @@ impl Dictionary {
         self.scores.is_empty()
     }
     pub fn word(&self, i: usize) -> &'static [u8] {
-        let off = u32::from_le_bytes(self.offsets[i * 4..i * 4 + 4].try_into().unwrap()) as usize;
-        let rest = &self.words[off..];
-        &rest[..rest.iter().position(|b| *b == 0).unwrap()]
+        packed_word(self.words, self.offsets, i)
     }
     pub fn index(&self, word: &[u8]) -> Result<usize, usize> {
         let (mut lo, mut hi) = (0, self.len());
@@ -81,10 +91,7 @@ impl WordList {
         self.offsets.is_empty()
     }
     pub fn word(&self, index: usize) -> &'static [u8] {
-        let offset =
-            u32::from_le_bytes(self.offsets[index * 4..index * 4 + 4].try_into().unwrap()) as usize;
-        let rest = &self.words[offset..];
-        &rest[..rest.iter().position(|byte| *byte == 0).unwrap()]
+        packed_word(self.words, self.offsets, index)
     }
     pub fn contains(&self, word: &[u8]) -> bool {
         let (mut low, mut high) = (0, self.len());
@@ -173,6 +180,12 @@ pub fn completions(vietnamese: bool, prefix: &str, max: usize) -> Vec<(String, i
 #[cfg(test)]
 mod tests {
     use super::*;
+    fn assert_matches_terminated_word(words: &[u8], offsets: &[u8], i: usize, word: &[u8]) {
+        let start = u32::from_le_bytes(offsets[i * 4..i * 4 + 4].try_into().unwrap()) as usize;
+        let tail = &words[start..];
+        assert_eq!(word, &tail[..tail.iter().position(|&b| b == 0).unwrap()]);
+    }
+
     #[test]
     fn compact_tables_preserve_sorted_word_index() {
         for (dict, count) in [(&VN, 8143), (&EN, 41225), (&BIGRAM, 160386)] {
@@ -181,6 +194,7 @@ mod tests {
             for i in 0..count {
                 let w = dict.word(i);
                 assert!(!w.is_empty());
+                assert_matches_terminated_word(dict.words, dict.offsets, i, w);
                 assert_eq!(dict.index(w), Ok(i));
                 if i > 0 {
                     assert!(dict.word(i - 1) < w)
@@ -193,6 +207,7 @@ mod tests {
         assert_eq!(EN_FORMS.len(), 18197);
         for index in 0..EN_FORMS.len() {
             let word = EN_FORMS.word(index);
+            assert_matches_terminated_word(EN_FORMS.words, EN_FORMS.offsets, index, word);
             assert!(EN_FORMS.contains(word));
             assert!(
                 EN.index(word).is_err(),

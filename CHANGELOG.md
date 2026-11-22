@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.60 — 2026-11-22
+
+- Enter and keypad Enter submit the text already on screen. Space and
+  punctuation still trigger typing corrections.
+- After an automatic correction, the first Backspace removes the separator.
+  A second consecutive Backspace restores the original word and language.
+- Sped up dictionary lookups and removed unnecessary scoring from the typing
+  path. On the chat benchmark, average engine time fell from 620 ns to 420 ns
+  per key. The speed changes produced identical output across three test corpora.
+
+Windows x64 downloads include the installer, standalone executable, portable
+ZIP, signed update feed, and SHA-256 checksums. This is Sevi build 35.
+
 ## 1.0.50 — 2026-11-09
 
 - Finished retiring the parallel C/C++/Objective-C++ and Swift implementations.

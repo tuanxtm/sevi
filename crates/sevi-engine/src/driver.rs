@@ -14,6 +14,7 @@ pub struct Edit {
 #[derive(Clone)]
 struct Undo {
     remove: usize,
+    separator_removed: bool,
     text: Vec<u16>,
     language: Language,
     keys: Vec<u32>,
@@ -93,7 +94,6 @@ impl Driver {
     #[cfg(feature = "simulation")]
     pub fn press_simulated(&mut self, key: u32, shift: bool) -> Edit {
         self.undo = None;
-        self.engine.last_side = -2;
         self.press(key, shift, 0.0)
     }
     #[cfg(feature = "simulation")]
@@ -226,7 +226,8 @@ impl Driver {
                 .collect()
         };
         self.undo = Some(Undo {
-            remove: corrected + 1,
+            remove: corrected,
+            separator_removed: false,
             text: self
                 .engine
                 .undo_data
@@ -238,6 +239,11 @@ impl Driver {
         });
     }
     pub fn press(&mut self, key: u32, shift: bool, now: f64) -> Edit {
+        #[cfg(feature = "simulation")]
+        {
+            self.engine.track_word_side = self.simulation.early_words > 0;
+            self.engine.last_side = -2;
+        }
         if self.pause_until.is_some_and(|until| now >= until) {
             self.pause_until = None;
             self.engine.config.auto_switch = self.auto_switch;
@@ -248,29 +254,34 @@ impl Driver {
             self.engine.config.auto_switch = self.auto_switch
         }
         let mut e = Edit::default();
+        let undo = self.undo.take();
         if key == KEY_DELETE
-            && let Some(undo) = self.undo.take()
+            && let Some(mut undo) = undo
         {
-            e.delete_count = undo.remove;
-            e.text = undo.text;
-            e.language_changed = self.language() != undo.language;
-            self.engine.config.language = undo.language;
-            self.engine.new_session();
-            self.engine.forget();
-            self.en.clear();
-            self.valid = false;
-            self.previous.clear();
-            self.after_double = false;
-            self.undone.clear();
-            if self.language() == Language::English && !undo.keys.is_empty() {
-                self.en = undo.keys.clone();
-                self.valid = true;
-                self.undone = undo.keys
+            if !undo.separator_removed {
+                undo.separator_removed = true;
+                self.undo = Some(undo);
+            } else {
+                e.delete_count = undo.remove;
+                e.text = undo.text;
+                e.language_changed = self.language() != undo.language;
+                self.engine.config.language = undo.language;
+                self.engine.new_session();
+                self.engine.forget();
+                self.en.clear();
+                self.valid = false;
+                self.previous.clear();
+                self.after_double = false;
+                self.undone.clear();
+                if self.language() == Language::English && !undo.keys.is_empty() {
+                    self.en = undo.keys.clone();
+                    self.valid = true;
+                    self.undone = undo.keys
+                }
+                self.undos += 1;
+                return e;
             }
-            self.undos += 1;
-            return e;
         }
-        self.undo = None;
         if self.language() == Language::Vietnamese {
             self.engine.switch_request = None;
             self.engine.handle_event(
@@ -358,11 +369,12 @@ impl Driver {
         ]
         .contains(&key)
             || (shift && [KEY_SLASH, KEY_1, KEY_QUOTE, KEY_0].contains(&key));
+        let fix_at = word_end && !matches!(key, KEY_ENTER | KEY_RETURN);
         let en = std::mem::take(&mut self.en);
         let valid = self.valid;
         let after_double = self.after_double;
         self.after_double = false;
-        if after_double && word_end && self.engine.fix_doubled_key(&en) {
+        if after_double && fix_at && self.engine.fix_doubled_key(&en) {
             self.valid = whitespace(key);
             self.previous.clear();
             let corrected = self.engine.hook.new_chars;
@@ -383,13 +395,13 @@ impl Driver {
         } else {
             previous
         };
-        let converted = word_end
+        let converted = fix_at
             && valid
             && en.len() >= 2
             && !same
             && self.engine.check_english_word(&en, previous);
         #[cfg(feature = "simulation")]
-        if !converted && word_end && valid && en.len() >= 2 {
+        if self.simulation.early_words > 0 && !converted && word_end && valid && en.len() >= 2 {
             e.language_changed = self.early_word(self.engine.word_side(&en));
         }
         if !converted && key == KEY_SPACE && valid && !en.is_empty() {
